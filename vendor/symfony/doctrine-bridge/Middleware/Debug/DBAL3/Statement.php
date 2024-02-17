@@ -26,14 +26,14 @@ use Symfony\Component\Stopwatch\Stopwatch;
  */
 final class Statement extends AbstractStatementMiddleware
 {
-    private readonly Query $query;
+    private Query $query;
 
     public function __construct(
         StatementInterface $statement,
-        private readonly DebugDataHolder $debugDataHolder,
-        private readonly string $connectionName,
+        private DebugDataHolder $debugDataHolder,
+        private string $connectionName,
         string $sql,
-        private readonly ?Stopwatch $stopwatch = null,
+        private ?Stopwatch $stopwatch = null,
     ) {
         $this->query = new Query($sql);
 

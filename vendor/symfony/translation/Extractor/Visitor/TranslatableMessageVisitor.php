@@ -26,11 +26,6 @@ final class TranslatableMessageVisitor extends AbstractVisitor implements NodeVi
 
     public function enterNode(Node $node): ?Node
     {
-        return null;
-    }
-
-    public function leaveNode(Node $node): ?Node
-    {
         if (!$node instanceof Node\Expr\New_) {
             return null;
         }
@@ -55,6 +50,11 @@ final class TranslatableMessageVisitor extends AbstractVisitor implements NodeVi
             $this->addMessageToCatalogue($message, $domain, $node->getStartLine());
         }
 
+        return null;
+    }
+
+    public function leaveNode(Node $node): ?Node
+    {
         return null;
     }
 

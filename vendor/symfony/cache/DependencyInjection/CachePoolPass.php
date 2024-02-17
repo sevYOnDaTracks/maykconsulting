@@ -29,7 +29,10 @@ use Symfony\Component\DependencyInjection\Reference;
  */
 class CachePoolPass implements CompilerPassInterface
 {
-    public function process(ContainerBuilder $container): void
+    /**
+     * @return void
+     */
+    public function process(ContainerBuilder $container)
     {
         if ($container->hasParameter('cache.prefix.seed')) {
             $seed = $container->getParameterBag()->resolveValue($container->getParameter('cache.prefix.seed'));
@@ -232,6 +235,7 @@ class CachePoolPass implements CompilerPassInterface
 
             if (!$container->hasDefinition($name = '.cache_connection.'.ContainerBuilder::hash($dsn))) {
                 $definition = new Definition(AbstractAdapter::class);
+                $definition->setPublic(false);
                 $definition->setFactory([AbstractAdapter::class, 'createConnection']);
                 $definition->setArguments([$dsn, ['lazy' => true]]);
                 $container->setDefinition($name, $definition);

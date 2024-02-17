@@ -13,7 +13,6 @@ namespace Symfony\Component\HttpKernel\EventListener;
 
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
-use Symfony\Component\ErrorHandler\ErrorHandler;
 use Symfony\Component\ErrorHandler\Exception\FlattenException;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,20 +25,20 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\HttpKernel\Log\DebugLoggerConfigurator;
+use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
  */
 class ErrorListener implements EventSubscriberInterface
 {
-    protected string|object|array|null $controller;
-    protected ?\Psr\Log\LoggerInterface $logger;
-    protected bool $debug;
+    protected $controller;
+    protected $logger;
+    protected $debug;
     /**
      * @var array<class-string, array{log_level: string|null, status_code: int<100,599>|null}>
      */
-    protected array $exceptionsMapping;
+    protected $exceptionsMapping;
 
     /**
      * @param array<class-string, array{log_level: string|null, status_code: int<100,599>|null}> $exceptionsMapping
@@ -52,7 +51,10 @@ class ErrorListener implements EventSubscriberInterface
         $this->exceptionsMapping = $exceptionsMapping;
     }
 
-    public function logKernelException(ExceptionEvent $event): void
+    /**
+     * @return void
+     */
+    public function logKernelException(ExceptionEvent $event)
     {
         $throwable = $event->getThrowable();
         $logLevel = $this->resolveLogLevel($throwable);
@@ -87,24 +89,19 @@ class ErrorListener implements EventSubscriberInterface
 
         $e = FlattenException::createFromThrowable($throwable);
 
-        $this->logException($throwable, sprintf('Uncaught PHP Exception %s: "%s" at %s line %s', $e->getClass(), $e->getMessage(), basename($e->getFile()), $e->getLine()), $logLevel);
+        $this->logException($throwable, sprintf('Uncaught PHP Exception %s: "%s" at %s line %s', $e->getClass(), $e->getMessage(), $e->getFile(), $e->getLine()), $logLevel);
     }
 
-    public function onKernelException(ExceptionEvent $event): void
+    /**
+     * @return void
+     */
+    public function onKernelException(ExceptionEvent $event)
     {
         if (null === $this->controller) {
             return;
         }
 
         $throwable = $event->getThrowable();
-
-        if ($exceptionHandler = set_exception_handler(var_dump(...))) {
-            restore_exception_handler();
-            if (\is_array($exceptionHandler) && $exceptionHandler[0] instanceof ErrorHandler) {
-                $throwable = $exceptionHandler[0]->enhanceError($event->getThrowable());
-            }
-        }
-
         $request = $this->duplicateRequest($throwable, $event->getRequest());
 
         try {
@@ -112,7 +109,7 @@ class ErrorListener implements EventSubscriberInterface
         } catch (\Exception $e) {
             $f = FlattenException::createFromThrowable($e);
 
-            $this->logException($e, sprintf('Exception thrown when handling an exception (%s: %s at %s line %s)', $f->getClass(), $f->getMessage(), basename($e->getFile()), $e->getLine()));
+            $this->logException($e, sprintf('Exception thrown when handling an exception (%s: %s at %s line %s)', $f->getClass(), $f->getMessage(), $e->getFile(), $e->getLine()));
 
             $prev = $e;
             do {
@@ -141,7 +138,10 @@ class ErrorListener implements EventSubscriberInterface
         }
     }
 
-    public function onControllerArguments(ControllerArgumentsEvent $event): void
+    /**
+     * @return void
+     */
+    public function onControllerArguments(ControllerArgumentsEvent $event)
     {
         $e = $event->getRequest()->attributes->get('exception');
 
@@ -222,7 +222,7 @@ class ErrorListener implements EventSubscriberInterface
         $attributes = [
             '_controller' => $this->controller,
             'exception' => $exception,
-            'logger' => DebugLoggerConfigurator::getDebugLogger($this->logger),
+            'logger' => $this->logger instanceof DebugLoggerInterface ? $this->logger : null,
         ];
         $request = $request->duplicate(null, null, $attributes);
         $request->setMethod('GET');

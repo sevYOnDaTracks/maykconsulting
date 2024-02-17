@@ -22,16 +22,17 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
  */
 class ExpressionValidator extends ConstraintValidator
 {
-    private ExpressionLanguage $expressionLanguage;
+    private ?ExpressionLanguage $expressionLanguage;
 
     public function __construct(?ExpressionLanguage $expressionLanguage = null)
     {
-        if ($expressionLanguage) {
-            $this->expressionLanguage = $expressionLanguage;
-        }
+        $this->expressionLanguage = $expressionLanguage;
     }
 
-    public function validate(mixed $value, Constraint $constraint): void
+    /**
+     * @return void
+     */
+    public function validate(mixed $value, Constraint $constraint)
     {
         if (!$constraint instanceof Expression) {
             throw new UnexpectedTypeException($constraint, Expression::class);
@@ -40,7 +41,6 @@ class ExpressionValidator extends ConstraintValidator
         $variables = $constraint->values;
         $variables['value'] = $value;
         $variables['this'] = $this->context->getObject();
-        $variables['context'] = $this->context;
 
         if ($constraint->negate xor $this->getExpressionLanguage()->evaluate($constraint->expression, $variables)) {
             $this->context->buildViolation($constraint->message)
@@ -52,11 +52,6 @@ class ExpressionValidator extends ConstraintValidator
 
     private function getExpressionLanguage(): ExpressionLanguage
     {
-        if (!isset($this->expressionLanguage)) {
-            $this->expressionLanguage = new ExpressionLanguage();
-            $this->expressionLanguage->registerProvider(new ExpressionLanguageProvider());
-        }
-
-        return $this->expressionLanguage;
+        return $this->expressionLanguage ??= new ExpressionLanguage();
     }
 }

@@ -114,7 +114,7 @@ class SecurityDataCollector extends DataCollector implements LateDataCollectorIn
 
             $this->data = [
                 'enabled' => true,
-                'authenticated' => (bool) $token->getUser(),
+                'authenticated' => method_exists($token, 'isAuthenticated') ? $token->isAuthenticated(false) : (bool) $token->getUser(),
                 'impersonated' => null !== $impersonatorUser,
                 'impersonator_user' => $impersonatorUser,
                 'impersonation_exit_path' => null,

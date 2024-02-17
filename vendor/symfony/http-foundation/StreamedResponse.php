@@ -26,10 +26,9 @@ namespace Symfony\Component\HttpFoundation;
  */
 class StreamedResponse extends Response
 {
-    protected ?\Closure $callback = null;
-    protected bool $streamed = false;
-
-    private bool $headersSent = false;
+    protected $callback;
+    protected $streamed;
+    private bool $headersSent;
 
     /**
      * @param int $status The HTTP status code (200 "OK" by default)
@@ -52,7 +51,7 @@ class StreamedResponse extends Response
      */
     public function setCallback(callable $callback): static
     {
-        $this->callback = $callback(...);
+        $this->callback = $callback;
 
         return $this;
     }
@@ -69,16 +68,17 @@ class StreamedResponse extends Response
     /**
      * This method only sends the headers once.
      *
-     * @param positive-int|null $statusCode The status code to use, override the statusCode property if set and not null
+     * @param null|positive-int $statusCode The status code to use, override the statusCode property if set and not null
      *
      * @return $this
      */
-    public function sendHeaders(?int $statusCode = null): static
+    public function sendHeaders(/* int $statusCode = null */): static
     {
         if ($this->headersSent) {
             return $this;
         }
 
+        $statusCode = \func_num_args() > 0 ? func_get_arg(0) : null;
         if ($statusCode < 100 || $statusCode >= 200) {
             $this->headersSent = true;
         }
@@ -99,8 +99,8 @@ class StreamedResponse extends Response
 
         $this->streamed = true;
 
-        if (!isset($this->callback)) {
-            throw new \LogicException('The Response callback must be set.');
+        if (null === $this->callback) {
+            throw new \LogicException('The Response callback must not be null.');
         }
 
         ($this->callback)();

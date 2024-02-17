@@ -50,73 +50,73 @@ class OptionsResolver implements Options
     /**
      * The names of all defined options.
      */
-    private array $defined = [];
+    private $defined = [];
 
     /**
      * The default option values.
      */
-    private array $defaults = [];
+    private $defaults = [];
 
     /**
      * A list of closure for nested options.
      *
      * @var \Closure[][]
      */
-    private array $nested = [];
+    private $nested = [];
 
     /**
      * The names of required options.
      */
-    private array $required = [];
+    private $required = [];
 
     /**
      * The resolved option values.
      */
-    private array $resolved = [];
+    private $resolved = [];
 
     /**
      * A list of normalizer closures.
      *
      * @var \Closure[][]
      */
-    private array $normalizers = [];
+    private $normalizers = [];
 
     /**
      * A list of accepted values for each option.
      */
-    private array $allowedValues = [];
+    private $allowedValues = [];
 
     /**
      * A list of accepted types for each option.
      */
-    private array $allowedTypes = [];
+    private $allowedTypes = [];
 
     /**
      * A list of info messages for each option.
      */
-    private array $info = [];
+    private $info = [];
 
     /**
      * A list of closures for evaluating lazy options.
      */
-    private array $lazy = [];
+    private $lazy = [];
 
     /**
      * A list of lazy options whose closure is currently being called.
      *
      * This list helps detecting circular dependencies between lazy options.
      */
-    private array $calling = [];
+    private $calling = [];
 
     /**
      * A list of deprecated options.
      */
-    private array $deprecated = [];
+    private $deprecated = [];
 
     /**
      * The list of options provided by the user.
      */
-    private array $given = [];
+    private $given = [];
 
     /**
      * Whether the instance is locked for reading.
@@ -126,19 +126,19 @@ class OptionsResolver implements Options
      * process. If any option is changed after being read, all evaluated
      * lazy options that depend on this option would become invalid.
      */
-    private bool $locked = false;
+    private $locked = false;
 
-    private array $parentsOptions = [];
+    private $parentsOptions = [];
 
     /**
      * Whether the whole options definition is marked as array prototype.
      */
-    private ?bool $prototype = null;
+    private $prototype;
 
     /**
      * The prototype array's index that is being read.
      */
-    private int|string|null $prototypeIndex = null;
+    private $prototypeIndex;
 
     /**
      * Whether to ignore undefined options.
@@ -490,7 +490,7 @@ class OptionsResolver implements Options
      * @throws UndefinedOptionsException If the option is undefined
      * @throws AccessException           If called from a lazy option or normalizer
      */
-    public function setNormalizer(string $option, \Closure $normalizer): static
+    public function setNormalizer(string $option, \Closure $normalizer)
     {
         if ($this->locked) {
             throw new AccessException('Normalizers cannot be set from a lazy option or normalizer.');
@@ -574,7 +574,7 @@ class OptionsResolver implements Options
      * @throws UndefinedOptionsException If the option is undefined
      * @throws AccessException           If called from a lazy option or normalizer
      */
-    public function setAllowedValues(string $option, mixed $allowedValues): static
+    public function setAllowedValues(string $option, mixed $allowedValues)
     {
         if ($this->locked) {
             throw new AccessException('Allowed values cannot be set from a lazy option or normalizer.');
@@ -614,7 +614,7 @@ class OptionsResolver implements Options
      * @throws UndefinedOptionsException If the option is undefined
      * @throws AccessException           If called from a lazy option or normalizer
      */
-    public function addAllowedValues(string $option, mixed $allowedValues): static
+    public function addAllowedValues(string $option, mixed $allowedValues)
     {
         if ($this->locked) {
             throw new AccessException('Allowed values cannot be added from a lazy option or normalizer.');
@@ -654,7 +654,7 @@ class OptionsResolver implements Options
      * @throws UndefinedOptionsException If the option is undefined
      * @throws AccessException           If called from a lazy option or normalizer
      */
-    public function setAllowedTypes(string $option, string|array $allowedTypes): static
+    public function setAllowedTypes(string $option, string|array $allowedTypes)
     {
         if ($this->locked) {
             throw new AccessException('Allowed types cannot be set from a lazy option or normalizer.');
@@ -688,7 +688,7 @@ class OptionsResolver implements Options
      * @throws UndefinedOptionsException If the option is undefined
      * @throws AccessException           If called from a lazy option or normalizer
      */
-    public function addAllowedTypes(string $option, string|array $allowedTypes): static
+    public function addAllowedTypes(string $option, string|array $allowedTypes)
     {
         if ($this->locked) {
             throw new AccessException('Allowed types cannot be added from a lazy option or normalizer.');
@@ -1064,7 +1064,7 @@ class OptionsResolver implements Options
             if (!$success) {
                 $message = sprintf(
                     'The option "%s" with value %s is invalid.',
-                    $this->formatOptions([$option]),
+                    $option,
                     $this->formatValue($value)
                 );
 

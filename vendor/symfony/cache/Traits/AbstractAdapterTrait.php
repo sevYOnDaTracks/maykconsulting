@@ -43,14 +43,16 @@ trait AbstractAdapterTrait
     private array $ids = [];
 
     /**
-     * The maximum length to enforce for identifiers or null when no limit applies.
+     * @var int|null The maximum length to enforce for identifiers or null when no limit applies
      */
-    protected ?int $maxIdLength = null;
+    protected $maxIdLength;
 
     /**
      * Fetches several cache items.
      *
      * @param array $ids The cache identifiers to fetch
+     *
+     * @return array|\Traversable
      */
     abstract protected function doFetch(array $ids): iterable;
 
@@ -281,7 +283,7 @@ trait AbstractAdapterTrait
         throw new \BadMethodCallException('Cannot serialize '.__CLASS__);
     }
 
-    public function __wakeup(): void
+    public function __wakeup()
     {
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }

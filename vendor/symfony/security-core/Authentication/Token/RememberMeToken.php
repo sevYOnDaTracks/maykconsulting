@@ -11,7 +11,6 @@
 
 namespace Symfony\Component\Security\Core\Authentication\Token;
 
-use Symfony\Component\Security\Core\Exception\InvalidArgumentException;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -33,12 +32,12 @@ class RememberMeToken extends AbstractToken
     {
         parent::__construct($user->getRoles());
 
-        if (!$secret) {
-            throw new InvalidArgumentException('A non-empty secret is required.');
+        if (empty($secret)) {
+            throw new \InvalidArgumentException('$secret must not be empty.');
         }
 
-        if (!$firewallName) {
-            throw new InvalidArgumentException('$firewallName must not be empty.');
+        if ('' === $firewallName) {
+            throw new \InvalidArgumentException('$firewallName must not be empty.');
         }
 
         $this->firewallName = $firewallName;

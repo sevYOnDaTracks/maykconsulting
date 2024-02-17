@@ -14,7 +14,6 @@ namespace Symfony\Component\Mailer;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Mailer\Bridge\Amazon\Transport\SesTransportFactory;
-use Symfony\Component\Mailer\Bridge\Brevo\Transport\BrevoTransportFactory;
 use Symfony\Component\Mailer\Bridge\Google\Transport\GmailTransportFactory;
 use Symfony\Component\Mailer\Bridge\Infobip\Transport\InfobipTransportFactory;
 use Symfony\Component\Mailer\Bridge\Mailchimp\Transport\MandrillTransportFactory;
@@ -22,9 +21,10 @@ use Symfony\Component\Mailer\Bridge\MailerSend\Transport\MailerSendTransportFact
 use Symfony\Component\Mailer\Bridge\Mailgun\Transport\MailgunTransportFactory;
 use Symfony\Component\Mailer\Bridge\Mailjet\Transport\MailjetTransportFactory;
 use Symfony\Component\Mailer\Bridge\MailPace\Transport\MailPaceTransportFactory;
+use Symfony\Component\Mailer\Bridge\OhMySmtp\Transport\OhMySmtpTransportFactory;
 use Symfony\Component\Mailer\Bridge\Postmark\Transport\PostmarkTransportFactory;
-use Symfony\Component\Mailer\Bridge\Scaleway\Transport\ScalewayTransportFactory;
 use Symfony\Component\Mailer\Bridge\Sendgrid\Transport\SendgridTransportFactory;
+use Symfony\Component\Mailer\Bridge\Sendinblue\Transport\SendinblueTransportFactory;
 use Symfony\Component\Mailer\Exception\InvalidArgumentException;
 use Symfony\Component\Mailer\Exception\UnsupportedSchemeException;
 use Symfony\Component\Mailer\Transport\Dsn;
@@ -46,7 +46,6 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 final class Transport
 {
     private const FACTORY_CLASSES = [
-        BrevoTransportFactory::class,
         GmailTransportFactory::class,
         InfobipTransportFactory::class,
         MailerSendTransportFactory::class,
@@ -54,9 +53,10 @@ final class Transport
         MailjetTransportFactory::class,
         MailPaceTransportFactory::class,
         MandrillTransportFactory::class,
+        OhMySmtpTransportFactory::class,
         PostmarkTransportFactory::class,
-        ScalewayTransportFactory::class,
         SendgridTransportFactory::class,
+        SendinblueTransportFactory::class,
         SesTransportFactory::class,
     ];
 

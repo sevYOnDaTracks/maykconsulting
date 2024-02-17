@@ -21,18 +21,22 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Christophe Coevoet <stof@notk.org>
- *
- * @final
  */
 class EntityFactory implements UserProviderFactoryInterface
 {
-    public function __construct(
-        private readonly string $key,
-        private readonly string $providerId,
-    ) {
+    private string $key;
+    private string $providerId;
+
+    public function __construct(string $key, string $providerId)
+    {
+        $this->key = $key;
+        $this->providerId = $providerId;
     }
 
-    public function create(ContainerBuilder $container, string $id, array $config): void
+    /**
+     * @return void
+     */
+    public function create(ContainerBuilder $container, string $id, array $config)
     {
         $container
             ->setDefinition($id, new ChildDefinition($this->providerId))
@@ -42,12 +46,18 @@ class EntityFactory implements UserProviderFactoryInterface
         ;
     }
 
-    public function getKey(): string
+    /**
+     * @return string
+     */
+    public function getKey()
     {
         return $this->key;
     }
 
-    public function addConfiguration(NodeDefinition $node): void
+    /**
+     * @return void
+     */
+    public function addConfiguration(NodeDefinition $node)
     {
         $node
             ->children()

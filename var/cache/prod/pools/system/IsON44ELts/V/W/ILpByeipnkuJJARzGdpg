@@ -1,0 +1,95 @@
+<?php //0819c4bf016546d43b6ee2fc79262db8
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Query\\ParserResult'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ParserResult')),
+        clone ($p['Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor')),
+        clone ($p['Doctrine\\ORM\\Query\\ResultSetMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ResultSetMapping')),
+    ],
+    null,
+    [
+        'Doctrine\\ORM\\Query\\Exec\\AbstractSqlExecutor' => [
+            'sqlStatements' => [
+                1 => 'SELECT g0_.id AS id_0, g0_.date_demande AS date_demande_1, g0_.pays AS pays_2, g0_.statut_demande AS statut_demande_3, g0_.ville_etude AS ville_etude_4, g0_.path_passport AS path_passport_5, g0_.path_admission_file AS path_admission_file_6, g0_.informations AS informations_7, g0_.path_garant_file AS path_garant_file_8, g0_.last_update AS last_update_9, g0_.user_id AS user_id_10 FROM garant_financier g0_ WHERE g0_.statut_demande = ? ORDER BY g0_.date_demande ASC',
+            ],
+        ],
+        'stdClass' => [
+            'aliasMap' => [
+                2 => [
+                    'g' => 'App\\Entity\\GarantFinancier',
+                ],
+            ],
+            'fieldMappings' => [
+                2 => [
+                    'id_0' => 'id',
+                    'date_demande_1' => 'dateDemande',
+                    'pays_2' => 'pays',
+                    'statut_demande_3' => 'statutDemande',
+                    'ville_etude_4' => 'villeEtude',
+                    'path_passport_5' => 'pathPassport',
+                    'path_admission_file_6' => 'pathAdmissionFile',
+                    'informations_7' => 'informations',
+                    'path_garant_file_8' => 'pathGarantFile',
+                    'last_update_9' => 'last_update',
+                ],
+            ],
+            'typeMappings' => [
+                2 => [
+                    'user_id_10' => 'integer',
+                ],
+            ],
+            'entityMappings' => [
+                2 => [
+                    'g' => null,
+                ],
+            ],
+            'metaMappings' => [
+                2 => [
+                    'user_id_10' => 'user_id',
+                ],
+            ],
+            'columnOwnerMap' => [
+                2 => [
+                    'id_0' => 'g',
+                    'date_demande_1' => 'g',
+                    'pays_2' => 'g',
+                    'statut_demande_3' => 'g',
+                    'ville_etude_4' => 'g',
+                    'path_passport_5' => 'g',
+                    'path_admission_file_6' => 'g',
+                    'informations_7' => 'g',
+                    'path_garant_file_8' => 'g',
+                    'last_update_9' => 'g',
+                    'user_id_10' => 'g',
+                ],
+            ],
+            'declaringClasses' => [
+                2 => [
+                    'id_0' => 'App\\Entity\\GarantFinancier',
+                    'date_demande_1' => 'App\\Entity\\GarantFinancier',
+                    'pays_2' => 'App\\Entity\\GarantFinancier',
+                    'statut_demande_3' => 'App\\Entity\\GarantFinancier',
+                    'ville_etude_4' => 'App\\Entity\\GarantFinancier',
+                    'path_passport_5' => 'App\\Entity\\GarantFinancier',
+                    'path_admission_file_6' => 'App\\Entity\\GarantFinancier',
+                    'informations_7' => 'App\\Entity\\GarantFinancier',
+                    'path_garant_file_8' => 'App\\Entity\\GarantFinancier',
+                    'last_update_9' => 'App\\Entity\\GarantFinancier',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    [
+        [
+            "\0".'Doctrine\\ORM\\Query\\ParserResult'."\0".'sqlExecutor' => $o[1],
+            "\0".'Doctrine\\ORM\\Query\\ParserResult'."\0".'resultSetMapping' => $o[2],
+            "\0".'Doctrine\\ORM\\Query\\ParserResult'."\0".'parameterMappings' => [
+                'statut' => [
+                    0,
+                ],
+            ],
+        ],
+        1,
+    ]
+); }];

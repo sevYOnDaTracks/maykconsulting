@@ -44,6 +44,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\WebLink\EventListener\AddLinkHeaderListener;
 use Symfony\Component\WebLink\GenericLinkProvider;
 use Symfony\Component\WebLink\HttpHeaderSerializer;
+use Symfony\Component\WebLink\Link;
 use Symfony\Contracts\Service\Attribute\Required;
 use Symfony\Contracts\Service\ServiceSubscriberInterface;
 use Twig\Environment;
@@ -55,12 +56,15 @@ use Twig\Environment;
  */
 abstract class AbstractController implements ServiceSubscriberInterface
 {
-    protected ContainerInterface $container;
+    /**
+     * @var ContainerInterface
+     */
+    protected $container;
 
     #[Required]
     public function setContainer(ContainerInterface $container): ?ContainerInterface
     {
-        $previous = $this->container ?? null;
+        $previous = $this->container;
         $this->container = $container;
 
         return $previous;
@@ -182,7 +186,7 @@ abstract class AbstractController implements ServiceSubscriberInterface
         }
 
         if (!$session instanceof FlashBagAwareSessionInterface) {
-            throw new \LogicException(sprintf('You cannot use the addFlash method because class "%s" doesn\'t implement "%s".', get_debug_type($session), FlashBagAwareSessionInterface::class));
+            trigger_deprecation('symfony/framework-bundle', '6.2', 'Calling "addFlash()" method when the session does not implement %s is deprecated.', FlashBagAwareSessionInterface::class);
         }
 
         $session->getFlashBag()->add($type, $message);
@@ -226,17 +230,17 @@ abstract class AbstractController implements ServiceSubscriberInterface
      */
     protected function renderView(string $view, array $parameters = []): string
     {
-        return $this->doRenderView($view, null, $parameters, __FUNCTION__);
-    }
+        if (!$this->container->has('twig')) {
+            throw new \LogicException('You cannot use the "renderView" method if the Twig Bundle is not available. Try running "composer require symfony/twig-bundle".');
+        }
 
-    /**
-     * Returns a rendered block from a view.
-     *
-     * Forms found in parameters are auto-cast to form views.
-     */
-    protected function renderBlockView(string $view, string $block, array $parameters = []): string
-    {
-        return $this->doRenderView($view, $block, $parameters, __FUNCTION__);
+        foreach ($parameters as $k => $v) {
+            if ($v instanceof FormInterface) {
+                $parameters[$k] = $v->createView();
+            }
+        }
+
+        return $this->container->get('twig')->render($view, $parameters);
     }
 
     /**
@@ -247,18 +251,35 @@ abstract class AbstractController implements ServiceSubscriberInterface
      */
     protected function render(string $view, array $parameters = [], ?Response $response = null): Response
     {
-        return $this->doRender($view, null, $parameters, $response, __FUNCTION__);
+        $content = $this->renderView($view, $parameters);
+        $response ??= new Response();
+
+        if (200 === $response->getStatusCode()) {
+            foreach ($parameters as $v) {
+                if ($v instanceof FormInterface && $v->isSubmitted() && !$v->isValid()) {
+                    $response->setStatusCode(422);
+                    break;
+                }
+            }
+        }
+
+        $response->setContent($content);
+
+        return $response;
     }
 
     /**
-     * Renders a block in a view.
+     * Renders a view and sets the appropriate status code when a form is listed in parameters.
      *
      * If an invalid form is found in the list of parameters, a 422 status code is returned.
-     * Forms found in parameters are auto-cast to form views.
+     *
+     * @deprecated since Symfony 6.2, use render() instead
      */
-    protected function renderBlock(string $view, string $block, array $parameters = [], ?Response $response = null): Response
+    protected function renderForm(string $view, array $parameters = [], ?Response $response = null): Response
     {
-        return $this->doRender($view, $block, $parameters, $response, __FUNCTION__);
+        trigger_deprecation('symfony/framework-bundle', '6.2', 'The "%s::renderForm()" method is deprecated, use "render()" instead.', get_debug_type($this));
+
+        return $this->render($view, $parameters, $response);
     }
 
     /**
@@ -408,44 +429,6 @@ abstract class AbstractController implements ServiceSubscriberInterface
 
         $response->headers->set('Link', $this->container->get('web_link.http_header_serializer')->serialize($populatedLinks), false);
         $response->sendHeaders(103);
-
-        return $response;
-    }
-
-    private function doRenderView(string $view, ?string $block, array $parameters, string $method): string
-    {
-        if (!$this->container->has('twig')) {
-            throw new \LogicException(sprintf('You cannot use the "%s" method if the Twig Bundle is not available. Try running "composer require symfony/twig-bundle".', $method));
-        }
-
-        foreach ($parameters as $k => $v) {
-            if ($v instanceof FormInterface) {
-                $parameters[$k] = $v->createView();
-            }
-        }
-
-        if (null !== $block) {
-            return $this->container->get('twig')->load($view)->renderBlock($block, $parameters);
-        }
-
-        return $this->container->get('twig')->render($view, $parameters);
-    }
-
-    private function doRender(string $view, ?string $block, array $parameters, ?Response $response, string $method): Response
-    {
-        $content = $this->doRenderView($view, $block, $parameters, $method);
-        $response ??= new Response();
-
-        if (200 === $response->getStatusCode()) {
-            foreach ($parameters as $v) {
-                if ($v instanceof FormInterface && $v->isSubmitted() && !$v->isValid()) {
-                    $response->setStatusCode(422);
-                    break;
-                }
-            }
-        }
-
-        $response->setContent($content);
 
         return $response;
     }

@@ -32,8 +32,6 @@ use Symfony\Component\ExpressionLanguage\Expression;
  */
 class AnalyzeServiceReferencesPass extends AbstractRecursivePass
 {
-    protected bool $skipScalars = true;
-
     private ServiceReferenceGraph $graph;
     private ?Definition $currentDefinition = null;
     private bool $onlyConstructorArguments;
@@ -56,8 +54,10 @@ class AnalyzeServiceReferencesPass extends AbstractRecursivePass
 
     /**
      * Processes a ContainerBuilder object to populate the service reference graph.
+     *
+     * @return void
      */
-    public function process(ContainerBuilder $container): void
+    public function process(ContainerBuilder $container)
     {
         $this->container = $container;
         $this->graph = $container->getCompiler()->getServiceReferenceGraph();

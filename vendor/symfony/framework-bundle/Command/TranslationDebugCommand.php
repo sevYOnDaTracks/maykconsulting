@@ -212,14 +212,14 @@ EOF
                         $states[] = self::MESSAGE_MISSING;
 
                         if (!$input->getOption('only-unused')) {
-                            $exitCode |= self::EXIT_CODE_MISSING;
+                            $exitCode = $exitCode | self::EXIT_CODE_MISSING;
                         }
                     }
                 } elseif ($currentCatalogue->defines($messageId, $domain)) {
                     $states[] = self::MESSAGE_UNUSED;
 
                     if (!$input->getOption('only-missing')) {
-                        $exitCode |= self::EXIT_CODE_UNUSED;
+                        $exitCode = $exitCode | self::EXIT_CODE_UNUSED;
                     }
                 }
 
@@ -233,7 +233,7 @@ EOF
                     if ($fallbackCatalogue->defines($messageId, $domain) && $value === $fallbackCatalogue->get($messageId, $domain)) {
                         $states[] = self::MESSAGE_EQUALS_FALLBACK;
 
-                        $exitCode |= self::EXIT_CODE_FALLBACK;
+                        $exitCode = $exitCode | self::EXIT_CODE_FALLBACK;
 
                         break;
                     }

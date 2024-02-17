@@ -46,16 +46,20 @@ class Profiler implements ResetInterface
 
     /**
      * Disables the profiler.
+     *
+     * @return void
      */
-    public function disable(): void
+    public function disable()
     {
         $this->enabled = false;
     }
 
     /**
      * Enables the profiler.
+     *
+     * @return void
      */
-    public function enable(): void
+    public function enable()
     {
         $this->enabled = true;
     }
@@ -106,8 +110,10 @@ class Profiler implements ResetInterface
 
     /**
      * Purges all data from the storage.
+     *
+     * @return void
      */
-    public function purge(): void
+    public function purge()
     {
         $this->storage->purge();
     }
@@ -115,16 +121,15 @@ class Profiler implements ResetInterface
     /**
      * Finds profiler tokens for the given criteria.
      *
-     * @param int|null      $limit  The maximum number of tokens to return
-     * @param string|null   $start  The start date to search from
-     * @param string|null   $end    The end date to search to
-     * @param \Closure|null $filter A filter to apply on the list of tokens
+     * @param int|null    $limit The maximum number of tokens to return
+     * @param string|null $start The start date to search from
+     * @param string|null $end   The end date to search to
      *
      * @see https://php.net/datetime.formats for the supported date/time formats
      */
-    public function find(?string $ip, ?string $url, ?int $limit, ?string $method, ?string $start, ?string $end, ?string $statusCode = null, ?\Closure $filter = null): array
+    public function find(?string $ip, ?string $url, ?int $limit, ?string $method, ?string $start, ?string $end, ?string $statusCode = null): array
     {
-        return $this->storage->find($ip, $url, $limit, $method, $this->getTimestamp($start), $this->getTimestamp($end), $statusCode, $filter);
+        return $this->storage->find($ip, $url, $limit, $method, $this->getTimestamp($start), $this->getTimestamp($end), $statusCode);
     }
 
     /**
@@ -147,10 +152,6 @@ class Profiler implements ResetInterface
             $profile->setIp('Unknown');
         }
 
-        if ($request->attributes->has('_virtual_type')) {
-            $profile->setVirtualType($request->attributes->get('_virtual_type'));
-        }
-
         if ($prevToken = $response->headers->get('X-Debug-Token')) {
             $response->headers->set('X-Previous-Debug-Token', $prevToken);
         }
@@ -167,7 +168,10 @@ class Profiler implements ResetInterface
         return $profile;
     }
 
-    public function reset(): void
+    /**
+     * @return void
+     */
+    public function reset()
     {
         foreach ($this->collectors as $collector) {
             $collector->reset();
@@ -187,8 +191,10 @@ class Profiler implements ResetInterface
      * Sets the Collectors associated with this profiler.
      *
      * @param DataCollectorInterface[] $collectors An array of collectors
+     *
+     * @return void
      */
-    public function set(array $collectors = []): void
+    public function set(array $collectors = [])
     {
         $this->collectors = [];
         foreach ($collectors as $collector) {
@@ -198,8 +204,10 @@ class Profiler implements ResetInterface
 
     /**
      * Adds a Collector.
+     *
+     * @return void
      */
-    public function add(DataCollectorInterface $collector): void
+    public function add(DataCollectorInterface $collector)
     {
         $this->collectors[$collector->getName()] = $collector;
     }

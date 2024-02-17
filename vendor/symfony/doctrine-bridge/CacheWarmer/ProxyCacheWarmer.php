@@ -24,9 +24,11 @@ use Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface;
  */
 class ProxyCacheWarmer implements CacheWarmerInterface
 {
-    public function __construct(
-        private readonly ManagerRegistry $registry,
-    ) {
+    private ManagerRegistry $registry;
+
+    public function __construct(ManagerRegistry $registry)
+    {
+        $this->registry = $registry;
     }
 
     /**
@@ -37,7 +39,10 @@ class ProxyCacheWarmer implements CacheWarmerInterface
         return false;
     }
 
-    public function warmUp(string $cacheDir, ?string $buildDir = null): array
+    /**
+     * @return string[] A list of files to preload on PHP 7.4+
+     */
+    public function warmUp(string $cacheDir): array
     {
         $files = [];
         foreach ($this->registry->getManagers() as $em) {

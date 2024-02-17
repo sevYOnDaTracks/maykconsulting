@@ -4,8 +4,756 @@
 
 return [[
 
+'App__Entity__User__CLASSMETADATA__' => 0,
+'App__Entity__PublicMessage__CLASSMETADATA__' => 1,
+'App__Entity__Dossier__CLASSMETADATA__' => 2,
+'App__Entity__GarantFinancier__CLASSMETADATA__' => 3,
+'App__Entity__Country__CLASSMETADATA__' => 4,
 
 ], [
 
+0 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+            clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'name' => [
+                    'App\\Entity\\User',
+                ],
+                'namespace' => [
+                    'App\\Entity',
+                ],
+                'rootEntityName' => [
+                    'App\\Entity\\User',
+                ],
+                'customRepositoryClassName' => [
+                    'App\\Repository\\UserRepository',
+                ],
+                'identifier' => [
+                    [
+                        'id',
+                    ],
+                ],
+                'generatorType' => [
+                    4,
+                ],
+                'fieldMappings' => [
+                    [
+                        'id' => [
+                            'fieldName' => 'id',
+                            'type' => 'integer',
+                            'scale' => null,
+                            'length' => null,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => null,
+                            'id' => true,
+                            'columnName' => 'id',
+                        ],
+                        'email' => [
+                            'fieldName' => 'email',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 180,
+                            'unique' => true,
+                            'nullable' => false,
+                            'precision' => null,
+                            'columnName' => 'email',
+                        ],
+                        'roles' => [
+                            'fieldName' => 'roles',
+                            'type' => 'json',
+                            'scale' => null,
+                            'length' => null,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => null,
+                            'columnName' => 'roles',
+                        ],
+                        'password' => [
+                            'fieldName' => 'password',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => null,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => null,
+                            'columnName' => 'password',
+                        ],
+                        'dateOfBirth' => [
+                            'fieldName' => 'dateOfBirth',
+                            'type' => 'date',
+                            'scale' => null,
+                            'length' => null,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => null,
+                            'columnName' => 'date_of_birth',
+                        ],
+                        'name' => [
+                            'fieldName' => 'name',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 255,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => null,
+                            'columnName' => 'name',
+                        ],
+                        'lastName' => [
+                            'fieldName' => 'lastName',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 255,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => null,
+                            'columnName' => 'last_name',
+                        ],
+                        'isVerified' => [
+                            'fieldName' => 'isVerified',
+                            'type' => 'boolean',
+                            'scale' => null,
+                            'length' => null,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => null,
+                            'columnName' => 'is_verified',
+                        ],
+                        'school_level' => [
+                            'fieldName' => 'school_level',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 255,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => null,
+                            'columnName' => 'school_level',
+                        ],
+                        'phone' => [
+                            'fieldName' => 'phone',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 255,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => null,
+                            'columnName' => 'phone',
+                        ],
+                        'filiary' => [
+                            'fieldName' => 'filiary',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 255,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => null,
+                            'columnName' => 'filiary',
+                        ],
+                        'avatar' => [
+                            'fieldName' => 'avatar',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 255,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => null,
+                            'columnName' => 'avatar',
+                        ],
+                        'NumeroIdentificationNational' => [
+                            'fieldName' => 'NumeroIdentificationNational',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 255,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => null,
+                            'columnName' => 'numero_identification_national',
+                        ],
+                    ],
+                ],
+                'fieldNames' => [
+                    [
+                        'id' => 'id',
+                        'email' => 'email',
+                        'roles' => 'roles',
+                        'password' => 'password',
+                        'date_of_birth' => 'dateOfBirth',
+                        'name' => 'name',
+                        'last_name' => 'lastName',
+                        'is_verified' => 'isVerified',
+                        'school_level' => 'school_level',
+                        'phone' => 'phone',
+                        'filiary' => 'filiary',
+                        'avatar' => 'avatar',
+                        'numero_identification_national' => 'NumeroIdentificationNational',
+                    ],
+                ],
+                'columnNames' => [
+                    [
+                        'id' => 'id',
+                        'email' => 'email',
+                        'roles' => 'roles',
+                        'password' => 'password',
+                        'dateOfBirth' => 'date_of_birth',
+                        'name' => 'name',
+                        'lastName' => 'last_name',
+                        'isVerified' => 'is_verified',
+                        'school_level' => 'school_level',
+                        'phone' => 'phone',
+                        'filiary' => 'filiary',
+                        'avatar' => 'avatar',
+                        'NumeroIdentificationNational' => 'numero_identification_national',
+                    ],
+                ],
+                'table' => [
+                    [
+                        'name' => 'user',
+                        'quoted' => true,
+                    ],
+                ],
+                'associationMappings' => [
+                    [
+                        'garantFinancier' => [
+                            'fieldName' => 'garantFinancier',
+                            'targetEntity' => 'App\\Entity\\GarantFinancier',
+                            'joinColumns' => [],
+                            'mappedBy' => 'user',
+                            'inversedBy' => null,
+                            'cascade' => [
+                                'persist',
+                            ],
+                            'orphanRemoval' => false,
+                            'fetch' => 2,
+                            'type' => 1,
+                            'isOwningSide' => false,
+                            'sourceEntity' => 'App\\Entity\\User',
+                            'isCascadeRemove' => false,
+                            'isCascadePersist' => true,
+                            'isCascadeRefresh' => false,
+                            'isCascadeMerge' => false,
+                            'isCascadeDetach' => false,
+                        ],
+                    ],
+                ],
+                'idGenerator' => [
+                    $o[1],
+                ],
+            ],
+        ],
+        $o[0],
+        []
+    );
+},
+1 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+            clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'name' => [
+                    'App\\Entity\\PublicMessage',
+                ],
+                'namespace' => [
+                    'App\\Entity',
+                ],
+                'rootEntityName' => [
+                    'App\\Entity\\PublicMessage',
+                ],
+                'customRepositoryClassName' => [
+                    'App\\Repository\\PublicMessageRepository',
+                ],
+                'identifier' => [
+                    [
+                        'id',
+                    ],
+                ],
+                'generatorType' => [
+                    4,
+                ],
+                'fieldMappings' => [
+                    [
+                        'id' => [
+                            'fieldName' => 'id',
+                            'type' => 'integer',
+                            'scale' => null,
+                            'length' => null,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => null,
+                            'id' => true,
+                            'columnName' => 'id',
+                        ],
+                        'senderName' => [
+                            'fieldName' => 'senderName',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 255,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => null,
+                            'columnName' => 'sender_name',
+                        ],
+                        'senderEmail' => [
+                            'fieldName' => 'senderEmail',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 255,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => null,
+                            'columnName' => 'sender_email',
+                        ],
+                        'senderMessage' => [
+                            'fieldName' => 'senderMessage',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 1500,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => null,
+                            'columnName' => 'sender_message',
+                        ],
+                        'dateTimeReception' => [
+                            'fieldName' => 'dateTimeReception',
+                            'type' => 'datetime',
+                            'scale' => null,
+                            'length' => null,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => null,
+                            'columnName' => 'date_time_reception',
+                        ],
+                    ],
+                ],
+                'fieldNames' => [
+                    [
+                        'id' => 'id',
+                        'sender_name' => 'senderName',
+                        'sender_email' => 'senderEmail',
+                        'sender_message' => 'senderMessage',
+                        'date_time_reception' => 'dateTimeReception',
+                    ],
+                ],
+                'columnNames' => [
+                    [
+                        'id' => 'id',
+                        'senderName' => 'sender_name',
+                        'senderEmail' => 'sender_email',
+                        'senderMessage' => 'sender_message',
+                        'dateTimeReception' => 'date_time_reception',
+                    ],
+                ],
+                'table' => [
+                    [
+                        'name' => 'public_message',
+                    ],
+                ],
+                'idGenerator' => [
+                    $o[1],
+                ],
+            ],
+        ],
+        $o[0],
+        []
+    );
+},
+2 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+            clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'name' => [
+                    'App\\Entity\\Dossier',
+                ],
+                'namespace' => [
+                    'App\\Entity',
+                ],
+                'rootEntityName' => [
+                    'App\\Entity\\Dossier',
+                ],
+                'customRepositoryClassName' => [
+                    'App\\Repository\\DossierRepository',
+                ],
+                'identifier' => [
+                    [
+                        'id',
+                    ],
+                ],
+                'generatorType' => [
+                    4,
+                ],
+                'fieldMappings' => [
+                    [
+                        'id' => [
+                            'fieldName' => 'id',
+                            'type' => 'integer',
+                            'scale' => null,
+                            'length' => null,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => null,
+                            'id' => true,
+                            'columnName' => 'id',
+                        ],
+                        'type' => [
+                            'fieldName' => 'type',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 255,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => null,
+                            'columnName' => 'type',
+                        ],
+                        'sbn' => [
+                            'fieldName' => 'sbn',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 255,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => null,
+                            'columnName' => 'sbn',
+                        ],
+                    ],
+                ],
+                'fieldNames' => [
+                    [
+                        'id' => 'id',
+                        'type' => 'type',
+                        'sbn' => 'sbn',
+                    ],
+                ],
+                'columnNames' => [
+                    [
+                        'id' => 'id',
+                        'type' => 'type',
+                        'sbn' => 'sbn',
+                    ],
+                ],
+                'table' => [
+                    [
+                        'name' => 'dossier',
+                    ],
+                ],
+                'idGenerator' => [
+                    $o[1],
+                ],
+            ],
+        ],
+        $o[0],
+        []
+    );
+},
+3 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+            clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'name' => [
+                    'App\\Entity\\GarantFinancier',
+                ],
+                'namespace' => [
+                    'App\\Entity',
+                ],
+                'rootEntityName' => [
+                    'App\\Entity\\GarantFinancier',
+                ],
+                'customRepositoryClassName' => [
+                    'App\\Repository\\GarantFinancierRepository',
+                ],
+                'identifier' => [
+                    [
+                        'id',
+                    ],
+                ],
+                'generatorType' => [
+                    4,
+                ],
+                'fieldMappings' => [
+                    [
+                        'id' => [
+                            'fieldName' => 'id',
+                            'type' => 'integer',
+                            'scale' => null,
+                            'length' => null,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => null,
+                            'id' => true,
+                            'columnName' => 'id',
+                        ],
+                        'dateDemande' => [
+                            'fieldName' => 'dateDemande',
+                            'type' => 'datetime',
+                            'scale' => null,
+                            'length' => null,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => null,
+                            'columnName' => 'date_demande',
+                        ],
+                        'pays' => [
+                            'fieldName' => 'pays',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 255,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => null,
+                            'columnName' => 'pays',
+                        ],
+                        'statutDemande' => [
+                            'fieldName' => 'statutDemande',
+                            'type' => 'integer',
+                            'scale' => null,
+                            'length' => null,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => null,
+                            'columnName' => 'statut_demande',
+                        ],
+                        'villeEtude' => [
+                            'fieldName' => 'villeEtude',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 255,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => null,
+                            'columnName' => 'ville_etude',
+                        ],
+                        'pathPassport' => [
+                            'fieldName' => 'pathPassport',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 255,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => null,
+                            'columnName' => 'path_passport',
+                        ],
+                        'pathAdmissionFile' => [
+                            'fieldName' => 'pathAdmissionFile',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 255,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => null,
+                            'columnName' => 'path_admission_file',
+                        ],
+                        'informations' => [
+                            'fieldName' => 'informations',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 1500,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => null,
+                            'columnName' => 'informations',
+                        ],
+                        'pathGarantFile' => [
+                            'fieldName' => 'pathGarantFile',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 255,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => null,
+                            'columnName' => 'path_garant_file',
+                        ],
+                        'last_update' => [
+                            'fieldName' => 'last_update',
+                            'type' => 'datetime',
+                            'scale' => null,
+                            'length' => null,
+                            'unique' => false,
+                            'nullable' => true,
+                            'precision' => null,
+                            'columnName' => 'last_update',
+                        ],
+                    ],
+                ],
+                'fieldNames' => [
+                    [
+                        'id' => 'id',
+                        'date_demande' => 'dateDemande',
+                        'pays' => 'pays',
+                        'statut_demande' => 'statutDemande',
+                        'ville_etude' => 'villeEtude',
+                        'path_passport' => 'pathPassport',
+                        'path_admission_file' => 'pathAdmissionFile',
+                        'informations' => 'informations',
+                        'path_garant_file' => 'pathGarantFile',
+                        'last_update' => 'last_update',
+                    ],
+                ],
+                'columnNames' => [
+                    [
+                        'id' => 'id',
+                        'dateDemande' => 'date_demande',
+                        'pays' => 'pays',
+                        'statutDemande' => 'statut_demande',
+                        'villeEtude' => 'ville_etude',
+                        'pathPassport' => 'path_passport',
+                        'pathAdmissionFile' => 'path_admission_file',
+                        'informations' => 'informations',
+                        'pathGarantFile' => 'path_garant_file',
+                        'last_update' => 'last_update',
+                    ],
+                ],
+                'table' => [
+                    [
+                        'name' => 'garant_financier',
+                    ],
+                ],
+                'associationMappings' => [
+                    [
+                        'user' => [
+                            'fieldName' => 'user',
+                            'targetEntity' => 'App\\Entity\\User',
+                            'joinColumns' => [
+                                [
+                                    'name' => 'user_id',
+                                    'unique' => true,
+                                    'nullable' => false,
+                                    'onDelete' => null,
+                                    'columnDefinition' => null,
+                                    'referencedColumnName' => 'id',
+                                ],
+                            ],
+                            'mappedBy' => null,
+                            'inversedBy' => 'garantFinancier',
+                            'cascade' => [
+                                'persist',
+                            ],
+                            'orphanRemoval' => false,
+                            'fetch' => 2,
+                            'type' => 1,
+                            'isOwningSide' => true,
+                            'sourceEntity' => 'App\\Entity\\GarantFinancier',
+                            'isCascadeRemove' => false,
+                            'isCascadePersist' => true,
+                            'isCascadeRefresh' => false,
+                            'isCascadeMerge' => false,
+                            'isCascadeDetach' => false,
+                            'sourceToTargetKeyColumns' => [
+                                'user_id' => 'id',
+                            ],
+                            'joinColumnFieldNames' => [
+                                'user_id' => 'user_id',
+                            ],
+                            'targetToSourceKeyColumns' => [
+                                'id' => 'user_id',
+                            ],
+                        ],
+                    ],
+                ],
+                'idGenerator' => [
+                    $o[1],
+                ],
+            ],
+        ],
+        $o[0],
+        []
+    );
+},
+4 => static function () {
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+            clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+        ],
+        null,
+        [
+            'stdClass' => [
+                'name' => [
+                    'App\\Entity\\Country',
+                ],
+                'namespace' => [
+                    'App\\Entity',
+                ],
+                'rootEntityName' => [
+                    'App\\Entity\\Country',
+                ],
+                'customRepositoryClassName' => [
+                    'App\\Repository\\CountryRepository',
+                ],
+                'identifier' => [
+                    [
+                        'id',
+                    ],
+                ],
+                'generatorType' => [
+                    4,
+                ],
+                'fieldMappings' => [
+                    [
+                        'id' => [
+                            'fieldName' => 'id',
+                            'type' => 'integer',
+                            'scale' => null,
+                            'length' => null,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => null,
+                            'id' => true,
+                            'columnName' => 'id',
+                        ],
+                        'name' => [
+                            'fieldName' => 'name',
+                            'type' => 'string',
+                            'scale' => null,
+                            'length' => 255,
+                            'unique' => false,
+                            'nullable' => false,
+                            'precision' => null,
+                            'columnName' => 'name',
+                        ],
+                    ],
+                ],
+                'fieldNames' => [
+                    [
+                        'id' => 'id',
+                        'name' => 'name',
+                    ],
+                ],
+                'columnNames' => [
+                    [
+                        'id' => 'id',
+                        'name' => 'name',
+                    ],
+                ],
+                'table' => [
+                    [
+                        'name' => 'country',
+                    ],
+                ],
+                'idGenerator' => [
+                    $o[1],
+                ],
+            ],
+        ],
+        $o[0],
+        []
+    );
+},
 
 ]];

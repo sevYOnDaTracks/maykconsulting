@@ -1,0 +1,302 @@
+{% extends 'administration/base.html.twig' %}
+
+{% block title %}Finance -
+	{{ app.user.name}}
+{% endblock %}
+
+{% block body %}
+	<h1 align="center" class="text-uppercase text-xl text-uppercase  fw-bold animate__animated animate__fadeInLeft">
+		Garant financier
+		<i class="fas fa-money-bill"></i>
+	</h1>
+
+  {% if app.flashes('success-add-garant') is not empty %}
+                        <div class="alert alert-success">
+                            {{ app.flashes('success-add-garant')|first }}
+                            <div align="center">
+                                Votre demande a été soumise  avec succcess !
+                            </div>
+                        </div>
+
+    {% endif %}
+
+      {% if app.flashes('error-creation-demande') is not empty %}
+                        <div class="alert alert-danger">
+                            {{ app.flashes('error-creation-demande')|first }}
+                            <div align="center">
+                                Votre demande n'a pas été soumise ! Veuillez entrer des fichiers valides
+                            </div>
+                        </div>
+
+    {% endif %}
+
+   {% if not app.user.isVerified %}
+<div class="alert alert-danger animate__animated animate__fadeInLeft ">
+                            {{ app.flashes('error-creation-demande')|first }}
+                            <div align="center">
+                                Votre compte n'est pas vérifié ! Veuillez verifier vos mails afin de cliquez sur le lien d'activation. Verfiez aussi les spams
+                            </div>
+                        </div>
+   {%  endif %}
+
+    
+
+    {% if app.user.garantFinancier is  null %}
+<br>
+
+
+	<div class="card animate__animated animate__fadeInLeft">
+		<div class="card-header  fw-bold text-xs text-uppercase">
+			Garant financier
+		</div>
+		<div class="card-body">
+			<h5 class="card-title ">Soumettre une demande</h5>
+			<p class="card-text">En cliquant sur ce bouton vous auriez la possibilité de créer une demande de garant financier puis de la soumettre par la suite .</p>
+			<button type="button" class="btn btn-dark" data-bs-toggle="modal" style=" background-color: rgb(0, 0, 62);" data-bs-target="#exampleModal">Je demande !</button>
+		</div>
+	</div>
+
+
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-xl modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5 fw-bold text-xs text-uppercase text-dark" id="exampleModalLabel" align="center">Formulaire de demande</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+					<form method="post" action="{{ path('app_garant_new') }}"  enctype="multipart/form-data">
+<p class="text-danger"><strong>Toutes les informations sont obligatoires . Excepté du champ "Autres informations" . Pour les pieces jointes nous prenons uniquement les fichiers de type pdf .<br> <p class="text-dark">* Lien utile pour convertion :  <a href="https://www.ilovepdf.com/fr" target="blank">IlovePDF</a> </p></strong></p>
+
+						<div class="mb-3">
+							<label for="recipient-name" class="col-form-label">Le pays souhaité :</label>
+							<select name="pays" class="form-select form-select mb-3"  >
+								<option selected>Choisissez le pays !</option>
+								<option value="France">France</option>
+								<option value="Canada">Canada</option>
+								<option value="Us">Us</option>
+							</select>
+						</div>
+
+            <div class="mb-3">
+							<label for="recipient-name" class="col-form-label">La ville :</label>
+							<Input name="ville" type="text" class="form-control"   required>
+						</div>
+
+ <div class="mb-3">
+ <label for="recipient-name" class="col-form-label">Votre Passeport  :</label>
+  <input name="pathPassport" type="file" class="form-control" >
+  </div>
+
+ <div class="mb-3">
+ <label for="recipient-name" class="col-form-label">Votre Attestation d'acceptation :</label>
+  <input name="pathAttestationAdmission" type="file" class="form-control" id="inputGroupFile01" >
+  </div>
+
+						<div class="mb-3">
+							<label for="message-text" class="col-form-label">Autres informations :</label>
+							<textarea name="othersInformations" class="form-control"  placeholder="Facultatif ..."></textarea>
+						</div>
+
+            <div class="form-check mb-3">
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+      <label class="form-check-label text-dark" for="invalidCheck">
+        Je certifie l'authenticité de mes documents et des informations que j'ai fournis
+      </label>
+      <div class="invalid-feedback">
+        Vous devez accepter nos conditions.
+      </div>
+    </div>
+
+	</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+					<button type="submit" class="btn btn-primary">Soumettre</button>
+				</div>
+        </form>
+			</div>
+		</div>
+	</div>
+    {% else %}
+  
+  {% if app.user.garantFinancier.statutDemande == 0 %}
+
+<div class="card shadow mb-3 animate__animated animate__fadeInLeft">
+<div class="card-header  fw-bold text-xs text-uppercase">
+    Etat de la demande
+  </div>
+  <div class="card-body">
+    <p class="text-dark"> <strong class="text-danger fw-bold text-xs text-uppercase">  En attente de paiement</strong>
+<div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar bg-danger" style="width: 25%"> </div>
+</div></p>
+<p> Veuillez effectuer le paiement afin que nous puissions traité votre demande .</p>
+
+<a href="{{ path('app_facture_test')}}"  class="btn btn-danger "><i class="fas fa-download">  </i> Télecharger le devis</a>
+
+  </div>
+</div>
+
+
+    {% endif %}
+
+  {% if app.user.garantFinancier.statutDemande == 1 %}
+
+<div class="card shadow mb-3 animate__animated animate__fadeInLeft">
+<div class="card-header  fw-bold text-xs text-uppercase">
+    Etat de la demande
+  </div>
+  <div class="card-body">
+    <p class="text-dark"> <strong class="text-primary fw-bold text-xs text-uppercase">En cours de traitement </strong>
+<div class="progress " role="progressbar" aria-label="Success example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar bg-primary" style="width: 50%"></div>
+</div></p>
+<p> Veuillez patientez s'il vous plait. Nous traitons votre demande .</p>
+  </div>
+</div>
+
+
+    {% endif %}
+
+    {% if app.user.garantFinancier.statutDemande == 2 %}
+
+<div class="card shadow mb-3 animate__animated animate__fadeInLeft">
+<div class="card-header  fw-bold text-xs text-uppercase">
+    Etat de la demande
+  </div>
+  <div class="card-body">
+    <p class="text-dark fw-bold text-xs text-uppercase" align"center"> <strong class="text-success" >Traitement terminée</strong>
+<div class="progress " role="progressbar" aria-label="Success example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar bg-success" style="width: 100%">Terminée</div>
+</div></p>
+<p>Félicitations <i class="fas fa-thumbs-up text-success"></i> Le traitement de votre demande est terminée. Les documents sont disponible .</p>
+  </div>
+</div>
+
+<div class="card shadow mb-3 animate__animated animate__fadeInLeft">
+<div class="card-header  fw-bold text-xs text-uppercase">
+    téléchargement
+  </div>
+  <div class="card-body">
+    <p class="text-dark fw-bold text-xs text-uppercase" align"center"> <strong class="" >Documents :</strong> <a href="" class="btn btn-success btn-sm"><i class="fas fa-download"></i></a>
+</p>
+<p>Il s'agit d'un document PDF unifié qui contient tous les documents dont vous avez besoin pour votre demande de visa pour le pays suivant : <strong class="text-info fw-bold text-xs text-uppercase">{{ app.user.garantFinancier.pays }}</strong>.</p>
+  </div>
+</div>
+
+
+    {% endif %}
+
+    {% if app.user.garantFinancier.statutDemande == 3 %}
+
+    <div class="card shadow mb-3 animate__animated animate__fadeInLeft">
+<div class="card-header  fw-bold text-xs text-uppercase">
+    Etat de la demande
+  </div>
+  <div class="card-body">
+    <p class="text-warning fw-bold text-xs text-uppercase" align"center"> <strong class="text-warning" >Demande clôturer</strong>
+<div class="progress " role="progressbar" aria-label="Success example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+  <div class="progress-bar bg-warning" style="width: 100%"></div>
+</div></p>
+<p class="">Votre demande a été clôturer. Vous ne pouvez plus effectuer de demande. Veuillez contacter l'administrateur en cas de doute .</p>
+  </div>
+</div>
+
+
+
+
+    {% endif %}
+
+
+<div class="card shadow mb-3 animate__animated animate__fadeInLeft">
+<div class="card-header  fw-bold text-xs text-uppercase">
+    Mes informations communiqués 
+  </div>
+  <div class="card-body">
+
+<p> Pour votre demande de garant financier soumise le <strong class="text-dark">  {{app.user.garantFinancier.getDateDemande() |date('d-m-Y')}}</strong> à {{app.user.garantFinancier.getDateDemande() |date('H:i')}}  vous nous avez communiqué les informations suivantes :</p>
+ 
+
+
+   <div class="mb-3">
+							<label for="recipient-name" class="col-form-label">Pays </label>
+							<Input name="ville" type="text" class="form-control"  value="{{ app.user.garantFinancier.getPays()}}" disabled >
+						</div>
+
+						<div class="mb-3">
+							<label for="recipient-name" class="col-form-label">Ville </label>
+							<Input name="ville" type="text" class="form-control"  value="{{ app.user.garantFinancier.getVilleEtude()}}" disabled >
+						</div>
+
+ <div class="mb-1">
+ <label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase text-dark">Documents joints  :  </label>
+</div>
+
+
+						{% if app.user.garantFinancier.pathPassport == null %}
+						
+						 <div class="mb-3">
+						 <p class="text-danger">Vous n'avez joint aucun passeport . Les pieces jointes sont obligatoires</p>
+<label for="formFile" class="form-label">Passport</label>
+  <input class="form-control" type="file" id="formFile">
+  </div>
+  {% else %}
+<br>
+
+
+
+
+
+    <strong class="fw-bold text-xs text-uppercase">Passport  </strong>
+
+  <a href="{{ asset('uploads/passport/' ~ app.user.garantFinancier.pathPassport) }}" class="btn btn-warning btn-sm" download="passeport.pdf">
+														<i class="fas fa-download"></i>
+													</a> <br>
+  
+    {% endif %}
+
+{% if app.user.garantFinancier.getPathAdmissionFile == null %}
+<div class="mb-3"><br>
+						 <p class="text-danger"> Vous n'avez joint aucune attestation d'acceptation . Les pieces jointes sont obligatoires</p>
+<label for="formFile" class="form-label">Attestation d'acceptation</label>
+  <input class="form-control" type="file" id="formFile">
+  </div>
+ {% else %}
+<br>
+
+
+    <strong class="fw-bold text-xs text-uppercase ">Attestation   </strong>
+
+  <a href="{{ asset('uploads/attestation/' ~ app.user.garantFinancier.pathAdmissionFile) }}" class="btn btn-warning btn-sm" download="attestation_acceptation.pdf">
+														<i class="fas fa-download"></i>
+													</a><br>
+
+  
+
+ {% endif %}
+
+ {% if app.user.garantFinancier.getStatutDemande() == 0 %}
+ <br>
+<form action="{{ path('app_garant_delete', {'id': app.user.garantFinancier.id}) }}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette demande de garant financier ?')">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ app.user.garantFinancier.id) }}">
+   <div align="right"> <button type="submit"  class="btn btn-danger"><i class="fas fa-trash"></i></button></div>
+</form>
+
+{% endif %}
+
+
+
+  </div>
+</div>
+<br>
+ 
+
+
+
+
+    {% endif %}
+
+	
+
+</div></div>{% endblock %}

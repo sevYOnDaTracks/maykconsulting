@@ -33,7 +33,8 @@ abstract class AbstractAdapter implements AdapterInterface, CacheInterface, Logg
      */
     protected const NS_SEPARATOR = ':';
 
-    private static bool $apcuSupported;
+    private static $apcuSupported;
+    private static $phpFilesSupported;
 
     protected function __construct(string $namespace = '', int $defaultLifetime = 0)
     {
@@ -97,7 +98,7 @@ abstract class AbstractAdapter implements AdapterInterface, CacheInterface, Logg
             return $opcache;
         }
 
-        if ('cli' === \PHP_SAPI && !filter_var(\ini_get('apc.enable_cli'), \FILTER_VALIDATE_BOOL)) {
+        if (\in_array(\PHP_SAPI, ['cli', 'phpdbg'], true) && !filter_var(\ini_get('apc.enable_cli'), \FILTER_VALIDATE_BOOL)) {
             return $opcache;
         }
 

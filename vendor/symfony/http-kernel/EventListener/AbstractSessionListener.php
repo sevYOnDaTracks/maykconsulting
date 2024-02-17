@@ -43,14 +43,13 @@ abstract class AbstractSessionListener implements EventSubscriberInterface, Rese
     /**
      * @internal
      */
-    protected ?ContainerInterface $container;
-
+    protected $container;
     private bool $debug;
 
     /**
      * @var array<string, mixed>
      */
-    private array $sessionOptions;
+    private $sessionOptions;
 
     /**
      * @internal

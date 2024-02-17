@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>
+        {% block title %}Admin - {{ app.user.name }}{% endblock %}
+    </title>
+    <link rel="icon" href="{{ asset('assets/images/consulting.png') }}">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('assets/admin/assets/bootstrap/css/bootstrap1.min.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('assets/admin/assets/fonts/fontawesome-all.min.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+        <style>
+            .custom-navbar {
+                height: 50px; /* Réglez la hauteur selon vos préférences */
+            }
+        </style>
+    {% endblock %}
+</head>
+<body id="page-top" class="">
+<div id="wrapper" class="sidebar-toggled">
+    <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 " id="sidebar" style="background: rgb(0, 0, 62);">
+        <div class="container-fluid d-flex flex-column p-0">
+            <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="/administration">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-school"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">
+                    <span style="text-align: left;font-size: 13px;">MAYK CONSULTING</span>
+                </div>
+            </a>
+            <hr class="sidebar-divider my-0">
+            <ul class="navbar-nav text-light" id="accordionSidebar">
+                <li class="nav-item">
+                    <a class="nav-link" href="/administration">
+                        <i class="fas fa-home"></i>
+                        <span>Accueil</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/administration/user_profil">
+                        <i class="fas fa-user"></i>
+                        <span>Mon profil</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-book"></i>
+                        <span>Mes procédures</span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                        <li>
+                            <a class="dropdown-item" href="/administration">Admission</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ path('app_garant') }}">Garant Financier</a>
+                        </li>
+                    </ul>
+                </li>
+				{% if is_granted('ROLE_ADMIN') %}
+                 <li class="nav-item">
+                        <a class="nav-link" href="/administration/user_list">
+                            <i class="fas fa-user-friends"></i>
+                            <span>Liste des utilisateurs</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/administration/publicMessage">
+                            <i class="fas fa-envelope"></i>
+                            <span >Messagerie publique {% if nombreEntitesMessage %} <span class="badge bg-danger"> {{ nombreEntitesMessage }}</span> {% endif %}</span>
+                        </a>
+                    </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-book"></i>
+                        <span>Administration</span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                        <li>
+                            <a class="dropdown-item" href="/administration">Admission</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/administration">Hébergement</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ path('app_garant_management')}}">Garant Financier</a>
+                        </li>
+                    </ul>
+                </li>
+				{% endif %}
+            </ul>
+            <div class="text-center d-none d-md-inline">
+                <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
+            </div>
+        </div>
+    </nav>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            {% include 'administration/top-bar.html.twig' %}
+            <div class="container-fluid">
+                <br>
+                {% block body %}{% endblock %}
+                <footer class="bg-white sticky-footer">
+                    <div class="container my-auto">
+                        <div class="text-center my-auto copyright">
+                            <span>Copyright © Mayk-consulting</span>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+</div>
+{% block javascripts %}
+    <script src="{{ asset('assets/admin/assets/js/theme1.js') }}"></script>
+    <script src="{{ asset('assets/admin/assets/bootstrap/js/bootstrap1.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/assets/js/bs-init.js') }}"></script>
+{% endblock %}
+</body>
+</html>

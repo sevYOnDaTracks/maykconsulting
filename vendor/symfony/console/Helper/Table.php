@@ -66,8 +66,10 @@ class Table
 
     /**
      * Sets a style definition.
+     *
+     * @return void
      */
-    public static function setStyleDefinition(string $name, TableStyle $style): void
+    public static function setStyleDefinition(string $name, TableStyle $style)
     {
         self::$styles ??= self::initStyles();
 
@@ -192,7 +194,7 @@ class Table
     /**
      * @return $this
      */
-    public function setRows(array $rows): static
+    public function setRows(array $rows)
     {
         $this->rows = [];
 
@@ -310,8 +312,10 @@ class Table
      *     | 9971-5-0210-0 | A Tale of Two Cities  | Charles Dickens  |
      *     | 960-425-059-0 | The Lord of the Rings | J. R. R. Tolkien |
      *     +---------------+-----------------------+------------------+
+     *
+     * @return void
      */
-    public function render(): void
+    public function render()
     {
         $divider = new TableSeparator();
         $isCellWithColspan = static fn ($cell) => $cell instanceof TableCell && $cell->getColspan() >= 2;
@@ -360,26 +364,14 @@ class Table
                 $maxRows = max(\count($headers), \count($row));
                 for ($i = 0; $i < $maxRows; ++$i) {
                     $cell = (string) ($row[$i] ?? '');
-
-                    $parts = explode("\n", $cell);
-                    foreach ($parts as $idx => $part) {
-                        if ($headers && !$containsColspan) {
-                            if (0 === $idx) {
-                                $rows[] = [sprintf(
-                                    '<comment>%s</>: %s',
-                                    str_pad($headers[$i] ?? '', $maxHeaderLength, ' ', \STR_PAD_LEFT),
-                                    $part
-                                )];
-                            } else {
-                                $rows[] = [sprintf(
-                                    '%s  %s',
-                                    str_pad('', $maxHeaderLength, ' ', \STR_PAD_LEFT),
-                                    $part
-                                )];
-                            }
-                        } elseif ('' !== $cell) {
-                            $rows[] = [$part];
-                        }
+                    if ($headers && !$containsColspan) {
+                        $rows[] = [sprintf(
+                            '<comment>%s</>: %s',
+                            str_pad($headers[$i] ?? '', $maxHeaderLength, ' ', \STR_PAD_LEFT),
+                            $cell
+                        )];
+                    } elseif ('' !== $cell) {
+                        $rows[] = [$cell];
                     }
                 }
             }

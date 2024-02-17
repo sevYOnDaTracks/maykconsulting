@@ -1,0 +1,86 @@
+{# templates/login/index.html.twig #}
+{% extends 'base.html.twig' %}
+{% block title %}
+	Login
+{% endblock %}
+{% block body %}
+{% include "welcome/partials/nav-bar-home.html.twig" %}
+	<section class="py-4">
+		<div class="container py-5">
+			<div class="row d-flex justify-content-center">
+				<div class="col-md-6 col-xl-4">
+					{% if error %}
+						<div class="alert alert-danger" align="center">
+							<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+						</div>
+					{% endif %}
+					{% if app.flashes('success') is not empty %}
+						<div class="alert alert-success">
+							{{ app.flashes('success')|first }}
+							<div align="center">
+								Votre compte a été activé avec succes !
+							</div>
+						</div>
+					{% endif %}
+					{% if app.flashes('success-registration') is not empty %}
+						<div class="alert alert-warning">
+							{{ app.flashes('success')|first }}
+							<div align="center">
+								Vous avez reçu un mail de verification dans votre boite mail indiqué ! Vérifier également les spams afin de valider votre compte
+							</div>
+						</div>
+					{% endif %}
+					<div class="card">
+						<div
+							class="card-body text-center d-flex flex-column align-items-center">
+							{# Affichage des erreurs de validation #}
+
+
+							<div class="text-center">
+								<h5 class="mb-0">Welcome Back !</h5>
+								<p class="text-muted mt-2">Ravie de vous revoir !</p>
+							</div>
+							<div class="bs-icon-xl bs-icon-circle bs-icon-primary shadow bs-icon my-4">
+								<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewbox="0 0 16 16" class="bi bi-person">
+									<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
+								</svg>
+							</div>
+							<form class="mt-4 pt-2" action="{{ path('app_login') }}" method="post">
+								<div class="form-floating form-floating-custom mb-3">
+									<input type="email" class="form-control" id="input-username" name="_username" placeholder="Enter your email" value="{{ last_username }}" required>
+									<label for="input-username">Email</label>
+									<div class="form-floating-icon">
+										<i class="uil uil-users-alt"></i>
+									</div>
+								</div>
+								<div class="form-floating form-floating-custom mb-3 auth-pass-inputgroup">
+									<input type="password" class="form-control" id="password-input" placeholder="Enter Password" name="_password" required>
+									<label for="password-input">Password</label>
+									<div class="form-floating-icon">
+										<i class="uil uil-padlock"></i>
+									</div>
+								</div>
+								<div class="form-check form-check-primary font-size-16 py-1">
+									<div align="center">
+										<a href="auth-resetpassword-basic" class="text-muted text-decoration-underline font-size-14">Forgot your password?</a>
+									</div>
+								</div>
+								<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+								<div class="mt-3">
+									<button class="btn btn-primary w-100" type="submit">Log In</button>
+								</div>
+
+								<div class="mt-4 pt-3 text-center">
+									<p class="text-muted mb-0">Don't have an account?
+										<a class="fw-semibold text-decoration-underline" href="{{ path('app_register') }}">Signup Now</a>
+									</p>
+								</div>
+							</form>
+							<!-- end form -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

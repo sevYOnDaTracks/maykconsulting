@@ -20,17 +20,18 @@ final class NativeClock implements ClockInterface
 {
     private \DateTimeZone $timezone;
 
-    /**
-     * @throws \DateInvalidTimeZoneException When $timezone is invalid
-     */
     public function __construct(\DateTimeZone|string|null $timezone = null)
     {
-        $this->timezone = \is_string($timezone ??= date_default_timezone_get()) ? $this->withTimeZone($timezone)->timezone : $timezone;
+        if (\is_string($timezone ??= date_default_timezone_get())) {
+            $this->timezone = new \DateTimeZone($timezone);
+        } else {
+            $this->timezone = $timezone;
+        }
     }
 
-    public function now(): DatePoint
+    public function now(): \DateTimeImmutable
     {
-        return DatePoint::createFromInterface(new \DateTimeImmutable('now', $this->timezone));
+        return new \DateTimeImmutable('now', $this->timezone);
     }
 
     public function sleep(float|int $seconds): void
@@ -44,23 +45,10 @@ final class NativeClock implements ClockInterface
         }
     }
 
-    /**
-     * @throws \DateInvalidTimeZoneException When $timezone is invalid
-     */
     public function withTimeZone(\DateTimeZone|string $timezone): static
     {
-        if (\PHP_VERSION_ID >= 80300 && \is_string($timezone)) {
-            $timezone = new \DateTimeZone($timezone);
-        } elseif (\is_string($timezone)) {
-            try {
-                $timezone = new \DateTimeZone($timezone);
-            } catch (\Exception $e) {
-                throw new \DateInvalidTimeZoneException($e->getMessage(), $e->getCode(), $e);
-            }
-        }
-
         $clone = clone $this;
-        $clone->timezone = $timezone;
+        $clone->timezone = \is_string($timezone) ? new \DateTimeZone($timezone) : $timezone;
 
         return $clone;
     }

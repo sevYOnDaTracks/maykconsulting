@@ -12,6 +12,7 @@
 namespace Symfony\Bridge\Doctrine\Form\ChoiceList;
 
 use Doctrine\DBAL\ArrayParameterType;
+use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\Type;
 use Doctrine\ORM\QueryBuilder;
@@ -25,9 +26,17 @@ use Symfony\Component\Form\Exception\TransformationFailedException;
  */
 class ORMQueryBuilderLoader implements EntityLoaderInterface
 {
-    public function __construct(
-        private readonly QueryBuilder $queryBuilder,
-    ) {
+    /**
+     * Contains the query builder that builds the query for fetching the
+     * entities.
+     *
+     * This property should only be accessed through queryBuilder.
+     */
+    private QueryBuilder $queryBuilder;
+
+    public function __construct(QueryBuilder $queryBuilder)
+    {
+        $this->queryBuilder = $queryBuilder;
     }
 
     public function getEntities(): array
@@ -62,13 +71,13 @@ class ORMQueryBuilderLoader implements EntityLoaderInterface
         $entity = current($qb->getRootEntities());
         $metadata = $qb->getEntityManager()->getClassMetadata($entity);
         if (\in_array($type = $metadata->getTypeOfField($identifier), ['integer', 'bigint', 'smallint'])) {
-            $parameterType = ArrayParameterType::INTEGER;
+            $parameterType = class_exists(ArrayParameterType::class) ? ArrayParameterType::INTEGER : Connection::PARAM_INT_ARRAY;
 
             // Filter out non-integer values (e.g. ""). If we don't, some
             // databases such as PostgreSQL fail.
             $values = array_values(array_filter($values, fn ($v) => (string) $v === (string) (int) $v || ctype_digit($v)));
         } elseif (\in_array($type, ['ulid', 'uuid', 'guid'])) {
-            $parameterType = ArrayParameterType::STRING;
+            $parameterType = class_exists(ArrayParameterType::class) ? ArrayParameterType::STRING : Connection::PARAM_STR_ARRAY;
 
             // Like above, but we just filter out empty strings.
             $values = array_values(array_filter($values, fn ($v) => '' !== (string) $v));
@@ -87,7 +96,7 @@ class ORMQueryBuilderLoader implements EntityLoaderInterface
                 unset($value);
             }
         } else {
-            $parameterType = ArrayParameterType::STRING;
+            $parameterType = class_exists(ArrayParameterType::class) ? ArrayParameterType::STRING : Connection::PARAM_STR_ARRAY;
         }
         if (!$values) {
             return [];

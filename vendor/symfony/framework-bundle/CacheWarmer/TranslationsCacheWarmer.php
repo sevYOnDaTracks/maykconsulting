@@ -33,12 +33,15 @@ class TranslationsCacheWarmer implements CacheWarmerInterface, ServiceSubscriber
         $this->container = $container;
     }
 
-    public function warmUp(string $cacheDir, ?string $buildDir = null): array
+    /**
+     * @return string[]
+     */
+    public function warmUp(string $cacheDir): array
     {
         $this->translator ??= $this->container->get('translator');
 
         if ($this->translator instanceof WarmableInterface) {
-            return (array) $this->translator->warmUp($cacheDir, $buildDir);
+            return (array) $this->translator->warmUp($cacheDir);
         }
 
         return [];

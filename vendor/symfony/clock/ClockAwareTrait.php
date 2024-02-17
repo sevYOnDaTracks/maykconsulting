@@ -29,10 +29,8 @@ trait ClockAwareTrait
         $this->clock = $clock;
     }
 
-    protected function now(): DatePoint
+    protected function now(): \DateTimeImmutable
     {
-        $now = ($this->clock ??= new Clock())->now();
-
-        return $now instanceof DatePoint ? $now : DatePoint::createFromInterface($now);
+        return ($this->clock ??= new Clock())->now();
     }
 }

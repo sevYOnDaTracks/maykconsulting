@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1 >Bonjour ! Pourrais tu confirmer ton email s'il te plait ?</h1>
+
+<p>
+   C'est simple il suffit juste de cliquer sur le lien suivant : <br><br>
+    <a href="{{ signedUrl|raw }}">Confirm my Email</a>.
+    Ce lien expirera dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+</p>
+
+<p>
+    Cordialement !
+
+</p>
+
+<p>
+    Mayk-consulting Services ! <br>
+    
+    
+</p>
+
+{% endblock %}

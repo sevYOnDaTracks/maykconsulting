@@ -18,8 +18,6 @@ use Symfony\Contracts\Service\ResetInterface;
 
 /**
  * @author Gary PEGEOT <garypegeot@gmail.com>
- *
- * @implements TransportFactoryInterface<InMemoryTransport>
  */
 class InMemoryTransportFactory implements TransportFactoryInterface, ResetInterface
 {
@@ -40,7 +38,10 @@ class InMemoryTransportFactory implements TransportFactoryInterface, ResetInterf
         return str_starts_with($dsn, 'in-memory://');
     }
 
-    public function reset(): void
+    /**
+     * @return void
+     */
+    public function reset()
     {
         foreach ($this->createdTransports as $transport) {
             $transport->reset();

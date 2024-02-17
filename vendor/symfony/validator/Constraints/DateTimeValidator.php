@@ -21,7 +21,10 @@ use Symfony\Component\Validator\Exception\UnexpectedValueException;
  */
 class DateTimeValidator extends DateValidator
 {
-    public function validate(mixed $value, Constraint $constraint): void
+    /**
+     * @return void
+     */
+    public function validate(mixed $value, Constraint $constraint)
     {
         if (!$constraint instanceof DateTime) {
             throw new UnexpectedTypeException($constraint, DateTime::class);
@@ -37,9 +40,9 @@ class DateTimeValidator extends DateValidator
 
         $value = (string) $value;
 
-        \DateTimeImmutable::createFromFormat($constraint->format, $value);
+        \DateTime::createFromFormat($constraint->format, $value);
 
-        $errors = \DateTimeImmutable::getLastErrors() ?: ['error_count' => 0, 'warnings' => []];
+        $errors = \DateTime::getLastErrors() ?: ['error_count' => 0, 'warnings' => []];
 
         if (0 < $errors['error_count']) {
             $this->context->buildViolation($constraint->message)

@@ -31,7 +31,7 @@ class StopWorkerOnCustomStopExceptionListener implements EventSubscriberInterfac
             $this->stop = true;
         }
         if ($th instanceof HandlerFailedException) {
-            foreach ($th->getWrappedExceptions() as $e) {
+            foreach ($th->getNestedExceptions() as $e) {
                 if ($e instanceof StopWorkerExceptionInterface) {
                     $this->stop = true;
                     break;

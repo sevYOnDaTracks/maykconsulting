@@ -242,7 +242,7 @@ class FormDataCollector extends DataCollector implements FormDataCollectorInterf
         ];
     }
 
-    private function &recursiveBuildPreliminaryFormTree(FormInterface $form, array &$outputByHash): array
+    private function &recursiveBuildPreliminaryFormTree(FormInterface $form, array &$outputByHash)
     {
         $hash = spl_object_hash($form);
 
@@ -259,7 +259,7 @@ class FormDataCollector extends DataCollector implements FormDataCollectorInterf
         return $output;
     }
 
-    private function &recursiveBuildFinalFormTree(?FormInterface $form, FormView $view, array &$outputByHash): array
+    private function &recursiveBuildFinalFormTree(?FormInterface $form, FormView $view, array &$outputByHash)
     {
         $viewHash = spl_object_hash($view);
         $formHash = null;

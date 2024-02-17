@@ -56,7 +56,6 @@ class EnvVarProcessor implements EnvVarProcessorInterface
             'require' => 'bool|int|float|string|array',
             'enum' => \BackedEnum::class,
             'shuffle' => 'array',
-            'defined' => 'bool',
         ];
     }
 
@@ -104,14 +103,6 @@ class EnvVarProcessor implements EnvVarProcessorInterface
             return $backedEnumClassName::tryFrom($backedEnumValue) ?? throw new RuntimeException(sprintf('Enum value "%s" is not backed by "%s".', $backedEnumValue, $backedEnumClassName));
         }
 
-        if ('defined' === $prefix) {
-            try {
-                return '' !== ($getEnv($name) ?? '');
-            } catch (EnvNotFoundException) {
-                return false;
-            }
-        }
-
         if ('default' === $prefix) {
             if (false === $i) {
                 throw new RuntimeException(sprintf('Invalid env "default:%s": a fallback parameter should be provided.', $name));
@@ -154,9 +145,6 @@ class EnvVarProcessor implements EnvVarProcessorInterface
 
         $returnNull = false;
         if ('' === $prefix) {
-            if ('' === $name) {
-                return null;
-            }
             $returnNull = true;
             $prefix = 'string';
         }
@@ -164,16 +152,10 @@ class EnvVarProcessor implements EnvVarProcessorInterface
         if (false !== $i || 'string' !== $prefix) {
             $env = $getEnv($name);
         } elseif ('' === ($env = $_ENV[$name] ?? (str_starts_with($name, 'HTTP_') ? null : ($_SERVER[$name] ?? null)))
-            || (false !== $env && false === $env ??= getenv($name) ?? false) // null is a possible value because of thread safety issues
+            || (false !== $env && false === ($env = $env ?? getenv($name) ?? false)) // null is a possible value because of thread safety issues
         ) {
-            foreach ($this->loadedVars as $i => $vars) {
-                if (false === $env = $vars[$name] ?? $env) {
-                    continue;
-                }
-                if ($env instanceof \Stringable) {
-                    $this->loadedVars[$i][$name] = $env = (string) $env;
-                }
-                if ('' !== ($env ?? '')) {
+            foreach ($this->loadedVars as $vars) {
+                if (false !== ($env = ($vars[$name] ?? $env)) && '' !== $env) {
                     break;
                 }
             }
@@ -191,13 +173,7 @@ class EnvVarProcessor implements EnvVarProcessorInterface
                             continue;
                         }
                         $this->loadedVars[] = $vars = $loader->loadEnvVars();
-                        if (false === $env = $vars[$name] ?? $env) {
-                            continue;
-                        }
-                        if ($env instanceof \Stringable) {
-                            $this->loadedVars[array_key_last($this->loadedVars)][$name] = $env = (string) $env;
-                        }
-                        if ('' !== ($env ?? '')) {
+                        if (false !== ($env = ($vars[$name] ?? $env)) && '' !== $env) {
                             $ended = false;
                             break;
                         }

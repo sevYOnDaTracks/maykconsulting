@@ -37,16 +37,21 @@ final class PhpStanExtractor implements PropertyTypeExtractorInterface, Construc
     private const ACCESSOR = 1;
     private const MUTATOR = 2;
 
-    private PhpDocParser $phpDocParser;
-    private Lexer $lexer;
-    private NameScopeFactory $nameScopeFactory;
+    /** @var PhpDocParser */
+    private $phpDocParser;
+
+    /** @var Lexer */
+    private $lexer;
+
+    /** @var NameScopeFactory */
+    private $nameScopeFactory;
 
     /** @var array<string, array{PhpDocNode|null, int|null, string|null, string|null}> */
-    private array $docBlocks = [];
-    private PhpStanTypeHelper $phpStanTypeHelper;
-    private array $mutatorPrefixes;
-    private array $accessorPrefixes;
-    private array $arrayMutatorPrefixes;
+    private $docBlocks = [];
+    private $phpStanTypeHelper;
+    private $mutatorPrefixes;
+    private $accessorPrefixes;
+    private $arrayMutatorPrefixes;
 
     /**
      * @param list<string>|null $mutatorPrefixes

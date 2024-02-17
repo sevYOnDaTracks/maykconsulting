@@ -19,7 +19,7 @@ use Symfony\Component\Notifier\Message\MessageInterface;
  */
 final class NotificationSubjectContains extends Constraint
 {
-    private string $expectedText;
+    private $expectedText;
 
     public function __construct(string $expectedText)
     {

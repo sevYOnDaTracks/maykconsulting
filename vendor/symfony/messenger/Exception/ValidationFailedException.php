@@ -29,7 +29,10 @@ class ValidationFailedException extends RuntimeException
         parent::__construct(sprintf('Message of type "%s" failed validation.', $this->violatingMessage::class));
     }
 
-    public function getViolatingMessage(): object
+    /**
+     * @return object
+     */
+    public function getViolatingMessage()
     {
         return $this->violatingMessage;
     }

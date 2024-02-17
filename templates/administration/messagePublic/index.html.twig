@@ -1,0 +1,128 @@
+{% extends 'administration/base.html.twig' %}
+
+{% block body %}
+	<h2>Boite au lettre
+		<i class="fas fa-envelope"></i>
+	</h2>
+	<br>
+	<div class="card shadow">
+		<div class="card-header py-3">
+			<p class="text-primary m-0 fw-bold text-uppercase">Liste des messages</p>
+		</div>
+		<div class="card-body">
+			{% if app.flashes('success-delete-message') is not empty %}
+				<div class="alert alert-warning">
+					{{ app.flashes('success-delete-message')|first }}
+					<div align="center">
+						Votre message a été supprimé avec success !
+					</div>
+				</div>
+			{% endif %}
+			<div class="row">
+				<div class="col-md-6 text-nowrap">
+					<div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
+						<label class="form-label">Show&nbsp;<select class="d-inline-block form-select form-select-sm">
+								<option value="10" selected="">10</option>
+							</select>&nbsp;</label>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="text-md-end dataTables_filter" id="dataTable_filter">
+						<label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label>
+					</div>
+				</div>
+			</div>
+			<div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+				<table class="table my-0" id="dataTable">
+					<thead>
+						<tr>
+							<th>Sender Name</th>
+							<th>Adresse email</th>
+							<th>Date, Heure de réception</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+                    {% if  not publicMessage_list %}
+            <tr>
+                <td colspan="4">Aucun Message actuellement !</td>
+            </tr>
+                        {% endif %}
+						{% for message in publicMessage_list %}
+                        
+							<tr>
+								<td>{{ message.senderName }}</td>
+								<td>{{ message.senderEmail }}</td>
+								<td>{{ message.dateTimeReception|date('d-m-Y') }}
+									à
+									{{ message.dateTimeReception|date('H:i:s ') }}</td>
+								<td>
+
+									<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+										<i class="fas fa-eye"></i>
+									</button>
+
+                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="staticS" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="staticBackdropLabel">{{message.senderEmail}} - {{ message.senderName }} </h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+                    
+						{{ message.senderMessage }}
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+						<button type="button" class="btn btn-primary">Ok</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+									<button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ message.id }}">
+										<i class="fas fa-trash"></i>
+									</button>
+
+
+									<div class="modal fade" id="exampleModal{{ message.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body text-dark">
+													Souhaitez-vous réellement supprimer le message de
+													{{message.senderName}}
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+													<form method="post" action="{{ path('app_message_delete', {'id': message.id}) }}">
+														<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ message.id) }}">
+														<button type="submit" class="btn btn-danger">supprimer</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<br>
+		</div>
+		</div>
+		</div>
+		<!-- Button trigger modal -->
+
+
+		<!-- Modal -->
+		
+</div><!-- Modal -->{% endblock %}

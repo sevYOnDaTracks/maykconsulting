@@ -44,7 +44,7 @@ trait ContractsTrait
         if (!isset($this->callbackWrapper)) {
             $this->callbackWrapper = LockRegistry::compute(...);
 
-            if (\in_array(\PHP_SAPI, ['cli', 'phpdbg', 'embed'], true)) {
+            if (\in_array(\PHP_SAPI, ['cli', 'phpdbg'], true)) {
                 $this->setCallbackWrapper(null);
             }
         }

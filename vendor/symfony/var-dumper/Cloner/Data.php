@@ -17,7 +17,7 @@ use Symfony\Component\VarDumper\Dumper\ContextProvider\SourceContextProvider;
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class Data implements \ArrayAccess, \Countable, \IteratorAggregate, \Stringable
+class Data implements \ArrayAccess, \Countable, \IteratorAggregate
 {
     private array $data;
     private int $position = 0;
@@ -121,7 +121,7 @@ class Data implements \ArrayAccess, \Countable, \IteratorAggregate, \Stringable
         yield from $value;
     }
 
-    public function __get(string $key): mixed
+    public function __get(string $key)
     {
         if (null !== $data = $this->seek($key)) {
             $item = $this->getStub($data->data[$data->position][$data->key]);
@@ -262,8 +262,10 @@ class Data implements \ArrayAccess, \Countable, \IteratorAggregate, \Stringable
 
     /**
      * Dumps data with a DumperInterface dumper.
+     *
+     * @return void
      */
-    public function dump(DumperInterface $dumper): void
+    public function dump(DumperInterface $dumper)
     {
         $refs = [0];
         $cursor = new Cursor();

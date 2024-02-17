@@ -55,7 +55,7 @@ trait BuildDebugContainerTrait
                 $this->prepareContainer($containerBuilder);
 
                 return $containerBuilder;
-            }, $kernel, $kernel::class);
+            }, $kernel, \get_class($kernel));
             $container = $buildContainer();
             (new XmlFileLoader($container, new FileLocator()))->load($kernel->getContainer()->getParameter('debug.container.dump'));
             $locatorPass = new ServiceLocatorTagPass();

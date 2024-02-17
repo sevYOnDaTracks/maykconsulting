@@ -18,7 +18,7 @@ namespace Symfony\Component\HttpFoundation;
  *
  * @implements \IteratorAggregate<string, list<string|null>>
  */
-class HeaderBag implements \IteratorAggregate, \Countable, \Stringable
+class HeaderBag implements \IteratorAggregate, \Countable
 {
     protected const UPPER = '_ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     protected const LOWER = '-abcdefghijklmnopqrstuvwxyz';
@@ -26,8 +26,8 @@ class HeaderBag implements \IteratorAggregate, \Countable, \Stringable
     /**
      * @var array<string, list<string|null>>
      */
-    protected array $headers = [];
-    protected array $cacheControl = [];
+    protected $headers = [];
+    protected $cacheControl = [];
 
     public function __construct(array $headers = [])
     {
@@ -86,8 +86,10 @@ class HeaderBag implements \IteratorAggregate, \Countable, \Stringable
 
     /**
      * Replaces the current HTTP headers by a new set.
+     *
+     * @return void
      */
-    public function replace(array $headers = []): void
+    public function replace(array $headers = [])
     {
         $this->headers = [];
         $this->add($headers);
@@ -95,8 +97,10 @@ class HeaderBag implements \IteratorAggregate, \Countable, \Stringable
 
     /**
      * Adds new headers the current HTTP headers set.
+     *
+     * @return void
      */
-    public function add(array $headers): void
+    public function add(array $headers)
     {
         foreach ($headers as $key => $values) {
             $this->set($key, $values);
@@ -126,8 +130,10 @@ class HeaderBag implements \IteratorAggregate, \Countable, \Stringable
      *
      * @param string|string[]|null $values  The value or an array of values
      * @param bool                 $replace Whether to replace the actual value or not (true by default)
+     *
+     * @return void
      */
-    public function set(string $key, string|array|null $values, bool $replace = true): void
+    public function set(string $key, string|array|null $values, bool $replace = true)
     {
         $key = strtr($key, self::UPPER, self::LOWER);
 
@@ -170,8 +176,10 @@ class HeaderBag implements \IteratorAggregate, \Countable, \Stringable
 
     /**
      * Removes a header.
+     *
+     * @return void
      */
-    public function remove(string $key): void
+    public function remove(string $key)
     {
         $key = strtr($key, self::UPPER, self::LOWER);
 
@@ -187,13 +195,13 @@ class HeaderBag implements \IteratorAggregate, \Countable, \Stringable
      *
      * @throws \RuntimeException When the HTTP header is not parseable
      */
-    public function getDate(string $key, ?\DateTimeInterface $default = null): ?\DateTimeImmutable
+    public function getDate(string $key, ?\DateTime $default = null): ?\DateTimeInterface
     {
         if (null === $value = $this->get($key)) {
-            return null !== $default ? \DateTimeImmutable::createFromInterface($default) : null;
+            return $default;
         }
 
-        if (false === $date = \DateTimeImmutable::createFromFormat(\DATE_RFC2822, $value)) {
+        if (false === $date = \DateTime::createFromFormat(\DATE_RFC2822, $value)) {
             throw new \RuntimeException(sprintf('The "%s" HTTP header is not parseable (%s).', $key, $value));
         }
 
@@ -202,8 +210,10 @@ class HeaderBag implements \IteratorAggregate, \Countable, \Stringable
 
     /**
      * Adds a custom Cache-Control directive.
+     *
+     * @return void
      */
-    public function addCacheControlDirective(string $key, bool|string $value = true): void
+    public function addCacheControlDirective(string $key, bool|string $value = true)
     {
         $this->cacheControl[$key] = $value;
 
@@ -228,8 +238,10 @@ class HeaderBag implements \IteratorAggregate, \Countable, \Stringable
 
     /**
      * Removes a Cache-Control directive.
+     *
+     * @return void
      */
-    public function removeCacheControlDirective(string $key): void
+    public function removeCacheControlDirective(string $key)
     {
         unset($this->cacheControl[$key]);
 
@@ -254,7 +266,10 @@ class HeaderBag implements \IteratorAggregate, \Countable, \Stringable
         return \count($this->headers);
     }
 
-    protected function getCacheControlHeader(): string
+    /**
+     * @return string
+     */
+    protected function getCacheControlHeader()
     {
         ksort($this->cacheControl);
 

@@ -43,7 +43,7 @@ interface TokenProviderInterface
      *
      * @throws TokenNotFoundException if the token is not found
      */
-    public function updateToken(string $series, #[\SensitiveParameter] string $tokenValue, \DateTimeInterface $lastUsed);
+    public function updateToken(string $series, #[\SensitiveParameter] string $tokenValue, \DateTime $lastUsed);
 
     /**
      * Creates a new token.

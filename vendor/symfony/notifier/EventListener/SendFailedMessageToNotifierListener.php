@@ -31,7 +31,10 @@ class SendFailedMessageToNotifierListener implements EventSubscriberInterface
         $this->notifier = $notifier;
     }
 
-    public function onMessageFailed(WorkerMessageFailedEvent $event): void
+    /**
+     * @return void
+     */
+    public function onMessageFailed(WorkerMessageFailedEvent $event)
     {
         if ($event->willRetry()) {
             return;
@@ -39,8 +42,7 @@ class SendFailedMessageToNotifierListener implements EventSubscriberInterface
 
         $throwable = $event->getThrowable();
         if ($throwable instanceof HandlerFailedException) {
-            $exceptions = $throwable->getWrappedExceptions();
-            $throwable = $exceptions[array_key_first($exceptions)];
+            $throwable = $throwable->getNestedExceptions()[0];
         }
         $envelope = $event->getEnvelope();
         $notification = Notification::fromThrowable($throwable)->importance(Notification::IMPORTANCE_HIGH);

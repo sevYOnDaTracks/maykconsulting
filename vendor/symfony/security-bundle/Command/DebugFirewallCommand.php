@@ -216,7 +216,9 @@ EOF
         $io->table(
             ['Classname'],
             array_map(
-                fn ($authenticator) => [$authenticator::class],
+                static fn ($authenticator) => [
+                    $authenticator::class,
+                ],
                 $authenticators
             )
         );
@@ -241,7 +243,7 @@ EOF
             if (str_contains($r->name, '{closure}')) {
                 return 'Closure()';
             }
-            if ($class = $r->getClosureCalledClass()) {
+            if ($class = \PHP_VERSION_ID >= 80111 ? $r->getClosureCalledClass() : $r->getClosureScopeClass()) {
                 return sprintf('%s::%s()', $class->name, $r->name);
             }
 

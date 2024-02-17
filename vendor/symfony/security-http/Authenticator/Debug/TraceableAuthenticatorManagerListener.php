@@ -54,8 +54,6 @@ final class TraceableAuthenticatorManagerListener extends AbstractListener imple
                 'stub' => $this->hasVardumper ? new ClassStub($skippedAuthenticator::class) : $skippedAuthenticator::class,
                 'passport' => null,
                 'duration' => 0,
-                'authenticated' => null,
-                'badges' => [],
             ];
         }
 

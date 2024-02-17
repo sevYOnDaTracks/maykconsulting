@@ -12,6 +12,7 @@
 namespace Symfony\Component\Messenger\Middleware;
 
 use Psr\Log\LoggerAwareTrait;
+use Psr\Log\NullLogger;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\Exception\LogicException;
@@ -32,10 +33,14 @@ class HandleMessageMiddleware implements MiddlewareInterface
 {
     use LoggerAwareTrait;
 
-    public function __construct(
-        private HandlersLocatorInterface $handlersLocator,
-        private bool $allowNoHandlers = false,
-    ) {
+    private HandlersLocatorInterface $handlersLocator;
+    private bool $allowNoHandlers;
+
+    public function __construct(HandlersLocatorInterface $handlersLocator, bool $allowNoHandlers = false)
+    {
+        $this->handlersLocator = $handlersLocator;
+        $this->allowNoHandlers = $allowNoHandlers;
+        $this->logger = new NullLogger();
     }
 
     /**
@@ -66,7 +71,7 @@ class HandleMessageMiddleware implements MiddlewareInterface
                 if ($batchHandler && $ackStamp = $envelope->last(AckStamp::class)) {
                     $ack = new Acknowledger(get_debug_type($batchHandler), static function (?\Throwable $e = null, $result = null) use ($envelope, $ackStamp, $handlerDescriptor) {
                         if (null !== $e) {
-                            $e = new HandlerFailedException($envelope, [$handlerDescriptor->getName() => $e]);
+                            $e = new HandlerFailedException($envelope, [$e]);
                         } else {
                             $envelope = $envelope->with(HandledStamp::fromDescriptor($handlerDescriptor, $result));
                         }
@@ -93,9 +98,9 @@ class HandleMessageMiddleware implements MiddlewareInterface
 
                 $handledStamp = HandledStamp::fromDescriptor($handlerDescriptor, $result);
                 $envelope = $envelope->with($handledStamp);
-                $this->logger?->info('Message {class} handled by {handler}', $context + ['handler' => $handledStamp->getHandlerName()]);
+                $this->logger->info('Message {class} handled by {handler}', $context + ['handler' => $handledStamp->getHandlerName()]);
             } catch (\Throwable $e) {
-                $exceptions[$handlerDescriptor->getName()] = $e;
+                $exceptions[] = $e;
             }
         }
 
@@ -107,7 +112,7 @@ class HandleMessageMiddleware implements MiddlewareInterface
                     $handler = $stamp->getHandlerDescriptor()->getBatchHandler();
                     $handler->flush($flushStamp->force());
                 } catch (\Throwable $e) {
-                    $exceptions[$stamp->getHandlerDescriptor()->getName()] = $e;
+                    $exceptions[] = $e;
                 }
             }
         }
@@ -117,7 +122,7 @@ class HandleMessageMiddleware implements MiddlewareInterface
                 throw new NoHandlerForMessageException(sprintf('No handler for message "%s".', $context['class']));
             }
 
-            $this->logger?->info('No handler for message {class}', $context);
+            $this->logger->info('No handler for message {class}', $context);
         }
 
         if (\count($exceptions)) {

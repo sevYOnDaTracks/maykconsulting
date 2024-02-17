@@ -22,12 +22,14 @@ use Psr\Cache\CacheItemPoolInterface;
  */
 class PropertyInfoCacheExtractor implements PropertyInfoExtractorInterface, PropertyInitializableExtractorInterface
 {
-    private array $arrayCache = [];
+    private $propertyInfoExtractor;
+    private $cacheItemPool;
+    private $arrayCache = [];
 
-    public function __construct(
-        private readonly PropertyInfoExtractorInterface $propertyInfoExtractor,
-        private readonly CacheItemPoolInterface $cacheItemPool,
-    ) {
+    public function __construct(PropertyInfoExtractorInterface $propertyInfoExtractor, CacheItemPoolInterface $cacheItemPool)
+    {
+        $this->propertyInfoExtractor = $propertyInfoExtractor;
+        $this->cacheItemPool = $cacheItemPool;
     }
 
     public function isReadable(string $class, string $property, array $context = []): ?bool

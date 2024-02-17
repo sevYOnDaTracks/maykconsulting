@@ -22,8 +22,6 @@ use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToLocalizedStr
 use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToStringTransformer;
 use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToTimestampTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\ReversedTransformer;
@@ -49,7 +47,10 @@ class DateTimeType extends AbstractType
         \IntlDateFormatter::SHORT,
     ];
 
-    public function buildForm(FormBuilderInterface $builder, array $options): void
+    /**
+     * @return void
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $parts = ['year', 'month', 'day', 'hour'];
         $dateParts = ['year', 'month', 'day'];
@@ -193,23 +194,12 @@ class DateTimeType extends AbstractType
                 new DateTimeToArrayTransformer($options['model_timezone'], $options['model_timezone'], $parts)
             ));
         }
-
-        if (\in_array($options['input'], ['datetime', 'datetime_immutable'], true) && null !== $options['model_timezone']) {
-            $builder->addEventListener(FormEvents::POST_SET_DATA, static function (FormEvent $event) use ($options): void {
-                $date = $event->getData();
-
-                if (!$date instanceof \DateTimeInterface) {
-                    return;
-                }
-
-                if ($date->getTimezone()->getName() !== $options['model_timezone']) {
-                    throw new LogicException(sprintf('Using a "%s" instance with a timezone ("%s") not matching the configured model timezone "%s" is not supported.', get_debug_type($date), $date->getTimezone()->getName(), $options['model_timezone']));
-                }
-            });
-        }
     }
 
-    public function buildView(FormView $view, FormInterface $form, array $options): void
+    /**
+     * @return void
+     */
+    public function buildView(FormView $view, FormInterface $form, array $options)
     {
         $view->vars['widget'] = $options['widget'];
 
@@ -234,7 +224,10 @@ class DateTimeType extends AbstractType
         }
     }
 
-    public function configureOptions(OptionsResolver $resolver): void
+    /**
+     * @return void
+     */
+    public function configureOptions(OptionsResolver $resolver)
     {
         $compound = static fn (Options $options) => 'single_text' !== $options['widget'];
 
@@ -325,7 +318,8 @@ class DateTimeType extends AbstractType
                     throw new LogicException(sprintf('Cannot use the "time_widget" option of the "%s" when the "widget" option is set to "single_text".', self::class));
                 }
             } elseif (null === $widget && null === $options['date_widget'] && null === $options['time_widget']) {
-                return 'single_text';
+                trigger_deprecation('symfony/form', '6.3', 'Not configuring the "widget" option of form type "datetime" is deprecated. It will default to "single_text" in Symfony 7.0.');
+                // return 'single_text';
             }
 
             return $widget;

@@ -20,6 +20,8 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 /**
  * Configures a token handler for an OIDC server.
+ *
+ * @experimental
  */
 class OidcUserInfoTokenHandlerFactory implements TokenHandlerFactoryInterface
 {
@@ -51,7 +53,7 @@ class OidcUserInfoTokenHandlerFactory implements TokenHandlerFactoryInterface
                 ->fixXmlConfig($this->getKey())
                 ->beforeNormalization()
                     ->ifString()
-                    ->then(fn ($v) => ['claim' => 'sub', 'base_uri' => $v])
+                    ->then(static fn ($v) => ['claim' => 'sub', 'base_uri' => $v])
                 ->end()
                 ->children()
                     ->scalarNode('base_uri')

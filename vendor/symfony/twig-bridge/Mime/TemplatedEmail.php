@@ -20,7 +20,6 @@ class TemplatedEmail extends Email
 {
     private ?string $htmlTemplate = null;
     private ?string $textTemplate = null;
-    private ?string $locale = null;
     private array $context = [];
 
     /**
@@ -43,16 +42,6 @@ class TemplatedEmail extends Email
         return $this;
     }
 
-    /**
-     * @return $this
-     */
-    public function locale(?string $locale): static
-    {
-        $this->locale = $locale;
-
-        return $this;
-    }
-
     public function getTextTemplate(): ?string
     {
         return $this->textTemplate;
@@ -61,11 +50,6 @@ class TemplatedEmail extends Email
     public function getHtmlTemplate(): ?string
     {
         return $this->htmlTemplate;
-    }
-
-    public function getLocale(): ?string
-    {
-        return $this->locale;
     }
 
     /**
@@ -100,7 +84,7 @@ class TemplatedEmail extends Email
      */
     public function __serialize(): array
     {
-        return [$this->htmlTemplate, $this->textTemplate, $this->context, parent::__serialize(),  $this->locale];
+        return [$this->htmlTemplate, $this->textTemplate, $this->context, parent::__serialize()];
     }
 
     /**
@@ -109,7 +93,6 @@ class TemplatedEmail extends Email
     public function __unserialize(array $data): void
     {
         [$this->htmlTemplate, $this->textTemplate, $this->context, $parentData] = $data;
-        $this->locale = $data[4] ?? null;
 
         parent::__unserialize($parentData);
     }

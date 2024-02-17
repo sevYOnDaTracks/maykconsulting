@@ -23,14 +23,26 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 #[WithHttpStatus(401)]
 class AuthenticationException extends RuntimeException
 {
+    /** @internal */
+    protected $serialized;
+
     private ?TokenInterface $token = null;
+
+    public function __construct(string $message = '', int $code = 0, ?\Throwable $previous = null)
+    {
+        unset($this->serialized);
+        parent::__construct($message, $code, $previous);
+    }
 
     public function getToken(): ?TokenInterface
     {
         return $this->token;
     }
 
-    public function setToken(TokenInterface $token): void
+    /**
+     * @return void
+     */
+    public function setToken(TokenInterface $token)
     {
         $this->token = $token;
     }
@@ -78,8 +90,10 @@ class AuthenticationException extends RuntimeException
 
     /**
      * Message key to be used by the translation component.
+     *
+     * @return string
      */
-    public function getMessageKey(): string
+    public function getMessageKey()
     {
         return 'An authentication exception occurred.';
     }
@@ -90,5 +104,24 @@ class AuthenticationException extends RuntimeException
     public function getMessageData(): array
     {
         return [];
+    }
+
+    /**
+     * @internal
+     */
+    public function __sleep(): array
+    {
+        $this->serialized = $this->__serialize();
+
+        return ['serialized'];
+    }
+
+    /**
+     * @internal
+     */
+    public function __wakeup(): void
+    {
+        $this->__unserialize($this->serialized);
+        unset($this->serialized);
     }
 }

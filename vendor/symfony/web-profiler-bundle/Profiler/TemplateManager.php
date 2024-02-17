@@ -24,9 +24,9 @@ use Twig\Environment;
  */
 class TemplateManager
 {
-    protected Environment $twig;
-    protected array $templates;
-    protected Profiler $profiler;
+    protected $twig;
+    protected $templates;
+    protected $profiler;
 
     public function __construct(Profiler $profiler, Environment $twig, array $templates)
     {

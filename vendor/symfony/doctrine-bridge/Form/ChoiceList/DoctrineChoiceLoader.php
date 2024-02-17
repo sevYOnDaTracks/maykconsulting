@@ -22,8 +22,10 @@ use Symfony\Component\Form\Exception\LogicException;
  */
 class DoctrineChoiceLoader extends AbstractChoiceLoader
 {
-    /** @var class-string */
-    private readonly string $class;
+    private ObjectManager $manager;
+    private string $class;
+    private ?IdReader $idReader;
+    private ?EntityLoaderInterface $objectLoader;
 
     /**
      * Creates a new choice loader.
@@ -34,17 +36,18 @@ class DoctrineChoiceLoader extends AbstractChoiceLoader
      *
      * @param string $class The class name of the loaded objects
      */
-    public function __construct(
-        private readonly ObjectManager $manager,
-        string $class,
-        private readonly ?IdReader $idReader = null,
-        private readonly ?EntityLoaderInterface $objectLoader = null,
-    ) {
+    public function __construct(ObjectManager $manager, string $class, ?IdReader $idReader = null, ?EntityLoaderInterface $objectLoader = null)
+    {
+        $classMetadata = $manager->getClassMetadata($class);
+
         if ($idReader && !$idReader->isSingleId()) {
             throw new \InvalidArgumentException(sprintf('The "$idReader" argument of "%s" must be null when the query cannot be optimized because of composite id fields.', __METHOD__));
         }
 
-        $this->class = $manager->getClassMetadata($class)->getName();
+        $this->manager = $manager;
+        $this->class = $classMetadata->getName();
+        $this->idReader = $idReader;
+        $this->objectLoader = $objectLoader;
     }
 
     protected function loadChoices(): iterable

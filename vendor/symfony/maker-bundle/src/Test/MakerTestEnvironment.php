@@ -22,8 +22,6 @@ use Symfony\Component\Process\InputStream;
  */
 final class MakerTestEnvironment
 {
-    public const GENERATED_FILES_REGEX = '#(?:created|updated):\s(?:.*\\\\)*(.*\.[a-z]{3,4}).*(?:\\\\n)?#ui';
-
     private Filesystem $fs;
     private bool|string $rootPath;
     private string $cachePath;
@@ -160,12 +158,16 @@ final class MakerTestEnvironment
                 $dependencies = $this->determineMissingDependencies();
                 if ($dependencies) {
                     // -v actually silences the "very" verbose output in case of an error
-                    $composerProcess = MakerTestProcess::create(sprintf('composer require %s -v', implode(' ', $dependencies)), $this->path)
-                        ->run(true)
-                    ;
+                    $composerProcess = MakerTestProcess::create(sprintf('composer require %s -v', implode(' ', $dependencies)), $this->path);
 
+                    // @legacy Temporary code until doctrine/dbal 3.7 is out (which supports symfony/console 7.0
+                    $composerProcess->run(true);
                     if (!$composerProcess->isSuccessful()) {
-                        throw new \Exception(sprintf('Error running command: composer require %s -v. Output: "%s". Error: "%s"', implode(' ', $dependencies), $composerProcess->getOutput(), $composerProcess->getErrorOutput()));
+                        if (str_contains($composerProcess->getErrorOutput(), 'Declaration of Doctrine\DBAL\Tools\Console\Command\RunSqlCommand::execute')) {
+                            $this->patchDoctrineDbalForSymfony7();
+                        } else {
+                            throw new \Exception(sprintf('Error running command: composer require %s -v. Output: "%s". Error: "%s"', implode(' ', $dependencies), $composerProcess->getOutput(), $composerProcess->getErrorOutput()));
+                        }
                     }
                 }
 
@@ -215,9 +217,9 @@ final class MakerTestEnvironment
 
         $matches = [];
 
-        preg_match_all(self::GENERATED_FILES_REGEX, $output, $matches, \PREG_PATTERN_ORDER);
+        preg_match_all('#(created|updated): (]8;;[^]*\\\)?(.*?)(]8;;\\\)?\n#iu', $output, $matches, \PREG_PATTERN_ORDER);
 
-        return array_map('trim', $matches[1]);
+        return array_map('trim', $matches[3]);
     }
 
     public function fileExists(string $file): bool
@@ -446,5 +448,23 @@ echo json_encode($missingDependencies);
         ];
 
         file_put_contents($composerJsonPath, json_encode($composerJson, \JSON_THROW_ON_ERROR | \JSON_PRETTY_PRINT | \JSON_UNESCAPED_SLASHES));
+    }
+
+    private function patchDoctrineDbalForSymfony7(): void
+    {
+        $commandPath = $this->path.'/vendor/doctrine/dbal/src/Tools/Console/Command/RunSqlCommand.php';
+        $contents = file_get_contents($commandPath);
+
+        $needle = 'protected function execute(InputInterface $input, OutputInterface $output)';
+        if (str_contains($contents, $needle.': int')) {
+            return;
+        }
+
+        $contents = str_replace(
+            $needle,
+            $needle.': int',
+            $contents
+        );
+        file_put_contents($commandPath, $contents);
     }
 }

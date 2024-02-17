@@ -29,7 +29,6 @@ use Symfony\Component\Console\Formatter\OutputFormatterInterface;
  */
 class StreamOutput extends Output
 {
-    /** @var resource */
     private $stream;
 
     /**
@@ -63,7 +62,10 @@ class StreamOutput extends Output
         return $this->stream;
     }
 
-    protected function doWrite(string $message, bool $newline): void
+    /**
+     * @return void
+     */
+    protected function doWrite(string $message, bool $newline)
     {
         if ($newline) {
             $message .= \PHP_EOL;

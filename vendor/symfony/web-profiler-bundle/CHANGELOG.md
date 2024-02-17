@@ -1,11 +1,6 @@
 CHANGELOG
 =========
 
-6.4
----
-
- * Add console commands to the profiler
-
 6.3
 ---
 

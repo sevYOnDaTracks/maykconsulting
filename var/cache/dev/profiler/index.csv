@@ -1,2 +1,5 @@
-c0ac03,127.0.0.1,GET,http://127.0.0.1:8000/,1708199388,,404,request
-c4b37f,127.0.0.1,GET,http://127.0.0.1:8000/,1708199582,,404,request
+2e6bdb,::1,GET,http://localhost:8000/administration/user_profil,1708042794,,200
+58b1ec,::1,GET,http://localhost:8000/administration/,1708042796,,200
+c7c945,::1,GET,http://localhost:8000/administration/publicMessage,1708042798,,200
+8758d3,::1,GET,http://localhost:8000/administration/user_profil,1708042799,,200
+f8ca8d,::1,GET,http://localhost:8000/administration/user_profil,1708042801,,200

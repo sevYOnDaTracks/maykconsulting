@@ -25,17 +25,19 @@ use Symfony\Component\Serializer\NameConverter\NameConverterInterface;
  * Converts between objects and arrays using the PropertyAccess component.
  *
  * @author Kévin Dunglas <dunglas@gmail.com>
+ *
+ * @final since Symfony 6.3
  */
-final class ObjectNormalizer extends AbstractObjectNormalizer
+class ObjectNormalizer extends AbstractObjectNormalizer
 {
-    protected PropertyAccessorInterface $propertyAccessor;
+    protected $propertyAccessor;
 
     private readonly \Closure $objectClassResolver;
 
     public function __construct(?ClassMetadataFactoryInterface $classMetadataFactory = null, ?NameConverterInterface $nameConverter = null, ?PropertyAccessorInterface $propertyAccessor = null, ?PropertyTypeExtractorInterface $propertyTypeExtractor = null, ?ClassDiscriminatorResolverInterface $classDiscriminatorResolver = null, ?callable $objectClassResolver = null, array $defaultContext = [])
     {
         if (!class_exists(PropertyAccess::class)) {
-            throw new LogicException('The ObjectNormalizer class requires the "PropertyAccess" component. Try running "composer require symfony/property-access".');
+            throw new LogicException('The ObjectNormalizer class requires the "PropertyAccess" component. Install "symfony/property-access" to use it.');
         }
 
         parent::__construct($classMetadataFactory, $nameConverter, $propertyTypeExtractor, $classDiscriminatorResolver, $objectClassResolver, $defaultContext);
@@ -47,7 +49,17 @@ final class ObjectNormalizer extends AbstractObjectNormalizer
 
     public function getSupportedTypes(?string $format): array
     {
-        return ['object' => true];
+        return ['object' => __CLASS__ === static::class || $this->hasCacheableSupportsMethod()];
+    }
+
+    /**
+     * @deprecated since Symfony 6.3, use "getSupportedTypes()" instead
+     */
+    public function hasCacheableSupportsMethod(): bool
+    {
+        trigger_deprecation('symfony/serializer', '6.3', 'The "%s()" method is deprecated, implement "%s::getSupportedTypes()" instead.', __METHOD__, get_debug_type($this));
+
+        return __CLASS__ === static::class;
     }
 
     protected function extractAttributes(object $object, ?string $format = null, array $context = []): array
@@ -122,7 +134,10 @@ final class ObjectNormalizer extends AbstractObjectNormalizer
             : $this->propertyAccessor->getValue($object, $attribute);
     }
 
-    protected function setAttributeValue(object $object, string $attribute, mixed $value, ?string $format = null, array $context = []): void
+    /**
+     * @return void
+     */
+    protected function setAttributeValue(object $object, string $attribute, mixed $value, ?string $format = null, array $context = [])
     {
         try {
             $this->propertyAccessor->setValue($object, $attribute, $value);

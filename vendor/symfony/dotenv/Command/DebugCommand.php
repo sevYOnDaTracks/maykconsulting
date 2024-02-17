@@ -26,11 +26,21 @@ use Symfony\Component\Dotenv\Dotenv;
  *
  * @author Christopher Hertel <mail@christopher-hertel.de>
  */
-#[AsCommand(name: 'debug:dotenv', description: 'List all dotenv files with variables and values')]
+#[AsCommand(name: 'debug:dotenv', description: 'Lists all dotenv files with variables and values')]
 final class DebugCommand extends Command
 {
-    private string $kernelEnvironment;
-    private string $projectDirectory;
+    /**
+     * @deprecated since Symfony 6.1
+     */
+    protected static $defaultName = 'debug:dotenv';
+
+    /**
+     * @deprecated since Symfony 6.1
+     */
+    protected static $defaultDescription = 'Lists all dotenv files with variables and values';
+
+    private $kernelEnvironment;
+    private $projectDirectory;
 
     public function __construct(string $kernelEnvironment, string $projectDirectory)
     {

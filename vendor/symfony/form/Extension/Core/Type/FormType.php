@@ -38,7 +38,10 @@ class FormType extends BaseType
         ]));
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options): void
+    /**
+     * @return void
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
 
@@ -66,7 +69,10 @@ class FormType extends BaseType
         $builder->setIsEmptyCallback($options['is_empty_callback']);
     }
 
-    public function buildView(FormView $view, FormInterface $form, array $options): void
+    /**
+     * @return void
+     */
+    public function buildView(FormView $view, FormInterface $form, array $options)
     {
         parent::buildView($view, $form, $options);
 
@@ -105,7 +111,10 @@ class FormType extends BaseType
         ]);
     }
 
-    public function finishView(FormView $view, FormInterface $form, array $options): void
+    /**
+     * @return void
+     */
+    public function finishView(FormView $view, FormInterface $form, array $options)
     {
         $multipart = false;
 
@@ -119,7 +128,10 @@ class FormType extends BaseType
         $view->vars['multipart'] = $multipart;
     }
 
-    public function configureOptions(OptionsResolver $resolver): void
+    /**
+     * @return void
+     */
+    public function configureOptions(OptionsResolver $resolver)
     {
         parent::configureOptions($resolver);
 
@@ -166,6 +178,7 @@ class FormType extends BaseType
             // According to RFC 2396 (http://www.ietf.org/rfc/rfc2396.txt)
             // section 4.2., empty URIs are considered same-document references
             'action' => '',
+            'attr' => [],
             'post_max_size_message' => 'The uploaded file was too large. Please try to upload a smaller file.',
             'upload_max_size_message' => $uploadMaxSizeMessage, // internal
             'allow_file_upload' => false,

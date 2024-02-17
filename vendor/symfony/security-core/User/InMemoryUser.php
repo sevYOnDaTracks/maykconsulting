@@ -19,7 +19,7 @@ namespace Symfony\Component\Security\Core\User;
  * @author Robin Chalas <robin.chalas@gmail.com>
  * @author Fabien Potencier <fabien@symfony.com>
  */
-final class InMemoryUser implements UserInterface, PasswordAuthenticatedUserInterface, EquatableInterface, \Stringable
+final class InMemoryUser implements UserInterface, PasswordAuthenticatedUserInterface, EquatableInterface
 {
     private string $username;
     private ?string $password;

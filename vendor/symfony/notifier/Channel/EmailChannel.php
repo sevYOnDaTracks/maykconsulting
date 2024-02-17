@@ -46,9 +46,6 @@ class EmailChannel implements ChannelInterface
         $this->envelope = $envelope;
     }
 
-    /**
-     * @param EmailRecipientInterface $recipient
-     */
     public function notify(Notification $notification, RecipientInterface $recipient, ?string $transportName = null): void
     {
         $message = null;

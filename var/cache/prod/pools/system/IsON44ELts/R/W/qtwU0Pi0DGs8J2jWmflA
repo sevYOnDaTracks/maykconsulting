@@ -1,0 +1,42 @@
+<?php //250fab55b072f8d75aa46cd72fd9c57d
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Query\\ParserResult'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ParserResult')),
+        clone ($p['Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor')),
+        clone ($p['Doctrine\\ORM\\Query\\ResultSetMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ResultSetMapping')),
+    ],
+    null,
+    [
+        'Doctrine\\ORM\\Query\\Exec\\AbstractSqlExecutor' => [
+            'sqlStatements' => [
+                1 => 'SELECT COUNT(g0_.id) AS sclr_0 FROM garant_financier g0_ WHERE g0_.statut_demande = ?',
+            ],
+        ],
+        'stdClass' => [
+            'scalarMappings' => [
+                2 => [
+                    'sclr_0' => 1,
+                ],
+            ],
+            'typeMappings' => [
+                2 => [
+                    'sclr_0' => 'integer',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    [
+        [
+            "\0".'Doctrine\\ORM\\Query\\ParserResult'."\0".'sqlExecutor' => $o[1],
+            "\0".'Doctrine\\ORM\\Query\\ParserResult'."\0".'resultSetMapping' => $o[2],
+            "\0".'Doctrine\\ORM\\Query\\ParserResult'."\0".'parameterMappings' => [
+                'status' => [
+                    0,
+                ],
+            ],
+        ],
+        1,
+    ]
+); }];

@@ -12,7 +12,6 @@
 namespace Symfony\Component\HttpFoundation;
 
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
-use Symfony\Component\HttpFoundation\Exception\UnexpectedValueException;
 
 /**
  * InputBag is a container for user input values such as $_GET, $_POST, $_REQUEST, and $_COOKIE.
@@ -88,7 +87,7 @@ final class InputBag extends ParameterBag
     {
         try {
             return parent::getEnum($key, $class, $default);
-        } catch (UnexpectedValueException $e) {
+        } catch (\UnexpectedValueException $e) {
             throw new BadRequestException($e->getMessage(), $e->getCode(), $e);
         }
     }
@@ -129,6 +128,12 @@ final class InputBag extends ParameterBag
             return $value;
         }
 
-        throw new BadRequestException(sprintf('Input value "%s" is invalid and flag "FILTER_NULL_ON_FAILURE" was not set.', $key));
+        $method = debug_backtrace(\DEBUG_BACKTRACE_IGNORE_ARGS | \DEBUG_BACKTRACE_PROVIDE_OBJECT, 2)[1];
+        $method = ($method['object'] ?? null) === $this ? $method['function'] : 'filter';
+        $hint = 'filter' === $method ? 'pass' : 'use method "filter()" with';
+
+        trigger_deprecation('symfony/http-foundation', '6.3', 'Ignoring invalid values when using "%s::%s(\'%s\')" is deprecated and will throw a "%s" in 7.0; '.$hint.' flag "FILTER_NULL_ON_FAILURE" to keep ignoring them.', $this::class, $method, $key, BadRequestException::class);
+
+        return false;
     }
 }

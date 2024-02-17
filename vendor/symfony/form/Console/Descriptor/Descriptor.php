@@ -29,14 +29,16 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 abstract class Descriptor implements DescriptorInterface
 {
-    protected OutputStyle $output;
-    protected array $ownOptions = [];
-    protected array $overriddenOptions = [];
-    protected array $parentOptions = [];
-    protected array $extensionOptions = [];
-    protected array $requiredOptions = [];
-    protected array $parents = [];
-    protected array $extensions = [];
+    /** @var OutputStyle */
+    protected $output;
+    protected $type;
+    protected $ownOptions = [];
+    protected $overriddenOptions = [];
+    protected $parentOptions = [];
+    protected $extensionOptions = [];
+    protected $requiredOptions = [];
+    protected $parents = [];
+    protected $extensions = [];
 
     public function describe(OutputInterface $output, ?object $object, array $options = []): void
     {

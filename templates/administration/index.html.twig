@@ -1,0 +1,67 @@
+{% extends 'administration/base.html.twig' %}
+
+{% block body %}
+	<h1 align="center">
+		Hello
+		{{ app.user.name }}
+		!
+	</h1>
+	{% if not app.user.isVerified %}
+		<div class="alert alert-danger">
+			<div align="center">
+				votre compte n'est pas vérifié.	Vous avez reçu un mail de verification dans votre boite mail indiqué ! Vérifier également les spams
+			</div>
+		</div>
+	{% endif %}
+	<br>
+
+	<div
+		class="card mb-3 animate__animated animate__fadeInLeft">
+		{# <img src=" " class="card-img-top" alt="..."> #}
+		<div class="card-body">
+			<h5 class="card-title fw-bold text-sm text-uppercase">Ravie de vous revoir !</h5>
+			<p class="card-text">
+				Il me semble que vous n'avez aucune proccedure en cours. Ne vous inquietez pas ! Sur notre platforme vous pouvez effectué votre demande d'admission,d'hébergement ou une demande de garant financier !
+			</p>
+			<p class="card-text">
+				<small class="text-body-secondary"></small>
+			</p>
+		</div>
+	</div>
+
+<div class="row animate__animated animate__fadeInLeft">
+    <div class="col-md-4">
+        <div class="card">
+             <img src="/assets/images/admission.jpeg" class="card-img-top img-fluid"  alt="...">
+            <div class="card-body">
+                <h5 class="card-title text-center"><strong>Admission</strong></h5>
+                <p class="card-text">Pour votre demande d'admission , Cliquez ici !</p>
+                <div align="center">  <a href="#" class="btn btn-dark btn-block" style="width:100%; background-color: rgb(0, 0, 62);">Consulter</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+             <img src="/assets/images/logement.jpeg" class="card-img-top img-fluid"  alt="...">
+            <div class="card-body">
+                <h5 class="card-title text-center "><strong>Logement</strong></h5>
+                <p class="card-text">Pour votre demande de logement , Cliquez ici !</p>
+               <div align="center">  <a href="#" class="btn btn-dark btn-block" style="width:100%; background-color: rgb(0, 0, 62);">Consulter</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+             <img src="/assets/images/argent.jpeg" class="card-img-top img-fluid"  alt="...">
+            <div class="card-body">
+                <h5 class="card-title text-center"><strong>Garant financier</strong></h5>
+                <p class="card-text">Pour votre demande de garant , Cliquez ici !</p>
+                <div align="center">  <a href="{{ path('app_garant')}}" class="btn btn-dark btn-block" style="width:100%; background-color: rgb(0, 0, 62);">Consulter</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+
+</div></div>{% endblock %}

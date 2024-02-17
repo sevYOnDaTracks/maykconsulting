@@ -1,0 +1,282 @@
+{% extends 'administration/base.html.twig' %}
+
+{% block body %}
+	<h2>Liste des comptes</h2>
+	<br>
+
+	<div class="card shadow">
+		<div class="card-header py-3">
+			<p class="text-primary m-0 fw-bold text-uppercase">Liste des comptes</p>
+		</div>
+		{% if app.flashes('success-delete-user') is not empty %}
+			<div class="alert alert-success">
+				{{ app.flashes('success-delete-user')|first }}
+				<div align="center">
+					Un utilisateur a été supprimé !
+				</div>
+			</div>
+		{% endif %}
+		{% if app.flashes('success-modification-user') is not empty %}
+			<div class="alert alert-warning">
+				{{ app.flashes('success-modification-user')|first }}
+				<div align="center">
+					Utilisateur modifié avec success !
+				</div>
+			</div>
+		{% endif %}
+		{% if app.flashes('error-delete-user') is not empty %}
+			<div class="alert alert-danger">
+				{{ app.flashes('error-delete-user')|first }}
+				<div align="center">
+					Vous ne pouvez pas supprimer votre propre compte !!
+				</div>
+			</div>
+		{% endif %}
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-6 text-nowrap">
+					<div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
+						<label class="form-label">Show&nbsp;<select class="d-inline-block form-select form-select-sm">
+								<option value="10" selected="">10</option>
+							</select>&nbsp;</label>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="text-md-end dataTables_filter" id="dataTable_filter">
+						<label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label>
+					</div>
+				</div>
+			</div>
+			<div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+				<table class="table my-0" id="dataTable">
+					<thead>
+						<tr>
+							<th>Nom</th>
+							<th>Adresse email</th>
+							<th>Niveau d'étude</th>
+							<th>Rôle</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for user in users_list %}
+							<tr>
+								<td>
+									{% if user.avatar is not empty %}
+										<img class="rounded-circle me-2" width="40" height="40" src="{{ asset('uploads/avatars/' ~ user.avatar) }}">{{ user.name }}
+									{% else %}
+										<img class="rounded-circle me-2" width="40" height="40" src="/assets/images/logo.png">
+										{{ user.name }}
+									{% endif %}
+								</td>
+								<td>{{ user.email }}</td>
+
+								<td>{{ user.schoolLevel }}</td>
+								<td>
+									{% for role in user.roles %}
+										{% if role == "ROLE_USER" %}
+											Utilisateur
+										{% else %}
+											Staff
+										{% endif %}
+
+										{% if not loop.last %},
+										{% endif %}
+									{% endfor %}
+								</td>
+								<td>
+
+									<button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModa{{ user.id }}">
+										<i class="fas fa-edit"></i>
+									</button>
+
+									<div class="modal fade" id="exampleModa{{ user.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h1 class="modal-title text-dark fw-bold text-xs text-uppercase" id="exampleModalLabel">Informations du compte :
+														<strong>
+															{{ user.name}}
+															{{ user.lastName}}
+														</strong>
+													</h1>
+												</div>
+												<div class="modal-body">
+	
+														<div class="row">
+															<div class="col">
+																<div class="mb-3">
+																	<label class="form-label" for="avatar">
+																		<strong>Photo d'identité :
+																		</strong>
+																	</label>
+																	
+																		{% if user.getAvatar() %}
+																			<div align="center">
+																				<img src="{{ asset('uploads/avatars/' ~ user.avatar) }}" alt="Avatar" class="img-fluid rounded-circle" style="max-width: 120px" ;>
+																				<br>
+																				<br>
+																				<div class="row">
+																				<form method="post" action="{{ path('app_delete_avatar') }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre avatar ? Cette action est irréversible.');">
+																				
+																				<button type="submit" class="btn btn-danger">
+																					<i class="fas fa-trash"></i>
+																				</button>
+																				<input type="hidden" name="_token" value="{{ csrf_token('delete_avatar') }}">
+																						
+																				<a href="{{ asset(user.avatar) }}" class="btn btn-warning " download="{{ user.name}}_profil.png">
+																					<i class="fas fa-download"></i>
+																				</a>
+																				</form>
+																				</div>
+																			</div>
+																		{% else %}
+																			<p>Aucune photo</p>
+																		{% endif %}
+																		
+															
+
+																</div>
+															</div>
+										
+														</div>
+																<form method="POST" action="{{ path('user_update', {'id': user.id} )}}" enctype="multipart/form-data">
+														<div class="mb-3">
+															<div class="row">
+																<div class="col">
+																	<div class="mb-3">
+																		<label class="form-label" for="email">
+																			<strong>Email</strong>
+																		</label>
+																		<div class="input-group mb-3">
+																			<span class="input-group-text" id="basic-addon1">@</span>
+																			<input class="form-control text-dark" type="email" id="email" placeholder="user@example.com" value="{{ user.getEmail() }}" name="email" disabled>
+																		</div>
+
+																	</div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col">
+																	<div class="mb-3">
+																		<label class="form-label" for="first_name">
+																			<strong>Nom</strong>
+																		</label><input class="form-control text-dark" type="text" id="first_name" placeholder="John" value="{{ user.getName() }}" name="name"></div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col">
+																	<div class="mb-3">
+																		<label class="form-label" for="last_name">
+																			<strong>Prenoms
+																			</strong>
+																		</label><input class="form-control text-dark" type="text" id="last_name" placeholder="Doe" value="{{ user.getLastName() }}" name="lastName"></div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col">
+																	<div class="mb-3">
+																		<label class="form-label" for="last_name">
+																			<strong>Numéro de téléphone
+																			</strong>
+																		</label><input class="form-control text-dark" type="text" id="last_name" placeholder="Enter a valid phone number" value="{{ user.getPhone() }}" name="phone"></div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col">
+																	<div class="mb-3">
+																		<label class="form-label" for="last_name">
+																			<strong>Date de Naissance
+																			</strong>
+																		</label><input class="form-control text-dark" type="date" id="last_name" placeholder="Enter a valid phone number" value="{{ user.getDateOfBirth()|date('Y-m-d') }}" name="dateOfBirth">
+																	</div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col">
+																	<div class="mb-3">
+																		<label class="form-label" for="last_name">
+																			<strong>Niveau d'etude actuel
+																			</strong>
+																		</label>
+																		<select class="form-select text-dark" aria-label="Defaultselectexample" name="schoolLevel">
+																			<option selected>
+																				{{ user.getSchoolLevel() }}</option>
+																			<option value="BAC + 1">BAC +1</option>
+																			<option value="BAC + 2">BAC +2</option>
+																			<option value="BAC + 3">BAC +3</option>
+																			<option value="BAC + 4">BAC +4</option>
+																			<option value="BAC + 5">BAC +5</option>
+																		</select>
+																	</div>
+																	{% if user.getAvatar() %}
+
+																		{% else %}
+																			<div class="mb-3 text-danger">
+																				* L'utilisateur n'a joint aucune photo
+																			</div>
+																			<div class="mb-3">
+																				<label class="form-label" for="last_name">
+																					<strong>Photo d'identité
+																					</strong>
+																				</label>
+																				<input type="file" class="form-control" name="avatar">
+																			</div>
+																	{% endif %}
+
+																</div>
+															</div>
+
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+															<button type="submit" class="btn btn-primary">Enregistrer
+																<i class="fas fa-save"></i>
+															</button>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{ user.id }}">
+										<i class="fas fa-trash"></i>
+									</button>
+
+
+									<div class="modal fade" id="exampleModal{{ user.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body text-dark">
+													Souhaitez-vous réellement supprimer l'utilisateur
+													{{user.name}}
+													{{user.lastName}}
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+													<form method="post" action="{{ path('app_user_delete', {'id': user.id}) }}">
+														<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+														<button type="submit" class="btn btn-danger">supprimer
+															<i class="fas fa-trash"></i>
+														</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</td>
+							</tr>
+						</td>
+					</tbody>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+<br></div></div></div></div>{% endblock %}

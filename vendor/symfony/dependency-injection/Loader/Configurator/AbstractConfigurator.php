@@ -27,14 +27,14 @@ abstract class AbstractConfigurator
     public const FACTORY = 'unknown';
 
     /**
-     * @var \Closure(mixed, bool):mixed|null
+     * @var callable(mixed, bool)|null
      */
-    public static ?\Closure $valuePreProcessor = null;
+    public static $valuePreProcessor;
 
     /** @internal */
     protected Definition|Alias|null $definition = null;
 
-    public function __call(string $method, array $args): mixed
+    public function __call(string $method, array $args)
     {
         if (method_exists($this, 'set'.$method)) {
             return $this->{'set'.$method}(...$args);
@@ -48,7 +48,7 @@ abstract class AbstractConfigurator
         throw new \BadMethodCallException('Cannot serialize '.__CLASS__);
     }
 
-    public function __wakeup(): void
+    public function __wakeup()
     {
         throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
     }

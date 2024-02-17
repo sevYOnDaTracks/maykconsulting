@@ -45,7 +45,7 @@ class Definition
     private array $bindings = [];
     private array $errors = [];
 
-    protected array $arguments = [];
+    protected $arguments = [];
 
     /**
      * @internal
@@ -180,8 +180,6 @@ class Definition
 
     /**
      * Gets the service class.
-     *
-     * @return class-string|null
      */
     public function getClass(): ?string
     {
@@ -781,7 +779,7 @@ class Definition
      *
      * @return $this
      */
-    public function addError(string|\Closure|self $error): static
+    public function addError(string|\Closure|Definition $error): static
     {
         if ($error instanceof self) {
             $this->errors = array_merge($this->errors, $error->errors);

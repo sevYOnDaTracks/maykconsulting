@@ -19,7 +19,6 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\CookieTheftException;
-use Symfony\Component\Security\Core\Exception\InvalidArgumentException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
@@ -52,10 +51,6 @@ class RememberMeAuthenticator implements InteractiveAuthenticatorInterface
 
     public function __construct(RememberMeHandlerInterface $rememberMeHandler, #[\SensitiveParameter] string $secret, TokenStorageInterface $tokenStorage, string $cookieName, ?LoggerInterface $logger = null)
     {
-        if (!$secret) {
-            throw new InvalidArgumentException('A non-empty secret is required.');
-        }
-
         $this->rememberMeHandler = $rememberMeHandler;
         $this->secret = $secret;
         $this->tokenStorage = $tokenStorage;

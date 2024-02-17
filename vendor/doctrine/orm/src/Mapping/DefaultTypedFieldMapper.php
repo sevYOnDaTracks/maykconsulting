@@ -17,11 +17,13 @@ use function array_merge;
 use function assert;
 use function enum_exists;
 
+use const PHP_VERSION_ID;
+
 /** @psalm-type ScalarName = 'array'|'bool'|'float'|'int'|'string' */
 final class DefaultTypedFieldMapper implements TypedFieldMapper
 {
     /** @var array<class-string|ScalarName, class-string<Type>|string> $typedFieldMappings */
-    private array $typedFieldMappings;
+    private $typedFieldMappings;
 
     private const DEFAULT_TYPED_FIELD_MAPPINGS = [
         DateInterval::class => Types::DATEINTERVAL,
@@ -51,7 +53,7 @@ final class DefaultTypedFieldMapper implements TypedFieldMapper
             ! isset($mapping['type'])
             && ($type instanceof ReflectionNamedType)
         ) {
-            if (! $type->isBuiltin() && enum_exists($type->getName())) {
+            if (PHP_VERSION_ID >= 80100 && ! $type->isBuiltin() && enum_exists($type->getName())) {
                 $mapping['enumType'] = $type->getName();
 
                 $reflection = new ReflectionEnum($type->getName());
@@ -59,7 +61,7 @@ final class DefaultTypedFieldMapper implements TypedFieldMapper
                     throw MappingException::backedEnumTypeRequired(
                         $field->class,
                         $mapping['fieldName'],
-                        $mapping['enumType'],
+                        $mapping['enumType']
                     );
                 }
 

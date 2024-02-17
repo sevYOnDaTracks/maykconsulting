@@ -38,7 +38,10 @@ class DebugCommand extends Command
         parent::__construct();
     }
 
-    protected function configure(): void
+    /**
+     * @return void
+     */
+    protected function configure()
     {
         $this
             ->addArgument('bus', InputArgument::OPTIONAL, sprintf('The bus id (one of "%s")', implode('", "', array_keys($this->mapping))))

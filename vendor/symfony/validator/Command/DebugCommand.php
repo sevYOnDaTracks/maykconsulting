@@ -47,7 +47,10 @@ class DebugCommand extends Command
         $this->validator = $validator;
     }
 
-    protected function configure(): void
+    /**
+     * @return void
+     */
+    protected function configure()
     {
         $this
             ->addArgument('class', InputArgument::REQUIRED, 'A fully qualified class name or a path')
@@ -165,11 +168,11 @@ EOF
         foreach ($propertyMetadata as $metadata) {
             $autoMapingStrategy = 'Not supported';
             if ($metadata instanceof GenericMetadata) {
-                $autoMapingStrategy = match ($metadata->getAutoMappingStrategy()) {
-                    AutoMappingStrategy::ENABLED => 'Enabled',
-                    AutoMappingStrategy::DISABLED => 'Disabled',
-                    AutoMappingStrategy::NONE => 'None',
-                };
+                switch ($metadata->getAutoMappingStrategy()) {
+                    case AutoMappingStrategy::ENABLED: $autoMapingStrategy = 'Enabled'; break;
+                    case AutoMappingStrategy::DISABLED: $autoMapingStrategy = 'Disabled'; break;
+                    case AutoMappingStrategy::NONE: $autoMapingStrategy = 'None'; break;
+                }
             }
             $traversalStrategy = 'None';
             if (TraversalStrategy::TRAVERSE === $metadata->getTraversalStrategy()) {

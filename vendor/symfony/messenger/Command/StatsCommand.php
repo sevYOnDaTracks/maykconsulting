@@ -38,7 +38,10 @@ class StatsCommand extends Command
         parent::__construct();
     }
 
-    protected function configure(): void
+    /**
+     * @return void
+     */
+    protected function configure()
     {
         $this
             ->addArgument('transport_names', InputArgument::IS_ARRAY | InputArgument::OPTIONAL, 'List of transports\' names')

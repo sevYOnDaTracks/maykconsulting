@@ -13,16 +13,13 @@ namespace Symfony\Component\Clock;
 
 if (!\function_exists(now::class)) {
     /**
-     * @throws \DateMalformedStringException When the modifier is invalid
+     * Returns the current time as a DateTimeImmutable.
+     *
+     * Note that you should prefer injecting a ClockInterface or using
+     * ClockAwareTrait when possible instead of using this function.
      */
-    function now(string $modifier = 'now'): DatePoint
+    function now(): \DateTimeImmutable
     {
-        if ('now' !== $modifier) {
-            return new DatePoint($modifier);
-        }
-
-        $now = Clock::get()->now();
-
-        return $now instanceof DatePoint ? $now : DatePoint::createFromInterface($now);
+        return Clock::get()->now();
     }
 }

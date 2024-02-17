@@ -128,7 +128,10 @@ EOF
         ;
     }
 
-    protected function interact(InputInterface $input, OutputInterface $output): void
+    /**
+     * @return void
+     */
+    protected function interact(InputInterface $input, OutputInterface $output)
     {
         $io = new SymfonyStyle($input, $output instanceof ConsoleOutputInterface ? $output->getErrorOutput() : $output);
 

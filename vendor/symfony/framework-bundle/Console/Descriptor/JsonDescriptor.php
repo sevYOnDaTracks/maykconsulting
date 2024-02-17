@@ -37,9 +37,6 @@ class JsonDescriptor extends Descriptor
         $data = [];
         foreach ($routes->all() as $name => $route) {
             $data[$name] = $this->getRouteData($route);
-            if (($showAliases ??= $options['show_aliases'] ?? false) && $aliases = ($reverseAliases ??= $this->getReverseAliases($routes))[$name] ?? []) {
-                $data[$name]['aliases'] = $aliases;
-            }
         }
 
         $this->writeData($data, $options);
@@ -150,16 +147,11 @@ class JsonDescriptor extends Descriptor
         $this->writeData($this->getCallableData($callable), $options);
     }
 
-    protected function describeContainerParameter(mixed $parameter, ?array $deprecation, array $options = []): void
+    protected function describeContainerParameter(mixed $parameter, array $options = []): void
     {
         $key = $options['parameter'] ?? '';
-        $data = [$key => $parameter];
 
-        if ($deprecation) {
-            $data['_deprecation'] = sprintf('Since %s %s: %s', $deprecation[0], $deprecation[1], sprintf(...\array_slice($deprecation, 2)));
-        }
-
-        $this->writeData($data, $options);
+        $this->writeData([$key => $parameter], $options);
     }
 
     protected function describeContainerEnvVars(array $envs, array $options = []): void
@@ -226,23 +218,6 @@ class JsonDescriptor extends Descriptor
         }
 
         return $data;
-    }
-
-    protected function sortParameters(ParameterBag $parameters): array
-    {
-        $sortedParameters = parent::sortParameters($parameters);
-
-        if ($deprecated = $parameters->allDeprecated()) {
-            $deprecations = [];
-
-            foreach ($deprecated as $parameter => $deprecation) {
-                $deprecations[$parameter] = sprintf('Since %s %s: %s', $deprecation[0], $deprecation[1], sprintf(...\array_slice($deprecation, 2)));
-            }
-
-            $sortedParameters['_deprecations'] = $deprecations;
-        }
-
-        return $sortedParameters;
     }
 
     private function getContainerDefinitionData(Definition $definition, bool $omitTags = false, bool $showArguments = false, ?ContainerBuilder $container = null, ?string $id = null): array
@@ -398,7 +373,7 @@ class JsonDescriptor extends Descriptor
             }
             $data['name'] = $r->name;
 
-            if ($class = $r->getClosureCalledClass()) {
+            if ($class = \PHP_VERSION_ID >= 80111 ? $r->getClosureCalledClass() : $r->getClosureScopeClass()) {
                 $data['class'] = $class->name;
                 if (!$r->getClosureThis()) {
                     $data['static'] = true;

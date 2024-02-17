@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register
+{% endblock %}
+
+{% block body %}
+{% include "welcome/partials/nav-bar-home.html.twig" %}
+	<section class="py-5">
+		<div class="container py-5 ">
+			<div class="row d-flex justify-content-center">
+				<div class="col-md-6 col-xl-4">
+					<div class="card">
+						<div class="card-body text-center d-flex flex-column align-items-center">
+							{% for flash_error in app.flashes('verify_email_error') %}
+								<div class="alert alert-danger">{{ flash_error }}</div>
+							{% endfor %}
+							<div class="text-center">
+								<h5 class="mb-0">Tout commence par un début !</h5>
+								<p class="text-muted mt-2">Voici le formulaire d'inscription ...</p>
+							</div>
+							<div class="bs-icon-xl bs-icon-circle bs-icon-primary shadow bs-icon my-4">
+								<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewbox="0 0 16 16" class="bi bi-person">
+									<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
+								</svg>
+							</div>
+							<form method="post" action="{{ path('app_register') }}">
+							<div class="mb-3">
+
+											<select class="form-select text-dark" placeholder="test" name="schoolLevel">
+												<option selected>Niveau d'étude actuel</option>
+												<option value="BAC + 1">BAC +1</option>
+												<option value="BAC + 2">BAC +2</option>
+												<option value="BAC + 3">BAC +3</option>
+												<option value="BAC + 4">BAC +4</option>
+												<option value="BAC + 5">BAC +5</option>
+											</select>
+										</div>
+								<div class="mb-3">
+								<div class="mb-3">
+
+								<input type="email" class="form-control" id="input-username" name="email" placeholder="Email" required>
+									{# {{ form_row(registrationForm.email, { 'attr': { 'class': 'form-control', 'placeholder': 'Email' } }) }} #}
+								</div>
+								<div class="mb-3">
+									<input type="text" class="form-control" id="input-username" name="name" placeholder="Nom" required>
+								</div>
+								<div class="mb-3">
+									<input type="text" class="form-control" id="input-username" name="lastName" placeholder="Prenoms" required>
+								</div>
+								 <div class="mb-3">
+									<input type="date" class="form-control" id="input-username" name="dateOfBirth" placeholder="" required>
+								</div> 
+								<div class="mb-3">
+									<input type="text" class="form-control" id="input-username" name="phone" placeholder="Télephone" required>
+								</div>
+								
+									<input type="password" class="form-control" id="input-username" name="plainPassword" placeholder="Mot de passe" required>
+								</div>
+								
+								<div class="mb-3">
+									<button class="btn btn-primary shadow d-block w-100" type="submit">Je m'inscris</button>
+								</div>
+								<p class="text-muted">Avez-vous déja un compte ?&nbsp;<a href="{{path('app_login')}}">Connectez-vous </a>
+								</p>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+
+{% endblock %}

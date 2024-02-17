@@ -34,12 +34,14 @@ class PropertyPath implements \IteratorAggregate, PropertyPathInterface
      *
      * @var list<string>
      */
-    private array $elements = [];
+    private $elements = [];
 
     /**
      * The number of elements in the property path.
+     *
+     * @var int
      */
-    private int $length;
+    private $length;
 
     /**
      * Contains a Boolean for each property in $elements denoting whether this
@@ -47,7 +49,7 @@ class PropertyPath implements \IteratorAggregate, PropertyPathInterface
      *
      * @var array<bool>
      */
-    private array $isIndex = [];
+    private $isIndex = [];
 
     /**
      * Contains a Boolean for each property in $elements denoting whether this
@@ -55,12 +57,14 @@ class PropertyPath implements \IteratorAggregate, PropertyPathInterface
      *
      * @var array<bool>
      */
-    private array $isNullSafe = [];
+    private $isNullSafe = [];
 
     /**
      * String representation of the path.
+     *
+     * @var string
      */
-    private string $pathAsString;
+    private $pathAsString;
 
     /**
      * Constructs a property path from a string.

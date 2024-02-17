@@ -35,7 +35,10 @@ class TemplateCacheWarmer implements CacheWarmerInterface, ServiceSubscriberInte
         $this->iterator = $iterator;
     }
 
-    public function warmUp(string $cacheDir, ?string $buildDir = null): array
+    /**
+     * @return string[] A list of template files to preload on PHP 7.4+
+     */
+    public function warmUp(string $cacheDir): array
     {
         $this->twig ??= $this->container->get('twig');
 

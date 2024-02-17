@@ -4,11 +4,11 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
+class ComposerStaticInit23ba610470d8e6caf7bcf19fa73f187f
 {
     public static $files = array (
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
@@ -16,6 +16,8 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '2203a247e6fda86070a5e4e07aed533a' => __DIR__ . '/..' . '/symfony/clock/Resources/now.php',
+        'b46ad4fe52f4d1899a2951c7e6ea56b0' => __DIR__ . '/..' . '/voku/portable-utf8/bootstrap.php',
+        'd45d087767e66b9914075f6f6efd1435' => __DIR__ . '/..' . '/blackfire/php-sdk/src/autostart.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
@@ -24,9 +26,18 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
     );
 
     public static $prefixLengthsPsr4 = array (
+        'v' => 
+        array (
+            'voku\\helper\\' => 12,
+            'voku\\' => 5,
+        ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
+        ),
+        'Z' => 
+        array (
+            'ZipStream\\' => 10,
         ),
         'W' => 
         array (
@@ -39,8 +50,6 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
         ),
         'S' => 
         array (
-            'Symfony\\UX\\Turbo\\' => 17,
-            'Symfony\\UX\\StimulusBundle\\' => 26,
             'Symfony\\Runtime\\Symfony\\Component\\' => 34,
             'Symfony\\Polyfill\\Php83\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -77,6 +86,7 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
             'Symfony\\Component\\Mime\\' => 23,
             'Symfony\\Component\\Messenger\\Bridge\\Doctrine\\' => 44,
             'Symfony\\Component\\Messenger\\' => 28,
+            'Symfony\\Component\\Mailer\\Bridge\\Google\\' => 39,
             'Symfony\\Component\\Mailer\\' => 25,
             'Symfony\\Component\\Intl\\' => 23,
             'Symfony\\Component\\HttpKernel\\' => 29,
@@ -98,7 +108,6 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
             'Symfony\\Component\\Cache\\' => 24,
             'Symfony\\Component\\BrowserKit\\' => 29,
             'Symfony\\Component\\Asset\\' => 24,
-            'Symfony\\Component\\AssetMapper\\' => 30,
             'Symfony\\Bundle\\WebProfilerBundle\\' => 33,
             'Symfony\\Bundle\\TwigBundle\\' => 26,
             'Symfony\\Bundle\\SecurityBundle\\' => 30,
@@ -110,22 +119,35 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
             'Symfony\\Bridge\\PhpUnit\\' => 23,
             'Symfony\\Bridge\\Monolog\\' => 23,
             'Symfony\\Bridge\\Doctrine\\' => 24,
+            'SymfonyCasts\\Bundle\\VerifyEmail\\' => 32,
+            'Svg\\' => 4,
+            'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
+            'Sabberworm\\CSS\\' => 15,
         ),
         'P' => 
         array (
+            'Psr\\SimpleCache\\' => 16,
             'Psr\\Log\\' => 8,
             'Psr\\Link\\' => 9,
+            'Psr\\Http\\Message\\' => 17,
+            'Psr\\Http\\Client\\' => 16,
             'Psr\\EventDispatcher\\' => 20,
             'Psr\\Container\\' => 14,
             'Psr\\Clock\\' => 10,
             'Psr\\Cache\\' => 10,
             'PhpParser\\' => 10,
+            'PhpOffice\\PhpSpreadsheet\\' => 25,
             'PHPStan\\PhpDocParser\\' => 21,
         ),
         'M' => 
         array (
             'Monolog\\' => 8,
+            'Matrix\\' => 7,
             'Masterminds\\' => 12,
+        ),
+        'F' => 
+        array (
+            'FontLib\\' => 8,
         ),
         'E' => 
         array (
@@ -133,6 +155,7 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
         ),
         'D' => 
         array (
+            'Dompdf\\' => 7,
             'Doctrine\\SqlFormatter\\' => 22,
             'Doctrine\\Persistence\\' => 21,
             'Doctrine\\ORM\\' => 13,
@@ -144,6 +167,7 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
             'Doctrine\\Common\\Lexer\\' => 22,
             'Doctrine\\Common\\Collections\\' => 28,
             'Doctrine\\Common\\Cache\\' => 22,
+            'Doctrine\\Common\\Annotations\\' => 28,
             'Doctrine\\Common\\' => 16,
             'Doctrine\\Bundle\\MigrationsBundle\\' => 33,
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
@@ -151,7 +175,12 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
         ),
         'C' => 
         array (
-            'Composer\\Semver\\' => 16,
+            'Composer\\CaBundle\\' => 18,
+            'Complex\\' => 8,
+        ),
+        'B' => 
+        array (
+            'Blackfire\\' => 10,
         ),
         'A' => 
         array (
@@ -161,11 +190,24 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
     );
 
     public static $prefixDirsPsr4 = array (
+        'voku\\helper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/voku/anti-xss/src/voku/helper',
+        ),
+        'voku\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+            1 => __DIR__ . '/..' . '/voku/portable-utf8/src/voku',
+        ),
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'ZipStream\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -178,14 +220,6 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
-        ),
-        'Symfony\\UX\\Turbo\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/ux-turbo/src',
-        ),
-        'Symfony\\UX\\StimulusBundle\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/stimulus-bundle/src',
         ),
         'Symfony\\Runtime\\Symfony\\Component\\' => 
         array (
@@ -331,6 +365,10 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
         array (
             0 => __DIR__ . '/..' . '/symfony/messenger',
         ),
+        'Symfony\\Component\\Mailer\\Bridge\\Google\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/google-mailer',
+        ),
         'Symfony\\Component\\Mailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/mailer',
@@ -415,10 +453,6 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
         array (
             0 => __DIR__ . '/..' . '/symfony/asset',
         ),
-        'Symfony\\Component\\AssetMapper\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/asset-mapper',
-        ),
         'Symfony\\Bundle\\WebProfilerBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/web-profiler-bundle',
@@ -463,6 +497,26 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
         array (
             0 => __DIR__ . '/..' . '/symfony/doctrine-bridge',
         ),
+        'SymfonyCasts\\Bundle\\VerifyEmail\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfonycasts/verify-email-bundle/src',
+        ),
+        'Svg\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src/Svg',
+        ),
+        'Sensio\\Bundle\\FrameworkExtraBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sensio/framework-extra-bundle/src',
+        ),
+        'Sabberworm\\CSS\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
+        ),
+        'Psr\\SimpleCache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
+        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
@@ -470,6 +524,15 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
         'Psr\\Link\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/link/src',
+        ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'Psr\\Http\\Client\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-client/src',
         ),
         'Psr\\EventDispatcher\\' => 
         array (
@@ -491,6 +554,10 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
+        'PhpOffice\\PhpSpreadsheet\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
+        ),
         'PHPStan\\PhpDocParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src',
@@ -499,13 +566,25 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
+        'Matrix\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
+        ),
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
         ),
+        'FontLib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phenx/php-font-lib/src/FontLib',
+        ),
         'Egulias\\EmailValidator\\' => 
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
+        ),
+        'Dompdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
         ),
         'Doctrine\\SqlFormatter\\' => 
         array (
@@ -551,9 +630,14 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
         array (
             0 => __DIR__ . '/..' . '/doctrine/cache/lib/Doctrine/Common/Cache',
         ),
+        'Doctrine\\Common\\Annotations\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/annotations/lib/Doctrine/Common/Annotations',
+        ),
         'Doctrine\\Common\\' => 
         array (
-            0 => __DIR__ . '/..' . '/doctrine/event-manager/src',
+            0 => __DIR__ . '/..' . '/doctrine/common/src',
+            1 => __DIR__ . '/..' . '/doctrine/event-manager/src',
         ),
         'Doctrine\\Bundle\\MigrationsBundle\\' => 
         array (
@@ -567,9 +651,17 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
-        'Composer\\Semver\\' => 
+        'Composer\\CaBundle\\' => 
         array (
-            0 => __DIR__ . '/..' . '/composer/semver/src',
+            0 => __DIR__ . '/..' . '/composer/ca-bundle/src',
+        ),
+        'Complex\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/markbaker/complex/classes/src',
+        ),
+        'Blackfire\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/blackfire/php-sdk/src/Blackfire',
         ),
         'App\\Tests\\' => 
         array (
@@ -593,6 +685,7 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
         'DateMalformedStringException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateMalformedStringException.php',
         'DateObjectError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateObjectError.php',
         'DateRangeError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateRangeError.php',
+        'Dompdf\\Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
         'IntlDateFormatter' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/IntlDateFormatter.php',
         'Locale' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/Locale.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
@@ -1233,9 +1326,9 @@ class ComposerStaticInit314fb8784e5fd17439de7979d868cfff
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit314fb8784e5fd17439de7979d868cfff::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit314fb8784e5fd17439de7979d868cfff::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit314fb8784e5fd17439de7979d868cfff::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit23ba610470d8e6caf7bcf19fa73f187f::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit23ba610470d8e6caf7bcf19fa73f187f::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit23ba610470d8e6caf7bcf19fa73f187f::$classMap;
 
         }, null, ClassLoader::class);
     }

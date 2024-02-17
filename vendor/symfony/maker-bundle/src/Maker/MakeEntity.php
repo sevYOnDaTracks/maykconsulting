@@ -28,7 +28,6 @@ use Symfony\Bundle\MakerBundle\Str;
 use Symfony\Bundle\MakerBundle\Util\ClassDetails;
 use Symfony\Bundle\MakerBundle\Util\ClassSourceManipulator;
 use Symfony\Bundle\MakerBundle\Util\CliOutputHelper;
-use Symfony\Bundle\MakerBundle\Util\ClassSource\Model\ClassProperty;
 use Symfony\Bundle\MakerBundle\Util\PhpCompatUtil;
 use Symfony\Bundle\MakerBundle\Validator;
 use Symfony\Component\Console\Command\Command;
@@ -228,10 +227,12 @@ final class MakeEntity extends AbstractMaker implements InputAwareMakerInterface
             $fileManagerOperations = [];
             $fileManagerOperations[$entityPath] = $manipulator;
 
-            if ($newField instanceof ClassProperty) {
-                $manipulator->addEntityField($newField);
+            if (\is_array($newField)) {
+                $annotationOptions = $newField;
+                unset($annotationOptions['fieldName']);
+                $manipulator->addEntityField($newField['fieldName'], $annotationOptions);
 
-                $currentFields[] = $newField->propertyName;
+                $currentFields[] = $newField['fieldName'];
             } elseif ($newField instanceof EntityRelation) {
                 // both overridden below for OneToMany
                 $newFieldName = $newField->getOwningProperty();
@@ -328,7 +329,7 @@ final class MakeEntity extends AbstractMaker implements InputAwareMakerInterface
         ORMDependencyBuilder::buildDependencies($dependencies);
     }
 
-    private function askForNextField(ConsoleStyle $io, array $fields, string $entityClass, bool $isFirstField): EntityRelation|ClassProperty|null
+    private function askForNextField(ConsoleStyle $io, array $fields, string $entityClass, bool $isFirstField): EntityRelation|array|null
     {
         $io->writeln('');
 
@@ -406,24 +407,23 @@ final class MakeEntity extends AbstractMaker implements InputAwareMakerInterface
         }
 
         // this is a normal field
-        $classProperty = new ClassProperty(propertyName: $fieldName, type: $type);
-
+        $data = ['fieldName' => $fieldName, 'type' => $type];
         if ('string' === $type) {
             // default to 255, avoid the question
-            $classProperty->length = $io->ask('Field length', 255, [Validator::class, 'validateLength']);
+            $data['length'] = $io->ask('Field length', 255, [Validator::class, 'validateLength']);
         } elseif ('decimal' === $type) {
             // 10 is the default value given in \Doctrine\DBAL\Schema\Column::$_precision
-            $classProperty->precision = $io->ask('Precision (total number of digits stored: 100.00 would be 5)', 10, [Validator::class, 'validatePrecision']);
+            $data['precision'] = $io->ask('Precision (total number of digits stored: 100.00 would be 5)', 10, [Validator::class, 'validatePrecision']);
 
             // 0 is the default value given in \Doctrine\DBAL\Schema\Column::$_scale
-            $classProperty->scale = $io->ask('Scale (number of decimals to store: 100.00 would be 2)', 0, [Validator::class, 'validateScale']);
+            $data['scale'] = $io->ask('Scale (number of decimals to store: 100.00 would be 2)', 0, [Validator::class, 'validateScale']);
         }
 
         if ($io->confirm('Can this field be null in the database (nullable)', false)) {
-            $classProperty->nullable = true;
+            $data['nullable'] = true;
         }
 
-        return $classProperty;
+        return $data;
     }
 
     private function printAvailableTypes(ConsoleStyle $io): void

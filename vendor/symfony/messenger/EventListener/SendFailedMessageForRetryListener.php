@@ -48,7 +48,10 @@ class SendFailedMessageForRetryListener implements EventSubscriberInterface
         $this->historySize = $historySize;
     }
 
-    public function onMessageFailed(WorkerMessageFailedEvent $event): void
+    /**
+     * @return void
+     */
+    public function onMessageFailed(WorkerMessageFailedEvent $event)
     {
         $retryStrategy = $this->getRetryStrategyForTransport($event->getReceiverName());
         $envelope = $event->getEnvelope();
@@ -125,7 +128,7 @@ class SendFailedMessageForRetryListener implements EventSubscriberInterface
         // if ALL nested Exceptions are an instance of UnrecoverableExceptionInterface we should not retry
         if ($e instanceof HandlerFailedException) {
             $shouldNotRetry = true;
-            foreach ($e->getWrappedExceptions() as $nestedException) {
+            foreach ($e->getNestedExceptions() as $nestedException) {
                 if ($nestedException instanceof RecoverableExceptionInterface) {
                     return true;
                 }
