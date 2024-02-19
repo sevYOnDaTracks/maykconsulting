@@ -43,7 +43,7 @@ class GarantFinancier
     private ?string $pathGarantFile = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $last_update = null;
+    private ?\DateTimeInterface $lastUpdate = null;
 
     public function getId(): ?int
     {
@@ -160,12 +160,12 @@ class GarantFinancier
 
     public function getLastUpdate(): ?\DateTimeInterface
     {
-        return $this->last_update;
+        return $this->lastUpdate;
     }
 
     public function setLastUpdate(?\DateTimeInterface $last_update): static
     {
-        $this->last_update = $last_update;
+        $this->lastUpdate = $last_update;
 
         return $this;
     }

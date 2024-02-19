@@ -14,6 +14,11 @@ use Doctrine\ORM\EntityManagerInterface;
 use DateTime;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mailer\MailerInterface;
+use Mailtrap\Config;
+use Mailtrap\Helper\ResponseHelper;
+use Mailtrap\MailtrapClient;
+use Symfony\Component\Mime\Address;
+use Mailtrap\EmailHeader\CategoryHeader;
 
 
 #[Route('/administration')]
@@ -53,12 +58,18 @@ class GarantController extends AbstractController
                 $garantFinancier->setLastUpdate(new DateTime());
 
             $email = (new Email())
-            ->from('noreply@mayk-consulting.com')
+            ->from('noreply@maykconsulting.fr')
             ->to($garantFinancier->getUser()->getEmail()) // Utilisez l'e-mail saisi par l'utilisateur
             ->subject('Urgent - Mise à jour de votre dossier')
             ->html('<p>L\'état d\'avancement de votre dossier a été mis à jour. Veuillez vous connecter sur le site pour plus d\'informations .</p><br> <p> Mayk consulting Services</p>');
     
-            $mailer->send($email);
+            $apiKey = '64ff6202a62179784d1ffa3dd0546b97';
+                $mailtrap = new MailtrapClient(new Config($apiKey));
+                $email->getHeaders()
+                    ->add(new CategoryHeader('Garant - Management'))
+                ;
+    
+                $mailtrap->sending()->emails()->send($email);
 
             }
 
@@ -128,14 +139,20 @@ class GarantController extends AbstractController
                 $garantFinancierRepository->save($garant, true);
     
                 $email = (new Email())
-                ->from('noreply@mayk-consulting.com')
+                ->from('noreply@maykconsulting.fr')
                 ->to($user->getEmail()) // Utilisez l'e-mail saisi par l'utilisateur
                 ->subject('Demande Soumise - Maykconsulting')
                 ->html('<p>Votre demande a été reçue avec succès ! Nous vous informons que le processus de traitement démarrera après réception des fonds.</p>
                 <br>
                 Mayk - Consulting Services');
         
-                $mailer->send($email);
+                $apiKey = '64ff6202a62179784d1ffa3dd0546b97';
+                $mailtrap = new MailtrapClient(new Config($apiKey));
+                $email->getHeaders()
+                    ->add(new CategoryHeader('Garant - Management'))
+                ;
+    
+                $mailtrap->sending()->emails()->send($email);
     
                 $entityManager->persist($garant);
                 $entityManager->flush();
@@ -216,14 +233,20 @@ class GarantController extends AbstractController
         if ($request->isMethod('POST')) {
 
         $email = (new Email())
-                ->from('noreply@mayk-consulting.com')
+                ->from('noreply@maykconsulting.fr')
                 ->to($emailClient) // Utilisez l'e-mail saisi par l'utilisateur
                 ->subject($objetClient)
                 ->html('<p>' .  $messageclient . '</p>
                 <br>
                 Mayk - Consulting Services');
         
-                $mailer->send($email);
+                $apiKey = '64ff6202a62179784d1ffa3dd0546b97';
+                $mailtrap = new MailtrapClient(new Config($apiKey));
+                $email->getHeaders()
+                    ->add(new CategoryHeader('Garant - Management'))
+                ;
+    
+                $mailtrap->sending()->emails()->send($email);
 
 
         }

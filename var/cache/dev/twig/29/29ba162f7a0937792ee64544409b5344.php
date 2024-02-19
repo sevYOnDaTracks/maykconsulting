@@ -65,7 +65,7 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "\t<h2>Boite au lettre
+        echo "\t<h2>Boite aux lettres publique
 \t\t<i class=\"fas fa-envelope\"></i>
 \t</h2>
 \t<br>
@@ -289,7 +289,7 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
         return new Source("{% extends 'administration/base.html.twig' %}
 
 {% block body %}
-\t<h2>Boite au lettre
+\t<h2>Boite aux lettres publique
 \t\t<i class=\"fas fa-envelope\"></i>
 \t</h2>
 \t<br>

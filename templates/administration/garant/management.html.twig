@@ -39,7 +39,8 @@
 								<span>En cours</span>
 							</div>
 							<div class="text-dark fw-bold h5 mb-0">
-								<span> {{ nombreEncours }}</span>
+								<span>
+									{{ nombreEncours }}</span>
 							</div>
 						</div>
 						<div class="col-auto">
@@ -100,7 +101,7 @@
 		<br>
 
 	{% endif %}
-    {% if app.flashes('success-edit') is not empty %}
+	{% if app.flashes('success-edit') is not empty %}
 		<div class="alert alert-success animate__animated animate__fadeInTop">
 			{{ app.flashes('success-edit')|first }}
 			<div align="center">
@@ -166,7 +167,7 @@
 														</div>
 														<div class="mb-3">
 															<label for="recipient-name" class="col-form-label text-dark">Objet :</label>
-															<input type="text" class="form-control" id="recipient-name" name="objet">
+															<input type="text" class="form-control" id="recipient-name" name="objet" required>
 														</div>
 														<div class="mb-3">
 															<label for="message-text" class="col-form-label text-dark">Message:</label>
@@ -261,6 +262,9 @@
 
 																{%   endif  %}
 
+																<div class="mb-3">
+																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Dernière modification : <span class="text-danger">{{garantUser.getLastUpdate() | date('d-m-Y')  }} à {{garantUser.getLastUpdate() | date('H:m:s')  }}</span></label>
+																</div>
 
 																<div class="">
 																	<textarea name="othersInformations" class="form-control" placeholder="L'utilisateur n'a rien écrit comme message .." disabled>{{ garantUser.getInformations()}}</textarea>
@@ -298,7 +302,7 @@
 			</p>
 		</div>
 		<div class="card-body">
-        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+			<div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
 				<table class="table my-0" id="dataTable">
 					<thead>
 						<tr>
@@ -398,7 +402,7 @@
 																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Etat de la demande :</label>
 																	<select name="statutDemande" class="form-select form-select mb-3">
 																		<option value="{{garantUser.getStatutDemande() }} " selected>En cours de traitement</option>
-                                                                        <option value="0">En attente de paiement</option>
+																		<option value="0">En attente de paiement</option>
 																		<option value="2">Traitement terminé</option>
 																		<option value="3">Clôturer la demande</option>
 																	</select>
@@ -468,7 +472,7 @@
 					</tbody>
 				</table>
 			</div>
-        </div>
+		</div>
 
 	</div>
 
@@ -481,8 +485,8 @@
 			</p>
 		</div>
 		<div class="card-body">
-        
-        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+
+			<div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
 				<table class="table my-0" id="dataTable">
 					<thead>
 						<tr>
@@ -582,7 +586,7 @@
 																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Etat de la demande :</label>
 																	<select name="statutDemande" class="form-select form-select mb-3">
 																		<option value="{{garantUser.getStatutDemande() }} " selected>Traitement terminé</option>
-                                                                        <option value="0">En attente de paiement</option>
+																		<option value="0">En attente de paiement</option>
 																		<option value="2">En cours de traitement</option>
 																		<option value="3">Clôturer la demande</option>
 																	</select>
@@ -652,7 +656,7 @@
 					</tbody>
 				</table>
 			</div>
-        </div>
+		</div>
 
 	</div>
 
@@ -664,7 +668,7 @@
 			</p>
 		</div>
 		<div class="card-body">
-        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+			<div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
 				<table class="table my-0" id="dataTable">
 					<thead>
 						<tr>
@@ -677,175 +681,174 @@
 						</tr>
 					</thead>
 					<tbody>
-                    {% if garantsCloturer|length > 0 %}
-						{% for garantUser in garantsCloturer %}
-							<tr>
-								<td>{{ garantUser.id }}</td>
-								<td>{{ garantUser.getUser().getName() }}</td>
-								<td>{{ garantUser.getUser().getEmail() }}</td>
-								<td>{{ garantUser.getUser().getPhone() }}</td>
-								<td>{{ garantUser.getDateDemande() | date('d-m-Y')}}
-									à
-									{{ garantUser.getDateDemande() | date('H:i:')}}
-									GMT</td>
+						{% if garantsCloturer|length > 0 %}
+							{% for garantUser in garantsCloturer %}
+								<tr>
+									<td>{{ garantUser.id }}</td>
+									<td>{{ garantUser.getUser().getName() }}</td>
+									<td>{{ garantUser.getUser().getEmail() }}</td>
+									<td>{{ garantUser.getUser().getPhone() }}</td>
+									<td>{{ garantUser.getDateDemande() | date('d-m-Y')}}
+										à
+										{{ garantUser.getDateDemande() | date('H:i:')}}
+										GMT</td>
 
-								<td>
-									<button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal{{ garantUser.id }}">
-										<i class="fas fa-edit"></i>
+									<td>
+										<button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal{{ garantUser.id }}">
+											<i class="fas fa-edit"></i>
 
-									</button>
-									<button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModa{{ garantUser.id}}">
-										<i class="fas fa-reply"></i>
-									</button>
+										</button>
+										<button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModa{{ garantUser.id}}">
+											<i class="fas fa-reply"></i>
+										</button>
 
 
-									<div class="modal fade" id="exampleModa{{ garantUser.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-										<div class="modal-dialog">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h1 class="modal-title  fw-bold text-xs text-uppercase" id="exampleModalLabel">Envoyez message</h1>
-													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-												</div>
-												<div class="modal-body">
-													<form method="post" action="{{ path('app_garant_envoyez_mail')}}">
-														<div class="mb-3">
-															<label for="recipient-name" class="col-form-label text-dark ">Envoyez à :</label>
-															<input type="text" class="form-control" name="email" id="recipient-name2" value="{{ garantUser.getUser.getEmail() }}">
-														</div>
-														<div class="mb-3">
-															<label for="recipient-name" class="col-form-label text-dark">Objet :</label>
-															<input type="text" class="form-control" id="recipient-name" name="objet">
-														</div>
-														<div class="mb-3">
-															<label for="message-text" class="col-form-label text-dark">Message:</label>
-															<textarea class="form-control" name="message" id="message-text" style="height: 200px;"></textarea>
-														</div>
-
+										<div class="modal fade" id="exampleModa{{ garantUser.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h1 class="modal-title  fw-bold text-xs text-uppercase" id="exampleModalLabel">Envoyez message</h1>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-														<button type="submit" class="btn btn-primary">
-															<i class="fas fa-paper-plane"></i>
-														</button>
-													</div>
-												</form>
-											</div>
-										</div>
-									</div>
+													<div class="modal-body">
+														<form method="post" action="{{ path('app_garant_envoyez_mail')}}">
+															<div class="mb-3">
+																<label for="recipient-name" class="col-form-label text-dark ">Envoyez à :</label>
+																<input type="text" class="form-control" name="email" id="recipient-name2" value="{{ garantUser.getUser.getEmail() }}">
+															</div>
+															<div class="mb-3">
+																<label for="recipient-name" class="col-form-label text-dark">Objet :</label>
+																<input type="text" class="form-control" id="recipient-name" name="objet">
+															</div>
+															<div class="mb-3">
+																<label for="message-text" class="col-form-label text-dark">Message:</label>
+																<textarea class="form-control" name="message" id="message-text" style="height: 200px;"></textarea>
+															</div>
 
-									<div class="modal fade" id="exampleModal{{ garantUser.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-										<div class="modal-dialog modal-xl modal-dialog-centered">
-											<div class="modal-content">
-												<div class="modal-header text-center">
-													<h1 class="modal-title fs-5 text-dark text-center" id="exampleModalLabel">
-														<strong>{{garantUser.getUser().getName() }}
-															{{garantUser.getUser().getLastName() }}<strong></h1>
-															<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 														</div>
-														<div class="modal-body">
-
-															<form method="post" action="{{ path('app_garant_update', {'id': garantUser.id}) }}">
-
-																<div class="mb-3">
-																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Pays :</label>
-																	<select name="pays" class="form-select form-select mb-3">
-																		<option value="{{garantUser.getPays() }} " selected>{{garantUser.getPays() }}</option>
-																		<option value="France">France</option>
-																		<option value="Canada">Canada</option>
-																		<option value="Us">Us</option>
-																	</select>
-																</div>
-
-																<div class="mb-3">
-																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Ville :</label>
-																	<Input value="{{garantUser.getVilleEtude() }} " name="ville" type="text" class="form-control">
-																</div>
-
-																<div class="mb-3">
-																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Etat de la demande :</label>
-																	<select name="statutDemande" class="form-select form-select mb-3">
-																		<option value="{{garantUser.getStatutDemande() }} " selected>Demande clôturer</option>
-																		<option value="0">En attente de paiement</option>
-																		<option value="1">En cours de traitement</option>
-																	</select>
-																</div>
-
-																<div class="mb-2">
-																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Documents :</label>
-																</div>
-
-																{%  if garantUser.getPathPassport %}
-
-																	<div class="fw-bold text-xs text-uppercase mb-2 ">
-																		Passport
-
-																		<a href="{{ asset('uploads/passport/' ~ garantUser.pathPassport) }}" class="btn btn-warning btn-sm " download="passeport.pdf">
-																			<i class="fas fa-download"></i>
-																		</a>
-																	</div>
-																{%    else        %}
-
-																	<p class="text-danger">
-																		* L'utilisateur n'a pas joint de passport
-																	</p>
-
-																{%   endif  %}
-
-																{%  if garantUser.getPathAdmissionFile %}
-
-																	<div class="fw-bold text-xs text-uppercase mb-2">
-																		Attestation d'admission
-																		<a href="{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}" class="btn btn-warning btn-sm" download="attestation.pdf">
-																			<i class="fas fa-download"></i>
-																		</a>
-																	</div>
-
-
-																{%    else        %}
-
-																	<p class="text-danger">
-																		* L'utilisateur n'a pas joint d'attestation d'acceptation
-																	</p>
-
-																{%   endif  %}
-
-
-																<div class="">
-																	<textarea name="othersInformations" class="form-control" placeholder="L'utilisateur n'a rien écrit comme message .." disabled>{{ garantUser.getInformations()}}</textarea>
-																</div>
-
-
-																<div class="modal-footer">
-																	<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
-																	<button type="submit" class="btn btn-primary">Enregistrer
-																		<i class="fas fa-save"></i>
-																	</button>
-																</div>
-															</form>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+															<button type="submit" class="btn btn-primary">
+																<i class="fas fa-paper-plane"></i>
+															</button>
 														</div>
-													</div>
+													</form>
 												</div>
 											</div>
 										</div>
+
+										<div class="modal fade" id="exampleModal{{ garantUser.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog modal-xl modal-dialog-centered">
+												<div class="modal-content">
+													<div class="modal-header text-center">
+														<h1 class="modal-title fs-5 text-dark text-center" id="exampleModalLabel">
+															<strong>{{garantUser.getUser().getName() }}
+																{{garantUser.getUser().getLastName() }}<strong></h1>
+																<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+															</div>
+															<div class="modal-body">
+
+																<form method="post" action="{{ path('app_garant_update', {'id': garantUser.id}) }}">
+
+																	<div class="mb-3">
+																		<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Pays :</label>
+																		<select name="pays" class="form-select form-select mb-3">
+																			<option value="{{garantUser.getPays() }} " selected>{{garantUser.getPays() }}</option>
+																			<option value="France">France</option>
+																			<option value="Canada">Canada</option>
+																			<option value="Us">Us</option>
+																		</select>
+																	</div>
+
+																	<div class="mb-3">
+																		<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Ville :</label>
+																		<Input value="{{garantUser.getVilleEtude() }} " name="ville" type="text" class="form-control">
+																	</div>
+
+																	<div class="mb-3">
+																		<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Etat de la demande :</label>
+																		<select name="statutDemande" class="form-select form-select mb-3">
+																			<option value="{{garantUser.getStatutDemande() }} " selected>Demande clôturer</option>
+																			<option value="0">En attente de paiement</option>
+																			<option value="1">En cours de traitement</option>
+																		</select>
+																	</div>
+
+																	<div class="mb-2">
+																		<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Documents :</label>
+																	</div>
+
+																	{%  if garantUser.getPathPassport %}
+
+																		<div class="fw-bold text-xs text-uppercase mb-2 ">
+																			Passport
+
+																			<a href="{{ asset('uploads/passport/' ~ garantUser.pathPassport) }}" class="btn btn-warning btn-sm " download="passeport.pdf">
+																				<i class="fas fa-download"></i>
+																			</a>
+																		</div>
+																	{%    else        %}
+
+																		<p class="text-danger">
+																			* L'utilisateur n'a pas joint de passport
+																		</p>
+
+																	{%   endif  %}
+
+																	{%  if garantUser.getPathAdmissionFile %}
+
+																		<div class="fw-bold text-xs text-uppercase mb-2">
+																			Attestation d'admission
+																			<a href="{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}" class="btn btn-warning btn-sm" download="attestation.pdf">
+																				<i class="fas fa-download"></i>
+																			</a>
+																		</div>
+
+
+																	{%    else        %}
+
+																		<p class="text-danger">
+																			* L'utilisateur n'a pas joint d'attestation d'acceptation
+																		</p>
+
+																	{%   endif  %}
+
+
+																	<div class="">
+																		<textarea name="othersInformations" class="form-control" placeholder="L'utilisateur n'a rien écrit comme message .." disabled>{{ garantUser.getInformations()}}</textarea>
+																	</div>
+
+
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+																		<button type="submit" class="btn btn-primary">Enregistrer
+																			<i class="fas fa-save"></i>
+																		</button>
+																	</div>
+																</form>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</td>
 									</td>
-								</td>
-							</tr>
-						{% endfor %}
+								</tr>
+							{% endfor %}
 
-                        {% else %}
+							{% else %}
 
-                        
 
-                        {% endif %}
+						{% endif %}
 					</tbody>
 				</table>
-                
+
 			</div>
-        
-        
-        </div>
+
+
+		</div>
 
 	</div>
 
-<br><br>
+	<br><br>
 </div></div>{% endblock %}
