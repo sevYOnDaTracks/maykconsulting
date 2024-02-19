@@ -151,11 +151,17 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
             echo "</td>
 \t\t\t\t\t\t\t\t<td>
 
-\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#staticBackdrop\">
+\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#staticBackdrop";
+            // line 61
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 61), "html", null, true);
+            echo "\">
 \t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-eye\"></i>
 \t\t\t\t\t\t\t\t\t</button>
 
-                                    <div class=\"modal fade\" id=\"staticBackdrop\" data-bs-backdrop=\"staticS\" data-bs-keyboard=\"false\" tabindex=\"-1\" aria-labelledby=\"staticBackdropLabel\" aria-hidden=\"true\">
+                                    <div class=\"modal fade\" id=\"staticBackdrop";
+            // line 65
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 65), "html", null, true);
+            echo "\" data-bs-backdrop=\"staticS\" data-bs-keyboard=\"false\" tabindex=\"-1\" aria-labelledby=\"staticBackdropLabel\" aria-hidden=\"true\">
 \t\t\t<div class=\"modal-dialog\">
 \t\t\t\t<div class=\"modal-content\">
 \t\t\t\t\t<div class=\"modal-header\">
@@ -176,7 +182,6 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"modal-footer\">
 \t\t\t\t\t\t<button type=\"button\" class=\"btn btn-danger\" data-bs-dismiss=\"modal\">Fermer</button>
-\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-primary\">Ok</button>
 \t\t\t\t\t</div>
 \t\t\t\t</div>
 \t\t\t</div>
@@ -186,16 +191,16 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
 
 
 \t\t\t\t\t\t\t\t\t<button class=\"btn btn-danger\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal";
-            // line 87
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 87), "html", null, true);
+            // line 86
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 86), "html", null, true);
             echo "\">
 \t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-trash\"></i>
 \t\t\t\t\t\t\t\t\t</button>
 
 
 \t\t\t\t\t\t\t\t\t<div class=\"modal fade\" id=\"exampleModal";
-            // line 92
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 92), "html", null, true);
+            // line 91
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 91), "html", null, true);
             echo "\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
 \t\t\t\t\t\t\t\t\t\t<div class=\"modal-dialog\">
 \t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-content\">
@@ -206,19 +211,19 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-body text-dark\">
 \t\t\t\t\t\t\t\t\t\t\t\t\tSouhaitez-vous réellement supprimer le message de
 \t\t\t\t\t\t\t\t\t\t\t\t\t";
-            // line 101
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "senderName", [], "any", false, false, false, 101), "html", null, true);
+            // line 100
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "senderName", [], "any", false, false, false, 100), "html", null, true);
             echo "
 \t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-footer\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Fermer</button>
 \t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"";
-            // line 105
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_message_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 105)]), "html", null, true);
+            // line 104
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_message_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 104)]), "html", null, true);
             echo "\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"hidden\" name=\"_token\" value=\"";
-            // line 106
-            echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 106))), "html", null, true);
+            // line 105
+            echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 105))), "html", null, true);
             echo "\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-danger\">supprimer</button>
 \t\t\t\t\t\t\t\t\t\t\t\t\t</form>
@@ -233,7 +238,7 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 116
+        // line 115
         echo "\t\t\t\t\t</tbody>
 \t\t\t\t</table>
 \t\t\t</div>
@@ -276,7 +281,7 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
      */
     public function getDebugInfo()
     {
-        return array (  237 => 116,  221 => 106,  217 => 105,  210 => 101,  198 => 92,  190 => 87,  174 => 74,  164 => 69,  150 => 58,  145 => 56,  141 => 55,  137 => 54,  133 => 52,  128 => 51,  122 => 47,  120 => 46,  93 => 21,  84 => 15,  81 => 14,  79 => 13,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  242 => 115,  226 => 105,  222 => 104,  215 => 100,  203 => 91,  195 => 86,  180 => 74,  170 => 69,  163 => 65,  156 => 61,  150 => 58,  145 => 56,  141 => 55,  137 => 54,  133 => 52,  128 => 51,  122 => 47,  120 => 46,  93 => 21,  84 => 15,  81 => 14,  79 => 13,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -341,11 +346,11 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
 \t\t\t\t\t\t\t\t\t{{ message.dateTimeReception|date('H:i:s ') }}</td>
 \t\t\t\t\t\t\t\t<td>
 
-\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#staticBackdrop\">
+\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#staticBackdrop{{message.id}}\">
 \t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-eye\"></i>
 \t\t\t\t\t\t\t\t\t</button>
 
-                                    <div class=\"modal fade\" id=\"staticBackdrop\" data-bs-backdrop=\"staticS\" data-bs-keyboard=\"false\" tabindex=\"-1\" aria-labelledby=\"staticBackdropLabel\" aria-hidden=\"true\">
+                                    <div class=\"modal fade\" id=\"staticBackdrop{{message.id}}\" data-bs-backdrop=\"staticS\" data-bs-keyboard=\"false\" tabindex=\"-1\" aria-labelledby=\"staticBackdropLabel\" aria-hidden=\"true\">
 \t\t\t<div class=\"modal-dialog\">
 \t\t\t\t<div class=\"modal-content\">
 \t\t\t\t\t<div class=\"modal-header\">
@@ -358,7 +363,6 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"modal-footer\">
 \t\t\t\t\t\t<button type=\"button\" class=\"btn btn-danger\" data-bs-dismiss=\"modal\">Fermer</button>
-\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-primary\">Ok</button>
 \t\t\t\t\t</div>
 \t\t\t\t</div>
 \t\t\t</div>

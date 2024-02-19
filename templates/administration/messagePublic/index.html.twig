@@ -58,11 +58,11 @@
 									{{ message.dateTimeReception|date('H:i:s ') }}</td>
 								<td>
 
-									<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+									<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{message.id}}">
 										<i class="fas fa-eye"></i>
 									</button>
 
-                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="staticS" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal fade" id="staticBackdrop{{message.id}}" data-bs-backdrop="staticS" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -75,7 +75,6 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-						<button type="button" class="btn btn-primary">Ok</button>
 					</div>
 				</div>
 			</div>
