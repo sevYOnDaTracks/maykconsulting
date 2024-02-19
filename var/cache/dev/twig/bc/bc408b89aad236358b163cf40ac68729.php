@@ -97,7 +97,10 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
                     </a>
                     <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown2\">
                         <li>
-                            <a class=\"dropdown-item\" href=\"/administration\">Admission</a>
+                            <a class=\"dropdown-item\" href=\"";
+        // line 55
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_admission");
+        echo "\">Admission</a>
                         </li>
                         <li>
                             <a class=\"dropdown-item\" href=\"";
@@ -325,7 +328,7 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  296 => 123,  292 => 122,  287 => 121,  277 => 120,  259 => 105,  241 => 13,  235 => 11,  225 => 10,  205 => 7,  193 => 125,  191 => 120,  175 => 106,  173 => 105,  169 => 103,  167 => 102,  157 => 94,  149 => 89,  125 => 72,  114 => 63,  112 => 62,  105 => 58,  66 => 21,  64 => 10,  60 => 9,  57 => 8,  55 => 7,  47 => 1,);
+        return array (  299 => 123,  295 => 122,  290 => 121,  280 => 120,  262 => 105,  244 => 13,  238 => 11,  228 => 10,  208 => 7,  196 => 125,  194 => 120,  178 => 106,  176 => 105,  172 => 103,  170 => 102,  160 => 94,  152 => 89,  128 => 72,  117 => 63,  115 => 62,  108 => 58,  102 => 55,  66 => 21,  64 => 10,  60 => 9,  57 => 8,  55 => 7,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -384,7 +387,7 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
                     </a>
                     <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown2\">
                         <li>
-                            <a class=\"dropdown-item\" href=\"/administration\">Admission</a>
+                            <a class=\"dropdown-item\" href=\"{{path('app_admission')}}\">Admission</a>
                         </li>
                         <li>
                             <a class=\"dropdown-item\" href=\"{{ path('app_garant') }}\">Garant Financier</a>

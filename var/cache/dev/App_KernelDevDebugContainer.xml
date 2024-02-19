@@ -495,7 +495,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.VV2Tuzb"/>
+      <argument type="service" id=".service_locator.aej7bHX"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -3165,7 +3165,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.VV2Tuzb"/>
+      <argument type="service" id=".service_locator.aej7bHX"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <argument type="service" id="request_stack"/>
@@ -7549,7 +7549,7 @@
         <argument key="urlGenerator" type="service_closure" id="router.default"/>
       </argument>
     </service>
-    <service id=".service_locator.VV2Tuzb" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.aej7bHX" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdministrationController::delete" type="service_closure" id=".service_locator.vB1BKOI"/>
@@ -7561,6 +7561,8 @@
         <argument key="App\Controller\AdministrationController::recupererLenombreDeMessage" type="service_closure" id=".service_locator.UeARcDr"/>
         <argument key="App\Controller\AdministrationController::updateUser" type="service_closure" id=".service_locator.4tqk5Qq"/>
         <argument key="App\Controller\AdministrationController::userProfil" type="service_closure" id=".service_locator.Hr31AUX"/>
+        <argument key="App\Controller\AdmissionController::index" type="service_closure" id=".service_locator.UeARcDr"/>
+        <argument key="App\Controller\AdmissionController::recupererLenombreDeMessage" type="service_closure" id=".service_locator.UeARcDr"/>
         <argument key="App\Controller\DossierController::delete" type="service_closure" id=".service_locator.awqL4yC"/>
         <argument key="App\Controller\DossierController::edit" type="service_closure" id=".service_locator.awqL4yC"/>
         <argument key="App\Controller\DossierController::index" type="service_closure" id=".service_locator.CZTUnfY"/>
@@ -7592,6 +7594,8 @@
         <argument key="App\Controller\AdministrationController:recupererLenombreDeMessage" type="service_closure" id=".service_locator.UeARcDr"/>
         <argument key="App\Controller\AdministrationController:updateUser" type="service_closure" id=".service_locator.4tqk5Qq"/>
         <argument key="App\Controller\AdministrationController:userProfil" type="service_closure" id=".service_locator.Hr31AUX"/>
+        <argument key="App\Controller\AdmissionController:index" type="service_closure" id=".service_locator.UeARcDr"/>
+        <argument key="App\Controller\AdmissionController:recupererLenombreDeMessage" type="service_closure" id=".service_locator.UeARcDr"/>
         <argument key="App\Controller\DossierController:delete" type="service_closure" id=".service_locator.awqL4yC"/>
         <argument key="App\Controller\DossierController:edit" type="service_closure" id=".service_locator.awqL4yC"/>
         <argument key="App\Controller\DossierController:index" type="service_closure" id=".service_locator.CZTUnfY"/>
@@ -9761,7 +9765,7 @@
     <service id="SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface" alias="symfonycasts.verify_email.helper"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.7nzbL4K" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.VV2Tuzb"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.aej7bHX"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -9789,7 +9793,7 @@
     <service id=".service_locator.Bpzal4p" alias=".service_locator.Uz253Yf"/>
     <service id=".service_locator.I7_ylTe" alias=".service_locator.D3mJr1s"/>
     <service id=".service_locator.V6D1oJY" alias=".service_locator.e_4zbH4"/>
-    <service id=".service_locator.9YyIlm4" alias=".service_locator.VV2Tuzb"/>
+    <service id=".service_locator.uggRxmp" alias=".service_locator.aej7bHX"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.JPIceuA" alias=".service_locator.8I.zPiO"/>
     <service id=".service_locator.jij13qc" alias=".service_locator.PBToVFE"/>

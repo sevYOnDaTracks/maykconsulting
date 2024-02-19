@@ -40,124 +40,124 @@ class __TwigTemplate_16ac61cad8210422b56aa63f3ac218ad extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "administration/top-bar.html.twig"));
 
         // line 1
-        echo "<nav class=\"navbar navbar-light navbar-expand bg-white shadow custom-navbar topbar static-top\" >
-\t\t\t\t\t\t<div class=\"container-fluid\">
-\t\t\t\t\t\t\t<button class=\"btn btn-link d-md-none rounded-circle me-3\" id=\"sidebarToggleTop\" type=\"button\">
-\t\t\t\t\t\t\t\t<i class=\"fas fa-bars\"></i>
-\t\t\t\t\t\t\t</button>
-\t\t\t\t\t\t\t";
+        echo "<nav class=\"navbar navbar-light navbar-expand bg-white shadow custom-navbar topbar static-top\">
+\t<div class=\"container-fluid\">
+\t\t<button class=\"btn btn-link d-md-none rounded-circle me-3\" id=\"sidebarToggleTop\" type=\"button\">
+\t\t\t<i class=\"fas fa-bars\"></i>
+\t\t</button>
+\t\t";
         // line 12
-        echo "\t\t\t\t\t\t\t<ul class=\"navbar-nav flex-nowrap ms-auto\">
-\t\t\t\t\t\t\t\t";
-        // line 29
-        echo "\t\t\t\t\t\t\t\t  <li class=\"nav-item dropdown no-arrow mx-1\">
-\t\t\t\t\t\t\t\t\t<div class=\"nav-item dropdown no-arrow\">
-\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-toggle nav-link\" aria-expanded=\"false\" data-bs-toggle=\"dropdown\" href=\"#\">
-\t\t\t\t\t\t\t\t\t\t\t<span class=\"badge bg-success badge-counter\">
-\t\t\t\t\t\t\t\t\t\t\t\t0</span>
-\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-solid fa-layer-group\"></i>
-\t\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t\t<div class=\"dropdown-menu dropdown-menu-end dropdown-list animated--grow-in\">
-\t\t\t\t\t\t\t\t\t\t\t<h6 class=\"dropdown-header bg-dark border-dark\">Mes proccédures en cours</h6>
-";
-        // line 38
-        if (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 38, $this->source); })()), "user", [], "any", false, false, false, 38), "garantFinancier", [], "any", false, false, false, 38)) {
-            // line 39
-            echo "\t\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item d-flex align-items-center\" href=\"";
+        echo "\t\t<ul
+\t\t\tclass=\"navbar-nav flex-nowrap ms-auto\">
+\t\t\t";
+        // line 30
+        echo "\t\t\t<li class=\"nav-item dropdown no-arrow mx-1\">
+\t\t\t\t<div class=\"nav-item dropdown no-arrow\">
+\t\t\t\t\t<a class=\"dropdown-toggle nav-link\" aria-expanded=\"false\" data-bs-toggle=\"dropdown\" href=\"#\">
+\t\t\t\t\t\t<span class=\"badge bg-success badge-counter\">
+\t\t\t\t\t\t\t0</span>
+\t\t\t\t\t\t<i class=\"fas fa-solid fa-layer-group\"></i>
+\t\t\t\t\t</a>
+\t\t\t\t\t<div class=\"dropdown-menu dropdown-menu-end dropdown-list animated--grow-in\">
+\t\t\t\t\t\t<h6 class=\"dropdown-header bg-dark border-dark\">Mes proccédures en cours</h6>
+\t\t\t\t\t\t";
+        // line 39
+        if (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 39, $this->source); })()), "user", [], "any", false, false, false, 39), "garantFinancier", [], "any", false, false, false, 39)) {
+            // line 40
+            echo "\t\t\t\t\t\t\t<a class=\"dropdown-item d-flex align-items-center\" href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant");
             echo "\">
-\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"me-3\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"bg-dark icon-circle\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-file-alt text-white\"></i>
-\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t\t\t<div>
-\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"small text-gray-500\">";
-            // line 46
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 46, $this->source); })()), "user", [], "any", false, false, false, 46), "garantFinancier", [], "any", false, false, false, 46), "dateDemande", [], "any", false, false, false, 46), "l j F Y", "Europe/Paris", "FR"), "html", null, true);
-            echo "</span>
-\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"\">Proccédure de garant financier</p>
-\t\t\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t\t\t
-\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t";
-        } else {
-            // line 51
-            echo "\t\t
-\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item d-flex align-items-center\" href=\"";
-            // line 52
-            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant");
-            echo "\">
-\t\t\t\t\t\t\t\t\t\t\t\t<div>
-\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"small text-gray-500\"></span>
-\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"\">Aucune proccédure en cours</p>
-\t\t\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t\t\t
-\t\t\t\t\t\t\t\t\t</a>
-";
-        }
-        // line 60
-        echo "\t\t\t\t\t\t\t\t\t\t\t
-\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t
+\t\t\t\t\t\t\t\t<div class=\"me-3\">
+\t\t\t\t\t\t\t\t\t<div class=\"bg-dark icon-circle\">
+\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-file-alt text-white\"></i>
 \t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t</li> 
-\t\t\t\t\t\t\t\t<li class=\"nav-item dropdown no-arrow mx-1\">
-\t\t\t\t\t\t\t\t\t<div class=\"nav-item dropdown no-arrow\">
-\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-toggle nav-link\" aria-expanded=\"false\" href=\"/administration/publicMessage\">
-                                            ";
-        // line 68
-        if (((isset($context["nombreEntitesMessage"]) || array_key_exists("nombreEntitesMessage", $context) ? $context["nombreEntitesMessage"] : (function () { throw new RuntimeError('Variable "nombreEntitesMessage" does not exist.', 68, $this->source); })()) != 0)) {
-            // line 69
-            echo "\t\t\t\t\t\t\t\t\t\t\t<span class=\"badge bg-danger badge-counter\">";
-            echo twig_escape_filter($this->env, (isset($context["nombreEntitesMessage"]) || array_key_exists("nombreEntitesMessage", $context) ? $context["nombreEntitesMessage"] : (function () { throw new RuntimeError('Variable "nombreEntitesMessage" does not exist.', 69, $this->source); })()), "html", null, true);
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t<div>
+\t\t\t\t\t\t\t\t\t<span class=\"small text-gray-500\">";
+            // line 47
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 47, $this->source); })()), "user", [], "any", false, false, false, 47), "garantFinancier", [], "any", false, false, false, 47), "dateDemande", [], "any", false, false, false, 47), "l j F Y", "Europe/Paris", "FR"), "html", null, true);
             echo "</span>
-                                             ";
+\t\t\t\t\t\t\t\t\t<p class=\"\">Proccédure de garant financier</p>
+\t\t\t\t\t\t\t\t</div>
+
+\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t";
+        } else {
+            // line 53
+            echo "\t\t\t\t\t\t\t<a class=\"dropdown-item d-flex align-items-center\" href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant");
+            echo "\">
+\t\t\t\t\t\t\t\t<div>
+\t\t\t\t\t\t\t\t\t<span class=\"small text-gray-500\"></span>
+\t\t\t\t\t\t\t\t\t<p class=\"\">Aucune proccédure en cours</p>
+\t\t\t\t\t\t\t\t</div>
+
+\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t";
         }
-        // line 71
+        // line 61
         echo "
-\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-envelope fa-fw\"></i>
-\t\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t\t";
-        // line 89
-        echo "\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t<div class=\"shadow dropdown-list dropdown-menu dropdown-menu-end\" aria-labelledby=\"alertsDropdown\"></div>
-\t\t\t\t\t\t\t\t</li> 
-\t\t\t\t\t\t\t\t";
-        // line 93
-        echo "\t\t\t\t\t\t\t\t<li class=\"nav-item dropdown no-arrow\">
-\t\t\t\t\t\t\t\t\t<div class=\"nav-item dropdown no-arrow\">
-\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-toggle nav-link\" aria-expanded=\"false\" data-bs-toggle=\"dropdown\" href=\"#\">
-\t\t\t\t\t\t\t\t\t\t\t<span class=\"d-none d-lg-inline me-2 text-dark small\">";
-        // line 96
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 96, $this->source); })()), "user", [], "any", false, false, false, 96), "name", [], "any", false, false, false, 96), "html", null, true);
+\t\t\t\t\t</div>
+
+\t\t\t\t</div>
+\t\t\t</li>
+\t\t\t<li class=\"nav-item dropdown no-arrow mx-1\">
+\t\t\t\t<div class=\"nav-item dropdown no-arrow\">
+\t\t\t\t\t<a class=\"dropdown-toggle nav-link\" aria-expanded=\"false\" href=\"/administration/publicMessage\">
+\t\t\t\t\t\t";
+        // line 69
+        if (((isset($context["nombreEntitesMessage"]) || array_key_exists("nombreEntitesMessage", $context) ? $context["nombreEntitesMessage"] : (function () { throw new RuntimeError('Variable "nombreEntitesMessage" does not exist.', 69, $this->source); })()) != 0)) {
+            // line 70
+            echo "\t\t\t\t\t\t\t<span class=\"badge bg-danger badge-counter\">";
+            echo twig_escape_filter($this->env, (isset($context["nombreEntitesMessage"]) || array_key_exists("nombreEntitesMessage", $context) ? $context["nombreEntitesMessage"] : (function () { throw new RuntimeError('Variable "nombreEntitesMessage" does not exist.', 70, $this->source); })()), "html", null, true);
+            echo "</span>
+\t\t\t\t\t\t";
+        }
+        // line 72
         echo "
-\t\t\t\t\t\t\t\t\t\t\t\t";
+\t\t\t\t\t\t<i class=\"fas fa-envelope fa-fw\"></i>
+\t\t\t\t\t</a>
+\t\t\t\t\t";
+        // line 90
+        echo "\t\t\t\t</div>
+\t\t\t\t<div class=\"shadow dropdown-list dropdown-menu dropdown-menu-end\" aria-labelledby=\"alertsDropdown\"></div>
+\t\t\t</li>
+\t\t\t";
+        // line 94
+        echo "\t\t\t<li class=\"nav-item dropdown no-arrow\">
+\t\t\t\t<div class=\"nav-item dropdown no-arrow\">
+\t\t\t\t\t<a class=\"dropdown-toggle nav-link\" aria-expanded=\"false\" data-bs-toggle=\"dropdown\" href=\"#\">
+\t\t\t\t\t\t<span class=\"d-none d-lg-inline me-2 text-dark small\">";
         // line 97
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 97, $this->source); })()), "user", [], "any", false, false, false, 97), "lastName", [], "any", false, false, false, 97), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 97, $this->source); })()), "user", [], "any", false, false, false, 97), "name", [], "any", false, false, false, 97), "html", null, true);
         echo "
-\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-chevron-down fa-sm fa-fw me-2 text-gray-700 \"></i>
-\t\t\t\t\t\t\t\t\t\t\t</span><img class=\"border rounded-circle img-profile\" src=\"";
-        // line 99
+\t\t\t\t\t\t\t";
+        // line 98
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 98, $this->source); })()), "user", [], "any", false, false, false, 98), "lastName", [], "any", false, false, false, 98), "html", null, true);
+        echo "
+\t\t\t\t\t\t\t<i class=\"fas fa-chevron-down fa-sm fa-fw me-2 text-gray-700 \"></i>
+\t\t\t\t\t\t</span><img class=\"border rounded-circle img-profile\" src=\"";
+        // line 100
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/images/logo.png"), "html", null, true);
         echo "\"></a>
-\t\t\t\t\t\t\t\t\t\t<div class=\"dropdown-menu shadow dropdown-menu-end animated--grow-in\">
-\t\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
-        // line 101
+\t\t\t\t\t<div class=\"dropdown-menu shadow dropdown-menu-end animated--grow-in\">
+\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
+        // line 102
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_profil");
         echo "\">
-\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-user fa-sm fa-fw me-2 text-gray-400\"></i>&nbsp;Profil</a>
-\t\t\t\t\t\t\t\t\t\t\t";
-        // line 105
-        echo "\t\t\t\t\t\t\t\t\t\t\t<div class=\"dropdown-divider\"></div>
-\t\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"/logout\">
-\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400\"></i>&nbsp;Se deconnecter</a>
-\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t</li>
-\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</nav>";
+\t\t\t\t\t\t\t<i class=\"fas fa-user fa-sm fa-fw me-2 text-gray-400\"></i>&nbsp;Profil</a>
+\t\t\t\t\t\t";
+        // line 106
+        echo "\t\t\t\t\t\t<div class=\"dropdown-divider\"></div>
+\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"/logout\">
+\t\t\t\t\t\t\t<i class=\"fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400\"></i>&nbsp;Se deconnecter</a>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</li>
+\t\t</ul>
+\t</div>
+</nav>
+";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
@@ -187,123 +187,125 @@ class __TwigTemplate_16ac61cad8210422b56aa63f3ac218ad extends Template
      */
     public function getDebugInfo()
     {
-        return array (  152 => 105,  147 => 101,  142 => 99,  137 => 97,  133 => 96,  128 => 93,  123 => 89,  118 => 71,  112 => 69,  110 => 68,  100 => 60,  89 => 52,  86 => 51,  77 => 46,  66 => 39,  64 => 38,  53 => 29,  50 => 12,  43 => 1,);
+        return array (  151 => 106,  146 => 102,  141 => 100,  136 => 98,  132 => 97,  127 => 94,  122 => 90,  117 => 72,  111 => 70,  109 => 69,  99 => 61,  87 => 53,  78 => 47,  67 => 40,  65 => 39,  54 => 30,  50 => 12,  43 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Source("<nav class=\"navbar navbar-light navbar-expand bg-white shadow custom-navbar topbar static-top\" >
-\t\t\t\t\t\t<div class=\"container-fluid\">
-\t\t\t\t\t\t\t<button class=\"btn btn-link d-md-none rounded-circle me-3\" id=\"sidebarToggleTop\" type=\"button\">
-\t\t\t\t\t\t\t\t<i class=\"fas fa-bars\"></i>
-\t\t\t\t\t\t\t</button>
-\t\t\t\t\t\t\t{# <form class=\"d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search\">
-\t\t\t\t\t\t\t\t<div class=\"input-group\"><input class=\"bg-light form-control border-0 small\" type=\"text\" placeholder=\"Search for ...\"><button class=\"btn btn-primary py-0\" type=\"button\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-search\"></i>
-\t\t\t\t\t\t\t\t\t</button>
+        return new Source("<nav class=\"navbar navbar-light navbar-expand bg-white shadow custom-navbar topbar static-top\">
+\t<div class=\"container-fluid\">
+\t\t<button class=\"btn btn-link d-md-none rounded-circle me-3\" id=\"sidebarToggleTop\" type=\"button\">
+\t\t\t<i class=\"fas fa-bars\"></i>
+\t\t</button>
+\t\t{# <form class=\"d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search\">
+\t\t\t\t\t\t\t\t\t\t<div class=\"input-group\"><input class=\"bg-light form-control border-0 small\" type=\"text\" placeholder=\"Search for ...\"><button class=\"btn btn-primary py-0\" type=\"button\">
+\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-search\"></i>
+\t\t\t\t\t\t\t\t\t\t\t</button>
+\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t</form> #}
+\t\t<ul
+\t\t\tclass=\"navbar-nav flex-nowrap ms-auto\">
+\t\t\t{# <li class=\"nav-item dropdown d-sm-none no-arrow\">
+\t\t\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-toggle nav-link\" aria-expanded=\"false\" data-bs-toggle=\"dropdown\" href=\"#\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-search\"></i>
+\t\t\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"dropdown-menu dropdown-menu-end p-3 animated--grow-in\" aria-labelledby=\"searchDropdown\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t<form class=\"me-auto navbar-search w-100\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"input-group\"><input class=\"bg-light form-control border-0 small\" type=\"text\" placeholder=\"Search for ...\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"input-group-append\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary py-0\" type=\"button\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-search\"></i>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</button>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t</form>
+\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t</li> #}
+\t\t\t<li class=\"nav-item dropdown no-arrow mx-1\">
+\t\t\t\t<div class=\"nav-item dropdown no-arrow\">
+\t\t\t\t\t<a class=\"dropdown-toggle nav-link\" aria-expanded=\"false\" data-bs-toggle=\"dropdown\" href=\"#\">
+\t\t\t\t\t\t<span class=\"badge bg-success badge-counter\">
+\t\t\t\t\t\t\t0</span>
+\t\t\t\t\t\t<i class=\"fas fa-solid fa-layer-group\"></i>
+\t\t\t\t\t</a>
+\t\t\t\t\t<div class=\"dropdown-menu dropdown-menu-end dropdown-list animated--grow-in\">
+\t\t\t\t\t\t<h6 class=\"dropdown-header bg-dark border-dark\">Mes proccédures en cours</h6>
+\t\t\t\t\t\t{% if app.user.garantFinancier %}
+\t\t\t\t\t\t\t<a class=\"dropdown-item d-flex align-items-center\" href=\"{{path('app_garant')}}\">
+\t\t\t\t\t\t\t\t<div class=\"me-3\">
+\t\t\t\t\t\t\t\t\t<div class=\"bg-dark icon-circle\">
+\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-file-alt text-white\"></i>
+\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</form> #}
-\t\t\t\t\t\t\t<ul class=\"navbar-nav flex-nowrap ms-auto\">
-\t\t\t\t\t\t\t\t{# <li class=\"nav-item dropdown d-sm-none no-arrow\">
-\t\t\t\t\t\t\t\t\t<a class=\"dropdown-toggle nav-link\" aria-expanded=\"false\" data-bs-toggle=\"dropdown\" href=\"#\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-search\"></i>
-\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t<div class=\"dropdown-menu dropdown-menu-end p-3 animated--grow-in\" aria-labelledby=\"searchDropdown\">
-\t\t\t\t\t\t\t\t\t\t<form class=\"me-auto navbar-search w-100\">
-\t\t\t\t\t\t\t\t\t\t\t<div class=\"input-group\"><input class=\"bg-light form-control border-0 small\" type=\"text\" placeholder=\"Search for ...\">
-\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"input-group-append\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary py-0\" type=\"button\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-search\"></i>
-\t\t\t\t\t\t\t\t\t\t\t\t\t</button>
-\t\t\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t</form>
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t</li> #}
-\t\t\t\t\t\t\t\t  <li class=\"nav-item dropdown no-arrow mx-1\">
-\t\t\t\t\t\t\t\t\t<div class=\"nav-item dropdown no-arrow\">
-\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-toggle nav-link\" aria-expanded=\"false\" data-bs-toggle=\"dropdown\" href=\"#\">
-\t\t\t\t\t\t\t\t\t\t\t<span class=\"badge bg-success badge-counter\">
-\t\t\t\t\t\t\t\t\t\t\t\t0</span>
-\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-solid fa-layer-group\"></i>
-\t\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t\t<div class=\"dropdown-menu dropdown-menu-end dropdown-list animated--grow-in\">
-\t\t\t\t\t\t\t\t\t\t\t<h6 class=\"dropdown-header bg-dark border-dark\">Mes proccédures en cours</h6>
-{% if app.user.garantFinancier %}
-\t\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item d-flex align-items-center\" href=\"{{path('app_garant')}}\">
-\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"me-3\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"bg-dark icon-circle\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-file-alt text-white\"></i>
-\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t\t\t<div>
-\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"small text-gray-500\">{{app.user.garantFinancier.dateDemande |date('l j F Y', 'Europe/Paris', 'FR') }}</span>
-\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"\">Proccédure de garant financier</p>
-\t\t\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t\t\t
-\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t{% else %}\t\t
-\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item d-flex align-items-center\" href=\"{{path('app_garant')}}\">
-\t\t\t\t\t\t\t\t\t\t\t\t<div>
-\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"small text-gray-500\"></span>
-\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"\">Aucune proccédure en cours</p>
-\t\t\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t\t\t
-\t\t\t\t\t\t\t\t\t</a>
-{% endif %}
-\t\t\t\t\t\t\t\t\t\t\t
-\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t</li> 
-\t\t\t\t\t\t\t\t<li class=\"nav-item dropdown no-arrow mx-1\">
-\t\t\t\t\t\t\t\t\t<div class=\"nav-item dropdown no-arrow\">
-\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-toggle nav-link\" aria-expanded=\"false\" href=\"/administration/publicMessage\">
-                                            {%  if nombreEntitesMessage != 0 %}
-\t\t\t\t\t\t\t\t\t\t\t<span class=\"badge bg-danger badge-counter\">{{ nombreEntitesMessage }}</span>
-                                             {%  endif %}
+\t\t\t\t\t\t\t\t<div>
+\t\t\t\t\t\t\t\t\t<span class=\"small text-gray-500\">{{app.user.garantFinancier.dateDemande |date('l j F Y', 'Europe/Paris', 'FR') }}</span>
+\t\t\t\t\t\t\t\t\t<p class=\"\">Proccédure de garant financier</p>
+\t\t\t\t\t\t\t\t</div>
 
-\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-envelope fa-fw\"></i>
-\t\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t\t{# <div class=\"dropdown-menu dropdown-menu-end dropdown-list animated--grow-in\">
-\t\t\t\t\t\t\t\t\t\t\t<h6 class=\"dropdown-header\">alerts center</h6>
-\t\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item d-flex align-items-center\" href=\"#\">
-\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"dropdown-list-image me-3\"><img class=\"rounded-circle\" src=\"{{ asset('assets/img/avatars/avatar4.jpeg') }}\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"bg-success status-indicator\"></div>
-\t\t\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"text-truncate\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span>Hi there! I am wondering if you can help me with a problem I've been having.</span>
-\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"small text-gray-500 mb-0\">Emily Fowler - 58m</p>
-\t\t\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item text-center small text-gray-500\" href=\"#\">Show All Alerts</a>
-\t\t\t\t\t\t\t\t\t\t</div> #}
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t<div class=\"shadow dropdown-list dropdown-menu dropdown-menu-end\" aria-labelledby=\"alertsDropdown\"></div>
-\t\t\t\t\t\t\t\t</li> 
-\t\t\t\t\t\t\t\t{# <div class=\"d-none d-sm-block topbar-divider\"></div> #}
-\t\t\t\t\t\t\t\t<li class=\"nav-item dropdown no-arrow\">
-\t\t\t\t\t\t\t\t\t<div class=\"nav-item dropdown no-arrow\">
-\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-toggle nav-link\" aria-expanded=\"false\" data-bs-toggle=\"dropdown\" href=\"#\">
-\t\t\t\t\t\t\t\t\t\t\t<span class=\"d-none d-lg-inline me-2 text-dark small\">{{ app.user.name }}
-\t\t\t\t\t\t\t\t\t\t\t\t{{ app.user.lastName }}
-\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-chevron-down fa-sm fa-fw me-2 text-gray-700 \"></i>
-\t\t\t\t\t\t\t\t\t\t\t</span><img class=\"border rounded-circle img-profile\" src=\"{{ asset('assets/images/logo.png') }}\"></a>
-\t\t\t\t\t\t\t\t\t\t<div class=\"dropdown-menu shadow dropdown-menu-end animated--grow-in\">
-\t\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ path('app_user_profil') }}\">
-\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-user fa-sm fa-fw me-2 text-gray-400\"></i>&nbsp;Profil</a>
-\t\t\t\t\t\t\t\t\t\t\t{# <a class=\"dropdown-item\" href=\"#\">
-\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-cogs fa-sm fa-fw me-2 text-gray-400\"></i>&nbsp;Settings</a> #}
-\t\t\t\t\t\t\t\t\t\t\t<div class=\"dropdown-divider\"></div>
-\t\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"/logout\">
-\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400\"></i>&nbsp;Se deconnecter</a>
-\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t</li>
-\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</nav>", "administration/top-bar.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/administration/top-bar.html.twig");
+\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t{% else %}
+\t\t\t\t\t\t\t<a class=\"dropdown-item d-flex align-items-center\" href=\"{{path('app_garant')}}\">
+\t\t\t\t\t\t\t\t<div>
+\t\t\t\t\t\t\t\t\t<span class=\"small text-gray-500\"></span>
+\t\t\t\t\t\t\t\t\t<p class=\"\">Aucune proccédure en cours</p>
+\t\t\t\t\t\t\t\t</div>
+
+\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t{% endif %}
+
+\t\t\t\t\t</div>
+
+\t\t\t\t</div>
+\t\t\t</li>
+\t\t\t<li class=\"nav-item dropdown no-arrow mx-1\">
+\t\t\t\t<div class=\"nav-item dropdown no-arrow\">
+\t\t\t\t\t<a class=\"dropdown-toggle nav-link\" aria-expanded=\"false\" href=\"/administration/publicMessage\">
+\t\t\t\t\t\t{%  if nombreEntitesMessage != 0 %}
+\t\t\t\t\t\t\t<span class=\"badge bg-danger badge-counter\">{{ nombreEntitesMessage }}</span>
+\t\t\t\t\t\t{%  endif %}
+
+\t\t\t\t\t\t<i class=\"fas fa-envelope fa-fw\"></i>
+\t\t\t\t\t</a>
+\t\t\t\t\t{# <div class=\"dropdown-menu dropdown-menu-end dropdown-list animated--grow-in\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<h6 class=\"dropdown-header\">alerts center</h6>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item d-flex align-items-center\" href=\"#\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"dropdown-list-image me-3\"><img class=\"rounded-circle\" src=\"{{ asset('assets/img/avatars/avatar4.jpeg') }}\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"bg-success status-indicator\"></div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"text-truncate\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span>Hi there! I am wondering if you can help me with a problem I've been having.</span>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"small text-gray-500 mb-0\">Emily Fowler - 58m</p>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item text-center small text-gray-500\" href=\"#\">Show All Alerts</a>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div> #}
+\t\t\t\t</div>
+\t\t\t\t<div class=\"shadow dropdown-list dropdown-menu dropdown-menu-end\" aria-labelledby=\"alertsDropdown\"></div>
+\t\t\t</li>
+\t\t\t{# <div class=\"d-none d-sm-block topbar-divider\"></div> #}
+\t\t\t<li class=\"nav-item dropdown no-arrow\">
+\t\t\t\t<div class=\"nav-item dropdown no-arrow\">
+\t\t\t\t\t<a class=\"dropdown-toggle nav-link\" aria-expanded=\"false\" data-bs-toggle=\"dropdown\" href=\"#\">
+\t\t\t\t\t\t<span class=\"d-none d-lg-inline me-2 text-dark small\">{{ app.user.name }}
+\t\t\t\t\t\t\t{{ app.user.lastName }}
+\t\t\t\t\t\t\t<i class=\"fas fa-chevron-down fa-sm fa-fw me-2 text-gray-700 \"></i>
+\t\t\t\t\t\t</span><img class=\"border rounded-circle img-profile\" src=\"{{ asset('assets/images/logo.png') }}\"></a>
+\t\t\t\t\t<div class=\"dropdown-menu shadow dropdown-menu-end animated--grow-in\">
+\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ path('app_user_profil') }}\">
+\t\t\t\t\t\t\t<i class=\"fas fa-user fa-sm fa-fw me-2 text-gray-400\"></i>&nbsp;Profil</a>
+\t\t\t\t\t\t{# <a class=\"dropdown-item\" href=\"#\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-cogs fa-sm fa-fw me-2 text-gray-400\"></i>&nbsp;Settings</a> #}
+\t\t\t\t\t\t<div class=\"dropdown-divider\"></div>
+\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"/logout\">
+\t\t\t\t\t\t\t<i class=\"fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400\"></i>&nbsp;Se deconnecter</a>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</li>
+\t\t</ul>
+\t</div>
+</nav>
+", "administration/top-bar.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/administration/top-bar.html.twig");
     }
 }
