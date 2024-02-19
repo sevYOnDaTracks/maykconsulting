@@ -512,6 +512,6 @@ class __TwigTemplate_c041c0cda6947164b065c73e86405aa4 extends Template
 \t</div>
 </div></div><!-- Modal -->
 {% endblock %}
-", "administration/user_profil.html.twig", "/Users/sevyondatracks/Desktop/symfony-6-3-webapp-1/templates/administration/user_profil.html.twig");
+", "administration/user_profil.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/administration/user_profil.html.twig");
     }
 }

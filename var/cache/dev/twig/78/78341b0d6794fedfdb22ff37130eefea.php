@@ -81,6 +81,6 @@ class __TwigTemplate_c6d4ec8115453582ace3ec26a508f35e extends Template
     <line x1=\"7\" y1=\"21\" x2=\"7\" y2=\"3\"></line>
     <path d=\"M20 6l-3 -3l-3 3\"></path>
 </svg>
-", "@WebProfiler/Icon/ajax.svg", "/Users/sevyondatracks/Desktop/symfony-6-3-webapp-1/vendor/symfony/web-profiler-bundle/Resources/views/Icon/ajax.svg");
+", "@WebProfiler/Icon/ajax.svg", "/Users/sevyondatracks/Desktop/maykconsulting/vendor/symfony/web-profiler-bundle/Resources/views/Icon/ajax.svg");
     }
 }

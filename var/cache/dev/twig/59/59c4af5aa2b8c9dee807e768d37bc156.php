@@ -897,6 +897,6 @@ class __TwigTemplate_4d7ba17d5a377926bfb3e0a9ec40c992 extends Template
         </tbody>
     </table>
 {% endmacro %}
-", "@WebProfiler/Collector/translation.html.twig", "/Users/sevyondatracks/Desktop/symfony-6-3-webapp-1/vendor/symfony/web-profiler-bundle/Resources/views/Collector/translation.html.twig");
+", "@WebProfiler/Collector/translation.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/vendor/symfony/web-profiler-bundle/Resources/views/Collector/translation.html.twig");
     }
 }

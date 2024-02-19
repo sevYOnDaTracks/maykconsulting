@@ -242,6 +242,6 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
 <br><br>
 
 </div></div>{% endblock %}
-", "administration/index.html.twig", "/Users/sevyondatracks/Desktop/symfony-6-3-webapp-1/templates/administration/index.html.twig");
+", "administration/index.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/administration/index.html.twig");
     }
 }

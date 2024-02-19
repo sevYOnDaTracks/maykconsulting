@@ -192,6 +192,6 @@ class __TwigTemplate_7ea5070f56a99a15331cc1745c3f6a87 extends Template
 \t\t</div>
 \t</div>
 </nav>
-", "welcome/partials/nav-bar-home.html.twig", "/Users/sevyondatracks/Desktop/symfony-6-3-webapp-1/templates/welcome/partials/nav-bar-home.html.twig");
+", "welcome/partials/nav-bar-home.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/welcome/partials/nav-bar-home.html.twig");
     }
 }

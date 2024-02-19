@@ -833,6 +833,6 @@ class __TwigTemplate_1a6ebf3979f2fb5028264ddd387c5e77 extends Template
 \t</table>
 </div>
 <br></div></div></div></div>{% endblock %}
-", "administration/users_list.html.twig", "/Users/sevyondatracks/Desktop/symfony-6-3-webapp-1/templates/administration/users_list.html.twig");
+", "administration/users_list.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/administration/users_list.html.twig");
     }
 }

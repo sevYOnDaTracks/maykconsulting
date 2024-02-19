@@ -456,6 +456,6 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 {% endblock %}
 </body>
 </html>
-", "administration/base.html.twig", "/Users/sevyondatracks/Desktop/symfony-6-3-webapp-1/templates/administration/base.html.twig");
+", "administration/base.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/administration/base.html.twig");
     }
 }

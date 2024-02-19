@@ -221,6 +221,6 @@ class __TwigTemplate_8fbea734a8434af149e367857a15de36 extends Template
 
     <a href=\"{{ path('app_dossier_new') }}\">Create new</a>
 {% endblock %}
-", "dossier/index.html.twig", "/Users/sevyondatracks/Desktop/symfony-6-3-webapp-1/templates/dossier/index.html.twig");
+", "dossier/index.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/dossier/index.html.twig");
     }
 }

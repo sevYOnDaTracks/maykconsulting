@@ -161,6 +161,6 @@ class __TwigTemplate_c655c8c2e1f4f299ff15d11d03c96f2d extends Template
   </div>
 </div>
 
-{% endblock %}", "welcome/not_found.html.twig", "/Users/sevyondatracks/Desktop/symfony-6-3-webapp-1/templates/welcome/not_found.html.twig");
+{% endblock %}", "welcome/not_found.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/welcome/not_found.html.twig");
     }
 }

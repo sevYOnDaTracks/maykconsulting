@@ -11,6 +11,12 @@ use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 use Symfony\Component\Mime\Email;
 
+use Mailtrap\Config;
+use Mailtrap\Helper\ResponseHelper;
+use Mailtrap\MailtrapClient;
+use Symfony\Component\Mime\Address;
+use Mailtrap\EmailHeader\CategoryHeader;
+
 class EmailVerifier
 {
     public function __construct(
@@ -20,8 +26,11 @@ class EmailVerifier
     ) {
     }
 
-    public function sendEmailConfirmation(string $verifyEmailRouteName, UserInterface $user, TemplatedEmail $email): void
+    public function sendEmailConfirmation(string $verifyEmailRouteName, UserInterface $user, Email $email): void
     {
+        $apiKey = '64ff6202a62179784d1ffa3dd0546b97';
+        $mailtrap = new MailtrapClient(new Config($apiKey));
+
         $signatureComponents = $this->verifyEmailHelper->generateSignature(
             $verifyEmailRouteName,
             $user->getId(),
@@ -34,9 +43,13 @@ class EmailVerifier
         $context['expiresAtMessageKey'] = $signatureComponents->getExpirationMessageKey();
         $context['expiresAtMessageData'] = $signatureComponents->getExpirationMessageData();
 
+        $email->htmlTemplate('registration/confirmation_email.html.twig');
         $email->context($context);
+        $email->getHeaders()
+            ->add(new CategoryHeader('Registration-code'))
+        ;
 
-        $this->mailer->send($email);
+        $response = $mailtrap->sending()->emails()->send($email);
     }
 
     /**
@@ -44,6 +57,9 @@ class EmailVerifier
      */
     public function handleEmailConfirmation(Request $request, UserInterface $user): void
     {
+        $apiKey = '64ff6202a62179784d1ffa3dd0546b97';
+        $mailtrap = new MailtrapClient(new Config($apiKey));
+
         $this->verifyEmailHelper->validateEmailConfirmation($request->getUri(), $user->getId(), $user->getEmail());
 
         $user->setIsVerified(true);
@@ -52,11 +68,15 @@ class EmailVerifier
         $this->entityManager->flush();
 
         $email = (new Email())
-            ->from('noreply@mayk-consulting.com')
+            ->from('no-reply@maykconsulting.fr')
             ->to($user->getUserIdentifier()) // Utilisez l'e-mail saisi par l'utilisateur
-            ->subject('Activation de votre compte sur Mayk - Consulting')
-            ->html('<p>Votre compte a été activé avec succès ! Bienvenue sur Maykconsulting .</p>');
+            ->subject('Activation de votre compte sur Mayk Consulting')
+            ->html('<p>Votre compte a été activé avec succès ! Bienvenue sur Mayk Consulting .</p>');
 
-        $this->mailer->send($email);
+        $email->getHeaders()
+            ->add(new CategoryHeader('Registration-success'))
+        ;
+
+        $response = $mailtrap->sending()->emails()->send($email);
     }
 }

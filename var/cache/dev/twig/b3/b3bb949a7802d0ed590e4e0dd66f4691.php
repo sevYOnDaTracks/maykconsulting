@@ -242,6 +242,6 @@ class __TwigTemplate_16ac61cad8210422b56aa63f3ac218ad extends Template
 \t\t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t</ul>
 \t\t\t\t\t\t</div>
-\t\t\t\t\t</nav>", "administration/top-bar.html.twig", "/Users/sevyondatracks/Desktop/symfony-6-3-webapp-1/templates/administration/top-bar.html.twig");
+\t\t\t\t\t</nav>", "administration/top-bar.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/administration/top-bar.html.twig");
     }
 }

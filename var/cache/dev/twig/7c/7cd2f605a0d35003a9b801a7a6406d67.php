@@ -163,6 +163,6 @@ class __TwigTemplate_c9d3b93f9d29ebe710132ec22f23564e extends Template
     </ul>
 </div>
 {% endblock %}
-", "administration/admission/index.html.twig", "/Users/sevyondatracks/Desktop/symfony-6-3-webapp-1/templates/administration/admission/index.html.twig");
+", "administration/admission/index.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/administration/admission/index.html.twig");
     }
 }

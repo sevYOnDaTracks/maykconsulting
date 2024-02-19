@@ -148,6 +148,6 @@ class __TwigTemplate_9fec19fe168ef4bdd53e843481125d47 extends Template
 </p>
 
 {% endblock %}
-", "registration/confirmation_email.html.twig", "/Users/sevyondatracks/Desktop/symfony-6-3-webapp-1/templates/registration/confirmation_email.html.twig");
+", "registration/confirmation_email.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/registration/confirmation_email.html.twig");
     }
 }
