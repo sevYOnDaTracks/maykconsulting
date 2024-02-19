@@ -93,10 +93,27 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
         // line 21
         echo "\t\t<div class=\"card-body\">
 \t\t\t<h5 class=\"card-title fw-bold text-sm text-uppercase\">Ravie de vous revoir !</h5>
-\t\t\t<p class=\"card-text\">
+            ";
+        // line 23
+        if ( !twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 23, $this->source); })()), "user", [], "any", false, false, false, 23), "garantFinancier", [], "any", false, false, false, 23)) {
+            // line 24
+            echo "\t\t\t<p class=\"card-text\">
 \t\t\t\tIl me semble que vous n'avez aucune proccedure en cours. Ne vous inquietez pas ! Sur notre platforme vous pouvez effectué votre demande d'admission,d'hébergement ou une demande de garant financier !
 \t\t\t</p>
-\t\t\t<p class=\"card-text\">
+            ";
+        } else {
+            // line 28
+            echo "<p class=\"card-text\">
+\t\t\t\tGéniale tu as une proccédure de garant financier en cours ! <br><br>
+                <a class=\"btn btn-dark \" href=\"";
+            // line 30
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant");
+            echo "\" style=\" background-color: rgb(0, 0, 62);\">Consulter</a>
+\t\t\t</p>
+            ";
+        }
+        // line 33
+        echo "\t\t\t<p class=\"card-text\">
 \t\t\t\t<small class=\"text-body-secondary\"></small>
 \t\t\t</p>
 \t\t</div>
@@ -131,7 +148,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
                 <h5 class=\"card-title text-center\"><strong>Garant financier</strong></h5>
                 <p class=\"card-text\">Pour votre demande de garant , Cliquez ici !</p>
                 <div align=\"center\">  <a href=\"";
-        // line 60
+        // line 67
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant");
         echo "\" class=\"btn btn-dark btn-block\" style=\"width:100%; background-color: rgb(0, 0, 62);\">Consulter</a></div>
             </div>
@@ -170,7 +187,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
      */
     public function getDebugInfo()
     {
-        return array (  135 => 60,  94 => 21,  88 => 16,  80 => 10,  78 => 9,  72 => 6,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  152 => 67,  116 => 33,  110 => 30,  106 => 28,  100 => 24,  98 => 23,  94 => 21,  88 => 16,  80 => 10,  78 => 9,  72 => 6,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -197,9 +214,16 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
 \t\t{# <img src=\" \" class=\"card-img-top\" alt=\"...\"> #}
 \t\t<div class=\"card-body\">
 \t\t\t<h5 class=\"card-title fw-bold text-sm text-uppercase\">Ravie de vous revoir !</h5>
+            {%  if not app.user.garantFinancier %}
 \t\t\t<p class=\"card-text\">
 \t\t\t\tIl me semble que vous n'avez aucune proccedure en cours. Ne vous inquietez pas ! Sur notre platforme vous pouvez effectué votre demande d'admission,d'hébergement ou une demande de garant financier !
 \t\t\t</p>
+            {%  else  %}
+<p class=\"card-text\">
+\t\t\t\tGéniale tu as une proccédure de garant financier en cours ! <br><br>
+                <a class=\"btn btn-dark \" href=\"{{ path('app_garant')}}\" style=\" background-color: rgb(0, 0, 62);\">Consulter</a>
+\t\t\t</p>
+            {% endif %}
 \t\t\t<p class=\"card-text\">
 \t\t\t\t<small class=\"text-body-secondary\"></small>
 \t\t\t</p>

@@ -77,6 +77,7 @@
     <parameter key="avatars_directory">/Users/sevyondatracks/Desktop/maykconsulting/public/uploads/avatars</parameter>
     <parameter key="passport_directory">/Users/sevyondatracks/Desktop/maykconsulting/public/uploads/passport</parameter>
     <parameter key="attestation_directory">/Users/sevyondatracks/Desktop/maykconsulting/public/uploads/attestation</parameter>
+    <parameter key="locale">fr</parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
       <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
       <parameter key="Symfony\Component\Console\Event\ConsoleErrorEvent">console.error</parameter>

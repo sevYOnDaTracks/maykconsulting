@@ -26,30 +26,42 @@
 										</form>
 									</div>
 								</li> #}
-								 {# <li class="nav-item dropdown no-arrow mx-1">
+								  <li class="nav-item dropdown no-arrow mx-1">
 									<div class="nav-item dropdown no-arrow">
 										<a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
-											<span class="badge bg-warning badge-counter">
-												1</span>
-											<i class="fas fa-bell fa-fw"></i>
+											<span class="badge bg-success badge-counter">
+												0</span>
+											<i class="fas fa-solid fa-layer-group"></i>
 										</a>
 										<div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
-											<h6 class="dropdown-header">alerts center</h6>
-											<a class="dropdown-item d-flex align-items-center" href="#">
+											<h6 class="dropdown-header bg-dark border-dark">Mes proccédures en cours</h6>
+{% if app.user.garantFinancier %}
+											<a class="dropdown-item d-flex align-items-center" href="{{path('app_garant')}}">
 												<div class="me-3">
-													<div class="bg-primary icon-circle">
+													<div class="bg-dark icon-circle">
 														<i class="fas fa-file-alt text-white"></i>
 													</div>
 												</div>
 												<div>
-													<span class="small text-gray-500">December 12, 2019</span>
-													<p>A new monthly report is ready to download!</p>
+													<span class="small text-gray-500">{{app.user.garantFinancier.dateDemande |date('l j F Y', 'Europe/Paris', 'FR') }}</span>
+													<p class="">Proccédure de garant financier</p>
 												</div>
-											</a>
-											<a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+												
+									</a>
+									{% else %}		
+									<a class="dropdown-item d-flex align-items-center" href="{{path('app_garant')}}">
+												<div>
+													<span class="small text-gray-500"></span>
+													<p class="">Aucune proccédure en cours</p>
+												</div>
+												
+									</a>
+{% endif %}
+											
 										</div>
+										
 									</div>
-								</li> #}
+								</li> 
 								<li class="nav-item dropdown no-arrow mx-1">
 									<div class="nav-item dropdown no-arrow">
 										<a class="dropdown-toggle nav-link" aria-expanded="false" href="/administration/publicMessage">
