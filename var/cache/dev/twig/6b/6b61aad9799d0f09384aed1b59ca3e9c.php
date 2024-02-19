@@ -126,7 +126,10 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
             <div class=\"card-body\">
                 <h5 class=\"card-title text-center\"><strong>Admission</strong></h5>
                 <p class=\"card-text\">Pour votre demande d'admission , Cliquez ici !</p>
-                <div align=\"center\">  <a href=\"#\" class=\"btn btn-dark btn-block\" style=\"width:100%; background-color: rgb(0, 0, 62);\">Consulter</a></div>
+                <div align=\"center\">  <a href=\"";
+        // line 46
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_admission");
+        echo "\" class=\"btn btn-dark btn-block\" style=\"width:100%; background-color: rgb(0, 0, 62);\">Consulter</a></div>
             </div>
         </div>
     </div>
@@ -187,7 +190,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
      */
     public function getDebugInfo()
     {
-        return array (  152 => 67,  116 => 33,  110 => 30,  106 => 28,  100 => 24,  98 => 23,  94 => 21,  88 => 16,  80 => 10,  78 => 9,  72 => 6,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  155 => 67,  131 => 46,  116 => 33,  110 => 30,  106 => 28,  100 => 24,  98 => 23,  94 => 21,  88 => 16,  80 => 10,  78 => 9,  72 => 6,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -237,7 +240,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
             <div class=\"card-body\">
                 <h5 class=\"card-title text-center\"><strong>Admission</strong></h5>
                 <p class=\"card-text\">Pour votre demande d'admission , Cliquez ici !</p>
-                <div align=\"center\">  <a href=\"#\" class=\"btn btn-dark btn-block\" style=\"width:100%; background-color: rgb(0, 0, 62);\">Consulter</a></div>
+                <div align=\"center\">  <a href=\"{{path('app_admission')}}\" class=\"btn btn-dark btn-block\" style=\"width:100%; background-color: rgb(0, 0, 62);\">Consulter</a></div>
             </div>
         </div>
     </div>

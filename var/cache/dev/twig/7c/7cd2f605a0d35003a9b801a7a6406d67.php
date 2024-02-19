@@ -108,6 +108,8 @@ class __TwigTemplate_c9d3b93f9d29ebe710132ec22f23564e extends Template
         echo "\">templates/admission/index.html.twig</a></code></li>
     </ul>
 </div>
+
+
 </div>
 </div>
 ";
@@ -164,6 +166,8 @@ class __TwigTemplate_c9d3b93f9d29ebe710132ec22f23564e extends Template
         <li>Your template at <code><a href=\"{{ '/Users/sevyondatracks/Desktop/symfony-6-3-webapp-1/templates/admission/index.html.twig'|file_link(0) }}\">templates/admission/index.html.twig</a></code></li>
     </ul>
 </div>
+
+
 </div>
 </div>
 {% endblock %}
