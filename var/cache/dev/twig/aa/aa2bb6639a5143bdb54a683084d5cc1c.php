@@ -64,37 +64,40 @@ class __TwigTemplate_7ea5070f56a99a15331cc1745c3f6a87 extends Template
         echo "\">Acceuil</a>
 \t\t\t\t</li>
 \t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t<a class=\"nav-link\" href=\"#pricing\">Tarif</a>
+\t\t\t\t</li>
+\t\t\t\t<li class=\"nav-item\">
 \t\t\t\t\t<a class=\"nav-link\" href=\"#contact_us\">Contact</a>
 \t\t\t\t</li>
 \t\t\t\t";
-        // line 21
-        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 21, $this->source); })()), "user", [], "any", false, false, false, 21)) {
-            // line 22
+        // line 24
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 24, $this->source); })()), "user", [], "any", false, false, false, 24)) {
+            // line 25
             echo "\t\t\t\t\t<li class=\"nav-item\">
 \t\t\t\t\t\t<a class=\"nav-link\" href=\"/administration\">Administration</a>
 \t\t\t\t\t</li>
 \t\t\t\t";
         }
-        // line 26
+        // line 29
         echo "\t\t\t\t";
-        if ( !twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 26, $this->source); })()), "user", [], "any", false, false, false, 26)) {
-            // line 27
+        if ( !twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 29, $this->source); })()), "user", [], "any", false, false, false, 29)) {
+            // line 30
             echo "
 \t\t\t\t\t\t\t\t\t\t<li class=\"nav-item\">
 \t\t\t\t\t\t<a class=\"nav-link\" href=\"";
-            // line 29
+            // line 32
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
             echo "\">Inscription</a>
 \t\t\t\t\t</li>
 \t\t\t\t";
         }
-        // line 32
+        // line 35
         echo "\t\t\t</ul>
 \t\t\t";
-        // line 33
-        if ( !twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 33, $this->source); })()), "user", [], "any", false, false, false, 33)) {
-            // line 34
-            echo "\t\t\t\t<a class=\"btn btn-primary btn-sm shadow\" href=\"";
+        // line 36
+        if ( !twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 36, $this->source); })()), "user", [], "any", false, false, false, 36)) {
+            // line 37
+            echo "\t\t\t\t<a class=\"btn btn-dark btn-sm shadow\" href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             echo "\" role=\"button\">
 \t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"-32 0 512 512\" width=\"1em\" height=\"1em\" fill=\"currentColor\" class=\"fs-4\">
@@ -104,11 +107,11 @@ class __TwigTemplate_7ea5070f56a99a15331cc1745c3f6a87 extends Template
 
 \t\t\t";
         } else {
-            // line 41
+            // line 44
             echo "\t\t\t\t<a class=\"btn btn-danger btn-sm shadow\" href=\"/logout\">Déconnexion</a>
 \t\t\t";
         }
-        // line 43
+        // line 46
         echo "\t\t</div>
 \t</div>
 </nav>
@@ -142,7 +145,7 @@ class __TwigTemplate_7ea5070f56a99a15331cc1745c3f6a87 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  112 => 43,  108 => 41,  97 => 34,  95 => 33,  92 => 32,  86 => 29,  82 => 27,  79 => 26,  73 => 22,  71 => 21,  63 => 16,  49 => 5,  43 => 1,);
+        return array (  115 => 46,  111 => 44,  100 => 37,  98 => 36,  95 => 35,  89 => 32,  85 => 30,  82 => 29,  76 => 25,  74 => 24,  63 => 16,  49 => 5,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -165,6 +168,9 @@ class __TwigTemplate_7ea5070f56a99a15331cc1745c3f6a87 extends Template
 \t\t\t\t\t<a class=\"nav-link\" href=\"{{ path('welcome') }}\">Acceuil</a>
 \t\t\t\t</li>
 \t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t<a class=\"nav-link\" href=\"#pricing\">Tarif</a>
+\t\t\t\t</li>
+\t\t\t\t<li class=\"nav-item\">
 \t\t\t\t\t<a class=\"nav-link\" href=\"#contact_us\">Contact</a>
 \t\t\t\t</li>
 \t\t\t\t{% if app.user %}
@@ -180,7 +186,7 @@ class __TwigTemplate_7ea5070f56a99a15331cc1745c3f6a87 extends Template
 \t\t\t\t{% endif %}
 \t\t\t</ul>
 \t\t\t{% if not app.user %}
-\t\t\t\t<a class=\"btn btn-primary btn-sm shadow\" href=\"{{ path('app_login') }}\" role=\"button\">
+\t\t\t\t<a class=\"btn btn-dark btn-sm shadow\" href=\"{{ path('app_login') }}\" role=\"button\">
 \t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"-32 0 512 512\" width=\"1em\" height=\"1em\" fill=\"currentColor\" class=\"fs-4\">
 \t\t\t\t\t\t<path d=\"M352 128C352 198.7 294.7 256 224 256C153.3 256 96 198.7 96 128C96 57.31 153.3 0 224 0C294.7 0 352 57.31 352 128zM209.1 359.2L176 304H272L238.9 359.2L272.2 483.1L311.7 321.9C388.9 333.9 448 400.7 448 481.3C448 498.2 434.2 512 417.3 512H30.72C13.75 512 0 498.2 0 481.3C0 400.7 59.09 333.9 136.3 321.9L175.8 483.1L209.1 359.2z\"></path>
 \t\t\t\t\t</svg>

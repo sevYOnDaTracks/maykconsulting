@@ -65,7 +65,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 4
-        echo "\t<h1 align=\"center\">
+        echo "\t<h1 align=\"center\" class=\"text-dark animate__animated animate__fadeInLeft\">
 \t\tHello
 \t\t";
         // line 6
@@ -108,7 +108,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
                 <a class=\"btn btn-dark \" href=\"";
             // line 30
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant");
-            echo "\" style=\" background-color: rgb(0, 0, 62);\">Consulter</a>
+            echo "\">Consulter</a>
 \t\t\t</p>
             ";
         }
@@ -129,7 +129,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
                 <div align=\"center\">  <a href=\"";
         // line 46
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_admission");
-        echo "\" class=\"btn btn-dark btn-block\" style=\"width:100%; background-color: rgb(0, 0, 62);\">Consulter</a></div>
+        echo "\" class=\"btn btn-dark btn-block\" style=\"width:100%;\">Consulter</a></div>
             </div>
         </div>
     </div>
@@ -140,7 +140,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
             <div class=\"card-body\">
                 <h5 class=\"card-title text-center \"><strong>Logement</strong></h5>
                 <p class=\"card-text\">Pour votre demande de logement , Cliquez ici !</p>
-               <div align=\"center\">  <a href=\"#\" class=\"btn btn-dark btn-block\" style=\"width:100%; background-color: rgb(0, 0, 62);\">Consulter</a></div>
+               <div align=\"center\">  <a href=\"#\" class=\"btn btn-dark btn-block\" style=\"width:100%; \">Consulter</a></div>
             </div>
         </div>
     </div>
@@ -153,7 +153,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
                 <div align=\"center\">  <a href=\"";
         // line 67
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant");
-        echo "\" class=\"btn btn-dark btn-block\" style=\"width:100%; background-color: rgb(0, 0, 62);\">Consulter</a></div>
+        echo "\" class=\"btn btn-dark btn-block\" style=\"width:100%; \">Consulter</a></div>
             </div>
         </div>
     </div>
@@ -198,7 +198,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
         return new Source("{% extends 'administration/base.html.twig' %}
 
 {% block body %}
-\t<h1 align=\"center\">
+\t<h1 align=\"center\" class=\"text-dark animate__animated animate__fadeInLeft\">
 \t\tHello
 \t\t{{ app.user.name }}
 \t\t!
@@ -224,7 +224,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
             {%  else  %}
 <p class=\"card-text\">
 \t\t\t\tGéniale tu as une proccédure de garant financier en cours ! <br><br>
-                <a class=\"btn btn-dark \" href=\"{{ path('app_garant')}}\" style=\" background-color: rgb(0, 0, 62);\">Consulter</a>
+                <a class=\"btn btn-dark \" href=\"{{ path('app_garant')}}\">Consulter</a>
 \t\t\t</p>
             {% endif %}
 \t\t\t<p class=\"card-text\">
@@ -240,7 +240,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
             <div class=\"card-body\">
                 <h5 class=\"card-title text-center\"><strong>Admission</strong></h5>
                 <p class=\"card-text\">Pour votre demande d'admission , Cliquez ici !</p>
-                <div align=\"center\">  <a href=\"{{path('app_admission')}}\" class=\"btn btn-dark btn-block\" style=\"width:100%; background-color: rgb(0, 0, 62);\">Consulter</a></div>
+                <div align=\"center\">  <a href=\"{{path('app_admission')}}\" class=\"btn btn-dark btn-block\" style=\"width:100%;\">Consulter</a></div>
             </div>
         </div>
     </div>
@@ -251,7 +251,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
             <div class=\"card-body\">
                 <h5 class=\"card-title text-center \"><strong>Logement</strong></h5>
                 <p class=\"card-text\">Pour votre demande de logement , Cliquez ici !</p>
-               <div align=\"center\">  <a href=\"#\" class=\"btn btn-dark btn-block\" style=\"width:100%; background-color: rgb(0, 0, 62);\">Consulter</a></div>
+               <div align=\"center\">  <a href=\"#\" class=\"btn btn-dark btn-block\" style=\"width:100%; \">Consulter</a></div>
             </div>
         </div>
     </div>
@@ -261,7 +261,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
             <div class=\"card-body\">
                 <h5 class=\"card-title text-center\"><strong>Garant financier</strong></h5>
                 <p class=\"card-text\">Pour votre demande de garant , Cliquez ici !</p>
-                <div align=\"center\">  <a href=\"{{ path('app_garant')}}\" class=\"btn btn-dark btn-block\" style=\"width:100%; background-color: rgb(0, 0, 62);\">Consulter</a></div>
+                <div align=\"center\">  <a href=\"{{ path('app_garant')}}\" class=\"btn btn-dark btn-block\" style=\"width:100%; \">Consulter</a></div>
             </div>
         </div>
     </div>

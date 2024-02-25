@@ -26,6 +26,9 @@ class PublicMessage
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $dateTimeReception = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $senderObject = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class PublicMessage
     public function setDateTimeReception(\DateTimeInterface $dateTimeReception): static
     {
         $this->dateTimeReception = $dateTimeReception;
+
+        return $this;
+    }
+
+    public function getSenderObject(): ?string
+    {
+        return $this->senderObject;
+    }
+
+    public function setSenderObject(?string $senderObject): static
+    {
+        $this->senderObject = $senderObject;
 
         return $this;
     }

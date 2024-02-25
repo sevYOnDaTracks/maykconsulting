@@ -68,7 +68,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
         echo "\t<div class=\"d-sm-flex justify-content-between align-items-center mb-4\">
 \t\t<h3 class=\" mb-0 text-uppercase text-dark fw-bold animate__animated animate__fadeInLeft\">Mes dossiers : Garant financier
 \t\t</h3>
-\t\t<a class=\"btn btn-primary btn-sm d-none d-sm-inline-block animate__animated animate__fadeInRight\" role=\"button\" href=\"";
+\t\t<a class=\"btn btn-dark btn-sm d-none d-sm-inline-block animate__animated animate__fadeInRight\" role=\"button\" href=\"";
         // line 8
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("export_data");
         echo "\">
@@ -1353,7 +1353,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t<div class=\"d-sm-flex justify-content-between align-items-center mb-4\">
 \t\t<h3 class=\" mb-0 text-uppercase text-dark fw-bold animate__animated animate__fadeInLeft\">Mes dossiers : Garant financier
 \t\t</h3>
-\t\t<a class=\"btn btn-primary btn-sm d-none d-sm-inline-block animate__animated animate__fadeInRight\" role=\"button\" href=\"{{ path('export_data') }}\">
+\t\t<a class=\"btn btn-dark btn-sm d-none d-sm-inline-block animate__animated animate__fadeInRight\" role=\"button\" href=\"{{ path('export_data') }}\">
 \t\t\t<i class=\"fas fa-download fa-sm text-white-50\"></i>&nbsp;Generer un rapport</a>
 \t</div>
 

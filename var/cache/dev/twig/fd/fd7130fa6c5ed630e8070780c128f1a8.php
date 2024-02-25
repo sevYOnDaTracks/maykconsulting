@@ -113,7 +113,7 @@ class __TwigTemplate_64747d168e1b089173db258bea434527 extends Template
 \t\t\t\t\t\t\t\t<h5 class=\"mb-0\">Tout commence par un début !</h5>
 \t\t\t\t\t\t\t\t<p class=\"text-muted mt-2\">Voici le formulaire d'inscription ...</p>
 \t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"bs-icon-xl bs-icon-circle bs-icon-primary shadow bs-icon my-4\">
+\t\t\t\t\t\t\t<div class=\"bs-icon-xl bs-icon-circle bs-icon-primary shadow bg-dark bs-icon my-4\">
 \t\t\t\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1em\" height=\"1em\" fill=\"currentColor\" viewbox=\"0 0 16 16\" class=\"bi bi-person\">
 \t\t\t\t\t\t\t\t\t<path d=\"M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"></path>
 \t\t\t\t\t\t\t\t</svg>
@@ -124,8 +124,8 @@ class __TwigTemplate_64747d168e1b089173db258bea434527 extends Template
         echo "\">
 \t\t\t\t\t\t\t<div class=\"mb-3\">
 
-\t\t\t\t\t\t\t\t\t\t\t<select class=\"form-select text-dark\" placeholder=\"test\" name=\"schoolLevel\">
-\t\t\t\t\t\t\t\t\t\t\t\t<option selected>Niveau d'étude actuel</option>
+\t\t\t\t\t\t\t\t\t\t\t<select class=\"form-select text-dark\" placeholder=\"test\" name=\"schoolLevel\" required>
+\t\t\t\t\t\t\t\t\t\t\t\t<option selected >Niveau d'étude actuel</option>
 \t\t\t\t\t\t\t\t\t\t\t\t<option value=\"BAC + 1\">BAC +1</option>
 \t\t\t\t\t\t\t\t\t\t\t\t<option value=\"BAC + 2\">BAC +2</option>
 \t\t\t\t\t\t\t\t\t\t\t\t<option value=\"BAC + 3\">BAC +3</option>
@@ -147,7 +147,7 @@ class __TwigTemplate_64747d168e1b089173db258bea434527 extends Template
 \t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"input-username\" name=\"lastName\" placeholder=\"Prenoms\" required>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t <div class=\"mb-3\">
-\t\t\t\t\t\t\t\t\t<input type=\"date\" class=\"form-control\" id=\"input-username\" name=\"dateOfBirth\" placeholder=\"\" required>
+\t\t\t\t\t\t\t\t\t<input type=\"date\" class=\"form-control\" id=\"input-username\" name=\"dateOfBirth\" placeholder=\"Date de naissance\" required>
 \t\t\t\t\t\t\t\t</div> 
 \t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"input-username\" name=\"phone\" placeholder=\"Télephone\" required>
@@ -157,7 +157,7 @@ class __TwigTemplate_64747d168e1b089173db258bea434527 extends Template
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t
 \t\t\t\t\t\t\t\t<div class=\"mb-3\">
-\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary shadow d-block w-100\" type=\"submit\">Je m'inscris</button>
+\t\t\t\t\t\t\t\t\t<button class=\"btn btn-dark shadow d-block w-100\" type=\"submit\">Je m'inscris</button>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<p class=\"text-muted\">Avez-vous déja un compte ?&nbsp;<a href=\"";
         // line 63
@@ -229,7 +229,7 @@ class __TwigTemplate_64747d168e1b089173db258bea434527 extends Template
 \t\t\t\t\t\t\t\t<h5 class=\"mb-0\">Tout commence par un début !</h5>
 \t\t\t\t\t\t\t\t<p class=\"text-muted mt-2\">Voici le formulaire d'inscription ...</p>
 \t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"bs-icon-xl bs-icon-circle bs-icon-primary shadow bs-icon my-4\">
+\t\t\t\t\t\t\t<div class=\"bs-icon-xl bs-icon-circle bs-icon-primary shadow bg-dark bs-icon my-4\">
 \t\t\t\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1em\" height=\"1em\" fill=\"currentColor\" viewbox=\"0 0 16 16\" class=\"bi bi-person\">
 \t\t\t\t\t\t\t\t\t<path d=\"M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"></path>
 \t\t\t\t\t\t\t\t</svg>
@@ -237,8 +237,8 @@ class __TwigTemplate_64747d168e1b089173db258bea434527 extends Template
 \t\t\t\t\t\t\t<form method=\"post\" action=\"{{ path('app_register') }}\">
 \t\t\t\t\t\t\t<div class=\"mb-3\">
 
-\t\t\t\t\t\t\t\t\t\t\t<select class=\"form-select text-dark\" placeholder=\"test\" name=\"schoolLevel\">
-\t\t\t\t\t\t\t\t\t\t\t\t<option selected>Niveau d'étude actuel</option>
+\t\t\t\t\t\t\t\t\t\t\t<select class=\"form-select text-dark\" placeholder=\"test\" name=\"schoolLevel\" required>
+\t\t\t\t\t\t\t\t\t\t\t\t<option selected >Niveau d'étude actuel</option>
 \t\t\t\t\t\t\t\t\t\t\t\t<option value=\"BAC + 1\">BAC +1</option>
 \t\t\t\t\t\t\t\t\t\t\t\t<option value=\"BAC + 2\">BAC +2</option>
 \t\t\t\t\t\t\t\t\t\t\t\t<option value=\"BAC + 3\">BAC +3</option>
@@ -259,7 +259,7 @@ class __TwigTemplate_64747d168e1b089173db258bea434527 extends Template
 \t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"input-username\" name=\"lastName\" placeholder=\"Prenoms\" required>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t <div class=\"mb-3\">
-\t\t\t\t\t\t\t\t\t<input type=\"date\" class=\"form-control\" id=\"input-username\" name=\"dateOfBirth\" placeholder=\"\" required>
+\t\t\t\t\t\t\t\t\t<input type=\"date\" class=\"form-control\" id=\"input-username\" name=\"dateOfBirth\" placeholder=\"Date de naissance\" required>
 \t\t\t\t\t\t\t\t</div> 
 \t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"input-username\" name=\"phone\" placeholder=\"Télephone\" required>
@@ -269,7 +269,7 @@ class __TwigTemplate_64747d168e1b089173db258bea434527 extends Template
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t
 \t\t\t\t\t\t\t\t<div class=\"mb-3\">
-\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary shadow d-block w-100\" type=\"submit\">Je m'inscris</button>
+\t\t\t\t\t\t\t\t\t<button class=\"btn btn-dark shadow d-block w-100\" type=\"submit\">Je m'inscris</button>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<p class=\"text-muted\">Avez-vous déja un compte ?&nbsp;<a href=\"{{path('app_login')}}\">Connectez-vous </a>
 \t\t\t\t\t\t\t\t</p>

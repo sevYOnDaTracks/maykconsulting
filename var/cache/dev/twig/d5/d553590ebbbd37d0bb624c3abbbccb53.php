@@ -147,7 +147,7 @@ class __TwigTemplate_312a96ced725096e4cc61d857cae0ec2 extends Template
 \t\t\t\t\t\t\t\t<h5 class=\"mb-0\">Welcome Back !</h5>
 \t\t\t\t\t\t\t\t<p class=\"text-muted mt-2\">Ravie de vous revoir !</p>
 \t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"bs-icon-xl bs-icon-circle bs-icon-primary shadow bs-icon my-4\">
+\t\t\t\t\t\t\t<div class=\"bs-icon-xl bs-icon-circle bs-icon-primary bg-dark shadow bs-icon my-4\">
 \t\t\t\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1em\" height=\"1em\" fill=\"currentColor\" viewbox=\"0 0 16 16\" class=\"bi bi-person\">
 \t\t\t\t\t\t\t\t\t<path d=\"M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"></path>
 \t\t\t\t\t\t\t\t</svg>
@@ -175,7 +175,7 @@ class __TwigTemplate_312a96ced725096e4cc61d857cae0ec2 extends Template
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div class=\"form-check form-check-primary font-size-16 py-1\">
 \t\t\t\t\t\t\t\t\t<div align=\"center\">
-\t\t\t\t\t\t\t\t\t\t<a href=\"auth-resetpassword-basic\" class=\"text-muted text-decoration-underline font-size-14\">Forgot your password?</a>
+\t\t\t\t\t\t\t\t\t\t<a href=\"auth-resetpassword-basic\" class=\"text-muted text-decoration-underline font-size-14\">Mot de passe oublié ?</a>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<input type=\"hidden\" name=\"_csrf_token\" value=\"";
@@ -183,15 +183,15 @@ class __TwigTemplate_312a96ced725096e4cc61d857cae0ec2 extends Template
         echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken("authenticate"), "html", null, true);
         echo "\">
 \t\t\t\t\t\t\t\t<div class=\"mt-3\">
-\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary w-100\" type=\"submit\">Log In</button>
+\t\t\t\t\t\t\t\t\t<button class=\"btn btn-dark w-100\" type=\"submit\">Connexion</button>
 \t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t\t<div class=\"mt-4 pt-3 text-center\">
-\t\t\t\t\t\t\t\t\t<p class=\"text-muted mb-0\">Don't have an account?
+\t\t\t\t\t\t\t\t\t<p class=\"text-muted mb-0\">Je n'ai pas de compte ?
 \t\t\t\t\t\t\t\t\t\t<a class=\"fw-semibold text-decoration-underline\" href=\"";
         // line 75
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
-        echo "\">Signup Now</a>
+        echo "\">Je m'inscris</a>
 \t\t\t\t\t\t\t\t\t</p>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</form>
@@ -279,7 +279,7 @@ class __TwigTemplate_312a96ced725096e4cc61d857cae0ec2 extends Template
 \t\t\t\t\t\t\t\t<h5 class=\"mb-0\">Welcome Back !</h5>
 \t\t\t\t\t\t\t\t<p class=\"text-muted mt-2\">Ravie de vous revoir !</p>
 \t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div class=\"bs-icon-xl bs-icon-circle bs-icon-primary shadow bs-icon my-4\">
+\t\t\t\t\t\t\t<div class=\"bs-icon-xl bs-icon-circle bs-icon-primary bg-dark shadow bs-icon my-4\">
 \t\t\t\t\t\t\t\t<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1em\" height=\"1em\" fill=\"currentColor\" viewbox=\"0 0 16 16\" class=\"bi bi-person\">
 \t\t\t\t\t\t\t\t\t<path d=\"M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"></path>
 \t\t\t\t\t\t\t\t</svg>
@@ -301,17 +301,17 @@ class __TwigTemplate_312a96ced725096e4cc61d857cae0ec2 extends Template
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div class=\"form-check form-check-primary font-size-16 py-1\">
 \t\t\t\t\t\t\t\t\t<div align=\"center\">
-\t\t\t\t\t\t\t\t\t\t<a href=\"auth-resetpassword-basic\" class=\"text-muted text-decoration-underline font-size-14\">Forgot your password?</a>
+\t\t\t\t\t\t\t\t\t\t<a href=\"auth-resetpassword-basic\" class=\"text-muted text-decoration-underline font-size-14\">Mot de passe oublié ?</a>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<input type=\"hidden\" name=\"_csrf_token\" value=\"{{ csrf_token('authenticate') }}\">
 \t\t\t\t\t\t\t\t<div class=\"mt-3\">
-\t\t\t\t\t\t\t\t\t<button class=\"btn btn-primary w-100\" type=\"submit\">Log In</button>
+\t\t\t\t\t\t\t\t\t<button class=\"btn btn-dark w-100\" type=\"submit\">Connexion</button>
 \t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t\t<div class=\"mt-4 pt-3 text-center\">
-\t\t\t\t\t\t\t\t\t<p class=\"text-muted mb-0\">Don't have an account?
-\t\t\t\t\t\t\t\t\t\t<a class=\"fw-semibold text-decoration-underline\" href=\"{{ path('app_register') }}\">Signup Now</a>
+\t\t\t\t\t\t\t\t\t<p class=\"text-muted mb-0\">Je n'ai pas de compte ?
+\t\t\t\t\t\t\t\t\t\t<a class=\"fw-semibold text-decoration-underline\" href=\"{{ path('app_register') }}\">Je m'inscris</a>
 \t\t\t\t\t\t\t\t\t</p>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t</form>

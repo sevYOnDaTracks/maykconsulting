@@ -66,7 +66,7 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
         echo "</head>
 <body id=\"page-top\" class=\"\">
 <div id=\"wrapper\" class=\"sidebar-toggled\">
-    <nav class=\"navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 \" id=\"sidebar\" style=\"background: rgb(0, 0, 62);\">
+    <nav class=\"navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 \" id=\"sidebar\" style=\"background: black;\">
         <div class=\"container-fluid d-flex flex-column p-0\">
             <a class=\"navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0\" href=\"/administration\">
                 <div class=\"sidebar-brand-icon rotate-n-15\">
@@ -356,7 +356,7 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 </head>
 <body id=\"page-top\" class=\"\">
 <div id=\"wrapper\" class=\"sidebar-toggled\">
-    <nav class=\"navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 \" id=\"sidebar\" style=\"background: rgb(0, 0, 62);\">
+    <nav class=\"navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 \" id=\"sidebar\" style=\"background: black;\">
         <div class=\"container-fluid d-flex flex-column p-0\">
             <a class=\"navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0\" href=\"/administration\">
                 <div class=\"sidebar-brand-icon rotate-n-15\">

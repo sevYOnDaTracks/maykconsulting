@@ -74,10 +74,16 @@
 						{{ message.senderMessage }}
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer </button>
+						<button type="button" class="btn btn-primary" data-bs-target="#exampleModalToggle{{ message.id }}" data-bs-toggle="modal"><i class="fas fa-reply"></i> Repondre</button>
+
+
 					</div>
+
 				</div>
+
 			</div>
+			
 		</div>
 
 	</div>
@@ -97,7 +103,7 @@
 												</div>
 												<div class="modal-body text-dark">
 													Souhaitez-vous réellement supprimer le message de
-													{{message.senderName}}
+													{{message.senderEmail}} 
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
@@ -109,8 +115,41 @@
 											</div>
 										</div>
 									</div>
+									<div class="modal fade" id="exampleModalToggle{{ message.id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel{{ message.id }}" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Repondre à : {{ message.senderEmail}} </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+	  <div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email :</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" value="{{message.SenderEmail}}" required>
+</div>
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Objet :</label>
+  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" required>
+</div>
+
+<div class="mb-3">
+ <label for="exampleFormControlInput1" class="form-label">Message :</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+</div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" data-bs-target="#staticBackdrop{{message.id}}" data-bs-toggle="modal"><i class="fas fa-arrow-left"></i></button>
+		<button class="btn btn-primary" type="submit"><i class="fas fa-envelope"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
 								</td>
+								
 							</tr>
+
+							
 						{% endfor %}
 					</tbody>
 				</table>
@@ -118,6 +157,8 @@
 			<br>
 		</div>
 		</div>
+
+		
 		</div>
 		<!-- Button trigger modal -->
 

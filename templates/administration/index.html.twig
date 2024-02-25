@@ -1,7 +1,7 @@
 {% extends 'administration/base.html.twig' %}
 
 {% block body %}
-	<h1 align="center">
+	<h1 align="center" class="text-dark animate__animated animate__fadeInLeft">
 		Hello
 		{{ app.user.name }}
 		!
@@ -27,7 +27,7 @@
             {%  else  %}
 <p class="card-text">
 				Géniale tu as une proccédure de garant financier en cours ! <br><br>
-                <a class="btn btn-dark " href="{{ path('app_garant')}}" style=" background-color: rgb(0, 0, 62);">Consulter</a>
+                <a class="btn btn-dark " href="{{ path('app_garant')}}">Consulter</a>
 			</p>
             {% endif %}
 			<p class="card-text">
@@ -43,7 +43,7 @@
             <div class="card-body">
                 <h5 class="card-title text-center"><strong>Admission</strong></h5>
                 <p class="card-text">Pour votre demande d'admission , Cliquez ici !</p>
-                <div align="center">  <a href="{{path('app_admission')}}" class="btn btn-dark btn-block" style="width:100%; background-color: rgb(0, 0, 62);">Consulter</a></div>
+                <div align="center">  <a href="{{path('app_admission')}}" class="btn btn-dark btn-block" style="width:100%;">Consulter</a></div>
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
             <div class="card-body">
                 <h5 class="card-title text-center "><strong>Logement</strong></h5>
                 <p class="card-text">Pour votre demande de logement , Cliquez ici !</p>
-               <div align="center">  <a href="#" class="btn btn-dark btn-block" style="width:100%; background-color: rgb(0, 0, 62);">Consulter</a></div>
+               <div align="center">  <a href="#" class="btn btn-dark btn-block" style="width:100%; ">Consulter</a></div>
             </div>
         </div>
     </div>
@@ -64,7 +64,7 @@
             <div class="card-body">
                 <h5 class="card-title text-center"><strong>Garant financier</strong></h5>
                 <p class="card-text">Pour votre demande de garant , Cliquez ici !</p>
-                <div align="center">  <a href="{{ path('app_garant')}}" class="btn btn-dark btn-block" style="width:100%; background-color: rgb(0, 0, 62);">Consulter</a></div>
+                <div align="center">  <a href="{{ path('app_garant')}}" class="btn btn-dark btn-block" style="width:100%; ">Consulter</a></div>
             </div>
         </div>
     </div>

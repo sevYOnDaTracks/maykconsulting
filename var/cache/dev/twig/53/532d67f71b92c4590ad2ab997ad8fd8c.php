@@ -268,7 +268,7 @@ class __TwigTemplate_c041c0cda6947164b065c73e86405aa4 extends Template
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<br>
 \t\t\t\t\t\t\t\t<div class=\"mb-3\">
-\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-dark\" style=\"width:100%; background-color: rgb(0, 0, 62);\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">
+\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-dark\" style=\"width:100%;\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">
 \t\t\t\t\t\t\t\t\t\tEnregistrer <i class=\"fas fa-save\"></i>
 \t\t\t\t\t\t\t\t\t</button>
 \t\t\t\t\t\t\t\t\t<div class=\"modal fade  \" id=\"exampleModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
@@ -481,7 +481,7 @@ class __TwigTemplate_c041c0cda6947164b065c73e86405aa4 extends Template
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<br>
 \t\t\t\t\t\t\t\t<div class=\"mb-3\">
-\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-dark\" style=\"width:100%; background-color: rgb(0, 0, 62);\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">
+\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-dark\" style=\"width:100%;\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">
 \t\t\t\t\t\t\t\t\t\tEnregistrer <i class=\"fas fa-save\"></i>
 \t\t\t\t\t\t\t\t\t</button>
 \t\t\t\t\t\t\t\t\t<div class=\"modal fade  \" id=\"exampleModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
