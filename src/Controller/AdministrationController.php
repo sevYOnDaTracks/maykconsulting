@@ -12,6 +12,13 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use DateTime;
+use Mailtrap\Helper\ResponseHelper;
+use Mailtrap\MailtrapClient;
+use Symfony\Component\Mime\Address;
+use Mailtrap\EmailHeader\CategoryHeader;
+use Symfony\Component\Mime\Email;
+use Symfony\Component\Mailer\MailerInterface;
+use Mailtrap\Config;
 
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\File\File;
@@ -170,6 +177,40 @@ class AdministrationController extends AbstractController
 
         ]);
     }
+
+    #[Route('/publicMessage/envoyezMessage', name: 'app_public_message_envoyez_mail', methods: ['POST'])]
+    public function envoyezMailPublicMessage(Request $request , MailerInterface $mailer ): Response
+    {
+
+        $emailClient = $request->request->get('email');
+        $objetClient = $request->request->get('object');
+        $messageclient = $request->request->get('message');
+
+        if ($request->isMethod('POST')) {
+
+        $email = (new Email())
+                ->from('noreply@maykconsulting.fr',)
+                ->to($emailClient) // Utilisez l'e-mail saisi par l'utilisateur
+                ->subject($objetClient)
+                ->html('<p>' .  $messageclient . '</p>
+                <br>
+                Mayk - Consulting Services');
+        
+                $apiKey = '64ff6202a62179784d1ffa3dd0546b97';
+                $mailtrap = new MailtrapClient(new Config($apiKey));
+                $email->getHeaders()
+                    ->add(new CategoryHeader('Garant - Management'))
+                ;
+    
+                $mailtrap->sending()->emails()->send($email);
+
+
+        }
+
+        $this->addFlash('success-mail-send', 'Votre mail a été envoyé avec success');
+        return $this->redirectToRoute('public_message_list');
+    }
+
 
 
     #[Route('/deleteMessage/{id}', name: 'app_message_delete', methods: ['POST'])]

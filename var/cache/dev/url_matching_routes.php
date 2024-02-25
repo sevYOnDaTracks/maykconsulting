@@ -19,6 +19,7 @@ return [
         '/administration/user_list' => [[['_route' => 'user_list', '_controller' => 'App\\Controller\\AdministrationController::find_all_user'], null, ['GET' => 0], null, false, false, null]],
         '/administration/delete_avatar' => [[['_route' => 'app_delete_avatar', '_controller' => 'App\\Controller\\AdministrationController::deleteAvatar'], null, ['POST' => 0], null, false, false, null]],
         '/administration/publicMessage' => [[['_route' => 'public_message_list', '_controller' => 'App\\Controller\\AdministrationController::find_all_messagePublic'], null, ['GET' => 0], null, false, false, null]],
+        '/administration/publicMessage/envoyezMessage' => [[['_route' => 'app_public_message_envoyez_mail', '_controller' => 'App\\Controller\\AdministrationController::envoyezMailPublicMessage'], null, ['POST' => 0], null, false, false, null]],
         '/admission' => [[['_route' => 'app_admission', '_controller' => 'App\\Controller\\AdmissionController::index'], null, null, null, false, false, null]],
         '/dossier/all' => [[['_route' => 'app_dossier_index', '_controller' => 'App\\Controller\\DossierController::index'], null, ['GET' => 0], null, false, false, null]],
         '/dossier/new' => [[['_route' => 'app_dossier_new', '_controller' => 'App\\Controller\\DossierController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],

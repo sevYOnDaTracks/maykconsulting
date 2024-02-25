@@ -91,7 +91,7 @@ class __TwigTemplate_b03ab34f9837ea4371730078a754d139 extends Template
 <br>
 
 
-    <div class=\"container py-5\">
+    <div class=\"container py-5 animate__animated animate__fadeInLeft\">
         <div class=\"row py-5\" style=\"margin-top: -26px;\">
             <div class=\"col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-end mb-4\">
                 <div style=\"max-width: 450px;\">
@@ -140,11 +140,12 @@ class __TwigTemplate_b03ab34f9837ea4371730078a754d139 extends Template
         // line 39
         $this->loadTemplate("welcome/pricing.html.twig", "welcome/index.html.twig", 39)->display($context);
         // line 40
-        echo "    <br>
+        echo "     
+    <br>
     ";
-        // line 41
-        $this->loadTemplate("welcome/contact_us.html.twig", "welcome/index.html.twig", 41)->display($context);
         // line 42
+        $this->loadTemplate("welcome/contact_us.html.twig", "welcome/index.html.twig", 42)->display($context);
+        // line 43
         echo "
     <div class=\"container py-2 py-lg-5\" style=\"margin-top: -32px;\">
         <hr>
@@ -199,7 +200,7 @@ class __TwigTemplate_b03ab34f9837ea4371730078a754d139 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  148 => 42,  146 => 41,  143 => 40,  141 => 39,  130 => 30,  124 => 28,  122 => 27,  116 => 23,  108 => 21,  106 => 20,  103 => 19,  90 => 7,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  149 => 43,  147 => 42,  143 => 40,  141 => 39,  130 => 30,  124 => 28,  122 => 27,  116 => 23,  108 => 21,  106 => 20,  103 => 19,  90 => 7,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -214,7 +215,7 @@ class __TwigTemplate_b03ab34f9837ea4371730078a754d139 extends Template
 <br>
 
 
-    <div class=\"container py-5\">
+    <div class=\"container py-5 animate__animated animate__fadeInLeft\">
         <div class=\"row py-5\" style=\"margin-top: -26px;\">
             <div class=\"col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-end mb-4\">
                 <div style=\"max-width: 450px;\">
@@ -243,6 +244,7 @@ class __TwigTemplate_b03ab34f9837ea4371730078a754d139 extends Template
     </div>
     <br>
      {% include \"welcome/pricing.html.twig\" %}
+     
     <br>
     {% include \"welcome/contact_us.html.twig\" %}
 

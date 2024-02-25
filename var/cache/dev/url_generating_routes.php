@@ -22,6 +22,7 @@ return [
     'app_user_delete' => [['id'], ['_controller' => 'App\\Controller\\AdministrationController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/administration/delete_user']], [], [], []],
     'app_delete_avatar' => [[], ['_controller' => 'App\\Controller\\AdministrationController::deleteAvatar'], [], [['text', '/administration/delete_avatar']], [], [], []],
     'public_message_list' => [[], ['_controller' => 'App\\Controller\\AdministrationController::find_all_messagePublic'], [], [['text', '/administration/publicMessage']], [], [], []],
+    'app_public_message_envoyez_mail' => [[], ['_controller' => 'App\\Controller\\AdministrationController::envoyezMailPublicMessage'], [], [['text', '/administration/publicMessage/envoyezMessage']], [], [], []],
     'app_message_delete' => [['id'], ['_controller' => 'App\\Controller\\AdministrationController::deleteMessage'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/administration/deleteMessage']], [], [], []],
     'user_update' => [['id'], ['_controller' => 'App\\Controller\\AdministrationController::updateUser'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/administration/user/update']], [], [], []],
     'app_admission' => [[], ['_controller' => 'App\\Controller\\AdmissionController::index'], [], [['text', '/admission']], [], [], []],

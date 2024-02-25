@@ -30,12 +30,15 @@ class WelcomeController extends AbstractController
             $name = $request->request->get('name');
             $email_client = $request->request->get('email');
             $messageContent = $request->request->get('message');
+            $object = $request->request->get('object');
 
             // Création d'une nouvelle instance de l'entité PublicMessage
             $message = new PublicMessage();
             $message->setSenderName($name);
             $message->setSenderEmail($email_client);
             $message->setSenderMessage($messageContent);
+            $message->setSenderObject($object);
+
             $message->setDateTimeReception(new \DateTime());
 
             // Enregistrement de l'entité dans la base de données

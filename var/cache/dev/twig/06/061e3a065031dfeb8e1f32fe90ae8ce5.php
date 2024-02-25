@@ -63,17 +63,17 @@ class __TwigTemplate_f07198bdec947c5d20ac963f11197a2d extends Template
 \t\t";
         // line 12
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 17
+        // line 18
         echo "
 \t\t";
-        // line 18
+        // line 19
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 23
+        // line 24
         echo "\t</head>
 \t<body style=\"/*background: url(&quot;design.jpg&quot;);*/background-position: 0 -60px;\"> ";
-        // line 24
-        $this->displayBlock('body', $context, $blocks);
         // line 25
+        $this->displayBlock('body', $context, $blocks);
+        // line 26
         echo "\t\t</body>
 \t</html>
 </body></html>
@@ -126,6 +126,7 @@ class __TwigTemplate_f07198bdec947c5d20ac963f11197a2d extends Template
         // line 15
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/fonts/fontawesome-all.min.css"), "html", null, true);
         echo "\">
+\t\t\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css\">
 \t\t";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -135,7 +136,7 @@ class __TwigTemplate_f07198bdec947c5d20ac963f11197a2d extends Template
 
     }
 
-    // line 18
+    // line 19
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -145,16 +146,16 @@ class __TwigTemplate_f07198bdec947c5d20ac963f11197a2d extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 19
+        // line 20
         echo "\t\t\t<script src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/jquery.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 20
+        // line 21
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/bootstrap/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 21
+        // line 22
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/js/bold-and-bright.js"), "html", null, true);
         echo "\"></script>
 \t\t";
@@ -166,7 +167,7 @@ class __TwigTemplate_f07198bdec947c5d20ac963f11197a2d extends Template
 
     }
 
-    // line 24
+    // line 25
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -205,7 +206,7 @@ class __TwigTemplate_f07198bdec947c5d20ac963f11197a2d extends Template
      */
     public function getDebugInfo()
     {
-        return array (  170 => 24,  158 => 21,  154 => 20,  149 => 19,  139 => 18,  127 => 15,  123 => 14,  120 => 13,  110 => 12,  90 => 7,  77 => 25,  75 => 24,  72 => 23,  70 => 18,  67 => 17,  65 => 12,  60 => 10,  57 => 9,  55 => 7,  47 => 1,);
+        return array (  171 => 25,  159 => 22,  155 => 21,  150 => 20,  140 => 19,  127 => 15,  123 => 14,  120 => 13,  110 => 12,  90 => 7,  77 => 26,  75 => 25,  72 => 24,  70 => 19,  67 => 18,  65 => 12,  60 => 10,  57 => 9,  55 => 7,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -225,6 +226,7 @@ class __TwigTemplate_f07198bdec947c5d20ac963f11197a2d extends Template
 \t\t\t<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap\">
 \t\t\t<link rel=\"stylesheet\" href=\"{{ asset('assets/bootstrap/css/bootstrap.min.css') }}\">
 \t\t\t<link rel=\"stylesheet\" href=\"{{ asset('assets/fonts/fontawesome-all.min.css') }}\">
+\t\t\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css\">
 \t\t{% endblock %}
 
 \t\t{% block javascripts %}

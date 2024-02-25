@@ -61,9 +61,9 @@ class __TwigTemplate_a11900627a150d4bcd54995ab710dcab extends Template
 
         // line 2
         echo "\t<section id=\"contact_us\">
-\t\t<div class=\"container py-5\">
+\t\t<div class=\"container animate__animated animate__fadeInLeft py-5\">
 \t\t\t<div
-\t\t\t\tclass=\"row mb-5\">
+\t\t\t\tclass=\"row mb-5 \">
 \t\t\t\t";
         // line 7
         echo "\t\t\t\t";
@@ -112,7 +112,7 @@ class __TwigTemplate_a11900627a150d4bcd54995ab710dcab extends Template
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t<div class=\"px-2\">
 \t\t\t\t\t\t\t\t<h6 class=\"fw-bold mb-0\">Téléphone</h6>
-\t\t\t\t\t\t\t\t<p class=\"text-muted mb-0\">+33 7 62 68 12 47</p>
+\t\t\t\t\t\t\t\t<p class=\"text-muted mb-0\">+33 7 62 68 12 47 (également par Whatsapp)</p>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div class=\"d-flex align-items-center p-3\">
@@ -161,9 +161,9 @@ class __TwigTemplate_a11900627a150d4bcd54995ab710dcab extends Template
     {
         return new Source("{% block body %}
 \t<section id=\"contact_us\">
-\t\t<div class=\"container py-5\">
+\t\t<div class=\"container animate__animated animate__fadeInLeft py-5\">
 \t\t\t<div
-\t\t\t\tclass=\"row mb-5\">
+\t\t\t\tclass=\"row mb-5 \">
 \t\t\t\t{# Afficher le message de succès s'il existe #}
 \t\t\t\t{% if app.flashes('success') is not empty %}
                         <div class=\"alert alert-success\">
@@ -204,7 +204,7 @@ class __TwigTemplate_a11900627a150d4bcd54995ab710dcab extends Template
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t<div class=\"px-2\">
 \t\t\t\t\t\t\t\t<h6 class=\"fw-bold mb-0\">Téléphone</h6>
-\t\t\t\t\t\t\t\t<p class=\"text-muted mb-0\">+33 7 62 68 12 47</p>
+\t\t\t\t\t\t\t\t<p class=\"text-muted mb-0\">+33 7 62 68 12 47 (également par Whatsapp)</p>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div class=\"d-flex align-items-center p-3\">

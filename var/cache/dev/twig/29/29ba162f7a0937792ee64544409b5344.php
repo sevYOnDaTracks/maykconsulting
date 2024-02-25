@@ -90,6 +90,21 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
 \t\t\t";
         }
         // line 21
+        echo "\t\t\t";
+        if ( !twig_test_empty(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 21, $this->source); })()), "flashes", ["success-mail-send"], "method", false, false, false, 21))) {
+            // line 22
+            echo "\t\t\t\t<div class=\"alert alert-success\">
+\t\t\t\t\t";
+            // line 23
+            echo twig_escape_filter($this->env, twig_first($this->env, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 23, $this->source); })()), "flashes", ["success-mail-send"], "method", false, false, false, 23)), "html", null, true);
+            echo "
+\t\t\t\t\t<div align=\"center\">
+\t\t\t\t\t\tVotre mail a été envoyé avec success !
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t";
+        }
+        // line 29
         echo "\t\t\t<div class=\"row\">
 \t\t\t\t<div class=\"col-md-6 text-nowrap\">
 \t\t\t\t\t<div id=\"dataTable_length\" class=\"dataTables_length\" aria-controls=\"dataTable\">
@@ -116,75 +131,75 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
 \t\t\t\t\t</thead>
 \t\t\t\t\t<tbody>
                     ";
-        // line 46
-        if ( !(isset($context["publicMessage_list"]) || array_key_exists("publicMessage_list", $context) ? $context["publicMessage_list"] : (function () { throw new RuntimeError('Variable "publicMessage_list" does not exist.', 46, $this->source); })())) {
-            // line 47
+        // line 54
+        if ( !(isset($context["publicMessage_list"]) || array_key_exists("publicMessage_list", $context) ? $context["publicMessage_list"] : (function () { throw new RuntimeError('Variable "publicMessage_list" does not exist.', 54, $this->source); })())) {
+            // line 55
             echo "            <tr>
                 <td colspan=\"4\">Aucun Message actuellement !</td>
             </tr>
                         ";
         }
-        // line 51
+        // line 59
         echo "\t\t\t\t\t\t";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["publicMessage_list"]) || array_key_exists("publicMessage_list", $context) ? $context["publicMessage_list"] : (function () { throw new RuntimeError('Variable "publicMessage_list" does not exist.', 51, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["publicMessage_list"]) || array_key_exists("publicMessage_list", $context) ? $context["publicMessage_list"] : (function () { throw new RuntimeError('Variable "publicMessage_list" does not exist.', 59, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-            // line 52
+            // line 60
             echo "                        
 \t\t\t\t\t\t\t<tr>
 \t\t\t\t\t\t\t\t<td>";
-            // line 54
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "senderName", [], "any", false, false, false, 54), "html", null, true);
+            // line 62
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "senderName", [], "any", false, false, false, 62), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 55
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "senderEmail", [], "any", false, false, false, 55), "html", null, true);
+            // line 63
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "senderEmail", [], "any", false, false, false, 63), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 56
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "dateTimeReception", [], "any", false, false, false, 56), "d-m-Y"), "html", null, true);
+            // line 64
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "dateTimeReception", [], "any", false, false, false, 64), "d-m-Y"), "html", null, true);
             echo "
 \t\t\t\t\t\t\t\t\tà
 \t\t\t\t\t\t\t\t\t";
-            // line 58
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "dateTimeReception", [], "any", false, false, false, 58), "H:i:s "), "html", null, true);
+            // line 66
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "dateTimeReception", [], "any", false, false, false, 66), "H:i:s "), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>
 
 \t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#staticBackdrop";
-            // line 61
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 61), "html", null, true);
+            // line 69
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 69), "html", null, true);
             echo "\">
 \t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-eye\"></i>
 \t\t\t\t\t\t\t\t\t</button>
 
                                     <div class=\"modal fade\" id=\"staticBackdrop";
-            // line 65
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 65), "html", null, true);
+            // line 73
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 73), "html", null, true);
             echo "\" data-bs-backdrop=\"staticS\" data-bs-keyboard=\"false\" tabindex=\"-1\" aria-labelledby=\"staticBackdropLabel\" aria-hidden=\"true\">
 \t\t\t<div class=\"modal-dialog\">
 \t\t\t\t<div class=\"modal-content\">
 \t\t\t\t\t<div class=\"modal-header\">
 \t\t\t\t\t\t<h1 class=\"modal-title fs-5\" id=\"staticBackdropLabel\">";
-            // line 69
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "senderEmail", [], "any", false, false, false, 69), "html", null, true);
+            // line 77
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "senderEmail", [], "any", false, false, false, 77), "html", null, true);
             echo " - ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "senderName", [], "any", false, false, false, 69), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "senderName", [], "any", false, false, false, 77), "html", null, true);
             echo " </h1>
 \t\t\t\t\t\t<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"modal-body\">
                     
 \t\t\t\t\t\t";
-            // line 74
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "senderMessage", [], "any", false, false, false, 74), "html", null, true);
+            // line 82
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "senderMessage", [], "any", false, false, false, 82), "html", null, true);
             echo "
 \t\t\t\t\t</div>
 \t\t\t\t\t<div class=\"modal-footer\">
 \t\t\t\t\t\t<button type=\"button\" class=\"btn btn-danger\" data-bs-dismiss=\"modal\">Fermer </button>
 \t\t\t\t\t\t<button type=\"button\" class=\"btn btn-primary\" data-bs-target=\"#exampleModalToggle";
-            // line 78
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 78), "html", null, true);
+            // line 86
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 86), "html", null, true);
             echo "\" data-bs-toggle=\"modal\"><i class=\"fas fa-reply\"></i> Repondre</button>
 
 
@@ -200,16 +215,16 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
 
 
 \t\t\t\t\t\t\t\t\t<button class=\"btn btn-danger\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal";
-            // line 92
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 92), "html", null, true);
+            // line 100
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 100), "html", null, true);
             echo "\">
 \t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-trash\"></i>
 \t\t\t\t\t\t\t\t\t</button>
 
 
 \t\t\t\t\t\t\t\t\t<div class=\"modal fade\" id=\"exampleModal";
-            // line 97
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 97), "html", null, true);
+            // line 105
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 105), "html", null, true);
             echo "\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
 \t\t\t\t\t\t\t\t\t\t<div class=\"modal-dialog\">
 \t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-content\">
@@ -220,19 +235,19 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-body text-dark\">
 \t\t\t\t\t\t\t\t\t\t\t\t\tSouhaitez-vous réellement supprimer le message de
 \t\t\t\t\t\t\t\t\t\t\t\t\t";
-            // line 106
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "senderEmail", [], "any", false, false, false, 106), "html", null, true);
+            // line 114
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "senderEmail", [], "any", false, false, false, 114), "html", null, true);
             echo " 
 \t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-footer\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Fermer</button>
 \t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"";
-            // line 110
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_message_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 110)]), "html", null, true);
+            // line 118
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_message_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 118)]), "html", null, true);
             echo "\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"hidden\" name=\"_token\" value=\"";
-            // line 111
-            echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 111))), "html", null, true);
+            // line 119
+            echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 119))), "html", null, true);
             echo "\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-danger\">supprimer</button>
 \t\t\t\t\t\t\t\t\t\t\t\t\t</form>
@@ -241,46 +256,54 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
 \t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t<div class=\"modal fade\" id=\"exampleModalToggle";
-            // line 118
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 118), "html", null, true);
+            // line 126
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 126), "html", null, true);
             echo "\" aria-hidden=\"true\" aria-labelledby=\"exampleModalToggleLabel";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 118), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 126), "html", null, true);
             echo "\" tabindex=\"-1\">
   <div class=\"modal-dialog\">
     <div class=\"modal-content\">
       <div class=\"modal-header\">
         <h1 class=\"modal-title fs-5\" id=\"exampleModalToggleLabel2\">Repondre à : ";
-            // line 122
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "senderEmail", [], "any", false, false, false, 122), "html", null, true);
+            // line 130
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "senderEmail", [], "any", false, false, false, 130), "html", null, true);
             echo " </h1>
         <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
       </div>
       <div class=\"modal-body\">
+\t  <form method=\"post\" action=\"";
+            // line 134
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_public_message_envoyez_mail");
+            echo "\">
 \t  <div class=\"mb-3\">
   <label for=\"exampleFormControlInput1\" class=\"form-label\">Email :</label>
-  <input type=\"email\" class=\"form-control\" id=\"exampleFormControlInput1\" placeholder=\"name@example.com\" value=\"";
-            // line 128
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "SenderEmail", [], "any", false, false, false, 128), "html", null, true);
+  <input type=\"email\" class=\"form-control\" name=\"email\" id=\"exampleFormControlInput1\" placeholder=\"name@example.com\" value=\"";
+            // line 137
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "SenderEmail", [], "any", false, false, false, 137), "html", null, true);
             echo "\" required>
 </div>
 
 <div class=\"mb-3\">
   <label for=\"exampleFormControlInput1\" class=\"form-label\">Objet :</label>
-  <input type=\"text\" class=\"form-control\" id=\"exampleFormControlInput1\" placeholder=\"\" required>
+  <input type=\"text\" class=\"form-control\" name=\"object\" id=\"exampleFormControlInput1\" placeholder=\"Entrez l'objet ici !\" value=\"";
+            // line 142
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "senderObject", [], "any", false, false, false, 142), "html", null, true);
+            echo "\" required>
 </div>
 
 <div class=\"mb-3\">
  <label for=\"exampleFormControlInput1\" class=\"form-label\">Message :</label>
-  <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"4\"></textarea>
+  <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" name=\"message\" rows=\"4\"></textarea>
 </div>
       </div>
       <div class=\"modal-footer\">
         <button class=\"btn btn-danger\" data-bs-target=\"#staticBackdrop";
-            // line 142
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 142), "html", null, true);
+            // line 151
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["message"], "id", [], "any", false, false, false, 151), "html", null, true);
             echo "\" data-bs-toggle=\"modal\"><i class=\"fas fa-arrow-left\"></i></button>
 \t\t<button class=\"btn btn-primary\" type=\"submit\"><i class=\"fas fa-envelope\"></i></button>
       </div>
+\t  </form>
     </div>
   </div>
 </div>
@@ -294,7 +317,7 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 154
+        // line 164
         echo "\t\t\t\t\t</tbody>
 \t\t\t\t</table>
 \t\t\t</div>
@@ -339,7 +362,7 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
      */
     public function getDebugInfo()
     {
-        return array (  298 => 154,  280 => 142,  263 => 128,  254 => 122,  245 => 118,  235 => 111,  231 => 110,  224 => 106,  212 => 97,  204 => 92,  187 => 78,  180 => 74,  170 => 69,  163 => 65,  156 => 61,  150 => 58,  145 => 56,  141 => 55,  137 => 54,  133 => 52,  128 => 51,  122 => 47,  120 => 46,  93 => 21,  84 => 15,  81 => 14,  79 => 13,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  321 => 164,  302 => 151,  290 => 142,  282 => 137,  276 => 134,  269 => 130,  260 => 126,  250 => 119,  246 => 118,  239 => 114,  227 => 105,  219 => 100,  202 => 86,  195 => 82,  185 => 77,  178 => 73,  171 => 69,  165 => 66,  160 => 64,  156 => 63,  152 => 62,  148 => 60,  143 => 59,  137 => 55,  135 => 54,  108 => 29,  99 => 23,  96 => 22,  93 => 21,  84 => 15,  81 => 14,  79 => 13,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -361,6 +384,14 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
 \t\t\t\t\t{{ app.flashes('success-delete-message')|first }}
 \t\t\t\t\t<div align=\"center\">
 \t\t\t\t\t\tVotre message a été supprimé avec success !
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t{% endif %}
+\t\t\t{% if app.flashes('success-mail-send') is not empty %}
+\t\t\t\t<div class=\"alert alert-success\">
+\t\t\t\t\t{{ app.flashes('success-mail-send')|first }}
+\t\t\t\t\t<div align=\"center\">
+\t\t\t\t\t\tVotre mail a été envoyé avec success !
 \t\t\t\t\t</div>
 \t\t\t\t</div>
 \t\t\t{% endif %}
@@ -469,25 +500,27 @@ class __TwigTemplate_397dc885f2ec7f571dd617e861c06c7c extends Template
         <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
       </div>
       <div class=\"modal-body\">
+\t  <form method=\"post\" action=\"{{ path('app_public_message_envoyez_mail')}}\">
 \t  <div class=\"mb-3\">
   <label for=\"exampleFormControlInput1\" class=\"form-label\">Email :</label>
-  <input type=\"email\" class=\"form-control\" id=\"exampleFormControlInput1\" placeholder=\"name@example.com\" value=\"{{message.SenderEmail}}\" required>
+  <input type=\"email\" class=\"form-control\" name=\"email\" id=\"exampleFormControlInput1\" placeholder=\"name@example.com\" value=\"{{message.SenderEmail}}\" required>
 </div>
 
 <div class=\"mb-3\">
   <label for=\"exampleFormControlInput1\" class=\"form-label\">Objet :</label>
-  <input type=\"text\" class=\"form-control\" id=\"exampleFormControlInput1\" placeholder=\"\" required>
+  <input type=\"text\" class=\"form-control\" name=\"object\" id=\"exampleFormControlInput1\" placeholder=\"Entrez l'objet ici !\" value=\"{{message.senderObject}}\" required>
 </div>
 
 <div class=\"mb-3\">
  <label for=\"exampleFormControlInput1\" class=\"form-label\">Message :</label>
-  <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"4\"></textarea>
+  <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" name=\"message\" rows=\"4\"></textarea>
 </div>
       </div>
       <div class=\"modal-footer\">
         <button class=\"btn btn-danger\" data-bs-target=\"#staticBackdrop{{message.id}}\" data-bs-toggle=\"modal\"><i class=\"fas fa-arrow-left\"></i></button>
 \t\t<button class=\"btn btn-primary\" type=\"submit\"><i class=\"fas fa-envelope\"></i></button>
       </div>
+\t  </form>
     </div>
   </div>
 </div>

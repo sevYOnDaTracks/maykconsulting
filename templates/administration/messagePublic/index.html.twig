@@ -18,6 +18,14 @@
 					</div>
 				</div>
 			{% endif %}
+			{% if app.flashes('success-mail-send') is not empty %}
+				<div class="alert alert-success">
+					{{ app.flashes('success-mail-send')|first }}
+					<div align="center">
+						Votre mail a été envoyé avec success !
+					</div>
+				</div>
+			{% endif %}
 			<div class="row">
 				<div class="col-md-6 text-nowrap">
 					<div id="dataTable_length" class="dataTables_length" aria-controls="dataTable">
@@ -123,25 +131,27 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+	  <form method="post" action="{{ path('app_public_message_envoyez_mail')}}">
 	  <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Email :</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" value="{{message.SenderEmail}}" required>
+  <input type="email" class="form-control" name="email" id="exampleFormControlInput1" placeholder="name@example.com" value="{{message.SenderEmail}}" required>
 </div>
 
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Objet :</label>
-  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" required>
+  <input type="text" class="form-control" name="object" id="exampleFormControlInput1" placeholder="Entrez l'objet ici !" value="{{message.senderObject}}" required>
 </div>
 
 <div class="mb-3">
  <label for="exampleFormControlInput1" class="form-label">Message :</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+  <textarea class="form-control" id="exampleFormControlTextarea1" name="message" rows="4"></textarea>
 </div>
       </div>
       <div class="modal-footer">
         <button class="btn btn-danger" data-bs-target="#staticBackdrop{{message.id}}" data-bs-toggle="modal"><i class="fas fa-arrow-left"></i></button>
 		<button class="btn btn-primary" type="submit"><i class="fas fa-envelope"></i></button>
       </div>
+	  </form>
     </div>
   </div>
 </div>
