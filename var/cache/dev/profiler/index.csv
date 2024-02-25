@@ -1010,3 +1010,16 @@ f91b86,::1,GET,http://localhost:8000/login,1708878172,,200
 f8447b,::1,GET,http://localhost:8000/administration/,1708878433,,200
 92be45,::1,GET,http://localhost:8000/administration/publicMessage,1708878487,,200
 0f625f,::1,GET,http://localhost:8000/administration/user_profil,1708878492,,200
+1154fe,::1,GET,http://localhost:8000/admission,1708878558,,200
+eb5dae,::1,GET,http://localhost:8000/administration/garant,1708878560,,200
+95b096,::1,GET,http://localhost:8000/administration/garant/all,1708878562,,200
+997bd7,::1,GET,http://localhost:8000/administration/user_list,1708879021,,200
+185efd,::1,POST,http://localhost:8000/administration/user/update/1,1708879115,,302
+756b9b,::1,GET,http://localhost:8000/administration/user_list,1708879115,,200
+d9be8d,::1,POST,http://localhost:8000/administration/delete_avatar,1708879129,,302
+09ff81,::1,GET,http://localhost:8000/administration/user_profil,1708879129,,200
+021563,::1,GET,http://localhost:8000/administration/user_profil,1708879131,,200
+b738f4,::1,GET,http://localhost:8000/administration/,1708879133,,200
+26300a,::1,GET,http://localhost:8000/administration/user_list,1708879134,,200
+140696,::1,GET,http://localhost:8000/administration/,1708879182,,200
+cd64a3,::1,GET,http://localhost:8000/administration/garant,1708879226,,200
