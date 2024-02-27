@@ -29,6 +29,7 @@ return [
         '/export' => [[['_route' => 'export_data', '_controller' => 'App\\Controller\\ExportController::exportData'], null, null, null, false, false, null]],
         '/facture/garant' => [[['_route' => 'app_facture_test', '_controller' => 'App\\Controller\\FactureController::generatePdf'], null, null, null, false, false, null]],
         '/administration/garant' => [[['_route' => 'app_garant', '_controller' => 'App\\Controller\\GarantController::index'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/administration/garant/justificatif-Paiement' => [[['_route' => 'app_garant_justificatif_paiement', '_controller' => 'App\\Controller\\GarantController::recupererJustificatifPaiement'], null, ['POST' => 0], null, false, false, null]],
         '/administration/new' => [[['_route' => 'app_garant_new', '_controller' => 'App\\Controller\\GarantController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/administration/garant/all' => [[['_route' => 'app_garant_management', '_controller' => 'App\\Controller\\GarantController::allGarant'], null, ['GET' => 0], null, false, false, null]],
         '/administration/garant/envoyezMessage' => [[['_route' => 'app_garant_envoyez_mail', '_controller' => 'App\\Controller\\GarantController::envoyezMail'], null, ['POST' => 0], null, false, false, null]],

@@ -38,6 +38,7 @@ return [
     'app_facture_test' => [[], ['_controller' => 'App\\Controller\\FactureController::generatePdf'], [], [['text', '/facture/garant']], [], [], []],
     'app_garant' => [[], ['_controller' => 'App\\Controller\\GarantController::index'], [], [['text', '/administration/garant']], [], [], []],
     'app_garant_update' => [['id'], ['_controller' => 'App\\Controller\\GarantController::updateGarantDossier'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/administration/garant/update']], [], [], []],
+    'app_garant_justificatif_paiement' => [[], ['_controller' => 'App\\Controller\\GarantController::recupererJustificatifPaiement'], [], [['text', '/administration/garant/justificatif-Paiement']], [], [], []],
     'app_garant_new' => [[], ['_controller' => 'App\\Controller\\GarantController::new'], [], [['text', '/administration/new']], [], [], []],
     'app_garant_management' => [[], ['_controller' => 'App\\Controller\\GarantController::allGarant'], [], [['text', '/administration/garant/all']], [], [], []],
     'app_garant_delete' => [['id'], ['_controller' => 'App\\Controller\\GarantController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/administration/garant/delete']], [], [], []],

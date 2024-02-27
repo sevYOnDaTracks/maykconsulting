@@ -45,6 +45,9 @@ class GarantFinancier
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $lastUpdate = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $justificatifPaiement = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -166,6 +169,18 @@ class GarantFinancier
     public function setLastUpdate(?\DateTimeInterface $last_update): static
     {
         $this->lastUpdate = $last_update;
+
+        return $this;
+    }
+
+    public function getJustificatifPaiement(): ?string
+    {
+        return $this->justificatifPaiement;
+    }
+
+    public function setJustificatifPaiement(?string $justificatifPaiement): static
+    {
+        $this->justificatifPaiement = $justificatifPaiement;
 
         return $this;
     }

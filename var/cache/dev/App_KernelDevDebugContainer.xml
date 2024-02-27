@@ -78,6 +78,7 @@
     <parameter key="passport_directory">/Users/sevyondatracks/Desktop/maykconsulting/public/uploads/passport</parameter>
     <parameter key="cni_directory">/Users/sevyondatracks/Desktop/maykconsulting/public/uploads/cni</parameter>
     <parameter key="attestation_directory">/Users/sevyondatracks/Desktop/maykconsulting/public/uploads/attestation</parameter>
+    <parameter key="justificatif_directory">/Users/sevyondatracks/Desktop/maykconsulting/public/uploads/justificatif-de-paiement</parameter>
     <parameter key="locale">fr</parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
       <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
@@ -503,7 +504,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.FDfKspr"/>
+      <argument type="service" id=".service_locator.zCoqwgc"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -3173,7 +3174,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.FDfKspr"/>
+      <argument type="service" id=".service_locator.zCoqwgc"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <argument type="service" id="request_stack"/>
@@ -7515,7 +7516,7 @@
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.TbB4ZCm" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.CUqNTvW" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="dompdfService" type="service_closure" id="App\Services\DompdfService"/>
@@ -7523,6 +7524,7 @@
         <argument key="garantFinancierRepository" type="service_closure" id="App\Repository\GarantFinancierRepository"/>
         <argument key="mailer" type="service_closure" id="mailer.mailer"/>
         <argument key="publicMessageRepository" type="service_closure" id="App\Repository\PublicMessageRepository"/>
+        <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
     <service id=".service_locator.zzVjYJF" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -7567,7 +7569,7 @@
         <argument key="urlGenerator" type="service_closure" id="router.default"/>
       </argument>
     </service>
-    <service id=".service_locator.FDfKspr" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.zCoqwgc" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdministrationController::delete" type="service_closure" id=".service_locator.vB1BKOI"/>
@@ -7596,7 +7598,8 @@
         <argument key="App\Controller\GarantController::delete" type="service_closure" id=".service_locator.k0V8BeG"/>
         <argument key="App\Controller\GarantController::envoyezMail" type="service_closure" id=".service_locator.uVvF4gL"/>
         <argument key="App\Controller\GarantController::index" type="service_closure" id=".service_locator.GJ_ZrdR"/>
-        <argument key="App\Controller\GarantController::new" type="service_closure" id=".service_locator.TbB4ZCm"/>
+        <argument key="App\Controller\GarantController::new" type="service_closure" id=".service_locator.CUqNTvW"/>
+        <argument key="App\Controller\GarantController::recupererJustificatifPaiement" type="service_closure" id=".service_locator.kPUOGb8"/>
         <argument key="App\Controller\GarantController::recupererLenombreDeMessage" type="service_closure" id=".service_locator.UeARcDr"/>
         <argument key="App\Controller\GarantController::updateGarantDossier" type="service_closure" id=".service_locator.Uz253Yf"/>
         <argument key="App\Controller\LoginController::index" type="service_closure" id=".service_locator.rSTd.nA"/>
@@ -7635,7 +7638,8 @@
         <argument key="App\Controller\GarantController:delete" type="service_closure" id=".service_locator.k0V8BeG"/>
         <argument key="App\Controller\GarantController:envoyezMail" type="service_closure" id=".service_locator.uVvF4gL"/>
         <argument key="App\Controller\GarantController:index" type="service_closure" id=".service_locator.GJ_ZrdR"/>
-        <argument key="App\Controller\GarantController:new" type="service_closure" id=".service_locator.TbB4ZCm"/>
+        <argument key="App\Controller\GarantController:new" type="service_closure" id=".service_locator.CUqNTvW"/>
+        <argument key="App\Controller\GarantController:recupererJustificatifPaiement" type="service_closure" id=".service_locator.kPUOGb8"/>
         <argument key="App\Controller\GarantController:recupererLenombreDeMessage" type="service_closure" id=".service_locator.UeARcDr"/>
         <argument key="App\Controller\GarantController:updateGarantDossier" type="service_closure" id=".service_locator.Uz253Yf"/>
         <argument key="App\Controller\LoginController:index" type="service_closure" id=".service_locator.rSTd.nA"/>
@@ -9801,7 +9805,7 @@
     <service id="SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface" alias="symfonycasts.verify_email.helper"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.7nzbL4K" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.FDfKspr"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.zCoqwgc"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -9827,9 +9831,9 @@
     <service id=".service_locator.yVvQ1jo" alias=".service_locator.4tqk5Qq"/>
     <service id=".service_locator.1WMKEYf" alias=".service_locator.GJ_ZrdR"/>
     <service id=".service_locator.Bpzal4p" alias=".service_locator.Uz253Yf"/>
-    <service id=".service_locator.326PFiq" alias=".service_locator.TbB4ZCm"/>
+    <service id=".service_locator.MyJ2Qvq" alias=".service_locator.CUqNTvW"/>
     <service id=".service_locator.V6D1oJY" alias=".service_locator.e_4zbH4"/>
-    <service id=".service_locator.ow4xn.T" alias=".service_locator.FDfKspr"/>
+    <service id=".service_locator.93LLVW3" alias=".service_locator.zCoqwgc"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.JPIceuA" alias=".service_locator.8I.zPiO"/>
     <service id=".service_locator.jij13qc" alias=".service_locator.PBToVFE"/>
@@ -9868,7 +9872,7 @@
     <service id=".service_locator.LQy2aJO" alias=".service_locator.rqilpd8"/>
     <service id=".service_locator.SKC6n4w" alias=".service_locator.GJ_ZrdR"/>
     <service id=".service_locator.JuBXSIy" alias=".service_locator.Uz253Yf"/>
-    <service id=".service_locator.usM7p3r" alias=".service_locator.TbB4ZCm"/>
+    <service id=".service_locator.wRZZiW4" alias=".service_locator.CUqNTvW"/>
     <service id=".service_locator.0DFJ2l2" alias=".service_locator.zzVjYJF"/>
     <service id=".service_locator.eHmuTGL" alias=".service_locator.k0V8BeG"/>
     <service id=".service_locator.7NIAq8D" alias=".service_locator.rSTd.nA"/>

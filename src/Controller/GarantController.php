@@ -95,15 +95,49 @@ class GarantController extends AbstractController
         return $nombreEntitesMessage;
     }
 
+    #[Route('/garant/justificatif-Paiement', name: 'app_garant_justificatif_paiement' , methods: ['POST'])]
+    public function recupererJustificatifPaiement(Request $request , UserRepository $userRepository){
+        if ($request->isMethod('POST')) {
+
+            $user = $this->getUser();
+            $garant = $this->getUser()->getGarantFinancier();
+
+            
+            if ($request->files->get('justificatif')) {
+
+                // Supprimer l'ancien avatar s'il existe
+                $oldJustificatifPath = $user->getGarantFinancier()->getJustificatifPaiement();
+                if ($oldJustificatifPath && file_exists($oldJustificatifPath)) {
+                    unlink($oldJustificatifPath);
+                    $user->getGarantFinancier()->setJustificatifPaiement(null);
+                }
+
+                $justificatif = $request->files->get('justificatif');
+
+                // Traitement de l'avatar téléchargé
+                $fileName = md5(uniqid()) . '.' . $justificatif->guessExtension();
+                $justificatif->move($this->getParameter('justificatif_directory'), $fileName);
+                $user->getGarantFinancier()->setJustificatifPaiement($fileName);
+                
+                $userRepository->save($user , true);
+
+            }
+
+        }
+        $this->addFlash('success-add-justificatif', 'Votre demande a été soumise !.');
+                return $this->redirectToRoute('app_garant', [], Response::HTTP_SEE_OTHER);
+    }
+
 
     #[Route('/new', name: 'app_garant_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, GarantFinancierRepository $garantFinancierRepository, EntityManagerInterface $entityManager , MailerInterface $mailer , PublicMessageRepository $publicMessageRepository , DompdfService $dompdfService): Response
+    public function new(Request $request, GarantFinancierRepository $garantFinancierRepository, UserRepository $userRepository, EntityManagerInterface $entityManager , MailerInterface $mailer , PublicMessageRepository $publicMessageRepository , DompdfService $dompdfService): Response
     {
         $nombreEntitesMessage = $this->recupererLenombreDeMessage($publicMessageRepository);
 
         $garant = new GarantFinancier();
         if ($request->isMethod('POST')) {
     
+            $user=$this->getUser();
             $pays = $request->request->get('pays');
             $dateHeureActuelles = new \DateTime();
             $ville = $request->request->get('ville');
@@ -112,17 +146,21 @@ class GarantController extends AbstractController
             $autres = $request->request->get('othersInformations');
     
             // Vérifier si les fichiers sont téléchargés
-            if ($passport && $attestation) {
+            if($user->getPassport() || $passport){
+
+            if ($attestation) {
                 // Procéder au traitement du formulaire
                 $garant->setPays($pays);
                 $garant->setDateDemande($dateHeureActuelles);
                 $garant->setVilleEtude($ville);
     
-                // Gérer le fichier du passeport
+                if($passport && $user->getPassport() == null){
+                // Gérer le fichier du passeport seulement si l'utilisateur n'a pas joint de passport
                 $passportFileName = md5(uniqid()) . '.' . $passport->guessExtension();
                 $passport->move($this->getParameter('passport_directory'), $passportFileName);
                 $garant->setPathPassport($passportFileName);
-    
+                $user->setPassport($passportFileName);
+            }
                 // Gérer le fichier d'attestation
                 $attestationFileName = md5(uniqid()) . '.' . $attestation->guessExtension();
                 $attestation->move($this->getParameter('attestation_directory'), $attestationFileName);
@@ -131,10 +169,10 @@ class GarantController extends AbstractController
                 $garant->setInformations($autres);
                 $garant->setStatutDemande(0); // une demande commence par défaut avec le statut 0
     
-                $user = $this->getUser();
                 $garant->setUser($user);
     
                 $garantFinancierRepository->save($garant, true);
+                $userRepository->save($user, true);
 
                 $imageContent = file_get_contents('assets/images/consulting.png');
 
@@ -156,7 +194,7 @@ class GarantController extends AbstractController
                 ->html('<p>Votre demande a été reçue avec succès ! Nous vous informons que le processus de traitement démarrera après réception des fonds.</p>
                 <br>
                 Mayk - Consulting Services')
-                ->attach($pdfContent, 'Devis_GarantFinancier_'. $user->getName() .' _'. new DateTime() .'.pdf', 'application/pdf'); 
+                ->attach($pdfContent, 'Devis_GarantFinancier_'. $user->getName() .' _'. (new DateTime())->format('Y-m-d_H-i-s') .'.pdf', 'application/pdf'); 
 
         
                 $apiKey = '64ff6202a62179784d1ffa3dd0546b97';
@@ -177,6 +215,7 @@ class GarantController extends AbstractController
                 $this->addFlash('error-creation-demande', 'Veuillez sélectionner les fichiers requis.');
             }
         }
+    }
     
         return $this->render('/administration/garant/index.html.twig', [
             'controller_name' => 'AdmissionController',
