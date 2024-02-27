@@ -46,154 +46,172 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
         // line 1
         echo "<!DOCTYPE html>
 <html lang=\"en\">
-<head>
-    <meta charset=\"UTF-8\">
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, shrink-to-fit=no\">
-    <title>
-        ";
+\t<head>
+\t\t<meta charset=\"UTF-8\">
+\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, shrink-to-fit=no\">
+\t\t<title>
+\t\t\t";
         // line 7
         $this->displayBlock('title', $context, $blocks);
-        // line 8
-        echo "    </title>
-    <link rel=\"icon\" href=\"";
-        // line 9
+        // line 10
+        echo "\t\t</title>
+\t\t<link rel=\"icon\" href=\"";
+        // line 11
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/images/consulting.png"), "html", null, true);
         echo "\">
-    ";
-        // line 10
+\t\t";
+        // line 12
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 21
-        echo "</head>
-<body id=\"page-top\" class=\"\">
-<div id=\"wrapper\" class=\"sidebar-toggled\">
-    <nav class=\"navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 \" id=\"sidebar\" style=\"background: black;\">
-        <div class=\"container-fluid d-flex flex-column p-0\">
-            <a class=\"navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0\" href=\"/administration\">
-                <div class=\"sidebar-brand-icon rotate-n-15\">
-                    <i class=\"fas fa-school\"></i>
-                </div>
-                <div class=\"sidebar-brand-text mx-3\">
-                    <span style=\"text-align: left;font-size: 13px;\">MAYK CONSULTING</span>
-                </div>
-            </a>
-            <hr class=\"sidebar-divider my-0\">
-            <ul class=\"navbar-nav text-light\" id=\"accordionSidebar\">
-                <li class=\"nav-item\">
-                    <a class=\"nav-link\" href=\"/administration\">
-                        <i class=\"fas fa-home\"></i>
-                        <span>Accueil</span>
-                    </a>
-                </li>
-                <li class=\"nav-item\">
-                    <a class=\"nav-link\" href=\"/administration/user_profil\">
-                        <i class=\"fas fa-user\"></i>
-                        <span>Mon profil</span>
-                    </a>
-                </li>
-                <li class=\"nav-item dropdown\">
-                    <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown2\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
-                        <i class=\"fas fa-book\"></i>
-                        <span>Mes procédures</span>
-                    </a>
-                    <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown2\">
-                        <li>
-                            <a class=\"dropdown-item\" href=\"";
-        // line 55
+        // line 23
+        echo "\t</head>
+\t<body id=\"page-top\" class=\"\">
+\t\t<div id=\"wrapper\" class=\"sidebar-toggled\">
+\t\t\t<nav class=\"navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 \" id=\"sidebar\" style=\"background: black;\">
+\t\t\t\t<div class=\"container-fluid d-flex flex-column p-0\">
+\t\t\t\t\t<a class=\"navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0\" href=\"/administration\">
+\t\t\t\t\t\t<div class=\"sidebar-brand-icon rotate-n-15\">
+\t\t\t\t\t\t\t<i class=\"fas fa-school\"></i>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"sidebar-brand-text mx-3\">
+\t\t\t\t\t\t\t<span style=\"text-align: left;font-size: 13px;\">MAYK CONSULTING</span>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</a>
+\t\t\t\t\t<hr class=\"sidebar-divider my-0\">
+\t\t\t\t\t<ul class=\"navbar-nav text-light\" id=\"accordionSidebar\">
+\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"/administration\">
+\t\t\t\t\t\t\t\t<i class=\"fas fa-home\"></i>
+\t\t\t\t\t\t\t\t<span>Accueil</span>
+\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t</li>
+\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"/administration/user_profil\">
+\t\t\t\t\t\t\t\t<i class=\"fas fa-user\"></i>
+\t\t\t\t\t\t\t\t<span>Mon profil</span>
+\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t</li>
+\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"/administration/parcours\">
+\t\t\t\t\t\t\t\t<i class=\"fas fa-bookmark\"></i>
+\t\t\t\t\t\t\t\t<span>Mon parcours</span>
+\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t</li>
+\t\t\t\t\t\t<li class=\"nav-item dropdown\">
+\t\t\t\t\t\t\t<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown2\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
+\t\t\t\t\t\t\t\t<i class=\"fas fa-book\"></i>
+\t\t\t\t\t\t\t\t<span>Mes demandes</span>
+\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t<ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown2\">
+\t\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
+        // line 63
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_admission");
-        echo "\">Admission</a>
-                        </li>
-                        <li>
-                            <a class=\"dropdown-item\" href=\"";
-        // line 58
+        echo "\">Admissions</a>
+\t\t\t\t\t\t\t\t</li>
+                                <li>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
+        // line 66
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant");
+        echo "\">Hébergement</a>
+\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
+        // line 69
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant");
         echo "\">Garant Financier</a>
-                        </li>
-                    </ul>
-                </li>
-\t\t\t\t";
-        // line 62
+\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t</ul>
+\t\t\t\t\t\t</li>
+\t\t\t\t\t\t";
+        // line 73
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
-            // line 63
-            echo "                 <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"/administration/user_list\">
-                            <i class=\"fas fa-user-friends\"></i>
-                            <span>Liste des utilisateurs</span>
-                        </a>
-                    </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"/administration/publicMessage\">
-                            <i class=\"fas fa-envelope\"></i>
-                            <span >Messagerie publique ";
-            // line 72
-            if ((isset($context["nombreEntitesMessage"]) || array_key_exists("nombreEntitesMessage", $context) ? $context["nombreEntitesMessage"] : (function () { throw new RuntimeError('Variable "nombreEntitesMessage" does not exist.', 72, $this->source); })())) {
-                echo " <span class=\"badge bg-danger\"> ";
-                echo twig_escape_filter($this->env, (isset($context["nombreEntitesMessage"]) || array_key_exists("nombreEntitesMessage", $context) ? $context["nombreEntitesMessage"] : (function () { throw new RuntimeError('Variable "nombreEntitesMessage" does not exist.', 72, $this->source); })()), "html", null, true);
-                echo "</span> ";
+            // line 74
+            echo "\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"/administration/user_list\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-user-friends\"></i>
+\t\t\t\t\t\t\t\t\t<span>Gestions des utilisateurs</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"/administration/publicMessage\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-envelope\"></i>
+\t\t\t\t\t\t\t\t\t<span>Messagerie publique
+\t\t\t\t\t\t\t\t\t\t";
+            // line 84
+            if ((isset($context["nombreEntitesMessage"]) || array_key_exists("nombreEntitesMessage", $context) ? $context["nombreEntitesMessage"] : (function () { throw new RuntimeError('Variable "nombreEntitesMessage" does not exist.', 84, $this->source); })())) {
+                // line 85
+                echo "\t\t\t\t\t\t\t\t\t\t\t<span class=\"badge bg-danger\">
+\t\t\t\t\t\t\t\t\t\t\t\t";
+                // line 86
+                echo twig_escape_filter($this->env, (isset($context["nombreEntitesMessage"]) || array_key_exists("nombreEntitesMessage", $context) ? $context["nombreEntitesMessage"] : (function () { throw new RuntimeError('Variable "nombreEntitesMessage" does not exist.', 86, $this->source); })()), "html", null, true);
+                echo "</span>
+\t\t\t\t\t\t\t\t\t\t";
             }
-            echo "</span>
-                        </a>
-                    </li>
+            // line 88
+            echo "\t\t\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
 
-                <li class=\"nav-item dropdown\">
-                    <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown1\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
-                        <i class=\"fas fa-book\"></i>
-                        <span>Administration</span>
-                    </a>
-                    <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown1\">
-                        <li>
-                            <a class=\"dropdown-item\" href=\"/administration\">Admission</a>
-                        </li>
-                        <li>
-                            <a class=\"dropdown-item\" href=\"/administration\">Hébergement</a>
-                        </li>
-                        <li>
-                            <a class=\"dropdown-item\" href=\"";
-            // line 89
+\t\t\t\t\t\t\t<li class=\"nav-item dropdown\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown1\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-book\"></i>
+\t\t\t\t\t\t\t\t\t<span>Administration</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t<ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown1\">
+\t\t\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"/administration\">Admission</a>
+\t\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"/administration\">Hébergement</a>
+\t\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
+            // line 105
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_management");
             echo "\">Garant Financier</a>
-                        </li>
-                    </ul>
-                </li>
-\t\t\t\t";
+\t\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t</ul>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t";
         }
-        // line 94
-        echo "            </ul>
-            <div class=\"text-center d-none d-md-inline\">
-                <button class=\"btn rounded-circle border-0\" id=\"sidebarToggle\" type=\"button\"></button>
-            </div>
-        </div>
-    </nav>
-    <div class=\"d-flex flex-column\" id=\"content-wrapper\">
-        <div id=\"content\">
-            ";
-        // line 102
-        $this->loadTemplate("administration/top-bar.html.twig", "administration/base.html.twig", 102)->display($context);
-        // line 103
-        echo "            <div class=\"container-fluid\">
-                <br>
-                ";
-        // line 105
+        // line 110
+        echo "\t\t\t\t\t</ul>
+\t\t\t\t\t<div class=\"text-center d-none d-md-inline\">
+\t\t\t\t\t\t<button class=\"btn rounded-circle border-0\" id=\"sidebarToggle\" type=\"button\"></button>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</nav>
+\t\t\t<div class=\"d-flex flex-column\" id=\"content-wrapper\">
+\t\t\t\t<div id=\"content\">
+\t\t\t\t\t";
+        // line 118
+        $this->loadTemplate("administration/top-bar.html.twig", "administration/base.html.twig", 118)->display($context);
+        // line 119
+        echo "\t\t\t\t\t<div class=\"container-fluid\">
+\t\t\t\t\t\t<br>
+\t\t\t\t\t\t";
+        // line 121
         $this->displayBlock('body', $context, $blocks);
-        // line 106
-        echo "                <footer class=\"bg-white sticky-footer\">
-                    <div class=\"container my-auto\">
-                        <div class=\"text-center my-auto copyright\">
-                            <span>Copyright © Mayk-consulting</span>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
-    </div>
-    <a class=\"border rounded d-inline scroll-to-top\" href=\"#page-top\">
-        <i class=\"fas fa-angle-up\"></i>
-    </a>
-</div>
-";
-        // line 120
+        // line 122
+        echo "\t\t\t\t\t\t<footer class=\"bg-white sticky-footer\">
+\t\t\t\t\t\t\t<div class=\"container my-auto\">
+\t\t\t\t\t\t\t\t<div class=\"text-center my-auto copyright\">
+\t\t\t\t\t\t\t\t\t<span>Copyright © Mayk-consulting</span>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</footer>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t\t<a class=\"border rounded d-inline scroll-to-top\" href=\"#page-top\">
+\t\t\t\t<i class=\"fas fa-angle-up\"></i>
+\t\t\t</a>
+\t\t</div>
+\t\t";
+        // line 136
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 125
-        echo "</body>
+        // line 141
+        echo "\t</body>
 </html>
 ";
         
@@ -214,8 +232,12 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Admin - ";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 7, $this->source); })()), "user", [], "any", false, false, false, 7), "name", [], "any", false, false, false, 7), "html", null, true);
+        echo "Admin -
+\t\t\t\t";
+        // line 8
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 8, $this->source); })()), "user", [], "any", false, false, false, 8), "name", [], "any", false, false, false, 8), "html", null, true);
+        echo "
+\t\t\t";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -224,7 +246,7 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 
     }
 
-    // line 10
+    // line 12
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -234,22 +256,22 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 11
-        echo "        <link rel=\"stylesheet\" href=\"";
+        // line 13
+        echo "\t\t\t<link rel=\"stylesheet\" href=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/admin/assets/bootstrap/css/bootstrap1.min.css"), "html", null, true);
         echo "\">
-        <link href=\"https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap\" rel=\"stylesheet\">
-        <link rel=\"stylesheet\" href=\"";
-        // line 13
+\t\t\t<link href=\"https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap\" rel=\"stylesheet\">
+\t\t\t<link rel=\"stylesheet\" href=\"";
+        // line 15
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/admin/assets/fonts/fontawesome-all.min.css"), "html", null, true);
         echo "\">
-        <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css\">
-        <style>
-            .custom-navbar {
-                height: 50px; /* Réglez la hauteur selon vos préférences */
-            }
-        </style>
-    ";
+\t\t\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css\">
+\t\t\t<style>
+\t\t\t\t.custom-navbar {
+\t\t\t\t\theight: 50px; /* Réglez la hauteur selon vos préférences */
+\t\t\t\t}
+\t\t\t</style>
+\t\t";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -258,7 +280,7 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 
     }
 
-    // line 105
+    // line 121
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -276,7 +298,7 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 
     }
 
-    // line 120
+    // line 136
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -286,19 +308,19 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 121
-        echo "    <script src=\"";
+        // line 137
+        echo "\t\t\t<script src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/admin/assets/js/theme1.js"), "html", null, true);
         echo "\"></script>
-    <script src=\"";
-        // line 122
+\t\t\t<script src=\"";
+        // line 138
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/admin/assets/bootstrap/js/bootstrap1.min.js"), "html", null, true);
         echo "\"></script>
-    <script src=\"";
-        // line 123
+\t\t\t<script src=\"";
+        // line 139
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/admin/assets/js/bs-init.js"), "html", null, true);
         echo "\"></script>
-";
+\t\t";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -328,136 +350,152 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  299 => 123,  295 => 122,  290 => 121,  280 => 120,  262 => 105,  244 => 13,  238 => 11,  228 => 10,  208 => 7,  196 => 125,  194 => 120,  178 => 106,  176 => 105,  172 => 103,  170 => 102,  160 => 94,  152 => 89,  128 => 72,  117 => 63,  115 => 62,  108 => 58,  102 => 55,  66 => 21,  64 => 10,  60 => 9,  57 => 8,  55 => 7,  47 => 1,);
+        return array (  321 => 139,  317 => 138,  312 => 137,  302 => 136,  284 => 121,  266 => 15,  260 => 13,  250 => 12,  238 => 8,  226 => 7,  214 => 141,  212 => 136,  196 => 122,  194 => 121,  190 => 119,  188 => 118,  178 => 110,  170 => 105,  151 => 88,  146 => 86,  143 => 85,  141 => 84,  129 => 74,  127 => 73,  120 => 69,  114 => 66,  108 => 63,  66 => 23,  64 => 12,  60 => 11,  57 => 10,  55 => 7,  47 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("<!DOCTYPE html>
 <html lang=\"en\">
-<head>
-    <meta charset=\"UTF-8\">
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, shrink-to-fit=no\">
-    <title>
-        {% block title %}Admin - {{ app.user.name }}{% endblock %}
-    </title>
-    <link rel=\"icon\" href=\"{{ asset('assets/images/consulting.png') }}\">
-    {% block stylesheets %}
-        <link rel=\"stylesheet\" href=\"{{ asset('assets/admin/assets/bootstrap/css/bootstrap1.min.css') }}\">
-        <link href=\"https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap\" rel=\"stylesheet\">
-        <link rel=\"stylesheet\" href=\"{{ asset('assets/admin/assets/fonts/fontawesome-all.min.css') }}\">
-        <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css\">
-        <style>
-            .custom-navbar {
-                height: 50px; /* Réglez la hauteur selon vos préférences */
-            }
-        </style>
-    {% endblock %}
-</head>
-<body id=\"page-top\" class=\"\">
-<div id=\"wrapper\" class=\"sidebar-toggled\">
-    <nav class=\"navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 \" id=\"sidebar\" style=\"background: black;\">
-        <div class=\"container-fluid d-flex flex-column p-0\">
-            <a class=\"navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0\" href=\"/administration\">
-                <div class=\"sidebar-brand-icon rotate-n-15\">
-                    <i class=\"fas fa-school\"></i>
-                </div>
-                <div class=\"sidebar-brand-text mx-3\">
-                    <span style=\"text-align: left;font-size: 13px;\">MAYK CONSULTING</span>
-                </div>
-            </a>
-            <hr class=\"sidebar-divider my-0\">
-            <ul class=\"navbar-nav text-light\" id=\"accordionSidebar\">
-                <li class=\"nav-item\">
-                    <a class=\"nav-link\" href=\"/administration\">
-                        <i class=\"fas fa-home\"></i>
-                        <span>Accueil</span>
-                    </a>
-                </li>
-                <li class=\"nav-item\">
-                    <a class=\"nav-link\" href=\"/administration/user_profil\">
-                        <i class=\"fas fa-user\"></i>
-                        <span>Mon profil</span>
-                    </a>
-                </li>
-                <li class=\"nav-item dropdown\">
-                    <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown2\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
-                        <i class=\"fas fa-book\"></i>
-                        <span>Mes procédures</span>
-                    </a>
-                    <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown2\">
-                        <li>
-                            <a class=\"dropdown-item\" href=\"{{path('app_admission')}}\">Admission</a>
-                        </li>
-                        <li>
-                            <a class=\"dropdown-item\" href=\"{{ path('app_garant') }}\">Garant Financier</a>
-                        </li>
-                    </ul>
-                </li>
-\t\t\t\t{% if is_granted('ROLE_ADMIN') %}
-                 <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"/administration/user_list\">
-                            <i class=\"fas fa-user-friends\"></i>
-                            <span>Liste des utilisateurs</span>
-                        </a>
-                    </li>
-                    <li class=\"nav-item\">
-                        <a class=\"nav-link\" href=\"/administration/publicMessage\">
-                            <i class=\"fas fa-envelope\"></i>
-                            <span >Messagerie publique {% if nombreEntitesMessage %} <span class=\"badge bg-danger\"> {{ nombreEntitesMessage }}</span> {% endif %}</span>
-                        </a>
-                    </li>
+\t<head>
+\t\t<meta charset=\"UTF-8\">
+\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, shrink-to-fit=no\">
+\t\t<title>
+\t\t\t{% block title %}Admin -
+\t\t\t\t{{ app.user.name }}
+\t\t\t{% endblock %}
+\t\t</title>
+\t\t<link rel=\"icon\" href=\"{{ asset('assets/images/consulting.png') }}\">
+\t\t{% block stylesheets %}
+\t\t\t<link rel=\"stylesheet\" href=\"{{ asset('assets/admin/assets/bootstrap/css/bootstrap1.min.css') }}\">
+\t\t\t<link href=\"https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap\" rel=\"stylesheet\">
+\t\t\t<link rel=\"stylesheet\" href=\"{{ asset('assets/admin/assets/fonts/fontawesome-all.min.css') }}\">
+\t\t\t<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css\">
+\t\t\t<style>
+\t\t\t\t.custom-navbar {
+\t\t\t\t\theight: 50px; /* Réglez la hauteur selon vos préférences */
+\t\t\t\t}
+\t\t\t</style>
+\t\t{% endblock %}
+\t</head>
+\t<body id=\"page-top\" class=\"\">
+\t\t<div id=\"wrapper\" class=\"sidebar-toggled\">
+\t\t\t<nav class=\"navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 \" id=\"sidebar\" style=\"background: black;\">
+\t\t\t\t<div class=\"container-fluid d-flex flex-column p-0\">
+\t\t\t\t\t<a class=\"navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0\" href=\"/administration\">
+\t\t\t\t\t\t<div class=\"sidebar-brand-icon rotate-n-15\">
+\t\t\t\t\t\t\t<i class=\"fas fa-school\"></i>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"sidebar-brand-text mx-3\">
+\t\t\t\t\t\t\t<span style=\"text-align: left;font-size: 13px;\">MAYK CONSULTING</span>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</a>
+\t\t\t\t\t<hr class=\"sidebar-divider my-0\">
+\t\t\t\t\t<ul class=\"navbar-nav text-light\" id=\"accordionSidebar\">
+\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"/administration\">
+\t\t\t\t\t\t\t\t<i class=\"fas fa-home\"></i>
+\t\t\t\t\t\t\t\t<span>Accueil</span>
+\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t</li>
+\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"/administration/user_profil\">
+\t\t\t\t\t\t\t\t<i class=\"fas fa-user\"></i>
+\t\t\t\t\t\t\t\t<span>Mon profil</span>
+\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t</li>
+\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"/administration/parcours\">
+\t\t\t\t\t\t\t\t<i class=\"fas fa-bookmark\"></i>
+\t\t\t\t\t\t\t\t<span>Mon parcours</span>
+\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t</li>
+\t\t\t\t\t\t<li class=\"nav-item dropdown\">
+\t\t\t\t\t\t\t<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown2\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
+\t\t\t\t\t\t\t\t<i class=\"fas fa-book\"></i>
+\t\t\t\t\t\t\t\t<span>Mes demandes</span>
+\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t<ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown2\">
+\t\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{path('app_admission')}}\">Admissions</a>
+\t\t\t\t\t\t\t\t</li>
+                                <li>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ path('app_garant') }}\">Hébergement</a>
+\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ path('app_garant') }}\">Garant Financier</a>
+\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t</ul>
+\t\t\t\t\t\t</li>
+\t\t\t\t\t\t{% if is_granted('ROLE_ADMIN') %}
+\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"/administration/user_list\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-user-friends\"></i>
+\t\t\t\t\t\t\t\t\t<span>Gestions des utilisateurs</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"/administration/publicMessage\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-envelope\"></i>
+\t\t\t\t\t\t\t\t\t<span>Messagerie publique
+\t\t\t\t\t\t\t\t\t\t{% if nombreEntitesMessage %}
+\t\t\t\t\t\t\t\t\t\t\t<span class=\"badge bg-danger\">
+\t\t\t\t\t\t\t\t\t\t\t\t{{ nombreEntitesMessage }}</span>
+\t\t\t\t\t\t\t\t\t\t{% endif %}
+\t\t\t\t\t\t\t\t\t</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t</li>
 
-                <li class=\"nav-item dropdown\">
-                    <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown1\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
-                        <i class=\"fas fa-book\"></i>
-                        <span>Administration</span>
-                    </a>
-                    <ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown1\">
-                        <li>
-                            <a class=\"dropdown-item\" href=\"/administration\">Admission</a>
-                        </li>
-                        <li>
-                            <a class=\"dropdown-item\" href=\"/administration\">Hébergement</a>
-                        </li>
-                        <li>
-                            <a class=\"dropdown-item\" href=\"{{ path('app_garant_management')}}\">Garant Financier</a>
-                        </li>
-                    </ul>
-                </li>
-\t\t\t\t{% endif %}
-            </ul>
-            <div class=\"text-center d-none d-md-inline\">
-                <button class=\"btn rounded-circle border-0\" id=\"sidebarToggle\" type=\"button\"></button>
-            </div>
-        </div>
-    </nav>
-    <div class=\"d-flex flex-column\" id=\"content-wrapper\">
-        <div id=\"content\">
-            {% include 'administration/top-bar.html.twig' %}
-            <div class=\"container-fluid\">
-                <br>
-                {% block body %}{% endblock %}
-                <footer class=\"bg-white sticky-footer\">
-                    <div class=\"container my-auto\">
-                        <div class=\"text-center my-auto copyright\">
-                            <span>Copyright © Mayk-consulting</span>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
-    </div>
-    <a class=\"border rounded d-inline scroll-to-top\" href=\"#page-top\">
-        <i class=\"fas fa-angle-up\"></i>
-    </a>
-</div>
-{% block javascripts %}
-    <script src=\"{{ asset('assets/admin/assets/js/theme1.js') }}\"></script>
-    <script src=\"{{ asset('assets/admin/assets/bootstrap/js/bootstrap1.min.js') }}\"></script>
-    <script src=\"{{ asset('assets/admin/assets/js/bs-init.js') }}\"></script>
-{% endblock %}
-</body>
+\t\t\t\t\t\t\t<li class=\"nav-item dropdown\">
+\t\t\t\t\t\t\t\t<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown1\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
+\t\t\t\t\t\t\t\t\t<i class=\"fas fa-book\"></i>
+\t\t\t\t\t\t\t\t\t<span>Administration</span>
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t<ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown1\">
+\t\t\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"/administration\">Admission</a>
+\t\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"/administration\">Hébergement</a>
+\t\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ path('app_garant_management')}}\">Garant Financier</a>
+\t\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t</ul>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t{% endif %}
+\t\t\t\t\t</ul>
+\t\t\t\t\t<div class=\"text-center d-none d-md-inline\">
+\t\t\t\t\t\t<button class=\"btn rounded-circle border-0\" id=\"sidebarToggle\" type=\"button\"></button>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</nav>
+\t\t\t<div class=\"d-flex flex-column\" id=\"content-wrapper\">
+\t\t\t\t<div id=\"content\">
+\t\t\t\t\t{% include 'administration/top-bar.html.twig' %}
+\t\t\t\t\t<div class=\"container-fluid\">
+\t\t\t\t\t\t<br>
+\t\t\t\t\t\t{% block body %}{% endblock %}
+\t\t\t\t\t\t<footer class=\"bg-white sticky-footer\">
+\t\t\t\t\t\t\t<div class=\"container my-auto\">
+\t\t\t\t\t\t\t\t<div class=\"text-center my-auto copyright\">
+\t\t\t\t\t\t\t\t\t<span>Copyright © Mayk-consulting</span>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t</footer>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t\t<a class=\"border rounded d-inline scroll-to-top\" href=\"#page-top\">
+\t\t\t\t<i class=\"fas fa-angle-up\"></i>
+\t\t\t</a>
+\t\t</div>
+\t\t{% block javascripts %}
+\t\t\t<script src=\"{{ asset('assets/admin/assets/js/theme1.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/admin/assets/bootstrap/js/bootstrap1.min.js') }}\"></script>
+\t\t\t<script src=\"{{ asset('assets/admin/assets/js/bs-init.js') }}\"></script>
+\t\t{% endblock %}
+\t</body>
 </html>
 ", "administration/base.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/administration/base.html.twig");
     }

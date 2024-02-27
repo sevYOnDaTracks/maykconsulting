@@ -8,7 +8,7 @@
 				<div class="col">
 					<div class="card shadow mb-3">
 						<div class="card-header py-3">
-							<p class="text-secondary m-0 fw-bold" align="center">MES INFORMATIONS</p>
+							<p class="text-secondary m-0 fw-bold" align="center">MES INFORMATIONS PERSONNELLES</p>
 						</div>
 						<div class="card-body">
 							{% if not app.user.isVerified %}
@@ -26,12 +26,35 @@
 									</div>
 								</div>
 							{% endif %}
+							{% if app.flashes('success-delete-cni') is not empty %}
+								<div class="alert alert-warning">
+									{{ app.flashes('success-delete-cni')|first }}
+									<div align="center">
+										Votre CNI a été rétirée avec success !
+									</div>
+								</div>
+							{% endif %}
+							{% if app.flashes('success-importdocument-user') is not empty %}
+								<div class="alert alert-success">
+									{{ app.flashes('success-delete-cni')|first }}
+									<div align="center">
+										Votre importation s'est effectuée sans soucis !
+									</div>
+								</div>
+							{% endif %}
 							{% if app.flashes('success-delete-avatar') is not empty %}
 								<div class="alert alert-warning">
 									{{ app.flashes('success-delete-avatar')|first }}
 									<div align="center">
 										Votre photo d'identité a été retirée !
 									</div>
+								</div>
+							{% endif %}
+							{% if not  app.user.avatar  or  not app.user.passport     %}
+								<div>
+									<p class=" text-center alert alert-warning">
+										<strong>Tous les documents demandés doivent être joints à défaut nous ne pourrions traiter vos demandes  !</strong>
+									</p>
 								</div>
 							{% endif %}
 							<div class="row">
@@ -50,7 +73,7 @@
 													<button type="submit" class="btn btn-danger">
 														<i class="fas fa-trash"></i>
 													</button>
-													<a href="{{ asset(app.user.getAvatar()) }}" class="btn btn-warning " download="avatar.png">
+													<a href="{{ asset('uploads/avatars/' ~ app.user.getAvatar()) }}" class="btn btn-warning" download="{{ app.user.getName() ~ '_Photo' }}">
 														<i class="fas fa-download"></i>
 													</a>
 												</div>
@@ -135,19 +158,14 @@
 											</select>
 										</div>
 
-										<div class="mb-3">
-											<label class="form-label" for="last_name">
-												<strong>Photo d'identité
-												</strong>
-											</label>
-											<input type="file" class="form-control" name="avatar">
-										</div>
+
 									</div>
 								</div>
 								<br>
 								<div class="mb-3">
 									<button type="button" class="btn btn-dark" style="width:100%;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-										Enregistrer <i class="fas fa-save"></i>
+										Enregistrer
+										<i class="fas fa-save"></i>
 									</button>
 									<div class="modal fade  " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 										<div class="modal-dialog modal-dialog-centered">
@@ -175,5 +193,167 @@
 			</div>
 		</div>
 	</div>
-</div></div><!-- Modal -->
-{% endblock %}
+
+	<div class="row mb-3">
+		<div class="col-lg-12">
+			<div class="row">
+			<div class="col">
+					<div class="card shadow mb-3">
+						<div class="card-header py-3">
+							<p class="text-secondary m-0 fw-bold" align="center">IMPORTER DES DOCUMENTS</p>
+						</div>
+						<div class="card-body">
+							<form method="POST" action="{{ path('user_update_document') }}" enctype="multipart/form-data">
+									{% if not app.user.avatar %}
+										<div class="mb-3">
+											<label class="form-label" for="last_name">
+												<strong>Photo d'identité
+												</strong>
+											</label>
+											<input type="file" class="form-control" name="avatar">
+										</div>
+									{% endif %}
+									{% if not app.user.cni %}
+										<div class="mb-3">
+											<label class="form-label" for="last_name">
+												<strong>Carte nationale d'identité (CNI)
+												</strong>
+											</label>
+											<input type="file" class="form-control" name="cni">
+										</div>
+									{% else %}
+										{# <form method="POST" action="{{ path('app_delete_cni') }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre CNI ? Cette action est irréversible.');">
+											{% if app.user.getCni() %}
+												<div align="start">
+
+													<button type="submit" class="btn btn-danger">
+														<i class="fas fa-trash"></i>
+													</button>
+													<a href="{{ asset('uploads/cni/' ~ app.user.getCni()) }}" class="btn btn-warning" download="{{ app.user.getName() ~ '_CNI' }}">
+														<i class="fas fa-download"></i>
+													</a>
+												</div>
+											{% else %}
+												<p>Aucune CNI</p>
+											{% endif %}
+											<input type="hidden" name="_token" value="{{ csrf_token('app_delete_cni') }}">
+										</form> #}
+									{% endif %}
+
+									{% if not app.user.passport %}
+										<div class="mb-3">
+											<label class="form-label" for="last_name">
+												<strong>Passport
+												</strong>
+											</label>
+											<input type="file" class="form-control" name="passport">
+										</div>
+										{% else %}
+									{% endif %}
+									<br>
+									{% if app.user.avatar and app.user.passport and app.user.cni %}
+						<div>
+									<p class=" text-center alert alert-success">
+										<strong>Tous les documents demandés ont été renseignés , Merci <i class="fas fa-thumbs-up"></i> !</strong>
+									</p>
+								</div>
+						{% endif %}
+									<button type="submit" class="btn btn-white border-secondary btn-block" style="width : 100%">
+										Importer
+										<i class="fa fa-upload"></i>
+									</button>
+
+							</form>
+						</div>
+
+						
+					</div>
+				</div>
+				<div class="col">
+					<div class="card shadow mb-3">
+						<div class="card-header py-3">
+							<p class="text-secondary m-0 fw-bold" align="center">RECAPITUALTIF DE MES DOCUMENTS</p>
+						</div>
+						<div class="card-body">
+							<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row">Photo d'identité </th>
+                        <td>
+                            <div class="mb-3">
+                                {% if app.user.avatar %}
+                                    <form method="POST" action="{{ path('app_delete_avatar') }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre avatar ? Cette action est irréversible.');">
+                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                        <a href="{{ asset('uploads/avatars/' ~ app.user.getAvatar()) }}" class="btn btn-secondary btn-sm ml-3" download="{{ app.user.getName() ~ '_Photo' }}"><i class="fas fa-eye"></i></a>
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete_avatar') }}">
+                                    </form>
+                                {% else %}
+                                    <p class="text-danger">A joindre</p>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Carte Nationale d'identité </th>
+                        <td>
+                            <div class="mb-3">
+                                {% if app.user.cni %}
+                                    <form method="POST" action="{{ path('app_delete_cni') }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre CNI ? Cette action est irréversible.');">
+                                        {% if app.user.getCni() %}
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                            <a href="{{ asset('uploads/cni/' ~ app.user.getCni()) }}" class="btn btn-secondary btn-sm ml-3" download="{{ app.user.getName() ~ '_CNI' }}"><i class="fas fa-eye"></i></a>
+                                        {% else %}
+                                            <p>Aucune CNI</p>
+                                        {% endif %}
+                                        <input type="hidden" name="_token" value="{{ csrf_token('app_delete_cni') }}">
+                                    </form>
+                                {% else %}
+                                    <p class="" >Facultatif (Obligatoire si vous n'avez pas encore de passport)</p>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Passport </th>
+                        <td>
+                            <div class="mb-3">
+                                {% if app.user.passport %}
+                                    <form method="POST" action="{{ path('app_delete_passport') }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre passport ? Cette action est irréversible.');">
+                                        {% if app.user.getPassport() %}
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                            <a href="{{ asset('uploads/passport/' ~ app.user.getPassport()) }}" class="btn btn-secondary btn-sm ml-3" download="{{ app.user.getName() ~ '_Passport' }}"><i class="fas fa-eye"></i></a>
+                                        {% else %}
+                                            <p>Aucun Passport</p>
+                                        {% endif %}
+                                        <input type="hidden" name="_token" value="{{ csrf_token('app_delete_passport') }}">
+                                    </form>
+                                {% else %}
+                                    <p class="text-danger">A joindre</p>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+						</div>
+
+
+					</div>
+				</div>
+				
+				<div></div>
+			</div>
+		</div>
+	</div>
+
+	
+	</div>
+</div><!-- Modal -->{% endblock %}

@@ -61,6 +61,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne( targetEntity:"App\Entity\GarantFinancier" ,  mappedBy:"user" , cascade: ['persist'])]
     private ?GarantFinancier $garantFinancier = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $passport = null;
+
+    #[ORM\Column(length: 255 , nullable: true)]
+    private ?string $cni = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -247,6 +253,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setGarantFinancier(?GarantFinancier $garantFinancier): static
     {
         $this->garantFinancier = $garantFinancier;
+
+        return $this;
+    }
+
+    public function getPassport(): ?string
+    {
+        return $this->passport;
+    }
+
+    public function setPassport(?string $passport): static
+    {
+        $this->passport = $passport;
+
+        return $this;
+    }
+
+    public function getCni(): ?string
+    {
+        return $this->cni;
+    }
+
+    public function setCni(?string $cni): static
+    {
+        $this->cni = $cni;
 
         return $this;
     }

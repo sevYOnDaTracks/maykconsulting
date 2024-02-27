@@ -6,6 +6,7 @@
 parameters:
     avatars_directory: '%kernel.project_dir%/public/uploads/avatars'
     passport_directory: '%kernel.project_dir%/public/uploads/passport'
+    cni_directory: '%kernel.project_dir%/public/uploads/cni'
     attestation_directory: '%kernel.project_dir%/public/uploads/attestation'
     locale: 'fr'
 

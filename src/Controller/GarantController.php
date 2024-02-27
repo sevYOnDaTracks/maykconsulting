@@ -19,6 +19,9 @@ use Mailtrap\Helper\ResponseHelper;
 use Mailtrap\MailtrapClient;
 use Symfony\Component\Mime\Address;
 use Mailtrap\EmailHeader\CategoryHeader;
+use App\Services\DompdfService;
+use Symfony\Component\Mime\Part\DataPart;
+
 
 
 #[Route('/administration')]
@@ -68,16 +71,11 @@ class GarantController extends AbstractController
                 $email->getHeaders()
                     ->add(new CategoryHeader('Garant - Management'))
                 ;
-    
                 $mailtrap->sending()->emails()->send($email);
 
             }
 
             $garantFinancier->setStatutDemande($statut);
-
-
-
-
             $garantFinancierRepository->save($garantFinancier , true);
 
             $this->addFlash('success-edit', 'Modification success !.');
@@ -99,7 +97,7 @@ class GarantController extends AbstractController
 
 
     #[Route('/new', name: 'app_garant_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, GarantFinancierRepository $garantFinancierRepository, EntityManagerInterface $entityManager , MailerInterface $mailer , PublicMessageRepository $publicMessageRepository): Response
+    public function new(Request $request, GarantFinancierRepository $garantFinancierRepository, EntityManagerInterface $entityManager , MailerInterface $mailer , PublicMessageRepository $publicMessageRepository , DompdfService $dompdfService): Response
     {
         $nombreEntitesMessage = $this->recupererLenombreDeMessage($publicMessageRepository);
 
@@ -137,6 +135,19 @@ class GarantController extends AbstractController
                 $garant->setUser($user);
     
                 $garantFinancierRepository->save($garant, true);
+
+                $imageContent = file_get_contents('assets/images/consulting.png');
+
+                // Rendre le HTML de votre modèle avec Twig
+                $html = $this->renderView('facture/garant.html.twig', [
+                    'numero_facture' => '123456',
+                    'date_facture' => new \DateTime(),
+                    'image_content' => base64_encode($imageContent),
+                    // Autres données de facture
+                ]);
+
+                $pdfContent = $dompdfService->generatePdf($html);
+                $pdfAttachment = new DataPart($pdfContent, 'facture.pdf', 'application/pdf');
     
                 $email = (new Email())
                 ->from('noreply@maykconsulting.fr')
@@ -144,7 +155,9 @@ class GarantController extends AbstractController
                 ->subject('Demande Soumise - Maykconsulting')
                 ->html('<p>Votre demande a été reçue avec succès ! Nous vous informons que le processus de traitement démarrera après réception des fonds.</p>
                 <br>
-                Mayk - Consulting Services');
+                Mayk - Consulting Services')
+                ->attach($pdfContent, 'Devis_GarantFinancier_'. $user->getName() .' _'. new DateTime() .'.pdf', 'application/pdf'); 
+
         
                 $apiKey = '64ff6202a62179784d1ffa3dd0546b97';
                 $mailtrap = new MailtrapClient(new Config($apiKey));
@@ -198,13 +211,9 @@ class GarantController extends AbstractController
             'garantsCloturer' => $garantsCloturer,
             'garantEnCours' => $garantsEnCours,
             'garantTermine' => $garantsTerminees,
-
             'nombreEncours' => $nombreDossiersEncours,
-
             'nombreTerminee' => $nombreDossierstermines,
-
             'nombreCloturer' => $nombreDossierscloturer,
-
         ]);
     }
 
@@ -214,10 +223,8 @@ class GarantController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$garant->getId(), $request->request->get('_token'))) {
             $garantFinancierRepository->remove($garant, true);
-            
             $this->addFlash('success', 'La demande de garant financier a été supprimée avec succès.');
         }
-    
         return $this->redirectToRoute('app_garant');
     }
 

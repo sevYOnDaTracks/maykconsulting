@@ -65,8 +65,10 @@ class AdministrationController extends AbstractController
             $dateOfBirthString = $request->request->get('dateOfBirth');
             $schoolLevel = $request->request->get('schoolLevel');
             $avatar = $request->files->get('avatar');
+            $cni = $request->files->get('cni');
+            $passport = $request->files->get('passport');
 
-
+            if($user)
             $user->setName($name);
             $user->setLastName($lastName);
             $user->setPhone($phone);
@@ -77,6 +79,8 @@ class AdministrationController extends AbstractController
             $user->setSchoolLevel($schoolLevel);
 
 
+            //AVATAR
+            
             if ($request->files->get('avatar')) {
 
                 // Supprimer l'ancien avatar s'il existe
@@ -93,6 +97,48 @@ class AdministrationController extends AbstractController
                 $avatar->move($this->getParameter('avatars_directory'), $fileName);
                 $user->setAvatar($fileName);
             }
+
+            // CNI
+
+
+            if ($request->files->get('cni')) {
+
+                // Supprimer l'ancien avatar s'il existe
+                $oldCniPath = $user->getCni();
+                if ($oldCniPath && file_exists($oldCniPath)) {
+                    unlink($oldCniPath);
+                    $user->setCni(null);
+                }
+
+                $cni = $request->files->get('cni');
+
+                // Traitement de l'avatar téléchargé
+                $fileName = md5(uniqid()) . '.' . $cni->guessExtension();
+                $cni->move($this->getParameter('cni_directory'), $fileName);
+                $user->setCni($fileName);
+            }
+
+            // CNI
+
+
+            if ($request->files->get('passport')) {
+
+                // Supprimer l'ancien avatar s'il existe
+                $oldPassportPath = $user->getPassport();
+                if ($oldPassportPath && file_exists($oldPassportPath)) {
+                    unlink($oldPassportPath);
+                    $user->setPassport(null);
+                }
+
+                $passport = $request->files->get('passport');
+
+                // Traitement de l'avatar téléchargé
+                $fileName = md5(uniqid()) . '.' . $passport->guessExtension();
+                $passport->move($this->getParameter('passport_directory'), $fileName);
+                $user->setPassport($fileName);
+            }
+
+
 
 
 
@@ -162,6 +208,46 @@ class AdministrationController extends AbstractController
 
 
         $this->addFlash('success-delete-avatar', 'L\'avatar a été supprimé avec succès.');
+
+        return $this->redirectToRoute('app_user_profil');
+    }
+
+    #[Route('/delete_cni', name: 'app_delete_cni', methods: ['POST'])]
+    public function deleteCNI(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+
+        $oldCniPath = $user->getCni();
+        if ($oldCniPath && file_exists($oldCniPath)) {
+            unlink($oldCniPath);
+        }
+
+        $user->setCni(null);
+        $entityManager->flush();
+
+
+
+        $this->addFlash('success-delete-cni', 'La CNI a été supprimé avec succès.');
+
+        return $this->redirectToRoute('app_user_profil');
+    }
+
+    #[Route('/delete_passport', name: 'app_delete_passport', methods: ['POST'])]
+    public function deletePassport(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+
+        $oldPassportPath = $user->getPassport();
+        if ($oldPassportPath && file_exists($oldPassportPath)) {
+            unlink($oldPassportPath);
+        }
+
+        $user->setPassport(null);
+        $entityManager->flush();
+
+
+
+        $this->addFlash('success-delete-passport', 'Le passport a été supprimé avec succès.');
 
         return $this->redirectToRoute('app_user_profil');
     }
@@ -272,6 +358,78 @@ class AdministrationController extends AbstractController
             return $this->redirectToRoute('user_list');
         }
         return $this->redirectToRoute('user_list', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/user/update_document', name: 'user_update_document' , methods: ['GET', 'POST'])]
+    public function updateDocuementUser(Request $request, UserRepository $userRepository) : Response{
+        if ($request->isMethod('POST')) {
+
+            $user = $this->getUser();
+
+            if ($request->files->get('avatar')) {
+
+                // Supprimer l'ancien avatar s'il existe
+                $oldAvatarPath = $user->getAvatar();
+                if ($oldAvatarPath && file_exists($oldAvatarPath)) {
+                    unlink($oldAvatarPath);
+                    $user->setAvatar(null);
+                }
+
+                $avatar = $request->files->get('avatar');
+
+                // Traitement de l'avatar téléchargé
+                $fileName = md5(uniqid()) . '.' . $avatar->guessExtension();
+                $avatar->move($this->getParameter('avatars_directory'), $fileName);
+                $user->setAvatar($fileName);
+            }
+
+            // CNI
+
+
+            if ($request->files->get('cni')) {
+
+                // Supprimer l'ancien avatar s'il existe
+                $oldCniPath = $user->getCni();
+                if ($oldCniPath && file_exists($oldCniPath)) {
+                    unlink($oldCniPath);
+                    $user->setCni(null);
+                }
+
+                $cni = $request->files->get('cni');
+
+                // Traitement de l'avatar téléchargé
+                $fileName = md5(uniqid()) . '.' . $cni->guessExtension();
+                $cni->move($this->getParameter('cni_directory'), $fileName);
+                $user->setCni($fileName);
+            }
+
+            // CNI
+
+
+            if ($request->files->get('passport')) {
+
+                // Supprimer l'ancien avatar s'il existe
+                $oldPassportPath = $user->getPassport();
+                if ($oldPassportPath && file_exists($oldPassportPath)) {
+                    unlink($oldPassportPath);
+                    $user->setPassport(null);
+                }
+
+                $passport = $request->files->get('passport');
+
+                // Traitement de l'avatar téléchargé
+                $fileName = md5(uniqid()) . '.' . $passport->guessExtension();
+                $passport->move($this->getParameter('passport_directory'), $fileName);
+                $user->setPassport($fileName);
+            }
+
+
+            $userRepository->save($user ,true);
+
+            $this->addFlash('success-importdocument-user', 'Importation enregistrée !.');
+            return $this->redirectToRoute('app_user_profil');
+        }
+        return $this->redirectToRoute('app_user_profil', [], Response::HTTP_SEE_OTHER);
     }
 
 }

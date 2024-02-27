@@ -26,6 +26,8 @@ class FactureController extends AbstractController
             // Autres données de facture
         ]);
 
+        
+
         // Intégrer le contenu CSS dans le HTML
         $htmlWithCSS = $cssContent . $html;
 
