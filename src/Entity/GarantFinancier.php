@@ -48,6 +48,9 @@ class GarantFinancier
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $justificatifPaiement = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $garantFile = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -181,6 +184,18 @@ class GarantFinancier
     public function setJustificatifPaiement(?string $justificatifPaiement): static
     {
         $this->justificatifPaiement = $justificatifPaiement;
+
+        return $this;
+    }
+
+    public function getGarantFile(): ?string
+    {
+        return $this->garantFile;
+    }
+
+    public function setGarantFile(?string $garantFile): static
+    {
+        $this->garantFile = $garantFile;
 
         return $this;
     }

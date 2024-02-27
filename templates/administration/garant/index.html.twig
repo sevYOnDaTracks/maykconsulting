@@ -20,7 +20,7 @@
 
 	{% endif %}
 
-  {% if app.flashes('success-add-justificatif') is not empty %}
+	{% if app.flashes('success-add-justificatif') is not empty %}
 		<div class="alert alert-success">
 			{{ app.flashes('success-add-justificatif')|first }}
 			<div align="center">
@@ -190,7 +190,11 @@
 						</div>
 					</p>
 					<p>
-						Veuillez patientez s'il vous plait. Nous traitons votre demande .</p>
+						Veuillez patientez s'il vous plait. Nous traitons votre demande . Elle s'etend généralement sur une période de
+						<strong>
+							3 à 5 jours
+						</strong>
+						ouvrés</p>
 				</div>
 			</div>
 
@@ -223,7 +227,7 @@
 				<div class="card-body">
 					<p class="text-dark fw-bold text-xs text-uppercase" align"center">
 						<strong class="">Documents :</strong>
-						<a href="" class="btn btn-success btn-sm">
+						<a href="{{ asset('uploads/garant/' ~ app.user.getGarantFinancier.getGarantFile() ) }}" class="btn btn-success btn-sm" download="{{ app.user.getName()}}_GarantFile">
 							<i class="fas fa-download"></i>
 						</a>
 					</p>
@@ -255,130 +259,156 @@
 
 		{% endif %}
 
-<div class="row">
-    <div class="col-md-6">
-        <div class="card shadow mb-3 animate__animated animate__fadeInLeft">
-            <div class="card-header fw-bold text-xs text-uppercase">
-                Mes informations communiquées
-            </div>
-            <div class="card-body">
-                <!-- Contenu de la première carte ici -->
-
-
-				<p>
-					Pour votre demande de garant financier soumise le
-					<strong class="text-dark">
-						{{app.user.garantFinancier.getDateDemande() |date('d-m-Y')}}</strong>
-					à
-					{{app.user.garantFinancier.getDateDemande() |date('H:i')}}
-					vous nous avez communiqué les informations suivantes :</p>
-
-
-				<div class="container">
-					<div class="row">
-						<div class="col">
-							<table class="table">
-								<tbody>
-									<tr>
-										<th scope="row">Pays</th>
-										<td>{{ app.user.garantFinancier.getPays() }}</td>
-									</tr>
-									<tr>
-										<th scope="row">Ville</th>
-										<td>{{ app.user.garantFinancier.getVilleEtude() }}</td>
-									</tr>
-									<tr>
-										<th scope="row">Passport</th>
-										<td>
-											{% if not app.user.passport %}
-												<p class="text-danger">
-													<strong>Vous n'avez joint aucun passeport. Les pièces jointes sont obligatoires pour le traitement de votre dossier.</strong>
-												</p>
-												<p>Rendez-vous dans le menu
-													<a href="{{ path('app_user_profil') }}" target="_blank">Mon profil</a>
-													afin d'y joindre le ou les documents demandés.</p>
-											{% else %}
-												<a href="{{ asset('uploads/passport/' ~ app.user.passport) }}" class="btn btn-dark btn-sm" download="{{ app.user.name }}_Passeport">
-													<i class="fas fa-eye"></i>
-												</a>
-											{% endif %}
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">Attestation d'acceptation</th>
-										<td>
-											{% if app.user.garantFinancier.getPathAdmissionFile() == null %}
-												<p class="text-danger">Vous n'avez joint aucune attestation d'acceptation. Les pièces jointes sont obligatoires.</p>
-												<label for="formFile" class="form-label">Attestation d'acceptation</label>
-												<input class="form-control" type="file" id="formFile">
-											{% else %}
-												<a href="{{ asset('uploads/attestation/' ~ app.user.garantFinancier.pathAdmissionFile) }}" class="btn btn-dark btn-sm" download="{{ app.user.name }}_attestation_acceptation">
-													<i class="fas fa-eye"></i>
-												</a>
-											{% endif %}
-										</td>
-									</tr>
-                  <tr>
-                  <th scope="row"> Justificatif de paiement </th>
-                    <td>
-                    {% if app.user.garantFinancier.justificatifPaiement %}
-                    <a href="{{ asset('uploads/justificatif-de-paiement/' ~ app.user.garantFinancier.justificatifPaiement) }}" class="btn btn-success btn-sm" download="{{ app.user.name }}__paiement">
-													<i class="fas fa-eye"></i>
-												</a>
-                    {% else %}
-
-                    Aucun justificatif
-                        {% endif %}
-                        </td>
-                  </tr>
-
-
-								</tbody>
-							</table>
-							
-						</div>
-            
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card shadow mb-3 animate__animated animate__fadeInLeft">
+					<div class="card-header fw-bold text-xs text-uppercase">
+						Mes informations communiquées
 					</div>
-	
-		</div>
-{% if app.user.garantFinancier.getStatutDemande() == 0 %}
-              <br>
-								<form action="{{ path('app_garant_delete', {'id': app.user.garantFinancier.id}) }}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette demande de garant financier ?')">
-									<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ app.user.garantFinancier.id) }}">
-									<div align="center">
-										<button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Annuler
-											
-										</button>
-									</div>
-								</form>
-							{% endif %}
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card shadow mb-3 animate__animated animate__fadeInLeft">
-           			<div class="card-header  fw-bold text-xs text-uppercase">
-				Documents relatifs à la demande
+					<div
+						class="card-body">
+						<!-- Contenu de la première carte ici -->
+
+
+						<p>
+							Pour votre demande de garant financier soumise le
+							<strong class="text-dark">
+								{{app.user.garantFinancier.getDateDemande() |date('d-m-Y')}}</strong>
+							à
+							{{app.user.garantFinancier.getDateDemande() |date('H:i')}}
+							vous nous avez communiqué les informations suivantes :</p>
+
+
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<table class="table">
+										<tbody>
+											<tr>
+												<th scope="row">Pays</th>
+												<td>{{ app.user.garantFinancier.getPays() }}</td>
+											</tr>
+											<tr>
+												<th scope="row">Ville</th>
+												<td>{{ app.user.garantFinancier.getVilleEtude() }}</td>
+											</tr>
+											<tr>
+												<th scope="row">Passport</th>
+												<td>
+													{% if not app.user.passport %}
+														<p class="text-danger">
+															<strong>Vous n'avez joint aucun passeport. Les pièces jointes sont obligatoires pour le traitement de votre dossier.</strong>
+														</p>
+														<p>Rendez-vous dans le menu
+															<a href="{{ path('app_user_profil') }}" target="_blank">Mon profil</a>
+															afin d'y joindre le ou les documents demandés.</p>
+													{% else %}
+														<a href="{{ asset('uploads/passport/' ~ app.user.passport) }}" class="btn btn-dark btn-sm" download="{{ app.user.name }}_Passeport">
+															Voir
+															<i class="fas fa-eye"></i>
+														</a>
+													{% endif %}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">Attestation d'acceptation</th>
+												<td>
+													{% if app.user.garantFinancier.getPathAdmissionFile() == null %}
+														<p class="text-danger">Vous n'avez joint aucune attestation d'acceptation. Les pièces jointes sont obligatoires.</p>
+														<label for="formFile" class="form-label">Attestation d'acceptation</label>
+														<input class="form-control" type="file" id="formFile">
+													{% else %}
+														<a href="{{ asset('uploads/attestation/' ~ app.user.garantFinancier.pathAdmissionFile) }}" class="btn btn-dark btn-sm" download="{{ app.user.name }}_attestation_acceptation">
+															Voir
+															<i class="fas fa-eye"></i>
+														</a>
+													{% endif %}
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">
+													Justificatif de paiement
+												</th>
+												<td>
+													{% if app.user.garantFinancier.justificatifPaiement %}
+														<a href="{{ asset('uploads/justificatif-de-paiement/' ~ app.user.garantFinancier.justificatifPaiement) }}" class="btn btn-success btn-sm" download="{{ app.user.name }}__paiement">
+															Voir
+															<i class="fas fa-eye"></i>
+														</a>
+													{% else %}
+
+														Aucun justificatif
+													{% endif %}
+												</td>
+											</tr>
+
+
+										</tbody>
+									</table>
+
+								</div>
+
+							</div>
+
+						</div>
+						{% if app.user.garantFinancier.getStatutDemande() == 0 %}
+							<br>
+							<form action="{{ path('app_garant_delete', {'id': app.user.garantFinancier.id}) }}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette demande de garant financier ?')">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ app.user.garantFinancier.id) }}">
+								<div align="center">
+									<button type="submit" class="btn btn-danger">
+										<i class="fas fa-trash"></i>
+										Annuler
+
+									</button>
+								</div>
+							</form>
+						{% endif %}
+					</div>
+				</div>
 			</div>
-            <div class="card-body">
-                <!-- Contenu de la deuxième carte ici -->
-Joindre un justificatif de paiement (Western Union , Ria ...) <br><br> 
-<form method="post" action="{{ path('app_garant_justificatif_paiement') }}" enctype="multipart/form-data">
-<input class="form-control" type="file" name="justificatif">
-<br>
-<button type="submit" class="btn btn-dark" style="width:100%"><i class="fas fa-upload"></i> Soumettre</button>
-</form>
-<br>
+			<div class="col-md-6">
+				<div class="card shadow mb-3 animate__animated animate__fadeInLeft">
+					<div class="card-header  fw-bold text-xs text-uppercase">
+						Documents relatifs à la demande
+					</div>
+					<div
+						class="card-body">
+						<!-- Contenu de la deuxième carte ici -->
+						Joindre un justificatif de paiement (Western Union , Ria ...)
+						<br><br>
+						<form method="post" action="{{ path('app_garant_justificatif_paiement') }}" enctype="multipart/form-data">
+							<input class="form-control" type="file" name="justificatif">
+							<br>
+							{% if  not  app.user.getGarantFinancier().getJustificatifPaiement() %}		
+							<p class=" alert alert-danger text-center">Vous n'avez joint aucun justificatif de paiement pour l'instant . </p>	
+							{% else %}
+<p class=" alert alert-success text-center">Justificatif reçu . </p>	
+							{% endif %}
+							<button type="submit" class="btn btn-dark" style="width:100%">
+								<i class="fas fa-upload"></i>
+								Soumettre</button>
+						</form>
+						<br>
+					</div>
+				</div>
+			</div>
 		</div>
-            </div>
-        </div>
-    </div>
+
+		{# <div class="card shadow mb-3 animate__animated animate__fadeInLeft">
+					<div class="card-header  fw-bold text-xs text-uppercase">
+						Historique de la demande 
+					</div>
+					<div
+						class="card-body">
+						<!-- Contenu de la deuxième carte ici -->
+						
+						<br>
+					</div>
+				</div> #}
 
 
-
-		
 		<br>
-		
 
 
 	{% endif %}

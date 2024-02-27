@@ -163,7 +163,7 @@
 													<form method="post" action="{{ path('app_garant_envoyez_mail')}}">
 														<div class="mb-3">
 															<label for="recipient-name" class="col-form-label text-dark ">Envoyez à :</label>
-															<input type="text" class="form-control" name="email" id="recipient-name2" value="{{ garantUser.getUser.getEmail() }}">
+															<input type="text" class="form-control" name="email" id="recipient-name2" value="{{ garantUser.getUser.getEmail() }}" required>
 														</div>
 														<div class="mb-3">
 															<label for="recipient-name" class="col-form-label text-dark">Objet :</label>
@@ -171,7 +171,7 @@
 														</div>
 														<div class="mb-3">
 															<label for="message-text" class="col-form-label text-dark">Message:</label>
-															<textarea class="form-control" name="message" id="message-text" style="height: 200px;"></textarea>
+															<textarea class="form-control" name="message" id="message-text" style="height: 200px;" required></textarea>
 														</div>
 
 													</div>
@@ -226,13 +226,27 @@
 																<div class="mb-2">
 																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Documents :</label>
 																</div>
+																{%  if not  garantUser.getGarantFile() %}
+																	<div class="mb-2">
+																		<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Documents de garant Financier :</label>
+																		<input type="file" name="garantFile" class="form-control">
+																	</div>
+																{%  else %}
+																	<div class="fw-bold text-xs text-uppercase mb-2 ">
+																		Garant Financier :
 
-																{%  if garantUser.getPathPassport %}
+																		<a href="{{ asset('uploads/garant/' ~ garantUser.getGarantFile() ) }}" class="btn btn-warning btn-sm " download="{{garantUser.getUser().getName()}}_GarantFile">
+																			<i class="fas fa-download"></i>
+																		</a>
+																	</div>
+																{%  endif %}
+
+																{%  if garantUser.getUser().getPassport() %}
 
 																	<div class="fw-bold text-xs text-uppercase mb-2 ">
 																		Passport
 
-																		<a href="{{ asset('uploads/passport/' ~ garantUser.pathPassport) }}" class="btn btn-warning btn-sm " download="passeport.pdf">
+																		<a href="{{ asset('uploads/passport/' ~ garantUser.getUser().getPassport() ) }}" class="btn btn-warning btn-sm " download="{{garantUser.getUser().getName()}}_Passeport">
 																			<i class="fas fa-download"></i>
 																		</a>
 																	</div>
@@ -248,7 +262,7 @@
 
 																	<div class="fw-bold text-xs text-uppercase mb-2">
 																		Attestation d'admission
-																		<a href="{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}" class="btn btn-warning btn-sm" download="attestation.pdf">
+																		<a href="{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}" class="btn btn-warning btn-sm" download="{{garantUser.getUser().getName()}}_Attestation_Admission">
 																			<i class="fas fa-download"></i>
 																		</a>
 																	</div>
@@ -263,7 +277,11 @@
 																{%   endif  %}
 
 																<div class="mb-3">
-																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Dernière modification : <span class="text-danger">{{garantUser.getLastUpdate() | date('d-m-Y')  }} à {{garantUser.getLastUpdate() | date('H:m:s')  }}</span></label>
+																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Dernière modification :
+																		<span class="text-danger">{{garantUser.getLastUpdate() | date('d-m-Y')  }}
+																			à
+																			{{garantUser.getLastUpdate() | date('H:m:s')  }}</span>
+																	</label>
 																</div>
 
 																<div class="">
@@ -347,15 +365,15 @@
 													<form method="post" action="{{ path('app_garant_envoyez_mail')}}">
 														<div class="mb-3">
 															<label for="recipient-name" class="col-form-label text-dark ">Envoyez à :</label>
-															<input type="text" class="form-control" name="email" id="recipient-name2" value="{{ garantUser.getUser.getEmail() }}">
+															<input type="text" class="form-control" name="email" id="recipient-name2" value="{{ garantUser.getUser.getEmail() }}" required>
 														</div>
 														<div class="mb-3">
 															<label for="recipient-name" class="col-form-label text-dark">Objet :</label>
-															<input type="text" class="form-control" id="recipient-name" name="objet">
+															<input type="text" class="form-control" id="recipient-name" name="objet" required>
 														</div>
 														<div class="mb-3">
 															<label for="message-text" class="col-form-label text-dark">Message:</label>
-															<textarea class="form-control" name="message" id="message-text" style="height: 200px;"></textarea>
+															<textarea class="form-control" name="message" id="message-text" style="height: 200px;" required></textarea>
 														</div>
 
 													</div>
@@ -381,7 +399,7 @@
 														</div>
 														<div class="modal-body">
 
-															<form method="post" action="{{ path('app_garant_update', {'id': garantUser.id}) }}">
+															<form method="post" action="{{ path('app_garant_update', {'id': garantUser.id}) }}" enctype="multipart/form-data">
 
 																<div class="mb-3">
 																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Pays :</label>
@@ -411,13 +429,26 @@
 																<div class="mb-2">
 																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Documents :</label>
 																</div>
+																{%  if not  garantUser.getGarantFile() %}
+																	<div class="mb-2">
+																		<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Documents de garant Financier :</label>
+																		<input type="file" name="garantFile" class="form-control">
+																	</div>
+																{%  else %}
+																	<div class="fw-bold text-xs text-uppercase mb-2 ">
+																		Garant Financier :
 
-																{%  if garantUser.getPathPassport %}
+																		<a href="{{ asset('uploads/garant/' ~ garantUser.getGarantFile() ) }}" class="btn btn-warning btn-sm " download="{{garantUser.getUser().getName()}}_GarantFile">
+																			<i class="fas fa-download"></i>
+																		</a>
+																	</div>
+																{%  endif %}
+																{%  if garantUser.getUser().getPassport() %}
 
 																	<div class="fw-bold text-xs text-uppercase mb-2 ">
 																		Passport
 
-																		<a href="{{ asset('uploads/passport/' ~ garantUser.pathPassport) }}" class="btn btn-warning btn-sm " download="passeport.pdf">
+																		<a href="{{ asset('uploads/passport/' ~ garantUser.getUser().getPassport() ) }}" class="btn btn-warning btn-sm " download="{{garantUser.getUser().getName()}}_Passeport">
 																			<i class="fas fa-download"></i>
 																		</a>
 																	</div>
@@ -433,7 +464,7 @@
 
 																	<div class="fw-bold text-xs text-uppercase mb-2">
 																		Attestation d'admission
-																		<a href="{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}" class="btn btn-warning btn-sm" download="attestation.pdf">
+																		<a href="{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}" class="btn btn-warning btn-sm" download="{{garantUser.getUser().getName()}}_Attestation_Admission">
 																			<i class="fas fa-download"></i>
 																		</a>
 																	</div>
@@ -531,15 +562,15 @@
 													<form method="post" action="{{ path('app_garant_envoyez_mail')}}">
 														<div class="mb-3">
 															<label for="recipient-name" class="col-form-label text-dark ">Envoyez à :</label>
-															<input type="text" class="form-control" name="email" id="recipient-name2" value="{{ garantUser.getUser.getEmail() }}">
+															<input type="text" class="form-control" name="email" id="recipient-name2" value="{{ garantUser.getUser.getEmail() }}" required>
 														</div>
 														<div class="mb-3">
 															<label for="recipient-name" class="col-form-label text-dark">Objet :</label>
-															<input type="text" class="form-control" id="recipient-name" name="objet">
+															<input type="text" class="form-control" id="recipient-name" name="objet" required>
 														</div>
 														<div class="mb-3">
 															<label for="message-text" class="col-form-label text-dark">Message:</label>
-															<textarea class="form-control" name="message" id="message-text" style="height: 200px;"></textarea>
+															<textarea class="form-control" name="message" id="message-text" style="height: 200px;" required></textarea>
 														</div>
 
 													</div>
@@ -587,7 +618,7 @@
 																	<select name="statutDemande" class="form-select form-select mb-3">
 																		<option value="{{garantUser.getStatutDemande() }} " selected>Traitement terminé</option>
 																		<option value="0">En attente de paiement</option>
-																		<option value="2">En cours de traitement</option>
+																		<option value="1">En cours de traitement</option>
 																		<option value="3">Clôturer la demande</option>
 																	</select>
 																</div>
@@ -596,12 +627,27 @@
 																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Documents :</label>
 																</div>
 
-																{%  if garantUser.getPathPassport %}
+																{%  if not  garantUser.getGarantFile() %}
+																	<div class="mb-2">
+																		<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Documents de garant Financier :</label>
+																		<input type="file" name="garantFile" class="form-control">
+																	</div>
+																{%  else %}
+																	<div class="fw-bold text-xs text-uppercase mb-2 ">
+																		Garant Financier :
+
+																		<a href="{{ asset('uploads/garant/' ~ garantUser.getGarantFile() ) }}" class="btn btn-warning btn-sm " download="{{garantUser.getUser().getName()}}_GarantFile">
+																			<i class="fas fa-download"></i>
+																		</a>
+																	</div>
+																{%  endif %}
+
+																{%  if garantUser.getUser().getPassport() %}
 
 																	<div class="fw-bold text-xs text-uppercase mb-2 ">
 																		Passport
 
-																		<a href="{{ asset('uploads/passport/' ~ garantUser.pathPassport) }}" class="btn btn-warning btn-sm " download="passeport.pdf">
+																		<a href="{{ asset('uploads/passport/' ~ garantUser.getUser().getPassport() ) }}" class="btn btn-warning btn-sm " download="{{garantUser.getUser().getName()}}_Passeport">
 																			<i class="fas fa-download"></i>
 																		</a>
 																	</div>
@@ -617,7 +663,7 @@
 
 																	<div class="fw-bold text-xs text-uppercase mb-2">
 																		Attestation d'admission
-																		<a href="{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}" class="btn btn-warning btn-sm" download="attestation.pdf">
+																		<a href="{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}" class="btn btn-warning btn-sm" download="{{garantUser.getUser().getName()}}_Attestation_Admission">
 																			<i class="fas fa-download"></i>
 																		</a>
 																	</div>
@@ -714,11 +760,11 @@
 														<form method="post" action="{{ path('app_garant_envoyez_mail')}}">
 															<div class="mb-3">
 																<label for="recipient-name" class="col-form-label text-dark ">Envoyez à :</label>
-																<input type="text" class="form-control" name="email" id="recipient-name2" value="{{ garantUser.getUser.getEmail() }}">
+																<input type="text" class="form-control" name="email" id="recipient-name2" value="{{ garantUser.getUser.getEmail() }}" required>
 															</div>
 															<div class="mb-3">
 																<label for="recipient-name" class="col-form-label text-dark">Objet :</label>
-																<input type="text" class="form-control" id="recipient-name" name="objet">
+																<input type="text" class="form-control" id="recipient-name" name="objet" required>
 															</div>
 															<div class="mb-3">
 																<label for="message-text" class="col-form-label text-dark">Message:</label>
@@ -778,12 +824,12 @@
 																		<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Documents :</label>
 																	</div>
 
-																	{%  if garantUser.getPathPassport %}
+																	{%  if garantUser.getUser().getPassport() %}
 
 																		<div class="fw-bold text-xs text-uppercase mb-2 ">
 																			Passport
 
-																			<a href="{{ asset('uploads/passport/' ~ garantUser.pathPassport) }}" class="btn btn-warning btn-sm " download="passeport.pdf">
+																			<a href="{{ asset('uploads/passport/' ~ garantUser.getUser().getPassport() ) }}" class="btn btn-warning btn-sm " download="{{garantUser.getUser().getName()}}_Passeport">
 																				<i class="fas fa-download"></i>
 																			</a>
 																		</div>
@@ -799,7 +845,7 @@
 
 																		<div class="fw-bold text-xs text-uppercase mb-2">
 																			Attestation d'admission
-																			<a href="{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}" class="btn btn-warning btn-sm" download="attestation.pdf">
+																			<a href="{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}" class="btn btn-warning btn-sm" download="{{garantUser.getUser().getName()}}_Attestation_Admission">
 																				<i class="fas fa-download"></i>
 																			</a>
 																		</div>

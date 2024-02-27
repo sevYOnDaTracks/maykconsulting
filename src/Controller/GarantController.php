@@ -51,6 +51,25 @@ class GarantController extends AbstractController
             $ville = $request->request->get('ville');
             $statut = $request->request->get('statutDemande');
 
+            
+
+            if ($request->files->get('garantFile')) {
+
+                // Supprimer l'ancien avatar s'il existe
+                $oldGarantPath = $garantFinancier->getGarantFile();
+                if ($oldGarantPath && file_exists($oldGarantPath)) {
+                    unlink($oldGarantPath);
+                    $garantFinancier->setGarantFile(null);
+                }
+
+                $garantFile = $request->files->get('garantFile');
+
+                // Traitement de l'avatar téléchargé
+                $fileName = md5(uniqid()) . '.' . $garantFile->guessExtension();
+                $garantFile->move($this->getParameter('garant_directory'), $fileName);
+                $garantFinancier->setGarantFile($fileName);
+            }
+
             $oldStatutDemande = $garantFinancier->getStatutDemande();
 
             $garantFinancier->setPays($pays);
@@ -64,7 +83,8 @@ class GarantController extends AbstractController
             ->from('noreply@maykconsulting.fr')
             ->to($garantFinancier->getUser()->getEmail()) // Utilisez l'e-mail saisi par l'utilisateur
             ->subject('Urgent - Mise à jour de votre dossier')
-            ->html('<p>L\'état d\'avancement de votre dossier a été mis à jour. Veuillez vous connecter sur le site pour plus d\'informations .</p><br> <p> Mayk consulting Services</p>');
+            ->html('<p>L\'état d\'avancement de votre dossier a été mis à jour. Veuillez vous connecter sur le site pour plus d\'informations .</p><br> <p> Mayk consulting Services</p>')
+            ->attachFromPath('assets/images/logo.png');
     
             $apiKey = '64ff6202a62179784d1ffa3dd0546b97';
                 $mailtrap = new MailtrapClient(new Config($apiKey));
@@ -194,7 +214,8 @@ class GarantController extends AbstractController
                 ->html('<p>Votre demande a été reçue avec succès ! Nous vous informons que le processus de traitement démarrera après réception des fonds.</p>
                 <br>
                 Mayk - Consulting Services')
-                ->attach($pdfContent, 'Devis_GarantFinancier_'. $user->getName() .' _'. (new DateTime())->format('Y-m-d_H-i-s') .'.pdf', 'application/pdf'); 
+                ->attach($pdfContent, 'Devis_GarantFinancier_'. $user->getName() .' _'. (new DateTime())->format('Y-m-d_H-i-s') .'.pdf', 'application/pdf');
+                 
 
         
                 $apiKey = '64ff6202a62179784d1ffa3dd0546b97';

@@ -294,7 +294,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" name=\"email\" id=\"recipient-name2\" value=\"";
             // line 166
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "any", false, false, false, 166), "getEmail", [], "method", false, false, false, 166), "html", null, true);
-            echo "\">
+            echo "\" required>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label text-dark\">Objet :</label>
@@ -302,7 +302,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"message-text\" class=\"col-form-label text-dark\">Message:</label>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textarea class=\"form-control\" name=\"message\" id=\"message-text\" style=\"height: 200px;\"></textarea>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textarea class=\"form-control\" name=\"message\" id=\"message-text\" style=\"height: 200px;\" required></textarea>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -380,25 +380,53 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-2\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Documents :</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
-
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-            // line 230
-            if (twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPathPassport", [], "any", false, false, false, 230)) {
-                // line 231
+            // line 229
+            if ( !twig_get_attribute($this->env, $this->source, $context["garantUser"], "getGarantFile", [], "method", false, false, false, 229)) {
+                // line 230
+                echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-2\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Documents de garant Financier :</label>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"file\" name=\"garantFile\" class=\"form-control\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+            } else {
+                // line 235
+                echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2 \">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tGarant Financier :
+
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
+                // line 238
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/garant/" . twig_get_attribute($this->env, $this->source, $context["garantUser"], "getGarantFile", [], "method", false, false, false, 238))), "html", null, true);
+                echo "\" class=\"btn btn-warning btn-sm \" download=\"";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 238), "getName", [], "method", false, false, false, 238), "html", null, true);
+                echo "_GarantFile\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+            }
+            // line 243
+            echo "
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+            // line 244
+            if (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 244), "getPassport", [], "method", false, false, false, 244)) {
+                // line 245
                 echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2 \">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPassport
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-                // line 235
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/passport/" . twig_get_attribute($this->env, $this->source, $context["garantUser"], "pathPassport", [], "any", false, false, false, 235))), "html", null, true);
-                echo "\" class=\"btn btn-warning btn-sm \" download=\"passeport.pdf\">
+                // line 249
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/passport/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 249), "getPassport", [], "method", false, false, false, 249))), "html", null, true);
+                echo "\" class=\"btn btn-warning btn-sm \" download=\"";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 249), "getName", [], "method", false, false, false, 249), "html", null, true);
+                echo "_Passeport\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
             } else {
-                // line 240
+                // line 254
                 echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"text-danger\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t* L'utilisateur n'a pas joint de passport
@@ -406,19 +434,21 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
             }
-            // line 246
+            // line 260
             echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-            // line 247
-            if (twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPathAdmissionFile", [], "any", false, false, false, 247)) {
-                // line 248
+            // line 261
+            if (twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPathAdmissionFile", [], "any", false, false, false, 261)) {
+                // line 262
                 echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAttestation d'admission
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-                // line 251
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/attestation/" . twig_get_attribute($this->env, $this->source, $context["garantUser"], "pathAdmissionFile", [], "any", false, false, false, 251))), "html", null, true);
-                echo "\" class=\"btn btn-warning btn-sm\" download=\"attestation.pdf\">
+                // line 265
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/attestation/" . twig_get_attribute($this->env, $this->source, $context["garantUser"], "pathAdmissionFile", [], "any", false, false, false, 265))), "html", null, true);
+                echo "\" class=\"btn btn-warning btn-sm\" download=\"";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 265), "getName", [], "method", false, false, false, 265), "html", null, true);
+                echo "_Attestation_Admission\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -426,7 +456,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
             } else {
-                // line 258
+                // line 272
                 echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"text-danger\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t* L'utilisateur n'a pas joint d'attestation d'acceptation
@@ -434,21 +464,26 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
             }
-            // line 264
+            // line 278
             echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Dernière modification : <span class=\"text-danger\">";
-            // line 266
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getLastUpdate", [], "method", false, false, false, 266), "d-m-Y"), "html", null, true);
-            echo " à ";
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getLastUpdate", [], "method", false, false, false, 266), "H:m:s"), "html", null, true);
-            echo "</span></label>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Dernière modification :
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"text-danger\">";
+            // line 281
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getLastUpdate", [], "method", false, false, false, 281), "d-m-Y"), "html", null, true);
+            echo "
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tà
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+            // line 283
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getLastUpdate", [], "method", false, false, false, 283), "H:m:s"), "html", null, true);
+            echo "</span>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textarea name=\"othersInformations\" class=\"form-control\" placeholder=\"L'utilisateur n'a rien écrit comme message ..\" disabled>";
-            // line 270
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getInformations", [], "method", false, false, false, 270), "html", null, true);
+            // line 288
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getInformations", [], "method", false, false, false, 288), "html", null, true);
             echo "</textarea>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
@@ -473,7 +508,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['garantUser'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 290
+        // line 308
         echo "\t\t\t\t\t</tbody>
 \t\t\t\t</table>
 \t\t\t</div>
@@ -503,58 +538,58 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t</thead>
 \t\t\t\t\t<tbody>
 \t\t\t\t\t\t";
-        // line 318
+        // line 336
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["garantEnCours"]) || array_key_exists("garantEnCours", $context) ? $context["garantEnCours"] : (function () { throw new RuntimeError('Variable "garantEnCours" does not exist.', 318, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["garantEnCours"]) || array_key_exists("garantEnCours", $context) ? $context["garantEnCours"] : (function () { throw new RuntimeError('Variable "garantEnCours" does not exist.', 336, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["garantUser"]) {
-            // line 319
+            // line 337
             echo "\t\t\t\t\t\t\t<tr>
 \t\t\t\t\t\t\t\t<td>";
-            // line 320
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 320), "html", null, true);
+            // line 338
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 338), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 321
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 321), "getName", [], "method", false, false, false, 321), "html", null, true);
+            // line 339
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 339), "getName", [], "method", false, false, false, 339), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 322
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 322), "getEmail", [], "method", false, false, false, 322), "html", null, true);
+            // line 340
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 340), "getEmail", [], "method", false, false, false, 340), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 323
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 323), "getPhone", [], "method", false, false, false, 323), "html", null, true);
+            // line 341
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 341), "getPhone", [], "method", false, false, false, 341), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 324
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getDateDemande", [], "method", false, false, false, 324), "d-m-Y"), "html", null, true);
+            // line 342
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getDateDemande", [], "method", false, false, false, 342), "d-m-Y"), "html", null, true);
             echo "
 \t\t\t\t\t\t\t\t\tà
 \t\t\t\t\t\t\t\t\t";
-            // line 326
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getDateDemande", [], "method", false, false, false, 326), "H:i:"), "html", null, true);
+            // line 344
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getDateDemande", [], "method", false, false, false, 344), "H:i:"), "html", null, true);
             echo "
 \t\t\t\t\t\t\t\t\tGMT</td>
 
 \t\t\t\t\t\t\t\t<td>
 \t\t\t\t\t\t\t\t\t<button class=\"btn btn-warning\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal";
-            // line 330
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 330), "html", null, true);
+            // line 348
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 348), "html", null, true);
             echo "\">
 \t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-edit\"></i>
 
 \t\t\t\t\t\t\t\t\t</button>
 \t\t\t\t\t\t\t\t\t<button class=\"btn btn-info\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModa";
-            // line 334
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 334), "html", null, true);
+            // line 352
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 352), "html", null, true);
             echo "\">
 \t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-reply\"></i>
 \t\t\t\t\t\t\t\t\t</button>
 
 
 \t\t\t\t\t\t\t\t\t<div class=\"modal fade\" id=\"exampleModa";
-            // line 339
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 339), "html", null, true);
+            // line 357
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 357), "html", null, true);
             echo "\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
 \t\t\t\t\t\t\t\t\t\t<div class=\"modal-dialog\">
 \t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-content\">
@@ -564,23 +599,23 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-body\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"";
-            // line 347
+            // line 365
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_envoyez_mail");
             echo "\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label text-dark \">Envoyez à :</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" name=\"email\" id=\"recipient-name2\" value=\"";
-            // line 350
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "any", false, false, false, 350), "getEmail", [], "method", false, false, false, 350), "html", null, true);
-            echo "\">
+            // line 368
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "any", false, false, false, 368), "getEmail", [], "method", false, false, false, 368), "html", null, true);
+            echo "\" required>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label text-dark\">Objet :</label>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"recipient-name\" name=\"objet\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"recipient-name\" name=\"objet\" required>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"message-text\" class=\"col-form-label text-dark\">Message:</label>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textarea class=\"form-control\" name=\"message\" id=\"message-text\" style=\"height: 200px;\"></textarea>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textarea class=\"form-control\" name=\"message\" id=\"message-text\" style=\"height: 200px;\" required></textarea>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -596,38 +631,38 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t\t\t<div class=\"modal fade\" id=\"exampleModal";
-            // line 373
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 373), "html", null, true);
+            // line 391
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 391), "html", null, true);
             echo "\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
 \t\t\t\t\t\t\t\t\t\t<div class=\"modal-dialog modal-xl modal-dialog-centered\">
 \t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-content\">
 \t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-header text-center\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t<h1 class=\"modal-title fs-5 text-dark text-center\" id=\"exampleModalLabel\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<strong>";
-            // line 378
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 378), "getName", [], "method", false, false, false, 378), "html", null, true);
+            // line 396
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 396), "getName", [], "method", false, false, false, 396), "html", null, true);
             echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-            // line 379
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 379), "getLastName", [], "method", false, false, false, 379), "html", null, true);
+            // line 397
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 397), "getLastName", [], "method", false, false, false, 397), "html", null, true);
             echo "<strong></h1>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-body\">
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"";
-            // line 384
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_update", ["id" => twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 384)]), "html", null, true);
-            echo "\">
+            // line 402
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_update", ["id" => twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 402)]), "html", null, true);
+            echo "\" enctype=\"multipart/form-data\">
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Pays :</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<select name=\"pays\" class=\"form-select form-select mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"";
-            // line 389
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPays", [], "method", false, false, false, 389), "html", null, true);
+            // line 407
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPays", [], "method", false, false, false, 407), "html", null, true);
             echo " \" selected>";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPays", [], "method", false, false, false, 389), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPays", [], "method", false, false, false, 407), "html", null, true);
             echo "</option>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"France\">France</option>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"Canada\">Canada</option>
@@ -638,8 +673,8 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Ville :</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<Input value=\"";
-            // line 398
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getVilleEtude", [], "method", false, false, false, 398), "html", null, true);
+            // line 416
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getVilleEtude", [], "method", false, false, false, 416), "html", null, true);
             echo " \" name=\"ville\" type=\"text\" class=\"form-control\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
@@ -647,8 +682,8 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Etat de la demande :</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<select name=\"statutDemande\" class=\"form-select form-select mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"";
-            // line 404
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getStatutDemande", [], "method", false, false, false, 404), "html", null, true);
+            // line 422
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getStatutDemande", [], "method", false, false, false, 422), "html", null, true);
             echo " \" selected>En cours de traitement</option>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"0\">En attente de paiement</option>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">Traitement terminé</option>
@@ -659,25 +694,51 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-2\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Documents :</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
-
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-            // line 415
-            if (twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPathPassport", [], "any", false, false, false, 415)) {
-                // line 416
+            // line 432
+            if ( !twig_get_attribute($this->env, $this->source, $context["garantUser"], "getGarantFile", [], "method", false, false, false, 432)) {
+                // line 433
+                echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-2\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Documents de garant Financier :</label>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"file\" name=\"garantFile\" class=\"form-control\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+            } else {
+                // line 438
+                echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2 \">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tGarant Financier :
+
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
+                // line 441
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/garant/" . twig_get_attribute($this->env, $this->source, $context["garantUser"], "getGarantFile", [], "method", false, false, false, 441))), "html", null, true);
+                echo "\" class=\"btn btn-warning btn-sm \" download=\"";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 441), "getName", [], "method", false, false, false, 441), "html", null, true);
+                echo "_GarantFile\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+            }
+            // line 446
+            echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+            if (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 446), "getPassport", [], "method", false, false, false, 446)) {
+                // line 447
                 echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2 \">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPassport
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-                // line 420
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/passport/" . twig_get_attribute($this->env, $this->source, $context["garantUser"], "pathPassport", [], "any", false, false, false, 420))), "html", null, true);
-                echo "\" class=\"btn btn-warning btn-sm \" download=\"passeport.pdf\">
+                // line 451
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/passport/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 451), "getPassport", [], "method", false, false, false, 451))), "html", null, true);
+                echo "\" class=\"btn btn-warning btn-sm \" download=\"";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 451), "getName", [], "method", false, false, false, 451), "html", null, true);
+                echo "_Passeport\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
             } else {
-                // line 425
+                // line 456
                 echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"text-danger\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t* L'utilisateur n'a pas joint de passport
@@ -685,19 +746,21 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
             }
-            // line 431
+            // line 462
             echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-            // line 432
-            if (twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPathAdmissionFile", [], "any", false, false, false, 432)) {
-                // line 433
+            // line 463
+            if (twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPathAdmissionFile", [], "any", false, false, false, 463)) {
+                // line 464
                 echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAttestation d'admission
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-                // line 436
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/attestation/" . twig_get_attribute($this->env, $this->source, $context["garantUser"], "pathAdmissionFile", [], "any", false, false, false, 436))), "html", null, true);
-                echo "\" class=\"btn btn-warning btn-sm\" download=\"attestation.pdf\">
+                // line 467
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/attestation/" . twig_get_attribute($this->env, $this->source, $context["garantUser"], "pathAdmissionFile", [], "any", false, false, false, 467))), "html", null, true);
+                echo "\" class=\"btn btn-warning btn-sm\" download=\"";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 467), "getName", [], "method", false, false, false, 467), "html", null, true);
+                echo "_Attestation_Admission\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -705,7 +768,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
             } else {
-                // line 443
+                // line 474
                 echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"text-danger\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t* L'utilisateur n'a pas joint d'attestation d'acceptation
@@ -713,13 +776,13 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
             }
-            // line 449
+            // line 480
             echo "
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textarea name=\"othersInformations\" class=\"form-control\" placeholder=\"L'utilisateur n'a rien écrit comme message ..\" disabled>";
-            // line 452
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getInformations", [], "method", false, false, false, 452), "html", null, true);
+            // line 483
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getInformations", [], "method", false, false, false, 483), "html", null, true);
             echo "</textarea>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
@@ -744,7 +807,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['garantUser'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 472
+        // line 503
         echo "\t\t\t\t\t</tbody>
 \t\t\t\t</table>
 \t\t\t</div>
@@ -776,58 +839,58 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t</thead>
 \t\t\t\t\t<tbody>
 \t\t\t\t\t\t";
-        // line 502
+        // line 533
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["garantTermine"]) || array_key_exists("garantTermine", $context) ? $context["garantTermine"] : (function () { throw new RuntimeError('Variable "garantTermine" does not exist.', 502, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["garantTermine"]) || array_key_exists("garantTermine", $context) ? $context["garantTermine"] : (function () { throw new RuntimeError('Variable "garantTermine" does not exist.', 533, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["garantUser"]) {
-            // line 503
+            // line 534
             echo "\t\t\t\t\t\t\t<tr>
 \t\t\t\t\t\t\t\t<td>";
-            // line 504
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 504), "html", null, true);
+            // line 535
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 535), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 505
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 505), "getName", [], "method", false, false, false, 505), "html", null, true);
+            // line 536
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 536), "getName", [], "method", false, false, false, 536), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 506
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 506), "getEmail", [], "method", false, false, false, 506), "html", null, true);
+            // line 537
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 537), "getEmail", [], "method", false, false, false, 537), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 507
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 507), "getPhone", [], "method", false, false, false, 507), "html", null, true);
+            // line 538
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 538), "getPhone", [], "method", false, false, false, 538), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t<td>";
-            // line 508
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getDateDemande", [], "method", false, false, false, 508), "d-m-Y"), "html", null, true);
+            // line 539
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getDateDemande", [], "method", false, false, false, 539), "d-m-Y"), "html", null, true);
             echo "
 \t\t\t\t\t\t\t\t\tà
 \t\t\t\t\t\t\t\t\t";
-            // line 510
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getDateDemande", [], "method", false, false, false, 510), "H:i:"), "html", null, true);
+            // line 541
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getDateDemande", [], "method", false, false, false, 541), "H:i:"), "html", null, true);
             echo "
 \t\t\t\t\t\t\t\t\tGMT</td>
 
 \t\t\t\t\t\t\t\t<td>
 \t\t\t\t\t\t\t\t\t<button class=\"btn btn-warning\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal";
-            // line 514
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 514), "html", null, true);
+            // line 545
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 545), "html", null, true);
             echo "\">
 \t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-edit\"></i>
 
 \t\t\t\t\t\t\t\t\t</button>
 \t\t\t\t\t\t\t\t\t<button class=\"btn btn-info\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModa";
-            // line 518
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 518), "html", null, true);
+            // line 549
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 549), "html", null, true);
             echo "\">
 \t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-reply\"></i>
 \t\t\t\t\t\t\t\t\t</button>
 
 
 \t\t\t\t\t\t\t\t\t<div class=\"modal fade\" id=\"exampleModa";
-            // line 523
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 523), "html", null, true);
+            // line 554
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 554), "html", null, true);
             echo "\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
 \t\t\t\t\t\t\t\t\t\t<div class=\"modal-dialog\">
 \t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-content\">
@@ -837,23 +900,23 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-body\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"";
-            // line 531
+            // line 562
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_envoyez_mail");
             echo "\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label text-dark \">Envoyez à :</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" name=\"email\" id=\"recipient-name2\" value=\"";
-            // line 534
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "any", false, false, false, 534), "getEmail", [], "method", false, false, false, 534), "html", null, true);
-            echo "\">
+            // line 565
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "any", false, false, false, 565), "getEmail", [], "method", false, false, false, 565), "html", null, true);
+            echo "\" required>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label text-dark\">Objet :</label>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"recipient-name\" name=\"objet\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"recipient-name\" name=\"objet\" required>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"message-text\" class=\"col-form-label text-dark\">Message:</label>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textarea class=\"form-control\" name=\"message\" id=\"message-text\" style=\"height: 200px;\"></textarea>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textarea class=\"form-control\" name=\"message\" id=\"message-text\" style=\"height: 200px;\" required></textarea>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -869,38 +932,38 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t\t\t<div class=\"modal fade\" id=\"exampleModal";
-            // line 557
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 557), "html", null, true);
+            // line 588
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 588), "html", null, true);
             echo "\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
 \t\t\t\t\t\t\t\t\t\t<div class=\"modal-dialog modal-xl modal-dialog-centered\">
 \t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-content\">
 \t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-header text-center\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t<h1 class=\"modal-title fs-5 text-dark text-center\" id=\"exampleModalLabel\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<strong>";
-            // line 562
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 562), "getName", [], "method", false, false, false, 562), "html", null, true);
+            // line 593
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 593), "getName", [], "method", false, false, false, 593), "html", null, true);
             echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-            // line 563
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 563), "getLastName", [], "method", false, false, false, 563), "html", null, true);
+            // line 594
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 594), "getLastName", [], "method", false, false, false, 594), "html", null, true);
             echo "<strong></h1>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-body\">
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"";
-            // line 568
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_update", ["id" => twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 568)]), "html", null, true);
+            // line 599
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_update", ["id" => twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 599)]), "html", null, true);
             echo "\">
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Pays :</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<select name=\"pays\" class=\"form-select form-select mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"";
-            // line 573
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPays", [], "method", false, false, false, 573), "html", null, true);
+            // line 604
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPays", [], "method", false, false, false, 604), "html", null, true);
             echo " \" selected>";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPays", [], "method", false, false, false, 573), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPays", [], "method", false, false, false, 604), "html", null, true);
             echo "</option>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"France\">France</option>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"Canada\">Canada</option>
@@ -911,8 +974,8 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Ville :</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<Input value=\"";
-            // line 582
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getVilleEtude", [], "method", false, false, false, 582), "html", null, true);
+            // line 613
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getVilleEtude", [], "method", false, false, false, 613), "html", null, true);
             echo " \" name=\"ville\" type=\"text\" class=\"form-control\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
@@ -920,11 +983,11 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Etat de la demande :</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<select name=\"statutDemande\" class=\"form-select form-select mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"";
-            // line 588
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getStatutDemande", [], "method", false, false, false, 588), "html", null, true);
+            // line 619
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getStatutDemande", [], "method", false, false, false, 619), "html", null, true);
             echo " \" selected>Traitement terminé</option>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"0\">En attente de paiement</option>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">En cours de traitement</option>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">En cours de traitement</option>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"3\">Clôturer la demande</option>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</select>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -934,23 +997,52 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-            // line 599
-            if (twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPathPassport", [], "any", false, false, false, 599)) {
-                // line 600
+            // line 630
+            if ( !twig_get_attribute($this->env, $this->source, $context["garantUser"], "getGarantFile", [], "method", false, false, false, 630)) {
+                // line 631
+                echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-2\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Documents de garant Financier :</label>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"file\" name=\"garantFile\" class=\"form-control\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+            } else {
+                // line 636
+                echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2 \">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tGarant Financier :
+
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
+                // line 639
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/garant/" . twig_get_attribute($this->env, $this->source, $context["garantUser"], "getGarantFile", [], "method", false, false, false, 639))), "html", null, true);
+                echo "\" class=\"btn btn-warning btn-sm \" download=\"";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 639), "getName", [], "method", false, false, false, 639), "html", null, true);
+                echo "_GarantFile\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+            }
+            // line 644
+            echo "
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+            // line 645
+            if (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 645), "getPassport", [], "method", false, false, false, 645)) {
+                // line 646
                 echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2 \">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPassport
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-                // line 604
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/passport/" . twig_get_attribute($this->env, $this->source, $context["garantUser"], "pathPassport", [], "any", false, false, false, 604))), "html", null, true);
-                echo "\" class=\"btn btn-warning btn-sm \" download=\"passeport.pdf\">
+                // line 650
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/passport/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 650), "getPassport", [], "method", false, false, false, 650))), "html", null, true);
+                echo "\" class=\"btn btn-warning btn-sm \" download=\"";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 650), "getName", [], "method", false, false, false, 650), "html", null, true);
+                echo "_Passeport\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
             } else {
-                // line 609
+                // line 655
                 echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"text-danger\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t* L'utilisateur n'a pas joint de passport
@@ -958,19 +1050,21 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
             }
-            // line 615
+            // line 661
             echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-            // line 616
-            if (twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPathAdmissionFile", [], "any", false, false, false, 616)) {
-                // line 617
+            // line 662
+            if (twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPathAdmissionFile", [], "any", false, false, false, 662)) {
+                // line 663
                 echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAttestation d'admission
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-                // line 620
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/attestation/" . twig_get_attribute($this->env, $this->source, $context["garantUser"], "pathAdmissionFile", [], "any", false, false, false, 620))), "html", null, true);
-                echo "\" class=\"btn btn-warning btn-sm\" download=\"attestation.pdf\">
+                // line 666
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/attestation/" . twig_get_attribute($this->env, $this->source, $context["garantUser"], "pathAdmissionFile", [], "any", false, false, false, 666))), "html", null, true);
+                echo "\" class=\"btn btn-warning btn-sm\" download=\"";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 666), "getName", [], "method", false, false, false, 666), "html", null, true);
+                echo "_Attestation_Admission\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -978,7 +1072,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
             } else {
-                // line 627
+                // line 673
                 echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"text-danger\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t* L'utilisateur n'a pas joint d'attestation d'acceptation
@@ -986,13 +1080,13 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
             }
-            // line 633
+            // line 679
             echo "
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textarea name=\"othersInformations\" class=\"form-control\" placeholder=\"L'utilisateur n'a rien écrit comme message ..\" disabled>";
-            // line 636
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getInformations", [], "method", false, false, false, 636), "html", null, true);
+            // line 682
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getInformations", [], "method", false, false, false, 682), "html", null, true);
             echo "</textarea>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
@@ -1017,7 +1111,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['garantUser'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 656
+        // line 702
         echo "\t\t\t\t\t</tbody>
 \t\t\t\t</table>
 \t\t\t</div>
@@ -1047,61 +1141,61 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t</thead>
 \t\t\t\t\t<tbody>
 \t\t\t\t\t\t";
-        // line 684
-        if ((twig_length_filter($this->env, (isset($context["garantsCloturer"]) || array_key_exists("garantsCloturer", $context) ? $context["garantsCloturer"] : (function () { throw new RuntimeError('Variable "garantsCloturer" does not exist.', 684, $this->source); })())) > 0)) {
-            // line 685
+        // line 730
+        if ((twig_length_filter($this->env, (isset($context["garantsCloturer"]) || array_key_exists("garantsCloturer", $context) ? $context["garantsCloturer"] : (function () { throw new RuntimeError('Variable "garantsCloturer" does not exist.', 730, $this->source); })())) > 0)) {
+            // line 731
             echo "\t\t\t\t\t\t\t";
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["garantsCloturer"]) || array_key_exists("garantsCloturer", $context) ? $context["garantsCloturer"] : (function () { throw new RuntimeError('Variable "garantsCloturer" does not exist.', 685, $this->source); })()));
+            $context['_seq'] = twig_ensure_traversable((isset($context["garantsCloturer"]) || array_key_exists("garantsCloturer", $context) ? $context["garantsCloturer"] : (function () { throw new RuntimeError('Variable "garantsCloturer" does not exist.', 731, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["garantUser"]) {
-                // line 686
+                // line 732
                 echo "\t\t\t\t\t\t\t\t<tr>
 \t\t\t\t\t\t\t\t\t<td>";
-                // line 687
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 687), "html", null, true);
+                // line 733
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 733), "html", null, true);
                 echo "</td>
 \t\t\t\t\t\t\t\t\t<td>";
-                // line 688
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 688), "getName", [], "method", false, false, false, 688), "html", null, true);
+                // line 734
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 734), "getName", [], "method", false, false, false, 734), "html", null, true);
                 echo "</td>
 \t\t\t\t\t\t\t\t\t<td>";
-                // line 689
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 689), "getEmail", [], "method", false, false, false, 689), "html", null, true);
+                // line 735
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 735), "getEmail", [], "method", false, false, false, 735), "html", null, true);
                 echo "</td>
 \t\t\t\t\t\t\t\t\t<td>";
-                // line 690
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 690), "getPhone", [], "method", false, false, false, 690), "html", null, true);
+                // line 736
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 736), "getPhone", [], "method", false, false, false, 736), "html", null, true);
                 echo "</td>
 \t\t\t\t\t\t\t\t\t<td>";
-                // line 691
-                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getDateDemande", [], "method", false, false, false, 691), "d-m-Y"), "html", null, true);
+                // line 737
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getDateDemande", [], "method", false, false, false, 737), "d-m-Y"), "html", null, true);
                 echo "
 \t\t\t\t\t\t\t\t\t\tà
 \t\t\t\t\t\t\t\t\t\t";
-                // line 693
-                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getDateDemande", [], "method", false, false, false, 693), "H:i:"), "html", null, true);
+                // line 739
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getDateDemande", [], "method", false, false, false, 739), "H:i:"), "html", null, true);
                 echo "
 \t\t\t\t\t\t\t\t\t\tGMT</td>
 
 \t\t\t\t\t\t\t\t\t<td>
 \t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-warning\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal";
-                // line 697
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 697), "html", null, true);
+                // line 743
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 743), "html", null, true);
                 echo "\">
 \t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-edit\"></i>
 
 \t\t\t\t\t\t\t\t\t\t</button>
 \t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-info\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModa";
-                // line 701
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 701), "html", null, true);
+                // line 747
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 747), "html", null, true);
                 echo "\">
 \t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-reply\"></i>
 \t\t\t\t\t\t\t\t\t\t</button>
 
 
 \t\t\t\t\t\t\t\t\t\t<div class=\"modal fade\" id=\"exampleModa";
-                // line 706
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 706), "html", null, true);
+                // line 752
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 752), "html", null, true);
                 echo "\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
 \t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-dialog\">
 \t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-content\">
@@ -1111,19 +1205,19 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-body\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"";
-                // line 714
+                // line 760
                 echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_envoyez_mail");
                 echo "\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label text-dark \">Envoyez à :</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" name=\"email\" id=\"recipient-name2\" value=\"";
-                // line 717
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "any", false, false, false, 717), "getEmail", [], "method", false, false, false, 717), "html", null, true);
-                echo "\">
+                // line 763
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "any", false, false, false, 763), "getEmail", [], "method", false, false, false, 763), "html", null, true);
+                echo "\" required>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label text-dark\">Objet :</label>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"recipient-name\" name=\"objet\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"recipient-name\" name=\"objet\" required>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"message-text\" class=\"col-form-label text-dark\">Message:</label>
@@ -1143,38 +1237,38 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t\t\t\t<div class=\"modal fade\" id=\"exampleModal";
-                // line 740
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 740), "html", null, true);
+                // line 786
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 786), "html", null, true);
                 echo "\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
 \t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-dialog modal-xl modal-dialog-centered\">
 \t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-content\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-header text-center\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<h1 class=\"modal-title fs-5 text-dark text-center\" id=\"exampleModalLabel\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<strong>";
-                // line 745
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 745), "getName", [], "method", false, false, false, 745), "html", null, true);
+                // line 791
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 791), "getName", [], "method", false, false, false, 791), "html", null, true);
                 echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-                // line 746
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 746), "getLastName", [], "method", false, false, false, 746), "html", null, true);
+                // line 792
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 792), "getLastName", [], "method", false, false, false, 792), "html", null, true);
                 echo "<strong></h1>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-body\">
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"";
-                // line 751
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_update", ["id" => twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 751)]), "html", null, true);
+                // line 797
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_update", ["id" => twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 797)]), "html", null, true);
                 echo "\">
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Pays :</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<select name=\"pays\" class=\"form-select form-select mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"";
-                // line 756
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPays", [], "method", false, false, false, 756), "html", null, true);
+                // line 802
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPays", [], "method", false, false, false, 802), "html", null, true);
                 echo " \" selected>";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPays", [], "method", false, false, false, 756), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPays", [], "method", false, false, false, 802), "html", null, true);
                 echo "</option>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"France\">France</option>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"Canada\">Canada</option>
@@ -1185,8 +1279,8 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Ville :</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<Input value=\"";
-                // line 765
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getVilleEtude", [], "method", false, false, false, 765), "html", null, true);
+                // line 811
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getVilleEtude", [], "method", false, false, false, 811), "html", null, true);
                 echo " \" name=\"ville\" type=\"text\" class=\"form-control\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
@@ -1194,8 +1288,8 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Etat de la demande :</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<select name=\"statutDemande\" class=\"form-select form-select mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"";
-                // line 771
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getStatutDemande", [], "method", false, false, false, 771), "html", null, true);
+                // line 817
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getStatutDemande", [], "method", false, false, false, 817), "html", null, true);
                 echo " \" selected>Demande clôturer</option>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"0\">En attente de paiement</option>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">En cours de traitement</option>
@@ -1207,23 +1301,25 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-                // line 781
-                if (twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPathPassport", [], "any", false, false, false, 781)) {
-                    // line 782
+                // line 827
+                if (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 827), "getPassport", [], "method", false, false, false, 827)) {
+                    // line 828
                     echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2 \">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPassport
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-                    // line 786
-                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/passport/" . twig_get_attribute($this->env, $this->source, $context["garantUser"], "pathPassport", [], "any", false, false, false, 786))), "html", null, true);
-                    echo "\" class=\"btn btn-warning btn-sm \" download=\"passeport.pdf\">
+                    // line 832
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/passport/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 832), "getPassport", [], "method", false, false, false, 832))), "html", null, true);
+                    echo "\" class=\"btn btn-warning btn-sm \" download=\"";
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 832), "getName", [], "method", false, false, false, 832), "html", null, true);
+                    echo "_Passeport\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
                 } else {
-                    // line 791
+                    // line 837
                     echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"text-danger\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t* L'utilisateur n'a pas joint de passport
@@ -1231,19 +1327,21 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
                 }
-                // line 797
+                // line 843
                 echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-                // line 798
-                if (twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPathAdmissionFile", [], "any", false, false, false, 798)) {
-                    // line 799
+                // line 844
+                if (twig_get_attribute($this->env, $this->source, $context["garantUser"], "getPathAdmissionFile", [], "any", false, false, false, 844)) {
+                    // line 845
                     echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAttestation d'admission
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-                    // line 802
-                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/attestation/" . twig_get_attribute($this->env, $this->source, $context["garantUser"], "pathAdmissionFile", [], "any", false, false, false, 802))), "html", null, true);
-                    echo "\" class=\"btn btn-warning btn-sm\" download=\"attestation.pdf\">
+                    // line 848
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/attestation/" . twig_get_attribute($this->env, $this->source, $context["garantUser"], "pathAdmissionFile", [], "any", false, false, false, 848))), "html", null, true);
+                    echo "\" class=\"btn btn-warning btn-sm\" download=\"";
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 848), "getName", [], "method", false, false, false, 848), "html", null, true);
+                    echo "_Attestation_Admission\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -1251,7 +1349,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
                 } else {
-                    // line 809
+                    // line 855
                     echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"text-danger\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t* L'utilisateur n'a pas joint d'attestation d'acceptation
@@ -1259,13 +1357,13 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
                 }
-                // line 815
+                // line 861
                 echo "
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textarea name=\"othersInformations\" class=\"form-control\" placeholder=\"L'utilisateur n'a rien écrit comme message ..\" disabled>";
-                // line 818
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getInformations", [], "method", false, false, false, 818), "html", null, true);
+                // line 864
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getInformations", [], "method", false, false, false, 864), "html", null, true);
                 echo "</textarea>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
@@ -1290,16 +1388,16 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['garantUser'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 838
+            // line 884
             echo "
 \t\t\t\t\t\t\t";
         } else {
-            // line 840
+            // line 886
             echo "
 
 \t\t\t\t\t\t";
         }
-        // line 843
+        // line 889
         echo "\t\t\t\t\t</tbody>
 \t\t\t\t</table>
 
@@ -1341,7 +1439,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
      */
     public function getDebugInfo()
     {
-        return array (  1303 => 843,  1298 => 840,  1294 => 838,  1268 => 818,  1263 => 815,  1255 => 809,  1245 => 802,  1240 => 799,  1238 => 798,  1235 => 797,  1227 => 791,  1219 => 786,  1213 => 782,  1211 => 781,  1198 => 771,  1189 => 765,  1175 => 756,  1167 => 751,  1159 => 746,  1155 => 745,  1147 => 740,  1121 => 717,  1115 => 714,  1104 => 706,  1096 => 701,  1089 => 697,  1082 => 693,  1077 => 691,  1073 => 690,  1069 => 689,  1065 => 688,  1061 => 687,  1058 => 686,  1053 => 685,  1051 => 684,  1021 => 656,  995 => 636,  990 => 633,  982 => 627,  972 => 620,  967 => 617,  965 => 616,  962 => 615,  954 => 609,  946 => 604,  940 => 600,  938 => 599,  924 => 588,  915 => 582,  901 => 573,  893 => 568,  885 => 563,  881 => 562,  873 => 557,  847 => 534,  841 => 531,  830 => 523,  822 => 518,  815 => 514,  808 => 510,  803 => 508,  799 => 507,  795 => 506,  791 => 505,  787 => 504,  784 => 503,  780 => 502,  748 => 472,  722 => 452,  717 => 449,  709 => 443,  699 => 436,  694 => 433,  692 => 432,  689 => 431,  681 => 425,  673 => 420,  667 => 416,  665 => 415,  651 => 404,  642 => 398,  628 => 389,  620 => 384,  612 => 379,  608 => 378,  600 => 373,  574 => 350,  568 => 347,  557 => 339,  549 => 334,  542 => 330,  535 => 326,  530 => 324,  526 => 323,  522 => 322,  518 => 321,  514 => 320,  511 => 319,  507 => 318,  477 => 290,  451 => 270,  442 => 266,  438 => 264,  430 => 258,  420 => 251,  415 => 248,  413 => 247,  410 => 246,  402 => 240,  394 => 235,  388 => 231,  386 => 230,  373 => 220,  364 => 214,  350 => 205,  342 => 200,  334 => 195,  330 => 194,  322 => 189,  296 => 166,  290 => 163,  279 => 155,  271 => 150,  264 => 146,  257 => 142,  252 => 140,  248 => 139,  244 => 138,  240 => 137,  236 => 136,  233 => 135,  229 => 134,  207 => 114,  196 => 106,  193 => 105,  190 => 104,  179 => 96,  176 => 95,  174 => 94,  158 => 81,  136 => 62,  114 => 43,  91 => 23,  73 => 8,  68 => 5,  58 => 4,  35 => 1,);
+        return array (  1401 => 889,  1396 => 886,  1392 => 884,  1366 => 864,  1361 => 861,  1353 => 855,  1341 => 848,  1336 => 845,  1334 => 844,  1331 => 843,  1323 => 837,  1313 => 832,  1307 => 828,  1305 => 827,  1292 => 817,  1283 => 811,  1269 => 802,  1261 => 797,  1253 => 792,  1249 => 791,  1241 => 786,  1215 => 763,  1209 => 760,  1198 => 752,  1190 => 747,  1183 => 743,  1176 => 739,  1171 => 737,  1167 => 736,  1163 => 735,  1159 => 734,  1155 => 733,  1152 => 732,  1147 => 731,  1145 => 730,  1115 => 702,  1089 => 682,  1084 => 679,  1076 => 673,  1064 => 666,  1059 => 663,  1057 => 662,  1054 => 661,  1046 => 655,  1036 => 650,  1030 => 646,  1028 => 645,  1025 => 644,  1015 => 639,  1010 => 636,  1003 => 631,  1001 => 630,  987 => 619,  978 => 613,  964 => 604,  956 => 599,  948 => 594,  944 => 593,  936 => 588,  910 => 565,  904 => 562,  893 => 554,  885 => 549,  878 => 545,  871 => 541,  866 => 539,  862 => 538,  858 => 537,  854 => 536,  850 => 535,  847 => 534,  843 => 533,  811 => 503,  785 => 483,  780 => 480,  772 => 474,  760 => 467,  755 => 464,  753 => 463,  750 => 462,  742 => 456,  732 => 451,  726 => 447,  723 => 446,  713 => 441,  708 => 438,  701 => 433,  699 => 432,  686 => 422,  677 => 416,  663 => 407,  655 => 402,  647 => 397,  643 => 396,  635 => 391,  609 => 368,  603 => 365,  592 => 357,  584 => 352,  577 => 348,  570 => 344,  565 => 342,  561 => 341,  557 => 340,  553 => 339,  549 => 338,  546 => 337,  542 => 336,  512 => 308,  486 => 288,  478 => 283,  473 => 281,  468 => 278,  460 => 272,  448 => 265,  443 => 262,  441 => 261,  438 => 260,  430 => 254,  420 => 249,  414 => 245,  412 => 244,  409 => 243,  399 => 238,  394 => 235,  387 => 230,  385 => 229,  373 => 220,  364 => 214,  350 => 205,  342 => 200,  334 => 195,  330 => 194,  322 => 189,  296 => 166,  290 => 163,  279 => 155,  271 => 150,  264 => 146,  257 => 142,  252 => 140,  248 => 139,  244 => 138,  240 => 137,  236 => 136,  233 => 135,  229 => 134,  207 => 114,  196 => 106,  193 => 105,  190 => 104,  179 => 96,  176 => 95,  174 => 94,  158 => 81,  136 => 62,  114 => 43,  91 => 23,  73 => 8,  68 => 5,  58 => 4,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -1511,7 +1609,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"{{ path('app_garant_envoyez_mail')}}\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label text-dark \">Envoyez à :</label>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" name=\"email\" id=\"recipient-name2\" value=\"{{ garantUser.getUser.getEmail() }}\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" name=\"email\" id=\"recipient-name2\" value=\"{{ garantUser.getUser.getEmail() }}\" required>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label text-dark\">Objet :</label>
@@ -1519,7 +1617,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"message-text\" class=\"col-form-label text-dark\">Message:</label>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textarea class=\"form-control\" name=\"message\" id=\"message-text\" style=\"height: 200px;\"></textarea>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textarea class=\"form-control\" name=\"message\" id=\"message-text\" style=\"height: 200px;\" required></textarea>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -1574,13 +1672,27 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-2\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Documents :</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{%  if not  garantUser.getGarantFile() %}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-2\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Documents de garant Financier :</label>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"file\" name=\"garantFile\" class=\"form-control\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{%  else %}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2 \">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tGarant Financier :
 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{%  if garantUser.getPathPassport %}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/garant/' ~ garantUser.getGarantFile() ) }}\" class=\"btn btn-warning btn-sm \" download=\"{{garantUser.getUser().getName()}}_GarantFile\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{%  endif %}
+
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{%  if garantUser.getUser().getPassport() %}
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2 \">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPassport
 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/passport/' ~ garantUser.pathPassport) }}\" class=\"btn btn-warning btn-sm \" download=\"passeport.pdf\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/passport/' ~ garantUser.getUser().getPassport() ) }}\" class=\"btn btn-warning btn-sm \" download=\"{{garantUser.getUser().getName()}}_Passeport\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -1596,7 +1708,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAttestation d'admission
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}\" class=\"btn btn-warning btn-sm\" download=\"attestation.pdf\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}\" class=\"btn btn-warning btn-sm\" download=\"{{garantUser.getUser().getName()}}_Attestation_Admission\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -1611,7 +1723,11 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{%   endif  %}
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Dernière modification : <span class=\"text-danger\">{{garantUser.getLastUpdate() | date('d-m-Y')  }} à {{garantUser.getLastUpdate() | date('H:m:s')  }}</span></label>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Dernière modification :
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"text-danger\">{{garantUser.getLastUpdate() | date('d-m-Y')  }}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tà
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{garantUser.getLastUpdate() | date('H:m:s')  }}</span>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"\">
@@ -1695,15 +1811,15 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"{{ path('app_garant_envoyez_mail')}}\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label text-dark \">Envoyez à :</label>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" name=\"email\" id=\"recipient-name2\" value=\"{{ garantUser.getUser.getEmail() }}\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" name=\"email\" id=\"recipient-name2\" value=\"{{ garantUser.getUser.getEmail() }}\" required>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label text-dark\">Objet :</label>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"recipient-name\" name=\"objet\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"recipient-name\" name=\"objet\" required>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"message-text\" class=\"col-form-label text-dark\">Message:</label>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textarea class=\"form-control\" name=\"message\" id=\"message-text\" style=\"height: 200px;\"></textarea>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textarea class=\"form-control\" name=\"message\" id=\"message-text\" style=\"height: 200px;\" required></textarea>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -1729,7 +1845,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-body\">
 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"{{ path('app_garant_update', {'id': garantUser.id}) }}\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"{{ path('app_garant_update', {'id': garantUser.id}) }}\" enctype=\"multipart/form-data\">
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Pays :</label>
@@ -1759,13 +1875,26 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-2\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Documents :</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{%  if not  garantUser.getGarantFile() %}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-2\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Documents de garant Financier :</label>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"file\" name=\"garantFile\" class=\"form-control\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{%  else %}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2 \">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tGarant Financier :
 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{%  if garantUser.getPathPassport %}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/garant/' ~ garantUser.getGarantFile() ) }}\" class=\"btn btn-warning btn-sm \" download=\"{{garantUser.getUser().getName()}}_GarantFile\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{%  endif %}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{%  if garantUser.getUser().getPassport() %}
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2 \">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPassport
 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/passport/' ~ garantUser.pathPassport) }}\" class=\"btn btn-warning btn-sm \" download=\"passeport.pdf\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/passport/' ~ garantUser.getUser().getPassport() ) }}\" class=\"btn btn-warning btn-sm \" download=\"{{garantUser.getUser().getName()}}_Passeport\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -1781,7 +1910,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAttestation d'admission
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}\" class=\"btn btn-warning btn-sm\" download=\"attestation.pdf\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}\" class=\"btn btn-warning btn-sm\" download=\"{{garantUser.getUser().getName()}}_Attestation_Admission\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -1879,15 +2008,15 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"{{ path('app_garant_envoyez_mail')}}\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label text-dark \">Envoyez à :</label>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" name=\"email\" id=\"recipient-name2\" value=\"{{ garantUser.getUser.getEmail() }}\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" name=\"email\" id=\"recipient-name2\" value=\"{{ garantUser.getUser.getEmail() }}\" required>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label text-dark\">Objet :</label>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"recipient-name\" name=\"objet\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"recipient-name\" name=\"objet\" required>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"message-text\" class=\"col-form-label text-dark\">Message:</label>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textarea class=\"form-control\" name=\"message\" id=\"message-text\" style=\"height: 200px;\"></textarea>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<textarea class=\"form-control\" name=\"message\" id=\"message-text\" style=\"height: 200px;\" required></textarea>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -1935,7 +2064,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<select name=\"statutDemande\" class=\"form-select form-select mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"{{garantUser.getStatutDemande() }} \" selected>Traitement terminé</option>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"0\">En attente de paiement</option>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"2\">En cours de traitement</option>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"1\">En cours de traitement</option>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<option value=\"3\">Clôturer la demande</option>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</select>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -1944,12 +2073,27 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Documents :</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{%  if garantUser.getPathPassport %}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{%  if not  garantUser.getGarantFile() %}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-2\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Documents de garant Financier :</label>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"file\" name=\"garantFile\" class=\"form-control\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{%  else %}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2 \">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tGarant Financier :
+
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/garant/' ~ garantUser.getGarantFile() ) }}\" class=\"btn btn-warning btn-sm \" download=\"{{garantUser.getUser().getName()}}_GarantFile\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{%  endif %}
+
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{%  if garantUser.getUser().getPassport() %}
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2 \">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPassport
 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/passport/' ~ garantUser.pathPassport) }}\" class=\"btn btn-warning btn-sm \" download=\"passeport.pdf\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/passport/' ~ garantUser.getUser().getPassport() ) }}\" class=\"btn btn-warning btn-sm \" download=\"{{garantUser.getUser().getName()}}_Passeport\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -1965,7 +2109,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAttestation d'admission
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}\" class=\"btn btn-warning btn-sm\" download=\"attestation.pdf\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}\" class=\"btn btn-warning btn-sm\" download=\"{{garantUser.getUser().getName()}}_Attestation_Admission\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -2062,11 +2206,11 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"{{ path('app_garant_envoyez_mail')}}\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label text-dark \">Envoyez à :</label>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" name=\"email\" id=\"recipient-name2\" value=\"{{ garantUser.getUser.getEmail() }}\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" name=\"email\" id=\"recipient-name2\" value=\"{{ garantUser.getUser.getEmail() }}\" required>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label text-dark\">Objet :</label>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"recipient-name\" name=\"objet\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"recipient-name\" name=\"objet\" required>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"message-text\" class=\"col-form-label text-dark\">Message:</label>
@@ -2126,12 +2270,12 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label fw-bold text-xs text-uppercase\">Documents :</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{%  if garantUser.getPathPassport %}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{%  if garantUser.getUser().getPassport() %}
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2 \">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPassport
 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/passport/' ~ garantUser.pathPassport) }}\" class=\"btn btn-warning btn-sm \" download=\"passeport.pdf\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/passport/' ~ garantUser.getUser().getPassport() ) }}\" class=\"btn btn-warning btn-sm \" download=\"{{garantUser.getUser().getName()}}_Passeport\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -2147,7 +2291,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAttestation d'admission
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}\" class=\"btn btn-warning btn-sm\" download=\"attestation.pdf\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}\" class=\"btn btn-warning btn-sm\" download=\"{{garantUser.getUser().getName()}}_Attestation_Admission\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>

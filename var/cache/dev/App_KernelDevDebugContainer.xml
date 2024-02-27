@@ -76,6 +76,7 @@
     <parameter key="kernel.container_class">App_KernelDevDebugContainer</parameter>
     <parameter key="avatars_directory">/Users/sevyondatracks/Desktop/maykconsulting/public/uploads/avatars</parameter>
     <parameter key="passport_directory">/Users/sevyondatracks/Desktop/maykconsulting/public/uploads/passport</parameter>
+    <parameter key="garant_directory">/Users/sevyondatracks/Desktop/maykconsulting/public/uploads/garant</parameter>
     <parameter key="cni_directory">/Users/sevyondatracks/Desktop/maykconsulting/public/uploads/cni</parameter>
     <parameter key="attestation_directory">/Users/sevyondatracks/Desktop/maykconsulting/public/uploads/attestation</parameter>
     <parameter key="justificatif_directory">/Users/sevyondatracks/Desktop/maykconsulting/public/uploads/justificatif-de-paiement</parameter>
