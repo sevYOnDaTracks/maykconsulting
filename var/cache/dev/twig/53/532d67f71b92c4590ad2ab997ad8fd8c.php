@@ -449,9 +449,9 @@ class __TwigTemplate_c041c0cda6947164b065c73e86405aa4 extends Template
                                         <a href=\"";
             // line 290
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/avatars/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 290, $this->source); })()), "user", [], "any", false, false, false, 290), "getAvatar", [], "method", false, false, false, 290))), "html", null, true);
-            echo "\" class=\"btn btn-secondary btn-sm ml-3\" download=\"";
+            echo "\" class=\"btn btn-light btn-sm ml-3\" download=\"";
             echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 290, $this->source); })()), "user", [], "any", false, false, false, 290), "getName", [], "method", false, false, false, 290) . "_Photo"), "html", null, true);
-            echo "\"><i class=\"fas fa-eye\"></i></a>
+            echo "\"><i class=\"fas fa-download\"></i></a>
                                         <input type=\"hidden\" name=\"_token\" value=\"";
             // line 291
             echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken("delete_avatar"), "html", null, true);
@@ -529,9 +529,9 @@ class __TwigTemplate_c041c0cda6947164b065c73e86405aa4 extends Template
                                             <a href=\"";
                 // line 327
                 echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/passport/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 327, $this->source); })()), "user", [], "any", false, false, false, 327), "getPassport", [], "method", false, false, false, 327))), "html", null, true);
-                echo "\" class=\"btn btn-secondary btn-sm ml-3\" download=\"";
+                echo "\" class=\"btn btn-light btn-sm ml-3\" download=\"";
                 echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 327, $this->source); })()), "user", [], "any", false, false, false, 327), "getName", [], "method", false, false, false, 327) . "_Passport"), "html", null, true);
-                echo "\"><i class=\"fas fa-eye\"></i></a>
+                echo "\"><i class=\"fas fa-download\"></i></a>
                                         ";
             } else {
                 // line 329
@@ -897,7 +897,7 @@ class __TwigTemplate_c041c0cda6947164b065c73e86405aa4 extends Template
                                 {% if app.user.avatar %}
                                     <form method=\"POST\" action=\"{{ path('app_delete_avatar') }}\" onsubmit=\"return confirm('Êtes-vous sûr de vouloir supprimer votre avatar ? Cette action est irréversible.');\">
                                         <button type=\"submit\" class=\"btn btn-danger btn-sm\"><i class=\"fas fa-trash\"></i></button>
-                                        <a href=\"{{ asset('uploads/avatars/' ~ app.user.getAvatar()) }}\" class=\"btn btn-secondary btn-sm ml-3\" download=\"{{ app.user.getName() ~ '_Photo' }}\"><i class=\"fas fa-eye\"></i></a>
+                                        <a href=\"{{ asset('uploads/avatars/' ~ app.user.getAvatar()) }}\" class=\"btn btn-light btn-sm ml-3\" download=\"{{ app.user.getName() ~ '_Photo' }}\"><i class=\"fas fa-download\"></i></a>
                                         <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete_avatar') }}\">
                                     </form>
                                 {% else %}
@@ -934,7 +934,7 @@ class __TwigTemplate_c041c0cda6947164b065c73e86405aa4 extends Template
                                     <form method=\"POST\" action=\"{{ path('app_delete_passport') }}\" onsubmit=\"return confirm('Êtes-vous sûr de vouloir supprimer votre passport ? Cette action est irréversible.');\">
                                         {% if app.user.getPassport() %}
                                             <button type=\"submit\" class=\"btn btn-danger btn-sm\"><i class=\"fas fa-trash\"></i></button>
-                                            <a href=\"{{ asset('uploads/passport/' ~ app.user.getPassport()) }}\" class=\"btn btn-secondary btn-sm ml-3\" download=\"{{ app.user.getName() ~ '_Passport' }}\"><i class=\"fas fa-eye\"></i></a>
+                                            <a href=\"{{ asset('uploads/passport/' ~ app.user.getPassport()) }}\" class=\"btn btn-light btn-sm ml-3\" download=\"{{ app.user.getName() ~ '_Passport' }}\"><i class=\"fas fa-download\"></i></a>
                                         {% else %}
                                             <p>Aucun Passport</p>
                                         {% endif %}
@@ -967,6 +967,6 @@ class __TwigTemplate_c041c0cda6947164b065c73e86405aa4 extends Template
 \t
 \t</div>
 </div><!-- Modal -->{% endblock %}
-", "administration/user_profil.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/administration/user_profil.html.twig");
+", "administration/user_profil.html.twig", "/Users/sevyondatracks/Documents/maykconsulting/templates/administration/user_profil.html.twig");
     }
 }

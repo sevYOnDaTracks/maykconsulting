@@ -87,7 +87,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
         // line 16
         echo "\t<br>
 
-\t<div class=\"card text-center animate__animated animate__fadeInLeft\">
+\t<div class=\"card text-center animate__animated animate__fadeInLeft mb-4\">
 \t\t<div class=\"card-header bg-black text-white text-uppercase fw-bolder\">
 \t\t\tAccedez aux demandes
 \t\t</div>
@@ -104,8 +104,15 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
         echo "\" class=\"btn btn-light\">Garant Financier <i class=\"fas fa-money-bill\"></i></a>
 \t\t</div>
 \t</div>
+";
+        // line 29
+        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 29, $this->source); })()), "user", [], "any", false, false, false, 29), "garantFinancier", [], "any", false, false, false, 29) && (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 29, $this->source); })()), "user", [], "any", false, false, false, 29), "garantFinancier", [], "any", false, false, false, 29), "statutDemande", [], "any", false, false, false, 29) == 0))) {
+            echo " <div class=\" animate__animated animate__fadeInLeft alert alert-danger\">Vous avez actuellement une demande de garant financier avec le statut : <strong> EN ATTENTE DE PAIMENT </strong>  </div>  ";
+        }
+        // line 30
+        echo "
 \t";
-        // line 83
+        // line 85
         echo "<br><br>
 
 </div></div>";
@@ -138,7 +145,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
      */
     public function getDebugInfo()
     {
-        return array (  109 => 83,  103 => 26,  98 => 25,  88 => 16,  80 => 10,  78 => 9,  72 => 6,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  116 => 85,  113 => 30,  109 => 29,  103 => 26,  98 => 25,  88 => 16,  80 => 10,  78 => 9,  72 => 6,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -160,7 +167,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
 \t{% endif %}
 \t<br>
 
-\t<div class=\"card text-center animate__animated animate__fadeInLeft\">
+\t<div class=\"card text-center animate__animated animate__fadeInLeft mb-4\">
 \t\t<div class=\"card-header bg-black text-white text-uppercase fw-bolder\">
 \t\t\tAccedez aux demandes
 \t\t</div>
@@ -171,6 +178,8 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
 \t\t\t<a href=\"{{path('app_garant')}}\" class=\"btn btn-light\">Garant Financier <i class=\"fas fa-money-bill\"></i></a>
 \t\t</div>
 \t</div>
+{% if  app.user.garantFinancier and app.user.garantFinancier.statutDemande == 0 %} <div class=\" animate__animated animate__fadeInLeft alert alert-danger\">Vous avez actuellement une demande de garant financier avec le statut : <strong> EN ATTENTE DE PAIMENT </strong>  </div>  {% endif %}
+
 \t{# <div
 \t\tclass=\"card mb-3 animate__animated animate__fadeInLeft\">
 \t\t{# <img src=\" \" class=\"card-img-top\" alt=\"...\"> 

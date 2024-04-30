@@ -65,7 +65,7 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Finance -
+        echo "Volet Garant -
 \t";
         // line 4
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 4, $this->source); })()), "user", [], "any", false, false, false, 4), "name", [], "any", false, false, false, 4), "html", null, true);
@@ -682,7 +682,7 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
     {
         return new Source("{% extends 'administration/base.html.twig' %}
 
-{% block title %}Finance -
+{% block title %}Volet Garant -
 \t{{ app.user.name}}
 {% endblock %}
 
@@ -1097,6 +1097,6 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 
 
 </div></div>{% endblock %}
-", "administration/garant/index.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/administration/garant/index.html.twig");
+", "administration/garant/index.html.twig", "/Users/sevyondatracks/Documents/maykconsulting/templates/administration/garant/index.html.twig");
     }
 }

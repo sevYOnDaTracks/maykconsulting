@@ -61,6 +61,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne( targetEntity:"App\Entity\GarantFinancier" ,  mappedBy:"user" , cascade: ['persist'])]
     private ?GarantFinancier $garantFinancier = null;
 
+    #[ORM\OneToOne( targetEntity:"App\Entity\Hebergement" ,  mappedBy:"user" , cascade: ['persist'])]
+    private ?Hebergement $hebergement = null;
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $passport = null;
 
@@ -253,6 +256,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setGarantFinancier(?GarantFinancier $garantFinancier): static
     {
         $this->garantFinancier = $garantFinancier;
+
+        return $this;
+    }
+
+    public function getHebergement(): ?Hebergement
+    {
+        return $this->hebergement;
+    }
+
+    public function setHebergement(?Hebergement $hebergement): static
+    {
+        $this->hebergement = $hebergement;
 
         return $this;
     }
