@@ -23,7 +23,7 @@ class GarantFinancier
     #[ORM\Column]
     private ?int $statutDemande = null;
 
-    #[ORM\OneToOne(targetEntity: User::class, inversedBy: 'garantFinancier', cascade: ['persist'])]
+    #[ORM\OneToOne(inversedBy: 'garantFinancier', targetEntity: User::class, cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 

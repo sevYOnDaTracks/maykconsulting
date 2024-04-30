@@ -15,7 +15,7 @@
 	{% endif %}
 	<br>
 
-	<div class="card text-center animate__animated animate__fadeInLeft">
+	<div class="card text-center animate__animated animate__fadeInLeft mb-4">
 		<div class="card-header bg-black text-white text-uppercase fw-bolder">
 			Accedez aux demandes
 		</div>
@@ -26,6 +26,8 @@
 			<a href="{{path('app_garant')}}" class="btn btn-light">Garant Financier <i class="fas fa-money-bill"></i></a>
 		</div>
 	</div>
+{% if  app.user.garantFinancier and app.user.garantFinancier.statutDemande == 0 %} <div class=" animate__animated animate__fadeInLeft alert alert-danger">Vous avez actuellement une demande de garant financier avec le statut : <strong> EN ATTENTE DE PAIMENT </strong>  </div>  {% endif %}
+
 	{# <div
 		class="card mb-3 animate__animated animate__fadeInLeft">
 		{# <img src=" " class="card-img-top" alt="..."> 
