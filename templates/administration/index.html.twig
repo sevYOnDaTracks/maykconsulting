@@ -15,6 +15,17 @@
 	{% endif %}
 	<br>
 
+	<div class="card text-center animate__animated animate__fadeInLeft">
+		<div class="card-header bg-black text-white text-uppercase fw-bolder">
+			Accedez aux demandes
+		</div>
+		<div class="card-body">
+			<p class="card-text">En choisissant l'une des options suivantes, vous accéderez au service que vous souhaitez.</p>
+			{# <a href="{{path('app_admission')}}" class="btn btn-light">Admission <i class="fas fa-book-open"></i></a>#}
+			<a href="{{path('app_hebergement')}}" class="btn btn-light">Hebergement <i class="fas fa-home"></i></a>
+			<a href="{{path('app_garant')}}" class="btn btn-light">Garant Financier <i class="fas fa-money-bill"></i></a>
+		</div>
+	</div>
 	{# <div
 		class="card mb-3 animate__animated animate__fadeInLeft">
 		{# <img src=" " class="card-img-top" alt="..."> 

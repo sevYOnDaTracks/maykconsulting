@@ -33,7 +33,7 @@ class __TwigTemplate_fdfd8726a5cb1395326fcd733a6a8e60 extends Template
     protected function doGetParent(array $context)
     {
         // line 1
-        return "base.html.twig";
+        return "administration/base.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = [])
@@ -45,7 +45,7 @@ class __TwigTemplate_fdfd8726a5cb1395326fcd733a6a8e60 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "administration/hebergement/index.html.twig"));
 
-        $this->parent = $this->loadTemplate("base.html.twig", "administration/hebergement/index.html.twig", 1);
+        $this->parent = $this->loadTemplate("administration/base.html.twig", "administration/hebergement/index.html.twig", 1);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -108,6 +108,8 @@ class __TwigTemplate_fdfd8726a5cb1395326fcd733a6a8e60 extends Template
         echo "\">templates/hebergement/index.html.twig</a></code></li>
     </ul>
 </div>
+    </div>
+    </div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -143,7 +145,7 @@ class __TwigTemplate_fdfd8726a5cb1395326fcd733a6a8e60 extends Template
 
     public function getSourceContext()
     {
-        return new Source("{% extends 'base.html.twig' %}
+        return new Source("{% extends 'administration/base.html.twig' %}
 
 {% block title %}Hello HebergementController!{% endblock %}
 
@@ -162,7 +164,9 @@ class __TwigTemplate_fdfd8726a5cb1395326fcd733a6a8e60 extends Template
         <li>Your template at <code><a href=\"{{ '/Users/sevyondatracks/Desktop/symfony-6-3-webapp-1/templates/hebergement/index.html.twig'|file_link(0) }}\">templates/hebergement/index.html.twig</a></code></li>
     </ul>
 </div>
+    </div>
+    </div>
 {% endblock %}
-", "administration/hebergement/index.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/administration/hebergement/index.html.twig");
+", "administration/hebergement/index.html.twig", "/Users/sevyondatracks/Documents/maykconsulting/templates/administration/hebergement/index.html.twig");
     }
 }

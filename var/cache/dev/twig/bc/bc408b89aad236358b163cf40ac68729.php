@@ -102,16 +102,12 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 \t\t\t\t\t\t\t\t<span>Mes demandes</span>
 \t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t<ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown2\">
-\t\t\t\t\t\t\t\t<li>
-\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
-        // line 63
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_admission");
-        echo "\">Admissions</a>
-\t\t\t\t\t\t\t\t</li>
-                                <li>
+";
+        // line 65
+        echo "                                <li>
 \t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
         // line 66
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant");
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_hebergement");
         echo "\">Hébergement</a>
 \t\t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t\t<li>
@@ -350,7 +346,7 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  321 => 139,  317 => 138,  312 => 137,  302 => 136,  284 => 121,  266 => 15,  260 => 13,  250 => 12,  238 => 8,  226 => 7,  214 => 141,  212 => 136,  196 => 122,  194 => 121,  190 => 119,  188 => 118,  178 => 110,  170 => 105,  151 => 88,  146 => 86,  143 => 85,  141 => 84,  129 => 74,  127 => 73,  120 => 69,  114 => 66,  108 => 63,  66 => 23,  64 => 12,  60 => 11,  57 => 10,  55 => 7,  47 => 1,);
+        return array (  317 => 139,  313 => 138,  308 => 137,  298 => 136,  280 => 121,  262 => 15,  256 => 13,  246 => 12,  234 => 8,  222 => 7,  210 => 141,  208 => 136,  192 => 122,  190 => 121,  186 => 119,  184 => 118,  174 => 110,  166 => 105,  147 => 88,  142 => 86,  139 => 85,  137 => 84,  125 => 74,  123 => 73,  116 => 69,  110 => 66,  107 => 65,  66 => 23,  64 => 12,  60 => 11,  57 => 10,  55 => 7,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -416,11 +412,11 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 \t\t\t\t\t\t\t\t<span>Mes demandes</span>
 \t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t<ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown2\">
-\t\t\t\t\t\t\t\t<li>
+{#\t<li>
 \t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{path('app_admission')}}\">Admissions</a>
-\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t</li>#}
                                 <li>
-\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ path('app_garant') }}\">Hébergement</a>
+\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ path('app_hebergement') }}\">Hébergement</a>
 \t\t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t\t<li>
 \t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ path('app_garant') }}\">Garant Financier</a>
@@ -497,6 +493,6 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 \t\t{% endblock %}
 \t</body>
 </html>
-", "administration/base.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/administration/base.html.twig");
+", "administration/base.html.twig", "/Users/sevyondatracks/Documents/maykconsulting/templates/administration/base.html.twig");
     }
 }

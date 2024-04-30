@@ -87,8 +87,25 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
         // line 16
         echo "\t<br>
 
+\t<div class=\"card text-center animate__animated animate__fadeInLeft\">
+\t\t<div class=\"card-header bg-black text-white text-uppercase fw-bolder\">
+\t\t\tAccedez aux demandes
+\t\t</div>
+\t\t<div class=\"card-body\">
+\t\t\t<p class=\"card-text\">En choisissant l'une des options suivantes, vous accéderez au service que vous souhaitez.</p>
+\t\t\t";
+        // line 25
+        echo "\t\t\t<a href=\"";
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_hebergement");
+        echo "\" class=\"btn btn-light\">Hebergement <i class=\"fas fa-home\"></i></a>
+\t\t\t<a href=\"";
+        // line 26
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant");
+        echo "\" class=\"btn btn-light\">Garant Financier <i class=\"fas fa-money-bill\"></i></a>
+\t\t</div>
+\t</div>
 \t";
-        // line 72
+        // line 83
         echo "<br><br>
 
 </div></div>";
@@ -121,7 +138,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
      */
     public function getDebugInfo()
     {
-        return array (  92 => 72,  88 => 16,  80 => 10,  78 => 9,  72 => 6,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  109 => 83,  103 => 26,  98 => 25,  88 => 16,  80 => 10,  78 => 9,  72 => 6,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -143,6 +160,17 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
 \t{% endif %}
 \t<br>
 
+\t<div class=\"card text-center animate__animated animate__fadeInLeft\">
+\t\t<div class=\"card-header bg-black text-white text-uppercase fw-bolder\">
+\t\t\tAccedez aux demandes
+\t\t</div>
+\t\t<div class=\"card-body\">
+\t\t\t<p class=\"card-text\">En choisissant l'une des options suivantes, vous accéderez au service que vous souhaitez.</p>
+\t\t\t{# <a href=\"{{path('app_admission')}}\" class=\"btn btn-light\">Admission <i class=\"fas fa-book-open\"></i></a>#}
+\t\t\t<a href=\"{{path('app_hebergement')}}\" class=\"btn btn-light\">Hebergement <i class=\"fas fa-home\"></i></a>
+\t\t\t<a href=\"{{path('app_garant')}}\" class=\"btn btn-light\">Garant Financier <i class=\"fas fa-money-bill\"></i></a>
+\t\t</div>
+\t</div>
 \t{# <div
 \t\tclass=\"card mb-3 animate__animated animate__fadeInLeft\">
 \t\t{# <img src=\" \" class=\"card-img-top\" alt=\"...\"> 
@@ -200,6 +228,6 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
 <br><br>
 
 </div></div>{% endblock %}
-", "administration/index.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/administration/index.html.twig");
+", "administration/index.html.twig", "/Users/sevyondatracks/Documents/maykconsulting/templates/administration/index.html.twig");
     }
 }

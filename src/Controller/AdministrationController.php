@@ -139,10 +139,6 @@ class AdministrationController extends AbstractController
             }
 
 
-
-
-
-
             // Enregistrer les changements dans la base de données
             $entityManager->persist($user);
             $entityManager->flush();
