@@ -90,11 +90,14 @@ class __TwigTemplate_fdfd8726a5cb1395326fcd733a6a8e60 extends Template
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-
+    <h1 align=\"center\" class=\"text-uppercase text-xl text-uppercase  fw-bold animate__animated animate__fadeInLeft\">
+        Hébergement
+        <i class=\"fas fa-building\"></i>
+    </h1>
     ";
-        // line 11
-        if ((null === twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 11, $this->source); })()), "user", [], "any", false, false, false, 11), "hebergement", [], "any", false, false, false, 11))) {
-            // line 12
+        // line 14
+        if ((null === twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14), "hebergement", [], "any", false, false, false, 14))) {
+            // line 15
             echo "    <br>
 
 
@@ -120,7 +123,7 @@ class __TwigTemplate_fdfd8726a5cb1395326fcd733a6a8e60 extends Template
                 <div class=\"modal-body\">
 
                     <form method=\"post\" action=\"";
-            // line 36
+            // line 39
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_new");
             echo "\" enctype=\"multipart/form-data\">
                         <p class=\"text-danger\">
@@ -148,9 +151,9 @@ class __TwigTemplate_fdfd8726a5cb1395326fcd733a6a8e60 extends Template
                         </div>
 
                         ";
-            // line 61
-            if ( !twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 61, $this->source); })()), "user", [], "any", false, false, false, 61), "passport", [], "any", false, false, false, 61)) {
-                // line 62
+            // line 64
+            if ( !twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 64, $this->source); })()), "user", [], "any", false, false, false, 64), "passport", [], "any", false, false, false, 64)) {
+                // line 65
                 echo "
                             <div class=\"mb-3\">
                                 <label for=\"recipient-name\" class=\"col-form-label\">Votre Passeport  :</label>
@@ -159,23 +162,23 @@ class __TwigTemplate_fdfd8726a5cb1395326fcd733a6a8e60 extends Template
 
                         ";
             } else {
-                // line 69
+                // line 72
                 echo "                            <div class=\"mb-3 text-dark\">
                                 Votre Passport : Nous l'avons déja
                                 <a target=\"blank\" href=\"";
-                // line 71
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/passport/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 71, $this->source); })()), "user", [], "any", false, false, false, 71), "getPassport", [], "method", false, false, false, 71))), "html", null, true);
+                // line 74
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/passport/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 74, $this->source); })()), "user", [], "any", false, false, false, 74), "getPassport", [], "method", false, false, false, 74))), "html", null, true);
                 echo "\" class=\" ml-3\">ici</a>
                                 . Vous pouvez toujours le remplacer dans l'onglet
                                 <a target=\"blank\" href=\"";
-                // line 73
+                // line 76
                 echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_profil");
                 echo "\">Mon Profil
                                 </a>
                             </div>
                         ";
             }
-            // line 77
+            // line 80
             echo "
                         <div class=\"mb-3\">
                             <label for=\"recipient-name\" class=\"col-form-label\">Votre Attestation d'acceptation :</label>
@@ -208,11 +211,44 @@ class __TwigTemplate_fdfd8726a5cb1395326fcd733a6a8e60 extends Template
     </div>
     ";
         } else {
-            // line 108
+            // line 111
+            echo "
+    ";
+            // line 112
+            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 112, $this->source); })()), "user", [], "any", false, false, false, 112), "hebergement", [], "any", false, false, false, 112), "statutDemande", [], "any", false, false, false, 112) == 0)) {
+                // line 113
+                echo "
+        <div class=\"card shadow mb-3 animate__animated animate__fadeInLeft\">
+            <div class=\"card-header  fw-bold text-xs text-uppercase\">
+                Etat de la demande
+            </div>
+            <div class=\"card-body\">
+                <p class=\"text-dark\">
+                    <strong class=\"text-danger fw-bold text-xs text-uppercase\">
+                        En attente de paiement</strong>
+                <div class=\"progress\" role=\"progressbar\" aria-label=\"Success example\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\">
+                    <div class=\"progress-bar bg-danger\" style=\"width: 25%\"></div>
+                </div>
+                </p>
+                <p>
+                    Veuillez effectuer le paiement afin que nous puissions traité votre demande .</p>
+
+                <a style=\"text-align: center\" href=\"";
+                // line 129
+                echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_facture_hebergement");
+                echo "\" class=\"btn btn-dark \">
+                    <i class=\"fas fa-download\"></i>
+                    Télecharger le devis</a>
+
+            </div>
+        </div>
+        ";
+            }
+            // line 136
             echo "
     ";
         }
-        // line 110
+        // line 138
         echo "    </div>
     </div>
 ";
@@ -245,7 +281,7 @@ class __TwigTemplate_fdfd8726a5cb1395326fcd733a6a8e60 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  216 => 110,  212 => 108,  179 => 77,  172 => 73,  167 => 71,  163 => 69,  154 => 62,  152 => 61,  124 => 36,  98 => 12,  96 => 11,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
+        return array (  252 => 138,  248 => 136,  238 => 129,  220 => 113,  218 => 112,  215 => 111,  182 => 80,  175 => 76,  170 => 74,  166 => 72,  157 => 65,  155 => 64,  127 => 39,  101 => 15,  99 => 14,  89 => 6,  79 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -259,7 +295,10 @@ class __TwigTemplate_fdfd8726a5cb1395326fcd733a6a8e60 extends Template
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-
+    <h1 align=\"center\" class=\"text-uppercase text-xl text-uppercase  fw-bold animate__animated animate__fadeInLeft\">
+        Hébergement
+        <i class=\"fas fa-building\"></i>
+    </h1>
     {% if app.user.hebergement is  null %}
     <br>
 
@@ -357,6 +396,31 @@ class __TwigTemplate_fdfd8726a5cb1395326fcd733a6a8e60 extends Template
         </div>
     </div>
     {% else %}
+
+    {% if app.user.hebergement.statutDemande == 0 %}
+
+        <div class=\"card shadow mb-3 animate__animated animate__fadeInLeft\">
+            <div class=\"card-header  fw-bold text-xs text-uppercase\">
+                Etat de la demande
+            </div>
+            <div class=\"card-body\">
+                <p class=\"text-dark\">
+                    <strong class=\"text-danger fw-bold text-xs text-uppercase\">
+                        En attente de paiement</strong>
+                <div class=\"progress\" role=\"progressbar\" aria-label=\"Success example\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\">
+                    <div class=\"progress-bar bg-danger\" style=\"width: 25%\"></div>
+                </div>
+                </p>
+                <p>
+                    Veuillez effectuer le paiement afin que nous puissions traité votre demande .</p>
+
+                <a style=\"text-align: center\" href=\"{{ path('app_facture_hebergement')}}\" class=\"btn btn-dark \">
+                    <i class=\"fas fa-download\"></i>
+                    Télecharger le devis</a>
+
+            </div>
+        </div>
+        {% endif %}
 
     {%  endif %}
     </div>

@@ -36,6 +36,7 @@ return [
     'app_dossier_delete' => [['id'], ['_controller' => 'App\\Controller\\DossierController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/dossier']], [], [], []],
     'export_data' => [[], ['_controller' => 'App\\Controller\\ExportController::exportData'], [], [['text', '/export']], [], [], []],
     'app_facture_test' => [[], ['_controller' => 'App\\Controller\\FactureController::generatePdf'], [], [['text', '/facture/garant']], [], [], []],
+    'app_facture_hebergement' => [[], ['_controller' => 'App\\Controller\\FactureController::generatePdfHebergement'], [], [['text', '/facture/hebergement']], [], [], []],
     'app_garant' => [[], ['_controller' => 'App\\Controller\\GarantController::index'], [], [['text', '/garant/']], [], [], []],
     'app_garant_update' => [['id'], ['_controller' => 'App\\Controller\\GarantController::updateGarantDossier'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/garant/update']], [], [], []],
     'app_garant_justificatif_paiement' => [[], ['_controller' => 'App\\Controller\\GarantController::recupererJustificatifPaiement'], [], [['text', '/garant/justificatif-Paiement']], [], [], []],

@@ -28,6 +28,7 @@ return [
         '/dossier/new' => [[['_route' => 'app_dossier_new', '_controller' => 'App\\Controller\\DossierController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/export' => [[['_route' => 'export_data', '_controller' => 'App\\Controller\\ExportController::exportData'], null, null, null, false, false, null]],
         '/facture/garant' => [[['_route' => 'app_facture_test', '_controller' => 'App\\Controller\\FactureController::generatePdf'], null, null, null, false, false, null]],
+        '/facture/hebergement' => [[['_route' => 'app_facture_hebergement', '_controller' => 'App\\Controller\\FactureController::generatePdfHebergement'], null, null, null, false, false, null]],
         '/garant' => [[['_route' => 'app_garant', '_controller' => 'App\\Controller\\GarantController::index'], null, ['GET' => 0, 'POST' => 1], null, true, false, null]],
         '/garant/justificatif-Paiement' => [[['_route' => 'app_garant_justificatif_paiement', '_controller' => 'App\\Controller\\GarantController::recupererJustificatifPaiement'], null, ['POST' => 0], null, false, false, null]],
         '/garant/new' => [[['_route' => 'app_garant_new', '_controller' => 'App\\Controller\\GarantController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],

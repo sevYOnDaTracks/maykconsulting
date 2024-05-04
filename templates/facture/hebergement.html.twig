@@ -1,0 +1,129 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Devis Hébergement pour {{ app.user.name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+            width: 30%;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            max-width: 200px;
+            height: auto;
+        }
+        .total-rouge {
+            color: #b61818;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <br><br>
+
+    <table class="table">
+        <tr>
+            <th>Nom & Prénoms</th>
+            <td> <strong> {{ app.user.name }} {{ app.user.lastName }} </strong></td>
+        </tr>
+        <tr>
+            <th>Pays Etude</th>
+            <td class="total-black">  {{ pays }}</td>
+        </tr>
+        <tr>
+            <th>Ville Etude</th>
+            <td class="total-black">  {{ ville }}</td>
+        </tr>
+
+
+
+
+
+
+    </table>
+    <br>
+    <table class="table">
+        <tr>
+            <th>Service  </th>
+            <td>Hébergement</td>
+        </tr>
+        <tr>
+            <th>Numéro de facture</th>
+            <td>{{ app.user.id }}XHMT </td>
+        </tr>
+        <tr>
+            <th>Date de la demande</th>
+            <td>{{ date_facture | date('d/m/Y') }} à {{ date_facture | date('H:m:s') }} </td>
+        </tr>
+        <tr>
+            <th class="total-rouge">Total à payer </th>
+            {% if pays == "France" %}
+                <td class="total-rouge"> <strong> 150 000 FCFA (Taxe non comprise)</strong></td>
+            {%  endif %}
+            {% if pays == "Canada" %}
+                <td class="total-rouge"> <strong> 170 000 FCFA (Taxe non comprise)</strong></td>
+            {%  endif %}
+
+        </tr>
+
+    </table>
+    <br>
+    <p align="center">Dépôt par <strong> Western Union , Ria , MoneyGram ...  </strong>à affectuer vers  : </p> <br>
+    <img align="center" src="data:image/png;base64,{{ image_wu }}" style="width: 110px; height: 30px; margin-left: 90px ; align-content: center; text-align : center">
+    <img align="center" src="data:image/png;base64,{{ image_ria }}" style="width: 100px; height: 35px; margin-left: 90px ; align-content: center; align-items: center">
+    <img align="center" src="data:image/png;base64,{{ image_mg }}" style="width: 160px; height: 35px; margin-left: 90px ; align-content: center; align-items: end">
+    <br>
+    <br>
+    <table class="table">
+        <tr>
+            <th>Nom</th>
+            <td> <strong> BAKAYOKO </strong></td>
+        </tr>
+        <tr>
+            <th>Prenoms</th>
+            <td>Mariame </td>
+        </tr>
+        <tr>
+            <th>Adresse</th>
+            <td>90 Chaussée Jules César , Eaubonne</td>
+        </tr>
+        <tr>
+            <th>Pays de résidence </th>
+            <td>France</td>
+        </tr>
+        <tr>
+            <th>Numéro de téléphone </th>
+            <td>+33 7 49 72 64 06</td>
+        </tr>
+    </table>
+
+
+
+    <p style="text-align: start; margin-top: 15px">By Mayk Consulting le {{ date_facture | date('d/m/Y') }}</p>
+    <img align="right" src="data:image/png;base64,{{ image_content }}" style="width: 200px; height: 200px; text-align: center; align-items: center;">
+</div>
+</body>
+</html>

@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Devis - {{ app.user.name }}</title>
+    <title>Devis garant financier pour {{ app.user.name }}</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -121,9 +121,8 @@
         </table>
 
 
-        <br>
         <p style="text-align: start; margin-top: 15px">By Mayk Consulting le {{ date_facture | date('d/m/Y') }}</p>
-        <img align="right" src="data:image/png;base64,{{ image_content }}" style="width: 200px; height: 80px; text-align: center; align-items: center;">
+        <img align="right" src="data:image/png;base64,{{ image_content }}" style="width: 200px; height: 200px; text-align: center; align-items: center;">
     </div>
 </body>
 </html>

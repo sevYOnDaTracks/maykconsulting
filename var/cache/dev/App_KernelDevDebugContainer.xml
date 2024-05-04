@@ -507,7 +507,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.1Hxr_y8"/>
+      <argument type="service" id=".service_locator.g6ZL6u2"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -3177,7 +3177,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.1Hxr_y8"/>
+      <argument type="service" id=".service_locator.g6ZL6u2"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <argument type="service" id="request_stack"/>
@@ -7586,7 +7586,7 @@
         <argument key="urlGenerator" type="service_closure" id="router.default"/>
       </argument>
     </service>
-    <service id=".service_locator.1Hxr_y8" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.g6ZL6u2" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdministrationController::delete" type="service_closure" id=".service_locator.vB1BKOI"/>
@@ -7611,6 +7611,7 @@
         <argument key="App\Controller\DossierController::show" type="service_closure" id=".service_locator.FWjjKry"/>
         <argument key="App\Controller\ExportController::exportData" type="service_closure" id=".service_locator.PtBS4rn"/>
         <argument key="App\Controller\FactureController::generatePdf" type="service_closure" id=".service_locator.zIrs5r_"/>
+        <argument key="App\Controller\FactureController::generatePdfHebergement" type="service_closure" id=".service_locator.zIrs5r_"/>
         <argument key="App\Controller\GarantController::allGarant" type="service_closure" id=".service_locator.zzVjYJF"/>
         <argument key="App\Controller\GarantController::delete" type="service_closure" id=".service_locator.k0V8BeG"/>
         <argument key="App\Controller\GarantController::envoyezMail" type="service_closure" id=".service_locator.uVvF4gL"/>
@@ -7654,6 +7655,7 @@
         <argument key="App\Controller\DossierController:show" type="service_closure" id=".service_locator.FWjjKry"/>
         <argument key="App\Controller\ExportController:exportData" type="service_closure" id=".service_locator.PtBS4rn"/>
         <argument key="App\Controller\FactureController:generatePdf" type="service_closure" id=".service_locator.zIrs5r_"/>
+        <argument key="App\Controller\FactureController:generatePdfHebergement" type="service_closure" id=".service_locator.zIrs5r_"/>
         <argument key="App\Controller\GarantController:allGarant" type="service_closure" id=".service_locator.zzVjYJF"/>
         <argument key="App\Controller\GarantController:delete" type="service_closure" id=".service_locator.k0V8BeG"/>
         <argument key="App\Controller\GarantController:envoyezMail" type="service_closure" id=".service_locator.uVvF4gL"/>
@@ -9829,7 +9831,7 @@
     <service id="SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface" alias="symfonycasts.verify_email.helper"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.7nzbL4K" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.1Hxr_y8"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.g6ZL6u2"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -9858,7 +9860,7 @@
     <service id=".service_locator.MyJ2Qvq" alias=".service_locator.CUqNTvW"/>
     <service id=".service_locator.s3T0j1W" alias=".service_locator.1C2nd1Z"/>
     <service id=".service_locator.V6D1oJY" alias=".service_locator.e_4zbH4"/>
-    <service id=".service_locator.wvE39RW" alias=".service_locator.1Hxr_y8"/>
+    <service id=".service_locator.Wkbjj3e" alias=".service_locator.g6ZL6u2"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.JPIceuA" alias=".service_locator.8I.zPiO"/>
     <service id=".service_locator.jij13qc" alias=".service_locator.PBToVFE"/>
