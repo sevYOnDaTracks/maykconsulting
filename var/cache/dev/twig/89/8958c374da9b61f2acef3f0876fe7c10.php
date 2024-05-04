@@ -199,7 +199,7 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 \t\t\t<div class=\"card-body\">
 \t\t\t\t<h5 class=\"card-title \">Soumettre une demande</h5>
 \t\t\t\t<p class=\"card-text\">En cliquant sur ce bouton vous auriez la possibilité de créer une demande de garant financier puis de la soumettre par la suite .</p>
-\t\t\t\t<button type=\"button\" class=\"btn btn-dark\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Je demande !</button>
+\t\t\t\t<div align=\"center\">\t<button type=\"button\" class=\"btn btn-dark\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Je demande !</button> </div>
 \t\t\t</div>
 \t\t</div>
 
@@ -769,7 +769,7 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 \t\t\t<div class=\"card-body\">
 \t\t\t\t<h5 class=\"card-title \">Soumettre une demande</h5>
 \t\t\t\t<p class=\"card-text\">En cliquant sur ce bouton vous auriez la possibilité de créer une demande de garant financier puis de la soumettre par la suite .</p>
-\t\t\t\t<button type=\"button\" class=\"btn btn-dark\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Je demande !</button>
+\t\t\t\t<div align=\"center\">\t<button type=\"button\" class=\"btn btn-dark\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Je demande !</button> </div>
 \t\t\t</div>
 \t\t</div>
 

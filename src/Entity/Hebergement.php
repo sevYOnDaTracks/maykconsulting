@@ -15,7 +15,7 @@ class Hebergement
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $document_file = null;
+    private ?string $documentFile = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $pays = null;
@@ -25,31 +25,31 @@ class Hebergement
     private ?User $user = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $statut_demande = null;
+    private ?int $statutDemande = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $ville_etude = null;
+    private ?string $villeEtude = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $path_passport = null;
+    private ?string $pathPassport = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $path_admission_file = null;
+    private ?string $pathAdmissionFile = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $informations = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $justificatif_paiement = null;
+    private ?string $justificatifPaiement = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $last_update = null;
+    private ?\DateTimeInterface $lastUpdate = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $hebergement_file = null;
+    private ?string $hebergementFile = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $date_demande = null;
+    private ?\DateTimeInterface $dateDemande = null;
 
     public function getId(): ?int
     {
@@ -58,12 +58,12 @@ class Hebergement
 
     public function getDocumentFile(): ?string
     {
-        return $this->document_file;
+        return $this->documentFile;
     }
 
-    public function setDocumentFile(?string $document_file): static
+    public function setDocumentFile(?string $documentFile): static
     {
-        $this->document_file = $document_file;
+        $this->documentFile = $documentFile;
 
         return $this;
     }
@@ -94,48 +94,48 @@ class Hebergement
 
     public function getStatutDemande(): ?int
     {
-        return $this->statut_demande;
+        return $this->statutDemande;
     }
 
-    public function setStatutDemande(?int $statut_demande): static
+    public function setStatutDemande(?int $statutDemande): static
     {
-        $this->statut_demande = $statut_demande;
+        $this->statutDemande = $statutDemande;
 
         return $this;
     }
 
     public function getVilleEtude(): ?string
     {
-        return $this->ville_etude;
+        return $this->villeEtude;
     }
 
-    public function setVilleEtude(?string $ville_etude): static
+    public function setVilleEtude(?string $villeEtude): static
     {
-        $this->ville_etude = $ville_etude;
+        $this->villeEtude = $villeEtude;
 
         return $this;
     }
 
     public function getPathPassport(): ?string
     {
-        return $this->path_passport;
+        return $this->pathPassport;
     }
 
-    public function setPathPassport(?string $path_passport): static
+    public function setPathPassport(?string $pathPassport): static
     {
-        $this->path_passport = $path_passport;
+        $this->pathPassport = $pathPassport;
 
         return $this;
     }
 
     public function getPathAdmissionFile(): ?string
     {
-        return $this->path_admission_file;
+        return $this->pathAdmissionFile;
     }
 
-    public function setPathAdmissionFile(?string $path_admission_file): static
+    public function setPathAdmissionFile(?string $pathAdmissionFile): static
     {
-        $this->path_admission_file = $path_admission_file;
+        $this->pathAdmissionFile = $pathAdmissionFile;
 
         return $this;
     }
@@ -154,48 +154,48 @@ class Hebergement
 
     public function getJustificatifPaiement(): ?string
     {
-        return $this->justificatif_paiement;
+        return $this->justificatifPaiement;
     }
 
-    public function setJustificatifPaiement(?string $justificatif_paiement): static
+    public function setJustificatifPaiement(?string $justificatifPaiement): static
     {
-        $this->justificatif_paiement = $justificatif_paiement;
+        $this->justificatifPaiement = $justificatifPaiement;
 
         return $this;
     }
 
     public function getLastUpdate(): ?\DateTimeInterface
     {
-        return $this->last_update;
+        return $this->lastUpdate;
     }
 
-    public function setLastUpdate(?\DateTimeInterface $last_update): static
+    public function setLastUpdate(?\DateTimeInterface $lastUpdate): static
     {
-        $this->last_update = $last_update;
+        $this->lastUpdate = $lastUpdate;
 
         return $this;
     }
 
     public function getHebergementFile(): ?string
     {
-        return $this->hebergement_file;
+        return $this->hebergementFile;
     }
 
-    public function setHebergementFile(?string $hebergement_file): static
+    public function setHebergementFile(?string $hebergementFile): static
     {
-        $this->hebergement_file = $hebergement_file;
+        $this->hebergementFile = $hebergementFile;
 
         return $this;
     }
 
     public function getDateDemande(): ?\DateTimeInterface
     {
-        return $this->date_demande;
+        return $this->dateDemande;
     }
 
-    public function setDateDemande(?\DateTimeInterface $date_demande): static
+    public function setDateDemande(?\DateTimeInterface $dateDemande): static
     {
-        $this->date_demande = $date_demande;
+        $this->dateDemande = $dateDemande;
 
         return $this;
     }

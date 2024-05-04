@@ -149,7 +149,10 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 ";
             // line 96
             echo "\t\t\t\t\t\t\t\t\t<li>
-\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"/administration\">Hébergement</a>
+\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
+            // line 97
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_hebergement_management");
+            echo "\">Hébergement</a>
 \t\t\t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t\t\t<li>
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
@@ -337,7 +340,7 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  308 => 134,  304 => 133,  299 => 132,  289 => 131,  271 => 116,  253 => 15,  247 => 13,  237 => 12,  225 => 8,  213 => 7,  201 => 136,  199 => 131,  183 => 117,  181 => 116,  177 => 114,  175 => 113,  165 => 105,  157 => 100,  151 => 96,  139 => 83,  134 => 81,  131 => 80,  129 => 79,  117 => 69,  115 => 68,  107 => 63,  98 => 57,  95 => 56,  66 => 23,  64 => 12,  60 => 11,  57 => 10,  55 => 7,  47 => 1,);
+        return array (  311 => 134,  307 => 133,  302 => 132,  292 => 131,  274 => 116,  256 => 15,  250 => 13,  240 => 12,  228 => 8,  216 => 7,  204 => 136,  202 => 131,  186 => 117,  184 => 116,  180 => 114,  178 => 113,  168 => 105,  160 => 100,  154 => 97,  151 => 96,  139 => 83,  134 => 81,  131 => 80,  129 => 79,  117 => 69,  115 => 68,  107 => 63,  98 => 57,  95 => 56,  66 => 23,  64 => 12,  60 => 11,  57 => 10,  55 => 7,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -438,7 +441,7 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"/administration\">Admission</a>
 \t\t\t\t\t\t\t\t\t</li> #}
 \t\t\t\t\t\t\t\t\t<li>
-\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"/administration\">Hébergement</a>
+\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ path('app_hebergement_management')}}\">Hébergement</a>
 \t\t\t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t\t\t<li>
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ path('app_garant_management')}}\">Garant Financier</a>

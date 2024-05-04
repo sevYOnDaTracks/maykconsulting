@@ -27,6 +27,7 @@ return [
         '/dossier/all' => [[['_route' => 'app_dossier_index', '_controller' => 'App\\Controller\\DossierController::index'], null, ['GET' => 0], null, false, false, null]],
         '/dossier/new' => [[['_route' => 'app_dossier_new', '_controller' => 'App\\Controller\\DossierController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/export' => [[['_route' => 'export_data', '_controller' => 'App\\Controller\\ExportController::exportData'], null, null, null, false, false, null]],
+        '/export/hebergement' => [[['_route' => 'export_data_hebergement', '_controller' => 'App\\Controller\\ExportController::exportDataHebergement'], null, null, null, false, false, null]],
         '/facture/garant' => [[['_route' => 'app_facture_test', '_controller' => 'App\\Controller\\FactureController::generatePdf'], null, null, null, false, false, null]],
         '/facture/hebergement' => [[['_route' => 'app_facture_hebergement', '_controller' => 'App\\Controller\\FactureController::generatePdfHebergement'], null, null, null, false, false, null]],
         '/garant' => [[['_route' => 'app_garant', '_controller' => 'App\\Controller\\GarantController::index'], null, ['GET' => 0, 'POST' => 1], null, true, false, null]],
@@ -36,6 +37,9 @@ return [
         '/garant/envoyezMessage' => [[['_route' => 'app_garant_envoyez_mail', '_controller' => 'App\\Controller\\GarantController::envoyezMail'], null, ['POST' => 0], null, false, false, null]],
         '/hebergement' => [[['_route' => 'app_hebergement', '_controller' => 'App\\Controller\\HebergementController::index'], null, null, null, true, false, null]],
         '/hebergement/new' => [[['_route' => 'app_hebergement_new', '_controller' => 'App\\Controller\\HebergementController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/hebergement/justificatif-Paiement' => [[['_route' => 'app_hebergement_justificatif_paiement', '_controller' => 'App\\Controller\\HebergementController::recupererJustificatifPaiement'], null, ['POST' => 0], null, false, false, null]],
+        '/hebergement/all' => [[['_route' => 'app_hebergement_management', '_controller' => 'App\\Controller\\HebergementController::allGarant'], null, ['GET' => 0], null, false, false, null]],
+        '/hebergement/envoyezMessageHebergement' => [[['_route' => 'app_hebergement_envoyez_mail', '_controller' => 'App\\Controller\\HebergementController::envoyezMail'], null, ['POST' => 0], null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\LoginController::index'], null, null, null, false, false, null]],
         '/administration/parcours' => [[['_route' => 'app_parcours', '_controller' => 'App\\Controller\\ParcoursController::index'], null, null, null, false, false, null]],
         '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
@@ -77,6 +81,10 @@ return [
                     .'|update/([^/]++)(*:349)'
                     .'|delete/([^/]++)(*:372)'
                 .')'
+                .'|/hebergement/(?'
+                    .'|delete/([^/]++)(*:412)'
+                    .'|update/([^/]++)(*:435)'
+                .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -94,8 +102,10 @@ return [
         306 => [[['_route' => 'app_dossier_edit', '_controller' => 'App\\Controller\\DossierController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
         314 => [[['_route' => 'app_dossier_delete', '_controller' => 'App\\Controller\\DossierController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
         349 => [[['_route' => 'app_garant_update', '_controller' => 'App\\Controller\\GarantController::updateGarantDossier'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
-        372 => [
-            [['_route' => 'app_garant_delete', '_controller' => 'App\\Controller\\GarantController::delete'], ['id'], ['POST' => 0], null, false, true, null],
+        372 => [[['_route' => 'app_garant_delete', '_controller' => 'App\\Controller\\GarantController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        412 => [[['_route' => 'app_hebergement_delete', '_controller' => 'App\\Controller\\HebergementController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        435 => [
+            [['_route' => 'app_hebergement_update', '_controller' => 'App\\Controller\\HebergementController::updateHebergement'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

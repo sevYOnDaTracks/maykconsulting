@@ -1,0 +1,564 @@
+{% extends 'administration/base.html.twig' %}
+
+{% block body %}
+
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h3 class=" mb-0 text-uppercase text-dark fw-bold animate__animated animate__fadeInLeft">Mes dossiers : Hébergement
+        </h3>
+        <a class="btn btn-dark btn-sm d-none d-sm-inline-block animate__animated animate__fadeInRight" role="button" href="{{ path('export_data_hebergement') }}">
+            <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generer un rapport</a>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-xl-3 mb-4 animate__animated animate__fadeInLeft">
+            <div class="card shadow border-start-primary py-2">
+                <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col me-2">
+                            <div class="text-uppercase text-warning fw-bold text-xs mb-1">
+                                <span>En attentes de paiement</span>
+                            </div>
+                            <div class="text-dark fw-bold h5 mb-0">
+								<span>
+									{{ enAttenteDePaiement }}</span>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-hourglass-half fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3 mb-4 animate__animated animate__fadeInRight">
+            <div class="card shadow border-start-success py-2">
+                <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col me-2">
+                            <div class="text-uppercase text-primary fw-bold text-xs mb-1">
+                                <span>En cours</span>
+                            </div>
+                            <div class="text-dark fw-bold h5 mb-0">
+								<span>
+									{{ nombreEncours }}</span>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-sync fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3 mb-4 animate__animated animate__fadeInLeft">
+            <div class="card shadow border-start-warning py-2">
+                <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col me-2">
+                            <div class="text-uppercase text-success fw-bold text-xs mb-1">
+                                <span>Validées</span>
+                            </div>
+                            <div class="text-dark fw-bold h5 mb-0">
+                                <span>{{ nombreTerminee}}</span>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-thumbs-up fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-3 mb-4 animate__animated animate__fadeInRight">
+            <div class="card shadow border-start-success py-2">
+                <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col me-2">
+                            <div class="text-uppercase text-danger fw-bold text-xs mb-1">
+                                <span>Annulées</span>
+                            </div>
+                            <div class="text-dark fw-bold h5 mb-0">
+                                <span>{{nombreCloturer}}</span>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-trash-alt fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    {% if app.flashes('success-mail-send') is not empty %}
+        <div class="alert alert-success animate__animated animate__fadeInLeft">
+            {{ app.flashes('success-mail-send')|first }}
+            <div align="center">
+                Votre mail a été envoyé avec succes !
+            </div>
+        </div>
+        <br>
+
+    {% endif %}
+
+    {% if app.flashes('success-edit') is not empty %}
+        <div class="alert alert-success animate__animated animate__fadeInTop">
+            {{ app.flashes('success-edit')|first }}
+            <div align="center">
+                Modification effectué avec succes !
+            </div>
+        </div>
+        <br>
+
+    {% endif %}
+    <div class="card shadow ">
+        <div class="card-header py-3">
+            <p class="text-warning m-0  fw-bold text-xs text-uppercase ">Liste des demandes en attente de paiement
+            </p>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                    <tr>
+                        <th>Demandeur</th>
+                        <th>Pays</th>
+                        <th>Téléphone</th>
+                        <th>Date demande</th>
+                        <th>Payé ?</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for hebergementEnAttente in EnAttentes %}
+                    <tr>
+                        <td>
+                            {% if hebergementEnAttente.getUser().avatar is not empty %}
+                                <img class="rounded-circle me-2" width="40" height="40" src="{{ asset('uploads/avatars/' ~ hebergementEnAttente.getUser().avatar) }}">{{ hebergementEnAttente.getUser().getName() }}
+                            {% else %}
+                                <img class="rounded-circle me-2" width="40" height="40" src="/assets/images/logo.png">
+                                {{ hebergementEnAttente.getUser().getName() }}
+                            {% endif %}
+                        </td>
+                        <td>{{ hebergementEnAttente.getPays() }}</td>
+                        <td>{{ hebergementEnAttente.getUser().getPhone() }}</td>
+                        <td>{{ hebergementEnAttente.getDateDemande() | date('d/m/Y')}}
+                            à
+                            {{ hebergementEnAttente.getDateDemande() | date('H:i')}}</td>
+                        <td>
+                            {% if hebergementEnAttente.getJustificatifPaiement() %}
+                                <span style="color: #00b779; ">Oui</span>
+                            {% else %}
+                                <span style="color: #bb2d3b">Non</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal{{ hebergementEnAttente.id }}">
+                                <i class="fas fa-edit"></i>
+
+                            </button>
+                            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModa{{ hebergementEnAttente.id}}">
+                                <i class="fas fa-reply"></i>
+                            </button>
+
+
+                            <div class="modal fade" id="exampleModa{{ hebergementEnAttente.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title  fw-bold text-xs text-uppercase" id="exampleModalLabel">Envoyez message</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="post" action="{{ path('app_hebergement_envoyez_mail')}}">
+                                                <div class="mb-3">
+                                                    <label for="recipient-name" class="col-form-label text-dark ">Envoyez à :</label>
+                                                    <input type="text" class="form-control" name="email" id="recipient-name2" value="{{ hebergementEnAttente.getUser.getEmail() }}" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="recipient-name" class="col-form-label text-dark">Objet :</label>
+                                                    <input type="text" class="form-control" id="recipient-name" name="objet" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="message-text" class="col-form-label text-dark">Message:</label>
+                                                    <textarea class="form-control" name="message" id="message-text" style="height: 200px;" required></textarea>
+                                                </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fas fa-paper-plane"></i>
+                                            </button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="exampleModal{{ hebergementEnAttente.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header text-center">
+                                            <h1 style="text-align: center" class="modal-title fs-5  text-dark text-center" id="exampleModalLabel">
+                                                <strong>{{hebergementEnAttente.getUser().getName() }}
+                                                    {{hebergementEnAttente.getUser().getLastName() }}</strong></h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <form method="post" action="{{ path('app_hebergement_update', {'id': hebergementEnAttente.id}) }}" enctype="multipart/form-data">
+
+                                                <table class="table table-borderless">
+                                                    <tr>
+                                                        <th class="form-label fw-bold text-xs text-uppercase text-black">Pays</th>
+                                                        <td>
+                                                            <select name="pays" id="pays" class="form-select">
+                                                                <option value="{{ hebergementEnAttente.getPays() }}" selected>{{ hebergementEnAttente.getPays() }}</option>
+                                                                <option value="France">France</option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="padding-top: 20px;">
+                                                        <th class="form-label fw-bold text-xs text-uppercase text-black">Ville</th>
+                                                        <td>
+                                                            <input value="{{ hebergementEnAttente.getVilleEtude() }}" name="ville" id="ville" type="text" class="form-control">
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="padding-top: 20px;">
+                                                        <th class="form-label fw-bold text-xs text-uppercase text-black">État de la demande</th>
+                                                        <td>
+                                                            <select name="statutDemande" id="statutDemande" class="form-select">
+                                                                <option value="{{ hebergementEnAttente.getStatutDemande() }}" selected>En attente de paiement</option>
+                                                                <option value="1">En cours de traitement</option>
+                                                                <option value="3">Clôturer la demande</option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="padding-top: 20px;">
+                                                        <th class="form-label fw-bold text-xs text-uppercase text-black">Fichier Hebergement </th>
+                                                        <td>
+                                                            {% if not hebergementEnAttente.getHebergementFile() %}
+                                                                <input type="file" name="hebergementFile" class="form-control-sm">
+                                                                <span class="text-primary bg-light text-center text- fw-bold text-xs"> Ici pour affecter les documents d'hebergement au client un seul PDF qui regroupe Tout </span>
+                                                            {% else %}
+                                                                <div class="fw-bold text-xs  mb-2">
+                                                                    <a href="{{ asset('uploads/hebergement/' ~ hebergementEnAttente.getHebergementFile() ) }}" class="btn btn-light btn-sm text-xs " download="{{ hebergementEnAttente.getUser().getName() }}_HebergementFile">
+                                                                        Télécharger <i class="fas fa-download"></i>
+                                                                    </a>
+                                                                </div>
+                                                            {% endif %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="padding-top: 20px;">
+                                                        <th class="form-label fw-bold text-xs text-uppercase text-black">Passport</th>
+                                                        <td>
+                                                            {% if hebergementEnAttente.getUser().getPassport() %}
+                                                                <div class="fw-bold text-xs ">
+                                                                    <a href="{{ asset('uploads/passport/' ~ hebergementEnAttente.getUser().getPassport() ) }}" class="btn btn-light btn-sm text-xs " download="{{ hebergementEnAttente.getUser().getName() }}_Passeport">
+                                                                        Télecharger <i class="fas fa-download"></i>
+                                                                    </a>
+                                                                </div>
+                                                            {% else %}
+                                                                <p class="text-danger text-xs text-uppercase">* L'utilisateur n'a pas joint de passport</p>
+                                                            {% endif %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="padding-top: 20px;">
+                                                        <th class="form-label fw-bold text-xs text-uppercase text-black">Attestation d'admission</th>
+                                                        <td>
+                                                            {% if hebergementEnAttente.getPathAdmissionFile %}
+                                                                <div class="fw-bold text-xs ">
+                                                                    <a href="{{ asset('uploads/attestation/' ~ hebergementEnAttente.pathAdmissionFile) }}" class="btn btn-light btn-sm text-xs " download="{{ hebergementEnAttente.getUser().getName() }}_Attestation_Admission">
+                                                                        Télecharger <i class="fas fa-download"></i>
+                                                                    </a>
+                                                                </div>
+                                                            {% else %}
+                                                                <p class="text-danger">* L'utilisateur n'a pas joint d'attestation d'acceptation</p>
+                                                            {% endif %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="padding-top: 20px;">
+                                                        <th class="form-label fw-bold text-xs text-uppercase text-black">Justificatif de paiement </th>
+                                                        <td>
+                                                            {% if hebergementEnAttente.getJustificatifPaiement %}
+                                                                <div class="fw-bold text-xs ">
+                                                                    <a href="{{ asset('uploads/justificatif-de-paiement/' ~ hebergementEnAttente.justificatifPaiement) }}" class="btn btn-light text-xs btn-sm" download="{{ hebergementEnAttente.getUser().getName() }}_justificatifPaiement">
+                                                                        Télécharger <i class="fas fa-download"></i>
+                                                                    </a>
+                                                                </div>
+                                                            {% else %}
+                                                                <input type="file" name="justificatifPaiement" class="form-control-sm ">
+                                                            {% endif %}
+                                                        </td>
+                                                    </tr>
+                                                    <tr style="padding-top: 20px;">
+                                                        <th><label for="lastUpdate" class="form-label fw-bold text-xs text-uppercase text-black">Dernière modification :</label></th>
+                                                        <td>
+                                                            <span class="text-danger text-xs text-uppercase fw-bold">{{ hebergementEnAttente.getLastUpdate() | date('d/m/Y') }} à {{ hebergementEnAttente.getLastUpdate() | date('H:m:s') }}</span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+
+                                                <div class="">
+                                                    <textarea name="othersInformations" class="form-control" placeholder="L'utilisateur n'a rien écrit comme message .." disabled>{{ hebergementEnAttente.getInformations()}}</textarea>
+                                                </div>
+
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                                                    <button type="submit" class="btn btn-primary">Enregistrer
+                                                        <i class="fas fa-save"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+            </div>
+            </td>
+            </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+        </div>
+    </div>
+
+    </div>
+
+   <br>
+
+    <div class="card shadow ">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold text-xs text-uppercase  ">Liste des demandes en cours de traitement
+            </p>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                    <tr>
+                        <th>Demandeur</th>
+                        <th>Pays</th>
+                        <th>Téléphone</th>
+                        <th>Date demande</th>
+                        <th>Payé ?</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for hebergement in EnCours %}
+                    <tr>
+                        <td>
+                            {% if hebergement.getUser().avatar is not empty %}
+                                <img class="rounded-circle me-2" width="40" height="40" src="{{ asset('uploads/avatars/' ~ hebergement.user.avatar) }}">{{ hebergement.getUser().getName() }}
+                            {% else %}
+                                <img class="rounded-circle me-2" width="40" height="40" src="/assets/images/logo.png">
+                                {{ hebergement.getUser().getName() }}
+                            {% endif %}
+                        </td>
+                        <td>{{ hebergement.getPays() }}</td>
+                        <td>{{ hebergement.getUser().getPhone() }}</td>
+                        <td>{{ hebergement.getDateDemande() | date('d-m-Y')}}
+                            à
+                            {{ hebergement.getDateDemande() | date('H:i')}}
+                        </td>
+                        <th>{% if hebergement.getJustificatifPaiement() %}
+                                <span style="color: #00b779; ">Oui</span>
+                            {% else %}
+                                <span style="color: #bb2d3b">Non</span>
+                            {% endif %}</th>
+
+                        <td>
+                            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal{{ hebergement.id }}">
+                                <i class="fas fa-edit"></i>
+
+                            </button>
+                            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModa{{ hebergement.id}}">
+                                <i class="fas fa-reply"></i>
+                            </button>
+
+
+                            <div class="modal fade" id="exampleModa{{ hebergement.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title  fw-bold text-xs text-uppercase" id="exampleModalLabel">Envoyez message</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="post" action="{{ path('app_hebergement_envoyez_mail')}}">
+                                                <div class="mb-3">
+                                                    <label for="recipient-name" class="col-form-label text-dark ">Envoyez à :</label>
+                                                    <input type="text" class="form-control" name="email" id="recipient-name2" value="{{ hebergement.getUser.getEmail() }}" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="recipient-name" class="col-form-label text-dark">Objet :</label>
+                                                    <input type="text" class="form-control" id="recipient-name" name="objet" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="message-text" class="col-form-label text-dark">Message:</label>
+                                                    <textarea class="form-control" name="message" id="message-text" style="height: 200px;" required></textarea>
+                                                </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="fas fa-paper-plane"></i>
+                                            </button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="exampleModal{{ hebergement.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header text-center">
+                                            <h1 class="modal-title fs-5 text-dark text-center" id="exampleModalLabel">
+                                                <strong>{{hebergement.getUser().getName() }}
+                                                    {{hebergement.getUser().getLastName() }}<strong></h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <form method="post" action="{{ path('app_hebergement_update', {'id': hebergement.id}) }}" enctype="multipart/form-data">
+
+                                                <div class="table-responsive">
+                                                    <table class="table table-borderless">
+                                                        <tr>
+                                                            <th class="form-label fw-bold text-xs text-uppercase text-black">Pays</th>
+                                                            <td>
+                                                                <select name="pays" class="form-select">
+                                                                    <option value="{{ hebergement.getPays() }}" selected>{{ hebergement.getPays() }}</option>
+                                                                    <option value="France">France</option>
+                                                                    <option value="Canada">Canada</option>on>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="padding-top: 20px;">
+                                                            <th class="form-label fw-bold text-xs text-uppercase text-black">Ville</th>
+                                                            <td>
+                                                                <input value="{{ hebergement.getVilleEtude() }}" name="ville" type="text" class="form-control">
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="padding-top: 20px;">
+                                                            <th class="form-label fw-bold text-xs text-uppercase text-black">État de la demande</th>
+                                                            <td>
+                                                                <select name="statutDemande" class="form-select">
+                                                                    <option value="{{ hebergement.getStatutDemande() }}" selected>En cours de traitement</option>
+                                                                    <option value="0">En attente de paiement</option>
+                                                                    <option value="2">Traitement terminé</option>
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="padding-top: 20px;">
+                                                            <th class="form-label fw-bold text-xs text-uppercase text-black">Hebergement File </th>
+                                                            <td>
+                                                                {% if not hebergement.getHebergementFile() %}
+                                                                    <input type="file" name="hebergementFile" class="form-control-sm">
+                                                                    <span class="text-primary bg-light text-center text-xs fw-bold text-xs"> Ici pour affecter les documents d'hebergement au client un seul PDF qui regroupe Tout </span>
+                                                                {% else %}
+                                                                    <div class="fw-bold text-xs  mb-2">
+                                                                        <a href="{{ asset('uploads/hebergement/' ~ hebergement.getHebergementFile() ) }}" class="btn btn-light btn-sm text-xs" download="{{ hebergement.getUser().getName() }}_HebergementFile">
+                                                                            Télécharger <i class="fas fa-download"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                {% endif %}
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="padding-top: 20px;">
+                                                            <th class="form-label fw-bold text-xs text-uppercase text-black">Passport</th>
+                                                            <td>
+                                                                {% if hebergement.getUser().getPassport() %}
+                                                                    <div class="fw-bold text-xs ">
+                                                                        <a href="{{ asset('uploads/passport/' ~ hebergement.getUser().getPassport() ) }}" class="btn btn-light btn-sm text-xs " download="{{ hebergement.getUser().getName() }}_Passeport">
+                                                                            Télécharger <i class="fas fa-download"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                {% else %}
+                                                                    <p class="text-danger text-xs text-uppercase">* L'utilisateur n'a pas joint de passport</p>
+                                                                {% endif %}
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="padding-top: 20px;">
+                                                            <th class="form-label fw-bold text-xs text-uppercase text-black">Attestation d'admission</th>
+                                                            <td>
+                                                                {% if hebergement.getPathAdmissionFile %}
+                                                                    <div class="fw-bold text-xs ">
+                                                                        <a href="{{ asset('uploads/attestation/' ~ hebergement.pathAdmissionFile) }}" class="btn btn-light btn-sm text-xs " download="{{ hebergement.getUser().getName() }}_Attestation_Admission">
+                                                                            Télécharger <i class="fas fa-download"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                {% else %}
+                                                                    <p class="text-danger">* L'utilisateur n'a pas joint d'attestation d'acceptation</p>
+                                                                {% endif %}
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="padding-top: 20px;">
+                                                            <th class="form-label fw-bold text-xs text-uppercase text-black">Justificatif de paiement </th>
+                                                            <td>
+                                                                {% if hebergement.getJustificatifPaiement %}
+                                                                    <div class="fw-bold text-xs ">
+                                                                        <a href="{{ asset('uploads/justificatif-de-paiement/' ~ hebergement.justificatifPaiement) }}" class="btn btn-light text-xs btn-sm" download="{{ hebergement.getUser().getName() }}_justificatifPaiement">
+                                                                            Télécharger <i class="fas fa-download"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                {% else %}
+                                                                    <input type="file" name="justificatifPaiement" class="form-control-sm ">
+                                                                {% endif %}
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="padding-top: 20px;">
+                                                            <th><label for="lastUpdate" class="form-label fw-bold text-xs text-uppercase text-black">Dernière modification :</label></th>
+                                                            <td>
+                                                                <span class="text-danger text-xs text-uppercase fw-bold">{{ hebergement.getLastUpdate() | date('d/m/Y') }} à {{ hebergement.getLastUpdate() | date('H:m:s') }}</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+
+
+
+                                                <div class="">
+                                                    <textarea name="othersInformations" class="form-control" placeholder="L'utilisateur n'a rien écrit comme message .." disabled>{{ hebergement.getInformations()}}</textarea>
+                                                </div>
+
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                                                    <button type="submit" class="btn btn-primary">Enregistrer
+                                                        <i class="fas fa-save"></i>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            </div>
+            </td>
+            </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+        </div>
+    </div>
+
+    </div>
+
+</div>
+
+</div>
+
+{%  endblock %}

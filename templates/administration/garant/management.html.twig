@@ -135,7 +135,7 @@
 							<tr>
 								<td>
 									{% if garantUser.getUser().avatar is not empty %}
-										<img class="rounded-circle me-2" width="40" height="40" src="{{ asset('uploads/avatars/' ~ user.avatar) }}">{{ garantUser.getUser().getName() }}
+										<img class="rounded-circle me-2" width="40" height="40" src="{{ asset('uploads/avatars/' ~ garantUser.user.avatar) }}">{{ garantUser.getUser().getName() }}
 									{% else %}
 										<img class="rounded-circle me-2" width="40" height="40" src="/assets/images/logo.png">
 										{{ garantUser.getUser().getName() }}
@@ -208,7 +208,7 @@
 														</div>
 														<div class="modal-body">
 
-															<form method="post" action="{{ path('app_garant_update', {'id': garantUser.id}) }}">
+															<form method="post" action="{{ path('app_garant_update', {'id': garantUser.id}) }}" enctype="multipart/form-data">
 
 																<table class="table table-borderless">
 																	<tr>
@@ -245,8 +245,8 @@
 																				<input type="file" name="garantFile" class="form-control-sm">
 																				<span class="text-primary bg-light text-center text- fw-bold text-xs"> Ici pour affecter les documents de garant au client un seul PDF qui regroupe Tout </span>
 																			{% else %}
-																				<div class="fw-bold text-xs text-uppercase mb-2">
-																					<a href="{{ asset('uploads/garant/' ~ garantUser.getGarantFile() ) }}" class="btn btn-light btn-sm " download="{{ garantUser.getUser().getName() }}_GarantFile">
+																				<div class="fw-bold text-xs mb-2">
+																					<a href="{{ asset('uploads/garant/' ~ garantUser.getGarantFile() ) }}" class="btn btn-light btn-sm text-xs" download="{{ garantUser.getUser().getName() }}_GarantFile">
 																						Télécharger <i class="fas fa-download"></i>
 																					</a>
 																				</div>
@@ -357,7 +357,7 @@
 							<tr>
 								<td>
 									{% if garantUser.getUser().avatar is not empty %}
-										<img class="rounded-circle me-2" width="40" height="40" src="{{ asset('uploads/avatars/' ~ user.avatar) }}">{{ garantUser.getUser().getName() }}
+										<img class="rounded-circle me-2" width="40" height="40" src="{{ asset('uploads/avatars/' ~ garantUser.user.avatar) }}">{{ garantUser.getUser().getName() }}
 									{% else %}
 										<img class="rounded-circle me-2" width="40" height="40" src="/assets/images/logo.png">
 										{{ garantUser.getUser().getName() }}
@@ -584,7 +584,7 @@
 							<tr>
 								<td>
 									{% if garantUser.getUser().avatar is not empty %}
-										<img class="rounded-circle me-2" width="40" height="40" src="{{ asset('uploads/avatars/' ~ user.avatar) }}">{{ garantUser.getUser().getName() }}
+										<img class="rounded-circle me-2" width="40" height="40" src="{{ asset('uploads/avatars/' ~ garantUser.user.avatar) }}">{{ garantUser.getUser().getName() }}
 									{% else %}
 										<img class="rounded-circle me-2" width="40" height="40" src="/assets/images/logo.png">
 										{{ garantUser.getUser().getName() }}
@@ -657,7 +657,7 @@
 														</div>
 														<div class="modal-body">
 
-															<form method="post" action="{{ path('app_garant_update', {'id': garantUser.id}) }}">
+															<form method="post" action="{{ path('app_garant_update', {'id': garantUser.id}) }}" enctype="multipart/form-data" >
 
 																<div class="table-responsive">
 																	<table class="table table-borderless">
@@ -811,7 +811,7 @@
 								<tr>
 									<td>
 										{% if garantUser.getUser().avatar is not empty %}
-											<img class="rounded-circle me-2" width="40" height="40" src="{{ asset('uploads/avatars/' ~ user.avatar) }}">{{ garantUser.getUser().getName() }}
+											<img class="rounded-circle me-2" width="40" height="40" src="{{ asset('uploads/avatars/' ~ garantUser.user.avatar) }}">{{ garantUser.getUser().getName() }}
 										{% else %}
 											<img class="rounded-circle me-2" width="40" height="40" src="/assets/images/logo.png">
 											{{ garantUser.getUser().getName() }}
@@ -883,7 +883,7 @@
 															</div>
 															<div class="modal-body">
 
-																<form method="post" action="{{ path('app_garant_update', {'id': garantUser.id}) }}">
+																<form method="post" action="{{ path('app_garant_update', {'id': garantUser.id}) }}" enctype="multipart/form-data">
 
 																	<div class="table-responsive">
 																		<table class="table table-borderless">

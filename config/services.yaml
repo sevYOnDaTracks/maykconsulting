@@ -7,6 +7,7 @@ parameters:
     avatars_directory: '%kernel.project_dir%/public/uploads/avatars'
     passport_directory: '%kernel.project_dir%/public/uploads/passport'
     garant_directory: '%kernel.project_dir%/public/uploads/garant'
+    hebergement_directory: '%kernel.project_dir%/public/uploads/hebergement'
     cni_directory: '%kernel.project_dir%/public/uploads/cni'
     attestation_directory: '%kernel.project_dir%/public/uploads/attestation'
     justificatif_directory: '%kernel.project_dir%/public/uploads/justificatif-de-paiement'

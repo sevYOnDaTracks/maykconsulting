@@ -7,10 +7,40 @@
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
+
+
     <h1 align="center" class="text-uppercase text-xl text-uppercase  fw-bold animate__animated animate__fadeInLeft">
         Hébergement
         <i class="fas fa-building"></i>
     </h1>
+    {% if app.flashes('success-add-hebergement') is not empty %}
+        <div class="alert alert-success">
+            {{ app.flashes('success-add-garant')|first }}
+            <div align="center">
+                Votre demande a été soumise  avec succcess !
+            </div>
+        </div>
+
+    {% endif %}
+    {% if app.flashes('failed-add-justificatif') is not empty %}
+        <div class="alert alert-danger">
+            {{ app.flashes('failed-add-justificatif')|first }}
+            <div align="center">
+                Aucun justificatif de paiement reçu !
+            </div>
+        </div>
+
+    {% endif %}
+
+    {% if app.flashes('success-add-justificatif') is not empty %}
+        <div class="alert alert-success">
+            {{ app.flashes('success-add-justificatif')|first }}
+            <div align="center">
+                Votre justificatif a été envoyé avec succcess !
+            </div>
+        </div>
+
+    {% endif %}
     {% if app.user.hebergement is  null %}
     <br>
 
@@ -21,8 +51,8 @@
         </div>
         <div class="card-body">
             <h5 class="card-title ">Soumettre une demande</h5>
-            <p class="card-text">En cliquant sur ce bouton vous auriez la possibilité de créer une demande de document de logement puis de la soumettre par la suite . Attention nous ne vous fournissons que des documents officiel.Il sera donc preferable d'envisagé d'avoir une alternative une fois votre arrivé en france. Ces documents vous aiderons à avoir votre Visa Etude</p>
-            <button type="button" class="btn btn-dark text-center" data-bs-toggle="modal" data-bs-target="#exampleModal">Je demande !</button>
+            <p class="card-text">En cliquant sur ce bouton vous auriez la possibilité de créer une demande de document de logement puis de la soumettre par la suite . </p> <p> Attention nous ne vous fournissons que des documents officiel.Il sera donc preferable d'envisagé d'avoir une alternative une fois votre arrivé en france. Ces documents vous aiderons à avoir votre Visa Etude</p>
+            <div align="center">   <button type="button" class="btn btn-dark text-center " data-bs-toggle="modal" data-bs-target="#exampleModal">Je demande !</button> </div>
         </div>
     </div>
 
@@ -36,7 +66,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <form method="post" action="{{ path('app_garant_new') }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ path('app_hebergement_new') }}" enctype="multipart/form-data">
                         <p class="text-danger">
                             <strong>Toutes les informations sont obligatoires . Excepté du champ "Autres informations" . Pour les pieces jointes nous prenons uniquement les fichiers de type pdf ou au format image et lisible .<br>
                                 <p class="text-dark">* Lien utile pour convertion :
@@ -51,8 +81,6 @@
                                 <option selected>Choisissez le pays !</option>
                                 <option value="France">France</option>
                                 <option value="Canada">Canada</option>
-                                <option value="Maroc">Maroc</option>
-                                <option value="USA">USA</option>
                             </select>
                         </div>
 
@@ -134,6 +162,238 @@
         </div>
         {% endif %}
 
+        {% if app.user.hebergement.statutDemande == 1 %}
+
+            <div class="card shadow mb-3 animate__animated animate__fadeInLeft">
+                <div class="card-header  fw-bold text-xs text-uppercase">
+                    Etat de la demande
+                </div>
+                <div class="card-body">
+                    <p class="text-dark">
+                        <strong class="text-primary fw-bold text-xs text-uppercase">En cours de traitement
+                        </strong>
+                    <div class="progress " role="progressbar" aria-label="Success example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar bg-primary" style="width: 50%"></div>
+                    </div>
+                    </p>
+                    <p>
+                        Veuillez patientez s'il vous plait. Nous traitons votre demande . Elle s'etend généralement sur une période de
+                        <strong>
+                            3 à 5 jours
+                        </strong>
+                        ouvrés</p>
+                </div>
+            </div>
+
+
+        {% endif %}
+
+        {% if app.user.hebergement.statutDemande == 2 %}
+
+            <div class="card shadow mb-3 animate__animated animate__fadeInLeft">
+                <div class="card-header  fw-bold text-xs text-uppercase">
+                    Etat de la demande
+                </div>
+                <div class="card-body">
+                    <p class="text-dark fw-bold text-xs text-uppercase" align"center">
+                    <strong class="text-success">Traitement terminée</strong>
+                    <div class="progress " role="progressbar" aria-label="Success example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar bg-success" style="width: 100%">Terminée</div>
+                    </div>
+                    </p>
+                    <p>Félicitations
+                        <i class="fas fa-thumbs-up text-success"></i>
+                        Le traitement de votre demande est terminée. Les documents sont disponible .</p>
+                </div>
+            </div>
+
+            <div class="card shadow mb-3 animate__animated animate__fadeInLeft">
+                <div class="card-header  fw-bold text-xs text-uppercase">
+                    téléchargement
+                </div>
+                <div class="card-body">
+                    <p class="text-dark fw-bold text-xs text-uppercase" align"center">
+                    <strong class="">Documents :</strong>
+                    <a href="{{ asset('uploads/hebergement/' ~ app.user.hebergement.getHebergementFile() ) }}" class="btn btn-success btn-sm" download="{{ app.user.getName()}}_GarantFile">
+                        <i class="fas fa-download"></i>
+                    </a>
+                    </p>
+                    <p>Il s'agit d'un document PDF unifié qui contient tous les documents dont vous avez besoin pour votre demande de visa pour le pays suivant :
+                        <strong class="text-info fw-bold text-xs text-uppercase">{{ app.user.hebergement.pays }}</strong>.</p>
+                </div>
+            </div>
+
+
+        {% endif %}
+        {% if app.user.hebergement.statutDemande == 3 %}
+
+            <div class="card shadow mb-3 animate__animated animate__fadeInLeft">
+                <div class="card-header  fw-bold text-xs text-uppercase">
+                    Etat de la demande
+                </div>
+                <div class="card-body">
+                    <p class="text-warning fw-bold text-xs text-uppercase" align"center">
+                    <strong class="text-warning">Demande clôturer</strong>
+                    <div class="progress " role="progressbar" aria-label="Success example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                        <div class="progress-bar bg-warning" style="width: 100%"></div>
+                    </div>
+                    </p>
+                    <p class="">Votre demande a été clôturer. Vous ne pouvez plus effectuer de demande. Veuillez contacter l'administrateur en cas de doute .</p>
+                </div>
+            </div>
+
+
+        {% endif %}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card shadow mb-3 animate__animated animate__fadeInLeft">
+                    <div class="card-header fw-bold text-xs text-uppercase">
+                        Mes informations communiquées
+                    </div>
+                    <div
+                            class="card-body">
+                        <!-- Contenu de la première carte ici -->
+
+
+                        <p>
+                            Pour votre demande de garant financier soumise le
+                            <strong class="text-dark">
+                                {{app.user.hebergement.getDateDemande() |date('d-m-Y')}}</strong>
+                            à
+                            {{app.user.hebergement.getDateDemande() |date('H:i')}}
+                            vous nous avez communiqué les informations suivantes :</p>
+
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row">Pays</th>
+                                            <td>{{ app.user.hebergement.getPays() }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Ville</th>
+                                            <td>{{ app.user.hebergement.getVilleEtude() }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Passport</th>
+                                            <td>
+                                                {% if not app.user.passport %}
+                                                    <p class="text-danger">
+                                                        <strong>Vous devez joindre le justificatif de paiement pour le traitement de votre dossier ici !.</strong>
+                                                    </p>
+                                                    <p>Rendez-vous dans le menu
+                                                        <a href="{{ path('app_user_profil') }}" target="_blank">Mon profil</a>
+                                                        afin d'y joindre le ou les documents demandés.</p>
+                                                {% else %}
+                                                    <a href="{{ asset('uploads/passport/' ~ app.user.passport) }}" class="btn btn-dark btn-sm" download="{{ app.user.name }}_Passeport">
+                                                        Voir
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Attestation d'acceptation</th>
+                                            <td>
+                                                {% if app.user.hebergement.getPathAdmissionFile() == null %}
+                                                    <p class="text-danger">Vous n'avez joint aucune attestation d'acceptation. Les pièces jointes sont obligatoires.</p>
+                                                    <label for="formFile" class="form-label">Attestation d'acceptation</label>
+                                                    <input class="form-control" type="file" id="formFile">
+                                                {% else %}
+                                                    <a href="{{ asset('uploads/attestation/' ~ app.user.hebergement.pathAdmissionFile) }}" class="btn btn-dark btn-sm" download="{{ app.user.name }}_attestation_acceptation">
+                                                        Voir
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">
+                                                Justificatif de paiement
+                                            </th>
+                                            <td>
+                                                {% if app.user.hebergement.justificatifPaiement %}
+                                                    <a href="{{ asset('uploads/justificatif-de-paiement/' ~ app.user.hebergement.justificatifPaiement) }}" class="btn btn-success btn-sm" download="{{ app.user.name }}__paiement">
+                                                        Voir
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                {% else %}
+
+                                                    Aucun justificatif
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        {% if app.user.hebergement.getStatutDemande() == 0 %}
+                            <br>
+                            <form action="{{ path('app_hebergement_delete', {'id': app.user.hebergement.id}) }}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette demande d\'hébergement ?')">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ app.user.hebergement.id) }}">
+                                <div align="center">
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="fas fa-trash"></i>
+                                        Annuler
+
+                                    </button>
+                                </div>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow mb-3 animate__animated animate__fadeInLeft">
+                    <div class="card-header  fw-bold text-xs text-uppercase">
+                        Documents relatifs à la demande
+                    </div>
+                    <div
+                            class="card-body">
+                        <!-- Contenu de la deuxième carte ici -->
+                        Joindre un justificatif de paiement (Western Union , Ria ...)
+                        <br><br>
+                        <form method="post" action="{{ path('app_hebergement_justificatif_paiement') }}" enctype="multipart/form-data">
+                            <input class="form-control" type="file" name="justificatif">
+                            <br>
+                            {% if  not  app.user.getHebergement().getJustificatifPaiement() %}
+                                <p class=" alert alert-danger text-center">Vous devez joindre le justificatif de paiement ici ! (WU , Ria ...)  ou par mail : <u>maykconsulting@gmail.com</u> </p>
+                            {% else %}
+                                <p class=" alert alert-success text-center">Nous avons reçu votre justificatif de paiement . </p>
+                            {% endif %}
+                            <button type="submit" class="btn btn-dark" style="width:100%">
+                                <i class="fas fa-upload"></i>
+                                Soumettre</button>
+                        </form>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# <div class="card shadow mb-3 animate__animated animate__fadeInLeft">
+					<div class="card-header  fw-bold text-xs text-uppercase">
+						Historique de la demande
+					</div>
+					<div
+						class="card-body">
+						<!-- Contenu de la deuxième carte ici -->
+
+						<br>
+					</div>
+				</div> #}
+
+
+        <br>
     {%  endif %}
     </div>
     </div>

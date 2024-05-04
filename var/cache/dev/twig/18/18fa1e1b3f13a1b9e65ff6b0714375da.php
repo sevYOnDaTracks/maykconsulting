@@ -237,7 +237,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
             if ( !twig_test_empty(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 137), "avatar", [], "any", false, false, false, 137))) {
                 // line 138
                 echo "\t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"";
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/avatars/" . twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 138, $this->source); })()), "avatar", [], "any", false, false, false, 138))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/avatars/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "user", [], "any", false, false, false, 138), "avatar", [], "any", false, false, false, 138))), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 138), "getName", [], "method", false, false, false, 138), "html", null, true);
                 echo "
@@ -366,7 +366,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"";
             // line 211
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_update", ["id" => twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 211)]), "html", null, true);
-            echo "\">
+            echo "\" enctype=\"multipart/form-data\">
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"table table-borderless\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>
@@ -419,11 +419,11 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
             } else {
                 // line 248
-                echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2\">
+                echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs mb-2\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
                 // line 249
                 echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/garant/" . twig_get_attribute($this->env, $this->source, $context["garantUser"], "getGarantFile", [], "method", false, false, false, 249))), "html", null, true);
-                echo "\" class=\"btn btn-light btn-sm \" download=\"";
+                echo "\" class=\"btn btn-light btn-sm text-xs\" download=\"";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 249), "getName", [], "method", false, false, false, 249), "html", null, true);
                 echo "_GarantFile\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tTélécharger <i class=\"fas fa-download\"></i>
@@ -596,7 +596,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
             if ( !twig_test_empty(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 359), "avatar", [], "any", false, false, false, 359))) {
                 // line 360
                 echo "\t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"";
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/avatars/" . twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 360, $this->source); })()), "avatar", [], "any", false, false, false, 360))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/avatars/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "user", [], "any", false, false, false, 360), "avatar", [], "any", false, false, false, 360))), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 360), "getName", [], "method", false, false, false, 360), "html", null, true);
                 echo "
@@ -961,7 +961,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
             if ( !twig_test_empty(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 586), "avatar", [], "any", false, false, false, 586))) {
                 // line 587
                 echo "\t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"";
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/avatars/" . twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 587, $this->source); })()), "avatar", [], "any", false, false, false, 587))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/avatars/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "user", [], "any", false, false, false, 587), "avatar", [], "any", false, false, false, 587))), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 587), "getName", [], "method", false, false, false, 587), "html", null, true);
                 echo "
@@ -1091,7 +1091,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"";
             // line 660
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_update", ["id" => twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 660)]), "html", null, true);
-            echo "\">
+            echo "\" enctype=\"multipart/form-data\" >
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"table-responsive\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"table table-borderless\">
@@ -1328,7 +1328,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
                 if ( !twig_test_empty(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 813), "avatar", [], "any", false, false, false, 813))) {
                     // line 814
                     echo "\t\t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"";
-                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/avatars/" . twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 814, $this->source); })()), "avatar", [], "any", false, false, false, 814))), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/avatars/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "user", [], "any", false, false, false, 814), "avatar", [], "any", false, false, false, 814))), "html", null, true);
                     echo "\">";
                     echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["garantUser"], "getUser", [], "method", false, false, false, 814), "getName", [], "method", false, false, false, 814), "html", null, true);
                     echo "
@@ -1457,7 +1457,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"";
                 // line 886
                 echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_update", ["id" => twig_get_attribute($this->env, $this->source, $context["garantUser"], "id", [], "any", false, false, false, 886)]), "html", null, true);
-                echo "\">
+                echo "\" enctype=\"multipart/form-data\">
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"table-responsive\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"table table-borderless\">
@@ -1844,7 +1844,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t<tr>
 \t\t\t\t\t\t\t\t<td>
 \t\t\t\t\t\t\t\t\t{% if garantUser.getUser().avatar is not empty %}
-\t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"{{ asset('uploads/avatars/' ~ user.avatar) }}\">{{ garantUser.getUser().getName() }}
+\t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"{{ asset('uploads/avatars/' ~ garantUser.user.avatar) }}\">{{ garantUser.getUser().getName() }}
 \t\t\t\t\t\t\t\t\t{% else %}
 \t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"/assets/images/logo.png\">
 \t\t\t\t\t\t\t\t\t\t{{ garantUser.getUser().getName() }}
@@ -1917,7 +1917,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-body\">
 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"{{ path('app_garant_update', {'id': garantUser.id}) }}\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"{{ path('app_garant_update', {'id': garantUser.id}) }}\" enctype=\"multipart/form-data\">
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"table table-borderless\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tr>
@@ -1954,8 +1954,8 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"file\" name=\"garantFile\" class=\"form-control-sm\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"text-primary bg-light text-center text- fw-bold text-xs\"> Ici pour affecter les documents de garant au client un seul PDF qui regroupe Tout </span>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{% else %}
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs text-uppercase mb-2\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/garant/' ~ garantUser.getGarantFile() ) }}\" class=\"btn btn-light btn-sm \" download=\"{{ garantUser.getUser().getName() }}_GarantFile\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"fw-bold text-xs mb-2\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ asset('uploads/garant/' ~ garantUser.getGarantFile() ) }}\" class=\"btn btn-light btn-sm text-xs\" download=\"{{ garantUser.getUser().getName() }}_GarantFile\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tTélécharger <i class=\"fas fa-download\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
@@ -2066,7 +2066,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t<tr>
 \t\t\t\t\t\t\t\t<td>
 \t\t\t\t\t\t\t\t\t{% if garantUser.getUser().avatar is not empty %}
-\t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"{{ asset('uploads/avatars/' ~ user.avatar) }}\">{{ garantUser.getUser().getName() }}
+\t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"{{ asset('uploads/avatars/' ~ garantUser.user.avatar) }}\">{{ garantUser.getUser().getName() }}
 \t\t\t\t\t\t\t\t\t{% else %}
 \t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"/assets/images/logo.png\">
 \t\t\t\t\t\t\t\t\t\t{{ garantUser.getUser().getName() }}
@@ -2293,7 +2293,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t<tr>
 \t\t\t\t\t\t\t\t<td>
 \t\t\t\t\t\t\t\t\t{% if garantUser.getUser().avatar is not empty %}
-\t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"{{ asset('uploads/avatars/' ~ user.avatar) }}\">{{ garantUser.getUser().getName() }}
+\t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"{{ asset('uploads/avatars/' ~ garantUser.user.avatar) }}\">{{ garantUser.getUser().getName() }}
 \t\t\t\t\t\t\t\t\t{% else %}
 \t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"/assets/images/logo.png\">
 \t\t\t\t\t\t\t\t\t\t{{ garantUser.getUser().getName() }}
@@ -2366,7 +2366,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-body\">
 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"{{ path('app_garant_update', {'id': garantUser.id}) }}\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"{{ path('app_garant_update', {'id': garantUser.id}) }}\" enctype=\"multipart/form-data\" >
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"table-responsive\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"table table-borderless\">
@@ -2520,7 +2520,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t<tr>
 \t\t\t\t\t\t\t\t\t<td>
 \t\t\t\t\t\t\t\t\t\t{% if garantUser.getUser().avatar is not empty %}
-\t\t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"{{ asset('uploads/avatars/' ~ user.avatar) }}\">{{ garantUser.getUser().getName() }}
+\t\t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"{{ asset('uploads/avatars/' ~ garantUser.user.avatar) }}\">{{ garantUser.getUser().getName() }}
 \t\t\t\t\t\t\t\t\t\t{% else %}
 \t\t\t\t\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"/assets/images/logo.png\">
 \t\t\t\t\t\t\t\t\t\t\t{{ garantUser.getUser().getName() }}
@@ -2592,7 +2592,7 @@ class __TwigTemplate_05e208f15c3544d45a9b816ebd4da3db extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"modal-body\">
 
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"{{ path('app_garant_update', {'id': garantUser.id}) }}\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<form method=\"post\" action=\"{{ path('app_garant_update', {'id': garantUser.id}) }}\" enctype=\"multipart/form-data\">
 
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"table-responsive\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table class=\"table table-borderless\">

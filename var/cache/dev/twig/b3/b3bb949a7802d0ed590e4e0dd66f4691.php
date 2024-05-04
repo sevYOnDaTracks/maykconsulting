@@ -69,7 +69,7 @@ class __TwigTemplate_16ac61cad8210422b56aa63f3ac218ad extends Template
             echo "\">
 \t\t\t\t\t\t\t\t<div class=\"me-3\">
 \t\t\t\t\t\t\t\t\t<div class=\"bg-dark icon-circle\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-file-alt text-white\"></i>
+\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-money-check text-white\"></i>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div>
@@ -104,7 +104,7 @@ class __TwigTemplate_16ac61cad8210422b56aa63f3ac218ad extends Template
             echo "\">
 \t\t\t\t\t\t\t\t<div class=\"me-3\">
 \t\t\t\t\t\t\t\t\t<div class=\"bg-dark icon-circle\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-home text-white\"></i>
+\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-building text-white\"></i>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div>
@@ -276,7 +276,7 @@ class __TwigTemplate_16ac61cad8210422b56aa63f3ac218ad extends Template
 \t\t\t\t\t\t\t<a class=\"dropdown-item d-flex align-items-center\" href=\"{{path('app_garant')}}\">
 \t\t\t\t\t\t\t\t<div class=\"me-3\">
 \t\t\t\t\t\t\t\t\t<div class=\"bg-dark icon-circle\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-file-alt text-white\"></i>
+\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-money-check text-white\"></i>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div>
@@ -298,7 +298,7 @@ class __TwigTemplate_16ac61cad8210422b56aa63f3ac218ad extends Template
 \t\t\t\t\t\t\t<a class=\"dropdown-item d-flex align-items-center\" href=\"{{path('app_hebergement')}}\">
 \t\t\t\t\t\t\t\t<div class=\"me-3\">
 \t\t\t\t\t\t\t\t\t<div class=\"bg-dark icon-circle\">
-\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-home text-white\"></i>
+\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-building text-white\"></i>
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t<div>

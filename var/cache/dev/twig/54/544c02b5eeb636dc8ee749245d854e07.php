@@ -45,7 +45,7 @@ class __TwigTemplate_5cf89e257e9f548ad1a906737c916289 extends Template
     <meta charset=\"UTF-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
     
-    <title>Devis - ";
+    <title>Devis garant financier pour ";
         // line 6
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 6, $this->source); })()), "user", [], "any", false, false, false, 6), "name", [], "any", false, false, false, 6), "html", null, true);
         echo "</title>
@@ -203,15 +203,14 @@ class __TwigTemplate_5cf89e257e9f548ad1a906737c916289 extends Template
         </table>
 
 
-        <br>
         <p style=\"text-align: start; margin-top: 15px\">By Mayk Consulting le ";
-        // line 125
-        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, (isset($context["date_facture"]) || array_key_exists("date_facture", $context) ? $context["date_facture"] : (function () { throw new RuntimeError('Variable "date_facture" does not exist.', 125, $this->source); })()), "d/m/Y"), "html", null, true);
+        // line 124
+        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, (isset($context["date_facture"]) || array_key_exists("date_facture", $context) ? $context["date_facture"] : (function () { throw new RuntimeError('Variable "date_facture" does not exist.', 124, $this->source); })()), "d/m/Y"), "html", null, true);
         echo "</p>
         <img align=\"right\" src=\"data:image/png;base64,";
-        // line 126
-        echo twig_escape_filter($this->env, (isset($context["image_content"]) || array_key_exists("image_content", $context) ? $context["image_content"] : (function () { throw new RuntimeError('Variable "image_content" does not exist.', 126, $this->source); })()), "html", null, true);
-        echo "\" style=\"width: 200px; height: 80px; text-align: center; align-items: center;\">
+        // line 125
+        echo twig_escape_filter($this->env, (isset($context["image_content"]) || array_key_exists("image_content", $context) ? $context["image_content"] : (function () { throw new RuntimeError('Variable "image_content" does not exist.', 125, $this->source); })()), "html", null, true);
+        echo "\" style=\"width: 200px; height: 200px; text-align: center; align-items: center;\">
     </div>
 </body>
 </html>
@@ -245,7 +244,7 @@ class __TwigTemplate_5cf89e257e9f548ad1a906737c916289 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  213 => 126,  209 => 125,  178 => 97,  174 => 96,  170 => 95,  162 => 89,  158 => 87,  155 => 86,  151 => 84,  149 => 83,  140 => 79,  133 => 75,  113 => 58,  106 => 54,  97 => 50,  50 => 6,  43 => 1,);
+        return array (  212 => 125,  208 => 124,  178 => 97,  174 => 96,  170 => 95,  162 => 89,  158 => 87,  155 => 86,  151 => 84,  149 => 83,  140 => 79,  133 => 75,  113 => 58,  106 => 54,  97 => 50,  50 => 6,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -255,7 +254,7 @@ class __TwigTemplate_5cf89e257e9f548ad1a906737c916289 extends Template
     <meta charset=\"UTF-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
     
-    <title>Devis - {{ app.user.name }}</title>
+    <title>Devis garant financier pour {{ app.user.name }}</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -373,9 +372,8 @@ class __TwigTemplate_5cf89e257e9f548ad1a906737c916289 extends Template
         </table>
 
 
-        <br>
         <p style=\"text-align: start; margin-top: 15px\">By Mayk Consulting le {{ date_facture | date('d/m/Y') }}</p>
-        <img align=\"right\" src=\"data:image/png;base64,{{ image_content }}\" style=\"width: 200px; height: 80px; text-align: center; align-items: center;\">
+        <img align=\"right\" src=\"data:image/png;base64,{{ image_content }}\" style=\"width: 200px; height: 200px; text-align: center; align-items: center;\">
     </div>
 </body>
 </html>

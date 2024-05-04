@@ -71,16 +71,16 @@ class GarantController extends AbstractController
                 $garantFinancier->setGarantFile($fileName);
             }
 
-            if ($request->request->get('justificatifPaiement')) {
+            if ($request->files->get('justificatifPaiement')) {
 
                 // Supprimer l'ancien avatar s'il existe
                 $oldJustificatifPath = $garantFinancier->getJustificatifPaiement();
                 if ($oldJustificatifPath && file_exists($oldJustificatifPath)) {
                     unlink($oldJustificatifPath);
-                    $garantFinancier->setGarantFile(null);
+                    $garantFinancier->setJustificatifPaiement(null);
                 }
 
-                $justificatifPaiement = $request->request->get('justificatifPaiement');
+                $justificatifPaiement = $request->files->get('justificatifPaiement');
 
                 // Traitement de l'avatar téléchargé
                 $fileName = md5(uniqid()) . '.' . $justificatifPaiement->guessExtension();
@@ -115,6 +115,7 @@ class GarantController extends AbstractController
 
             $garantFinancier->setStatutDemande($statut);
             $garantFinancierRepository->save($garantFinancier , true);
+
 
             $this->addFlash('success-edit', 'Modification success !.');
             return $this->redirectToRoute('app_garant_management', [], Response::HTTP_SEE_OTHER);

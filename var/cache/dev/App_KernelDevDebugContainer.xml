@@ -77,6 +77,7 @@
     <parameter key="avatars_directory">/Users/sevyondatracks/Documents/maykconsulting/public/uploads/avatars</parameter>
     <parameter key="passport_directory">/Users/sevyondatracks/Documents/maykconsulting/public/uploads/passport</parameter>
     <parameter key="garant_directory">/Users/sevyondatracks/Documents/maykconsulting/public/uploads/garant</parameter>
+    <parameter key="hebergement_directory">/Users/sevyondatracks/Documents/maykconsulting/public/uploads/hebergement</parameter>
     <parameter key="cni_directory">/Users/sevyondatracks/Documents/maykconsulting/public/uploads/cni</parameter>
     <parameter key="attestation_directory">/Users/sevyondatracks/Documents/maykconsulting/public/uploads/attestation</parameter>
     <parameter key="justificatif_directory">/Users/sevyondatracks/Documents/maykconsulting/public/uploads/justificatif-de-paiement</parameter>
@@ -507,7 +508,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.g6ZL6u2"/>
+      <argument type="service" id=".service_locator.QQJJjw4"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -3177,7 +3178,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.g6ZL6u2"/>
+      <argument type="service" id=".service_locator.QQJJjw4"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <argument type="service" id="request_stack"/>
@@ -7499,6 +7500,12 @@
         <argument key="garantFinancierRepository" type="service_closure" id="App\Repository\GarantFinancierRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.GBMxyvu" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="hebergementRepository" type="service_closure" id="App\Repository\HebergementRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.zIrs5r_" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7558,6 +7565,29 @@
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.ooWztaG" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="hebergement" type="service_closure" id=".errored..service_locator.ooWztaG.App\Entity\Hebergement"/>
+        <argument key="hebergementRepository" type="service_closure" id="App\Repository\HebergementRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.jAPV5_M" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="hebergementRepository" type="service_closure" id="App\Repository\HebergementRepository"/>
+        <argument key="publicMessageRepository" type="service_closure" id="App\Repository\PublicMessageRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.jsOusUo" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="hebergement" type="service_closure" id=".errored..service_locator.jsOusUo.App\Entity\Hebergement"/>
+        <argument key="hebergementRepository" type="service_closure" id="App\Repository\HebergementRepository"/>
+        <argument key="mailer" type="service_closure" id="mailer.mailer"/>
+        <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.rSTd.nA" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7586,7 +7616,7 @@
         <argument key="urlGenerator" type="service_closure" id="router.default"/>
       </argument>
     </service>
-    <service id=".service_locator.g6ZL6u2" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.QQJJjw4" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdministrationController::delete" type="service_closure" id=".service_locator.vB1BKOI"/>
@@ -7610,6 +7640,7 @@
         <argument key="App\Controller\DossierController::new" type="service_closure" id=".service_locator.CZTUnfY"/>
         <argument key="App\Controller\DossierController::show" type="service_closure" id=".service_locator.FWjjKry"/>
         <argument key="App\Controller\ExportController::exportData" type="service_closure" id=".service_locator.PtBS4rn"/>
+        <argument key="App\Controller\ExportController::exportDataHebergement" type="service_closure" id=".service_locator.GBMxyvu"/>
         <argument key="App\Controller\FactureController::generatePdf" type="service_closure" id=".service_locator.zIrs5r_"/>
         <argument key="App\Controller\FactureController::generatePdfHebergement" type="service_closure" id=".service_locator.zIrs5r_"/>
         <argument key="App\Controller\GarantController::allGarant" type="service_closure" id=".service_locator.zzVjYJF"/>
@@ -7620,9 +7651,14 @@
         <argument key="App\Controller\GarantController::recupererJustificatifPaiement" type="service_closure" id=".service_locator.kPUOGb8"/>
         <argument key="App\Controller\GarantController::recupererLenombreDeMessage" type="service_closure" id=".service_locator.UeARcDr"/>
         <argument key="App\Controller\GarantController::updateGarantDossier" type="service_closure" id=".service_locator.Uz253Yf"/>
+        <argument key="App\Controller\HebergementController::allGarant" type="service_closure" id=".service_locator.jAPV5_M"/>
+        <argument key="App\Controller\HebergementController::delete" type="service_closure" id=".service_locator.ooWztaG"/>
+        <argument key="App\Controller\HebergementController::envoyezMail" type="service_closure" id=".service_locator.uVvF4gL"/>
         <argument key="App\Controller\HebergementController::index" type="service_closure" id=".service_locator.UeARcDr"/>
         <argument key="App\Controller\HebergementController::new" type="service_closure" id=".service_locator.1C2nd1Z"/>
+        <argument key="App\Controller\HebergementController::recupererJustificatifPaiement" type="service_closure" id=".service_locator.kPUOGb8"/>
         <argument key="App\Controller\HebergementController::recupererLenombreDeMessage" type="service_closure" id=".service_locator.UeARcDr"/>
+        <argument key="App\Controller\HebergementController::updateHebergement" type="service_closure" id=".service_locator.jsOusUo"/>
         <argument key="App\Controller\LoginController::index" type="service_closure" id=".service_locator.rSTd.nA"/>
         <argument key="App\Controller\ParcoursController::index" type="service_closure" id=".service_locator.UeARcDr"/>
         <argument key="App\Controller\ParcoursController::recupererLenombreDeMessage" type="service_closure" id=".service_locator.UeARcDr"/>
@@ -7654,6 +7690,7 @@
         <argument key="App\Controller\DossierController:new" type="service_closure" id=".service_locator.CZTUnfY"/>
         <argument key="App\Controller\DossierController:show" type="service_closure" id=".service_locator.FWjjKry"/>
         <argument key="App\Controller\ExportController:exportData" type="service_closure" id=".service_locator.PtBS4rn"/>
+        <argument key="App\Controller\ExportController:exportDataHebergement" type="service_closure" id=".service_locator.GBMxyvu"/>
         <argument key="App\Controller\FactureController:generatePdf" type="service_closure" id=".service_locator.zIrs5r_"/>
         <argument key="App\Controller\FactureController:generatePdfHebergement" type="service_closure" id=".service_locator.zIrs5r_"/>
         <argument key="App\Controller\GarantController:allGarant" type="service_closure" id=".service_locator.zzVjYJF"/>
@@ -7664,9 +7701,14 @@
         <argument key="App\Controller\GarantController:recupererJustificatifPaiement" type="service_closure" id=".service_locator.kPUOGb8"/>
         <argument key="App\Controller\GarantController:recupererLenombreDeMessage" type="service_closure" id=".service_locator.UeARcDr"/>
         <argument key="App\Controller\GarantController:updateGarantDossier" type="service_closure" id=".service_locator.Uz253Yf"/>
+        <argument key="App\Controller\HebergementController:allGarant" type="service_closure" id=".service_locator.jAPV5_M"/>
+        <argument key="App\Controller\HebergementController:delete" type="service_closure" id=".service_locator.ooWztaG"/>
+        <argument key="App\Controller\HebergementController:envoyezMail" type="service_closure" id=".service_locator.uVvF4gL"/>
         <argument key="App\Controller\HebergementController:index" type="service_closure" id=".service_locator.UeARcDr"/>
         <argument key="App\Controller\HebergementController:new" type="service_closure" id=".service_locator.1C2nd1Z"/>
+        <argument key="App\Controller\HebergementController:recupererJustificatifPaiement" type="service_closure" id=".service_locator.kPUOGb8"/>
         <argument key="App\Controller\HebergementController:recupererLenombreDeMessage" type="service_closure" id=".service_locator.UeARcDr"/>
+        <argument key="App\Controller\HebergementController:updateHebergement" type="service_closure" id=".service_locator.jsOusUo"/>
         <argument key="App\Controller\LoginController:index" type="service_closure" id=".service_locator.rSTd.nA"/>
         <argument key="App\Controller\ParcoursController:index" type="service_closure" id=".service_locator.UeARcDr"/>
         <argument key="App\Controller\ParcoursController:recupererLenombreDeMessage" type="service_closure" id=".service_locator.UeARcDr"/>
@@ -8750,6 +8792,12 @@
     <service id=".errored..service_locator.k0V8BeG.App\Entity\GarantFinancier" class="App\Entity\GarantFinancier">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.k0V8BeG&quot;: it needs an instance of &quot;App\Entity\GarantFinancier&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
     </service>
+    <service id=".errored..service_locator.ooWztaG.App\Entity\Hebergement" class="App\Entity\Hebergement">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.ooWztaG&quot;: it needs an instance of &quot;App\Entity\Hebergement&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
+    <service id=".errored..service_locator.jsOusUo.App\Entity\Hebergement" class="App\Entity\Hebergement">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.jsOusUo&quot;: it needs an instance of &quot;App\Entity\Hebergement&quot; but this type has been excluded in &quot;config/services.yaml&quot;."/>
+    </service>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
       <argument type="collection"/>
@@ -9831,7 +9879,7 @@
     <service id="SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface" alias="symfonycasts.verify_email.helper"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.7nzbL4K" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.g6ZL6u2"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.QQJJjw4"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -9859,8 +9907,9 @@
     <service id=".service_locator.Bpzal4p" alias=".service_locator.Uz253Yf"/>
     <service id=".service_locator.MyJ2Qvq" alias=".service_locator.CUqNTvW"/>
     <service id=".service_locator.s3T0j1W" alias=".service_locator.1C2nd1Z"/>
+    <service id=".service_locator.Va_LDgq" alias=".service_locator.jsOusUo"/>
     <service id=".service_locator.V6D1oJY" alias=".service_locator.e_4zbH4"/>
-    <service id=".service_locator.Wkbjj3e" alias=".service_locator.g6ZL6u2"/>
+    <service id=".service_locator.1xGLjgN" alias=".service_locator.QQJJjw4"/>
     <service id=".service_locator.BFrsqsn" alias=".service_locator.F9PKc.7"/>
     <service id=".service_locator.JPIceuA" alias=".service_locator.8I.zPiO"/>
     <service id=".service_locator.jij13qc" alias=".service_locator.PBToVFE"/>
@@ -9896,6 +9945,7 @@
     <service id=".service_locator.dJ.rwYg" alias=".service_locator.FWjjKry"/>
     <service id=".service_locator.YGfBtuv" alias=".service_locator.awqL4yC"/>
     <service id=".service_locator.4YU4p8M" alias=".service_locator.PtBS4rn"/>
+    <service id=".service_locator.HvI8fiX" alias=".service_locator.GBMxyvu"/>
     <service id=".service_locator.Ip91qEI" alias=".service_locator.zIrs5r_"/>
     <service id=".service_locator.SKC6n4w" alias=".service_locator.GJ_ZrdR"/>
     <service id=".service_locator.JuBXSIy" alias=".service_locator.Uz253Yf"/>
@@ -9903,6 +9953,9 @@
     <service id=".service_locator.0DFJ2l2" alias=".service_locator.zzVjYJF"/>
     <service id=".service_locator.eHmuTGL" alias=".service_locator.k0V8BeG"/>
     <service id=".service_locator.YDUZow2" alias=".service_locator.1C2nd1Z"/>
+    <service id=".service_locator.MowBXHI" alias=".service_locator.ooWztaG"/>
+    <service id=".service_locator.EEbBIOE" alias=".service_locator.jAPV5_M"/>
+    <service id=".service_locator.dHWO8Zq" alias=".service_locator.jsOusUo"/>
     <service id=".service_locator.7NIAq8D" alias=".service_locator.rSTd.nA"/>
     <service id=".service_locator.qnm_CJ1" alias=".service_locator.e_4zbH4"/>
     <service id=".service_locator.vWiWdqV" alias=".service_locator.920S.Ym"/>
