@@ -133,15 +133,15 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
         echo "
 \t";
         // line 33
-        if ( !twig_test_empty(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 33, $this->source); })()), "flashes", ["error-creation-demande"], "method", false, false, false, 33))) {
+        if ( !twig_test_empty(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 33, $this->source); })()), "flashes", ["failed-add-justificatif"], "method", false, false, false, 33))) {
             // line 34
             echo "\t\t<div class=\"alert alert-danger\">
 \t\t\t";
             // line 35
-            echo twig_escape_filter($this->env, twig_first($this->env, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 35, $this->source); })()), "flashes", ["error-creation-demande"], "method", false, false, false, 35)), "html", null, true);
+            echo twig_escape_filter($this->env, twig_first($this->env, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 35, $this->source); })()), "flashes", ["failed-add-justificatif"], "method", false, false, false, 35)), "html", null, true);
             echo "
 \t\t\t<div align=\"center\">
-\t\t\t\tVotre demande n'a pas été soumise ! Veuillez entrer des fichiers valides
+\t\t\t\tAucun justificatif de paiement reçu !
 \t\t\t</div>
 \t\t</div>
 
@@ -151,12 +151,30 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
         echo "
 \t";
         // line 43
-        if ( !twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 43, $this->source); })()), "user", [], "any", false, false, false, 43), "isVerified", [], "any", false, false, false, 43)) {
+        if ( !twig_test_empty(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 43, $this->source); })()), "flashes", ["error-creation-demande"], "method", false, false, false, 43))) {
             // line 44
-            echo "\t\t<div class=\"alert alert-danger animate__animated animate__fadeInLeft \">
+            echo "\t\t<div class=\"alert alert-danger\">
 \t\t\t";
             // line 45
             echo twig_escape_filter($this->env, twig_first($this->env, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 45, $this->source); })()), "flashes", ["error-creation-demande"], "method", false, false, false, 45)), "html", null, true);
+            echo "
+\t\t\t<div align=\"center\">
+\t\t\t\tVotre demande n'a pas été soumise ! Veuillez entrer des fichiers valides
+\t\t\t</div>
+\t\t</div>
+
+\t";
+        }
+        // line 52
+        echo "
+\t";
+        // line 53
+        if ( !twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 53, $this->source); })()), "user", [], "any", false, false, false, 53), "isVerified", [], "any", false, false, false, 53)) {
+            // line 54
+            echo "\t\t<div class=\"alert alert-danger animate__animated animate__fadeInLeft \">
+\t\t\t";
+            // line 55
+            echo twig_escape_filter($this->env, twig_first($this->env, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 55, $this->source); })()), "flashes", ["error-creation-demande"], "method", false, false, false, 55)), "html", null, true);
             echo "
 \t\t\t<div align=\"center\">
 \t\t\t\tVotre compte n'est pas vérifié ! Veuillez verifier vos mails afin de cliquez sur le lien d'activation. Verfiez aussi les spams
@@ -164,13 +182,13 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 \t\t</div>
 \t";
         }
-        // line 51
+        // line 61
         echo "
 
 \t";
-        // line 53
-        if ((null === twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 53, $this->source); })()), "user", [], "any", false, false, false, 53), "garantFinancier", [], "any", false, false, false, 53))) {
-            // line 54
+        // line 63
+        if ((null === twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 63, $this->source); })()), "user", [], "any", false, false, false, 63), "garantFinancier", [], "any", false, false, false, 63))) {
+            // line 64
             echo "\t\t<br>
 
 
@@ -196,7 +214,7 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 \t\t\t\t\t<div class=\"modal-body\">
 
 \t\t\t\t\t\t<form method=\"post\" action=\"";
-            // line 78
+            // line 88
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_new");
             echo "\" enctype=\"multipart/form-data\">
 \t\t\t\t\t\t\t<p class=\"text-danger\">
@@ -224,9 +242,9 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 \t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t";
-            // line 103
-            if ( !twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 103, $this->source); })()), "user", [], "any", false, false, false, 103), "passport", [], "any", false, false, false, 103)) {
-                // line 104
+            // line 113
+            if ( !twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 113, $this->source); })()), "user", [], "any", false, false, false, 113), "passport", [], "any", false, false, false, 113)) {
+                // line 114
                 echo "
 \t\t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label\">Votre Passeport  :</label>
@@ -235,23 +253,23 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 
 \t\t\t\t\t\t\t";
             } else {
-                // line 111
+                // line 121
                 echo "\t\t\t\t\t\t\t\t<div class=\"mb-3 text-dark\">
 \t\t\t\t\t\t\t\t\tVotre Passport : Nous l'avons déja
 \t\t\t\t\t\t\t\t\t<a target=\"blank\" href=\"";
-                // line 113
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/passport/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 113, $this->source); })()), "user", [], "any", false, false, false, 113), "getPassport", [], "method", false, false, false, 113))), "html", null, true);
+                // line 123
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/passport/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 123, $this->source); })()), "user", [], "any", false, false, false, 123), "getPassport", [], "method", false, false, false, 123))), "html", null, true);
                 echo "\" class=\" ml-3\">ici</a>
 \t\t\t\t\t\t\t\t\t. Vous pouvez toujours le remplacer dans l'onglet
 \t\t\t\t\t\t\t\t\t<a target=\"blank\" href=\"";
-                // line 115
+                // line 125
                 echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_profil");
                 echo "\">Mon Profil
 \t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t";
             }
-            // line 119
+            // line 129
             echo "
 \t\t\t\t\t\t\t<div class=\"mb-3\">
 \t\t\t\t\t\t\t\t<label for=\"recipient-name\" class=\"col-form-label\">Votre Attestation d'acceptation :</label>
@@ -284,12 +302,12 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 \t\t</div>
 \t";
         } else {
-            // line 150
+            // line 160
             echo "
 \t\t";
-            // line 151
-            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 151, $this->source); })()), "user", [], "any", false, false, false, 151), "garantFinancier", [], "any", false, false, false, 151), "statutDemande", [], "any", false, false, false, 151) == 0)) {
-                // line 152
+            // line 161
+            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 161, $this->source); })()), "user", [], "any", false, false, false, 161), "garantFinancier", [], "any", false, false, false, 161), "statutDemande", [], "any", false, false, false, 161) == 0)) {
+                // line 162
                 echo "
 \t\t\t<div class=\"card shadow mb-3 animate__animated animate__fadeInLeft\">
 \t\t\t\t<div class=\"card-header  fw-bold text-xs text-uppercase\">
@@ -307,7 +325,7 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 \t\t\t\t\t\tVeuillez effectuer le paiement afin que nous puissions traité votre demande .</p>
 
 \t\t\t\t\t<a href=\"";
-                // line 168
+                // line 178
                 echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_facture_test");
                 echo "\" class=\"btn btn-danger \">
 \t\t\t\t\t\t<i class=\"fas fa-download\"></i>
@@ -319,12 +337,12 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 
 \t\t";
             }
-            // line 177
+            // line 187
             echo "
 \t\t";
-            // line 178
-            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 178, $this->source); })()), "user", [], "any", false, false, false, 178), "garantFinancier", [], "any", false, false, false, 178), "statutDemande", [], "any", false, false, false, 178) == 1)) {
-                // line 179
+            // line 188
+            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 188, $this->source); })()), "user", [], "any", false, false, false, 188), "garantFinancier", [], "any", false, false, false, 188), "statutDemande", [], "any", false, false, false, 188) == 1)) {
+                // line 189
                 echo "
 \t\t\t<div class=\"card shadow mb-3 animate__animated animate__fadeInLeft\">
 \t\t\t\t<div class=\"card-header  fw-bold text-xs text-uppercase\">
@@ -350,12 +368,12 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 
 \t\t";
             }
-            // line 203
+            // line 213
             echo "
 \t\t";
-            // line 204
-            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 204, $this->source); })()), "user", [], "any", false, false, false, 204), "garantFinancier", [], "any", false, false, false, 204), "statutDemande", [], "any", false, false, false, 204) == 2)) {
-                // line 205
+            // line 214
+            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 214, $this->source); })()), "user", [], "any", false, false, false, 214), "garantFinancier", [], "any", false, false, false, 214), "statutDemande", [], "any", false, false, false, 214) == 2)) {
+                // line 215
                 echo "
 \t\t\t<div class=\"card shadow mb-3 animate__animated animate__fadeInLeft\">
 \t\t\t\t<div class=\"card-header  fw-bold text-xs text-uppercase\">
@@ -382,18 +400,18 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 \t\t\t\t\t<p class=\"text-dark fw-bold text-xs text-uppercase\" align\"center\">
 \t\t\t\t\t\t<strong class=\"\">Documents :</strong>
 \t\t\t\t\t\t<a href=\"";
-                // line 230
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/garant/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 230, $this->source); })()), "user", [], "any", false, false, false, 230), "getGarantFinancier", [], "any", false, false, false, 230), "getGarantFile", [], "method", false, false, false, 230))), "html", null, true);
+                // line 240
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/garant/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 240, $this->source); })()), "user", [], "any", false, false, false, 240), "getGarantFinancier", [], "any", false, false, false, 240), "getGarantFile", [], "method", false, false, false, 240))), "html", null, true);
                 echo "\" class=\"btn btn-success btn-sm\" download=\"";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 230, $this->source); })()), "user", [], "any", false, false, false, 230), "getName", [], "method", false, false, false, 230), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 240, $this->source); })()), "user", [], "any", false, false, false, 240), "getName", [], "method", false, false, false, 240), "html", null, true);
                 echo "_GarantFile\">
 \t\t\t\t\t\t\t<i class=\"fas fa-download\"></i>
 \t\t\t\t\t\t</a>
 \t\t\t\t\t</p>
 \t\t\t\t\t<p>Il s'agit d'un document PDF unifié qui contient tous les documents dont vous avez besoin pour votre demande de visa pour le pays suivant :
 \t\t\t\t\t\t<strong class=\"text-info fw-bold text-xs text-uppercase\">";
-                // line 235
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 235, $this->source); })()), "user", [], "any", false, false, false, 235), "garantFinancier", [], "any", false, false, false, 235), "pays", [], "any", false, false, false, 235), "html", null, true);
+                // line 245
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 245, $this->source); })()), "user", [], "any", false, false, false, 245), "garantFinancier", [], "any", false, false, false, 245), "pays", [], "any", false, false, false, 245), "html", null, true);
                 echo "</strong>.</p>
 \t\t\t\t</div>
 \t\t\t</div>
@@ -401,12 +419,12 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 
 \t\t";
             }
-            // line 241
+            // line 251
             echo "
 \t\t";
-            // line 242
-            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 242, $this->source); })()), "user", [], "any", false, false, false, 242), "garantFinancier", [], "any", false, false, false, 242), "statutDemande", [], "any", false, false, false, 242) == 3)) {
-                // line 243
+            // line 252
+            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 252, $this->source); })()), "user", [], "any", false, false, false, 252), "garantFinancier", [], "any", false, false, false, 252), "statutDemande", [], "any", false, false, false, 252) == 3)) {
+                // line 253
                 echo "
 \t\t\t<div class=\"card shadow mb-3 animate__animated animate__fadeInLeft\">
 \t\t\t\t<div class=\"card-header  fw-bold text-xs text-uppercase\">
@@ -426,7 +444,7 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 
 \t\t";
             }
-            // line 261
+            // line 271
             echo "
 \t\t<div class=\"row\">
 \t\t\t<div class=\"col-md-6\">
@@ -443,13 +461,13 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 \t\t\t\t\t\t\tPour votre demande de garant financier soumise le
 \t\t\t\t\t\t\t<strong class=\"text-dark\">
 \t\t\t\t\t\t\t\t";
-            // line 276
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 276, $this->source); })()), "user", [], "any", false, false, false, 276), "garantFinancier", [], "any", false, false, false, 276), "getDateDemande", [], "method", false, false, false, 276), "d-m-Y"), "html", null, true);
+            // line 286
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 286, $this->source); })()), "user", [], "any", false, false, false, 286), "garantFinancier", [], "any", false, false, false, 286), "getDateDemande", [], "method", false, false, false, 286), "d-m-Y"), "html", null, true);
             echo "</strong>
 \t\t\t\t\t\t\tà
 \t\t\t\t\t\t\t";
-            // line 278
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 278, $this->source); })()), "user", [], "any", false, false, false, 278), "garantFinancier", [], "any", false, false, false, 278), "getDateDemande", [], "method", false, false, false, 278), "H:i"), "html", null, true);
+            // line 288
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 288, $this->source); })()), "user", [], "any", false, false, false, 288), "garantFinancier", [], "any", false, false, false, 288), "getDateDemande", [], "method", false, false, false, 288), "H:i"), "html", null, true);
             echo "
 \t\t\t\t\t\t\tvous nous avez communiqué les informations suivantes :</p>
 
@@ -462,73 +480,73 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 \t\t\t\t\t\t\t\t\t\t\t<tr>
 \t\t\t\t\t\t\t\t\t\t\t\t<th scope=\"row\">Pays</th>
 \t\t\t\t\t\t\t\t\t\t\t\t<td>";
-            // line 289
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 289, $this->source); })()), "user", [], "any", false, false, false, 289), "garantFinancier", [], "any", false, false, false, 289), "getPays", [], "method", false, false, false, 289), "html", null, true);
+            // line 299
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 299, $this->source); })()), "user", [], "any", false, false, false, 299), "garantFinancier", [], "any", false, false, false, 299), "getPays", [], "method", false, false, false, 299), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t\t\t\t</tr>
 \t\t\t\t\t\t\t\t\t\t\t<tr>
 \t\t\t\t\t\t\t\t\t\t\t\t<th scope=\"row\">Ville</th>
 \t\t\t\t\t\t\t\t\t\t\t\t<td>";
-            // line 293
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 293, $this->source); })()), "user", [], "any", false, false, false, 293), "garantFinancier", [], "any", false, false, false, 293), "getVilleEtude", [], "method", false, false, false, 293), "html", null, true);
+            // line 303
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 303, $this->source); })()), "user", [], "any", false, false, false, 303), "garantFinancier", [], "any", false, false, false, 303), "getVilleEtude", [], "method", false, false, false, 303), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t\t\t\t</tr>
 \t\t\t\t\t\t\t\t\t\t\t<tr>
 \t\t\t\t\t\t\t\t\t\t\t\t<th scope=\"row\">Passport</th>
 \t\t\t\t\t\t\t\t\t\t\t\t<td>
 \t\t\t\t\t\t\t\t\t\t\t\t\t";
-            // line 298
-            if ( !twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 298, $this->source); })()), "user", [], "any", false, false, false, 298), "passport", [], "any", false, false, false, 298)) {
-                // line 299
+            // line 308
+            if ( !twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 308, $this->source); })()), "user", [], "any", false, false, false, 308), "passport", [], "any", false, false, false, 308)) {
+                // line 309
                 echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"text-danger\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<strong>Vous n'avez joint aucun passeport. Les pièces jointes sont obligatoires pour le traitement de votre dossier.</strong>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<strong>Vous devez joindre le justificatif de paiement pour le traitement de votre dossier ici !.</strong>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</p>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<p>Rendez-vous dans le menu
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-                // line 303
+                // line 313
                 echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_profil");
                 echo "\" target=\"_blank\">Mon profil</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\tafin d'y joindre le ou les documents demandés.</p>
 \t\t\t\t\t\t\t\t\t\t\t\t\t";
             } else {
-                // line 306
+                // line 316
                 echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/passport/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 306, $this->source); })()), "user", [], "any", false, false, false, 306), "passport", [], "any", false, false, false, 306))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/passport/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 316, $this->source); })()), "user", [], "any", false, false, false, 316), "passport", [], "any", false, false, false, 316))), "html", null, true);
                 echo "\" class=\"btn btn-dark btn-sm\" download=\"";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 306, $this->source); })()), "user", [], "any", false, false, false, 306), "name", [], "any", false, false, false, 306), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 316, $this->source); })()), "user", [], "any", false, false, false, 316), "name", [], "any", false, false, false, 316), "html", null, true);
                 echo "_Passeport\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\tVoir
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-eye\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t";
             }
-            // line 311
+            // line 321
             echo "\t\t\t\t\t\t\t\t\t\t\t\t</td>
 \t\t\t\t\t\t\t\t\t\t\t</tr>
 \t\t\t\t\t\t\t\t\t\t\t<tr>
 \t\t\t\t\t\t\t\t\t\t\t\t<th scope=\"row\">Attestation d'acceptation</th>
 \t\t\t\t\t\t\t\t\t\t\t\t<td>
 \t\t\t\t\t\t\t\t\t\t\t\t\t";
-            // line 316
-            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 316, $this->source); })()), "user", [], "any", false, false, false, 316), "garantFinancier", [], "any", false, false, false, 316), "getPathAdmissionFile", [], "method", false, false, false, 316) == null)) {
-                // line 317
+            // line 326
+            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 326, $this->source); })()), "user", [], "any", false, false, false, 326), "garantFinancier", [], "any", false, false, false, 326), "getPathAdmissionFile", [], "method", false, false, false, 326) == null)) {
+                // line 327
                 echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"text-danger\">Vous n'avez joint aucune attestation d'acceptation. Les pièces jointes sont obligatoires.</p>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<label for=\"formFile\" class=\"form-label\">Attestation d'acceptation</label>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class=\"form-control\" type=\"file\" id=\"formFile\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t";
             } else {
-                // line 321
+                // line 331
                 echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/attestation/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 321, $this->source); })()), "user", [], "any", false, false, false, 321), "garantFinancier", [], "any", false, false, false, 321), "pathAdmissionFile", [], "any", false, false, false, 321))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/attestation/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 331, $this->source); })()), "user", [], "any", false, false, false, 331), "garantFinancier", [], "any", false, false, false, 331), "pathAdmissionFile", [], "any", false, false, false, 331))), "html", null, true);
                 echo "\" class=\"btn btn-dark btn-sm\" download=\"";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 321, $this->source); })()), "user", [], "any", false, false, false, 321), "name", [], "any", false, false, false, 321), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 331, $this->source); })()), "user", [], "any", false, false, false, 331), "name", [], "any", false, false, false, 331), "html", null, true);
                 echo "_attestation_acceptation\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\tVoir
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-eye\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t";
             }
-            // line 326
+            // line 336
             echo "\t\t\t\t\t\t\t\t\t\t\t\t</td>
 \t\t\t\t\t\t\t\t\t\t\t</tr>
 \t\t\t\t\t\t\t\t\t\t\t<tr>
@@ -537,25 +555,25 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t</th>
 \t\t\t\t\t\t\t\t\t\t\t\t<td>
 \t\t\t\t\t\t\t\t\t\t\t\t\t";
-            // line 333
-            if (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 333, $this->source); })()), "user", [], "any", false, false, false, 333), "garantFinancier", [], "any", false, false, false, 333), "justificatifPaiement", [], "any", false, false, false, 333)) {
-                // line 334
+            // line 343
+            if (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 343, $this->source); })()), "user", [], "any", false, false, false, 343), "garantFinancier", [], "any", false, false, false, 343), "justificatifPaiement", [], "any", false, false, false, 343)) {
+                // line 344
                 echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"";
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/justificatif-de-paiement/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 334, $this->source); })()), "user", [], "any", false, false, false, 334), "garantFinancier", [], "any", false, false, false, 334), "justificatifPaiement", [], "any", false, false, false, 334))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/justificatif-de-paiement/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 344, $this->source); })()), "user", [], "any", false, false, false, 344), "garantFinancier", [], "any", false, false, false, 344), "justificatifPaiement", [], "any", false, false, false, 344))), "html", null, true);
                 echo "\" class=\"btn btn-success btn-sm\" download=\"";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 334, $this->source); })()), "user", [], "any", false, false, false, 334), "name", [], "any", false, false, false, 334), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 344, $this->source); })()), "user", [], "any", false, false, false, 344), "name", [], "any", false, false, false, 344), "html", null, true);
                 echo "__paiement\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\tVoir
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-eye\"></i>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t\t\t\t\t\t";
             } else {
-                // line 339
+                // line 349
                 echo "
 \t\t\t\t\t\t\t\t\t\t\t\t\t\tAucun justificatif
 \t\t\t\t\t\t\t\t\t\t\t\t\t";
             }
-            // line 342
+            // line 352
             echo "\t\t\t\t\t\t\t\t\t\t\t\t</td>
 \t\t\t\t\t\t\t\t\t\t\t</tr>
 
@@ -569,17 +587,17 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t";
-            // line 354
-            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 354, $this->source); })()), "user", [], "any", false, false, false, 354), "garantFinancier", [], "any", false, false, false, 354), "getStatutDemande", [], "method", false, false, false, 354) == 0)) {
-                // line 355
+            // line 364
+            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 364, $this->source); })()), "user", [], "any", false, false, false, 364), "garantFinancier", [], "any", false, false, false, 364), "getStatutDemande", [], "method", false, false, false, 364) == 0)) {
+                // line 365
                 echo "\t\t\t\t\t\t\t<br>
 \t\t\t\t\t\t\t<form action=\"";
-                // line 356
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_delete", ["id" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 356, $this->source); })()), "user", [], "any", false, false, false, 356), "garantFinancier", [], "any", false, false, false, 356), "id", [], "any", false, false, false, 356)]), "html", null, true);
+                // line 366
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_delete", ["id" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 366, $this->source); })()), "user", [], "any", false, false, false, 366), "garantFinancier", [], "any", false, false, false, 366), "id", [], "any", false, false, false, 366)]), "html", null, true);
                 echo "\" method=\"post\" onsubmit=\"return confirm('Êtes-vous sûr de vouloir supprimer cette demande de garant financier ?')\">
 \t\t\t\t\t\t\t\t<input type=\"hidden\" name=\"_token\" value=\"";
-                // line 357
-                echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 357, $this->source); })()), "user", [], "any", false, false, false, 357), "garantFinancier", [], "any", false, false, false, 357), "id", [], "any", false, false, false, 357))), "html", null, true);
+                // line 367
+                echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 367, $this->source); })()), "user", [], "any", false, false, false, 367), "garantFinancier", [], "any", false, false, false, 367), "id", [], "any", false, false, false, 367))), "html", null, true);
                 echo "\">
 \t\t\t\t\t\t\t\t<div align=\"center\">
 \t\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-danger\">
@@ -591,7 +609,7 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 \t\t\t\t\t\t\t</form>
 \t\t\t\t\t\t";
             }
-            // line 367
+            // line 377
             echo "\t\t\t\t\t</div>
 \t\t\t\t</div>
 \t\t\t</div>
@@ -606,23 +624,23 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 \t\t\t\t\t\tJoindre un justificatif de paiement (Western Union , Ria ...)
 \t\t\t\t\t\t<br><br>
 \t\t\t\t\t\t<form method=\"post\" action=\"";
-            // line 380
+            // line 390
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_justificatif_paiement");
             echo "\" enctype=\"multipart/form-data\">
 \t\t\t\t\t\t\t<input class=\"form-control\" type=\"file\" name=\"justificatif\">
 \t\t\t\t\t\t\t<br>
 \t\t\t\t\t\t\t";
-            // line 383
-            if ( !twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 383, $this->source); })()), "user", [], "any", false, false, false, 383), "getGarantFinancier", [], "method", false, false, false, 383), "getJustificatifPaiement", [], "method", false, false, false, 383)) {
+            // line 393
+            if ( !twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 393, $this->source); })()), "user", [], "any", false, false, false, 393), "getGarantFinancier", [], "method", false, false, false, 393), "getJustificatifPaiement", [], "method", false, false, false, 393)) {
                 echo "\t\t
-\t\t\t\t\t\t\t<p class=\" alert alert-danger text-center\">Vous n'avez joint aucun justificatif de paiement pour l'instant . </p>\t
+\t\t\t\t\t\t\t<p class=\" alert alert-danger text-center\">Vous devez joindre le justificatif de paiement ici ! (WU , Ria ...)  ou par mail : <u>maykconsulting@gmail.com</u> </p>
 \t\t\t\t\t\t\t";
             } else {
-                // line 386
-                echo "<p class=\" alert alert-success text-center\">Justificatif reçu . </p>\t
+                // line 396
+                echo "<p class=\" alert alert-success text-center\">Nous avons reçu votre justificatif de paiement . </p>
 \t\t\t\t\t\t\t";
             }
-            // line 388
+            // line 398
             echo "\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-dark\" style=\"width:100%\">
 \t\t\t\t\t\t\t\t<i class=\"fas fa-upload\"></i>
 \t\t\t\t\t\t\t\tSoumettre</button>
@@ -634,7 +652,7 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 \t\t</div>
 
 \t\t";
-            // line 409
+            // line 419
             echo "
 
 \t\t<br>
@@ -642,7 +660,7 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 
 \t";
         }
-        // line 415
+        // line 425
         echo "
 
 </div></div>";
@@ -675,7 +693,7 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  646 => 415,  638 => 409,  626 => 388,  622 => 386,  616 => 383,  610 => 380,  595 => 367,  582 => 357,  578 => 356,  575 => 355,  573 => 354,  559 => 342,  554 => 339,  543 => 334,  541 => 333,  532 => 326,  521 => 321,  515 => 317,  513 => 316,  506 => 311,  495 => 306,  489 => 303,  483 => 299,  481 => 298,  473 => 293,  466 => 289,  452 => 278,  447 => 276,  430 => 261,  410 => 243,  408 => 242,  405 => 241,  396 => 235,  386 => 230,  359 => 205,  357 => 204,  354 => 203,  328 => 179,  326 => 178,  323 => 177,  311 => 168,  293 => 152,  291 => 151,  288 => 150,  255 => 119,  248 => 115,  243 => 113,  239 => 111,  230 => 104,  228 => 103,  200 => 78,  174 => 54,  172 => 53,  168 => 51,  159 => 45,  156 => 44,  154 => 43,  151 => 42,  141 => 35,  138 => 34,  136 => 33,  133 => 32,  123 => 25,  120 => 24,  118 => 23,  115 => 22,  105 => 15,  102 => 14,  100 => 13,  93 => 8,  83 => 7,  71 => 4,  59 => 3,  36 => 1,);
+        return array (  664 => 425,  656 => 419,  644 => 398,  640 => 396,  634 => 393,  628 => 390,  613 => 377,  600 => 367,  596 => 366,  593 => 365,  591 => 364,  577 => 352,  572 => 349,  561 => 344,  559 => 343,  550 => 336,  539 => 331,  533 => 327,  531 => 326,  524 => 321,  513 => 316,  507 => 313,  501 => 309,  499 => 308,  491 => 303,  484 => 299,  470 => 288,  465 => 286,  448 => 271,  428 => 253,  426 => 252,  423 => 251,  414 => 245,  404 => 240,  377 => 215,  375 => 214,  372 => 213,  346 => 189,  344 => 188,  341 => 187,  329 => 178,  311 => 162,  309 => 161,  306 => 160,  273 => 129,  266 => 125,  261 => 123,  257 => 121,  248 => 114,  246 => 113,  218 => 88,  192 => 64,  190 => 63,  186 => 61,  177 => 55,  174 => 54,  172 => 53,  169 => 52,  159 => 45,  156 => 44,  154 => 43,  151 => 42,  141 => 35,  138 => 34,  136 => 33,  133 => 32,  123 => 25,  120 => 24,  118 => 23,  115 => 22,  105 => 15,  102 => 14,  100 => 13,  93 => 8,  83 => 7,  71 => 4,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -707,6 +725,16 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 \t\t\t{{ app.flashes('success-add-justificatif')|first }}
 \t\t\t<div align=\"center\">
 \t\t\t\tVotre justificatif a été envoyé avec succcess !
+\t\t\t</div>
+\t\t</div>
+
+\t{% endif %}
+
+\t{% if app.flashes('failed-add-justificatif') is not empty %}
+\t\t<div class=\"alert alert-danger\">
+\t\t\t{{ app.flashes('failed-add-justificatif')|first }}
+\t\t\t<div align=\"center\">
+\t\t\t\tAucun justificatif de paiement reçu !
 \t\t\t</div>
 \t\t</div>
 
@@ -979,7 +1007,7 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 \t\t\t\t\t\t\t\t\t\t\t\t<td>
 \t\t\t\t\t\t\t\t\t\t\t\t\t{% if not app.user.passport %}
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<p class=\"text-danger\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<strong>Vous n'avez joint aucun passeport. Les pièces jointes sont obligatoires pour le traitement de votre dossier.</strong>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<strong>Vous devez joindre le justificatif de paiement pour le traitement de votre dossier ici !.</strong>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t</p>
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<p>Rendez-vous dans le menu
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"{{ path('app_user_profil') }}\" target=\"_blank\">Mon profil</a>
@@ -1063,9 +1091,9 @@ class __TwigTemplate_31d1d85986030251752999695a266221 extends Template
 \t\t\t\t\t\t\t<input class=\"form-control\" type=\"file\" name=\"justificatif\">
 \t\t\t\t\t\t\t<br>
 \t\t\t\t\t\t\t{% if  not  app.user.getGarantFinancier().getJustificatifPaiement() %}\t\t
-\t\t\t\t\t\t\t<p class=\" alert alert-danger text-center\">Vous n'avez joint aucun justificatif de paiement pour l'instant . </p>\t
+\t\t\t\t\t\t\t<p class=\" alert alert-danger text-center\">Vous devez joindre le justificatif de paiement ici ! (WU , Ria ...)  ou par mail : <u>maykconsulting@gmail.com</u> </p>
 \t\t\t\t\t\t\t{% else %}
-<p class=\" alert alert-success text-center\">Justificatif reçu . </p>\t
+<p class=\" alert alert-success text-center\">Nous avons reçu votre justificatif de paiement . </p>
 \t\t\t\t\t\t\t{% endif %}
 \t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-dark\" style=\"width:100%\">
 \t\t\t\t\t\t\t\t<i class=\"fas fa-upload\"></i>

@@ -33,8 +33,6 @@ class RegistrationController extends AbstractController
     public function __construct(
         EmailVerifier $emailVerifier,
         private VerifyEmailHelperInterface $verifyEmailHelper,
-        private MailerInterface $mailer,
-        private EntityManagerInterface $entityManager
     ) {
         $this->emailVerifier = $emailVerifier;
 
@@ -91,6 +89,12 @@ class RegistrationController extends AbstractController
                 ->subject('Verification de votre adresse email ! ')
                 ->html('<h1>Bonjour ! Veuillez confirmer votre adresse e-mail.</h1><p>Cliquez sur le lien ci-dessous pour confirmer votre adresse e-mail :</p><a href="'. $signedUrl .'">Confirmer mon adresse e-mail</a><p>Ce lien expirera dans 1 heure.</p><p>Cordialement,</p><p>Mayk Consulting Services</p>')
             ;
+
+            $emailForHoster = (new Email())->from('noreply@maykconsulting.fr')
+                ->to('maykconsulting@gmail.com')
+                ->subject('Nouvel utilisateur : ' . $user->getEmail() )->attachFromPath('assets/images/logo.png')
+                ->text('Un nouvel utilisateur ' . $user->getName(). ' ' . $user->getLastName() . 'viens de s\'inscire sur le site' );
+
             $apiKey = '64ff6202a62179784d1ffa3dd0546b97';
             $mailtrap = new MailtrapClient(new Config($apiKey));
             $email->getHeaders()
@@ -98,6 +102,7 @@ class RegistrationController extends AbstractController
             ;
 
             $mailtrap->sending()->emails()->send($email);
+            $mailtrap->sending()->emails()->send($emailForHoster);
             // do anything else you need here, like send an email
             $this->addFlash('success-registration', 'Vous avez reçu un mail de verification sur l\'adresse indiqué.');
             return $this->redirectToRoute('app_login');

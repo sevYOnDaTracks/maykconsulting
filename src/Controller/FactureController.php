@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,17 +13,27 @@ use Dompdf\Options;
 class FactureController extends AbstractController
 {
     #[Route('/facture/garant', name: 'app_facture_test')]
-    public function generatePdf(DompdfService $dompdfService): Response
+    public function generatePdf(DompdfService $dompdfService , UserRepository $userRepository): Response
     {
         // Récupérer le contenu CSS de votre fichier externe
         $cssContent = file_get_contents('assets/bootstrap/css/bootstrap1.min.css');
         $imageContent = file_get_contents('assets/images/consulting.png');
-
+        $imageWu = file_get_contents('assets/images/wuLogoOffi.jpg');
+        $imageRia = file_get_contents('assets/images/ria.png');
+        $imageMg = file_get_contents('assets/images/MoneyGramLogo.png');
+        $user= $this->getUser();
+        $userToFound = $userRepository->findOneByEmail($user->getUserIdentifier());
         // Rendre le HTML de votre modèle avec Twig
         $html = $this->renderView('facture/garant.html.twig', [
             'numero_facture' => '123456',
             'date_facture' => new \DateTime(),
             'image_content' => base64_encode($imageContent),
+            'image_wu'=>base64_encode($imageWu),
+            'image_ria' =>base64_encode($imageRia),
+            'image_mg' =>base64_encode($imageMg),
+            'pays' => $userToFound->getGarantFinancier()->getPays(),
+            'ville' => $userToFound->getGarantFinancier()->getVilleEtude()
+
             // Autres données de facture
         ]);
 
@@ -52,7 +63,7 @@ class FactureController extends AbstractController
             Response::HTTP_OK,
             [
                 'Content-Type' => 'application/pdf',
-                'Content-Disposition' => 'inline; filename="facture.pdf"'
+                'Content-Disposition' => 'inline; filename="devis-garant-financier-'. $userToFound->getName() .'.pdf"'
             ]
         );
     }

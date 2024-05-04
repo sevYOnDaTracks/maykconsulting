@@ -13,6 +13,8 @@
 			</div>
 		</div>
 	{% endif %}
+	{% if  app.user.garantFinancier and app.user.garantFinancier.statutDemande == 0 %} <div class=" animate__animated animate__fadeInLeft alert alert-danger text-center">Vous avez actuellement une demande de garant financier avec le statut : <strong> EN ATTENTE DE PAIMENT </strong> <a href="{{ path('app_garant') }}" class="text-black">Cliquez ici pour voir !</a> </div>  {% endif %}
+	{% if  app.user.hebergement and app.user.hebergement.statutDemande == 0 %} <div class=" animate__animated animate__fadeInLeft alert alert-warning text-center">Vous avez actuellement une demande d'hebergement avec le statut : <strong> EN ATTENTE DE PAIMENT </strong> <a href="{{ path('app_hebergement') }}" class="text-black">Cliquez ici pour voir !</a> </div>  {% endif %}
 	<br>
 
 	<div class="card text-center animate__animated animate__fadeInLeft mb-4">
@@ -20,13 +22,18 @@
 			Accedez aux demandes
 		</div>
 		<div class="card-body">
-			<p class="card-text">En choisissant l'une des options suivantes, vous accéderez au service que vous souhaitez.</p>
+			<p class="card-text text-black">Que souhaitez-vous comme prestation ?</p>
 			{# <a href="{{path('app_admission')}}" class="btn btn-light">Admission <i class="fas fa-book-open"></i></a>#}
 			<a href="{{path('app_hebergement')}}" class="btn btn-light">Hebergement <i class="fas fa-home"></i></a>
 			<a href="{{path('app_garant')}}" class="btn btn-light">Garant Financier <i class="fas fa-money-bill"></i></a>
 		</div>
 	</div>
-{% if  app.user.garantFinancier and app.user.garantFinancier.statutDemande == 0 %} <div class=" animate__animated animate__fadeInLeft alert alert-danger">Vous avez actuellement une demande de garant financier avec le statut : <strong> EN ATTENTE DE PAIMENT </strong>  </div>  {% endif %}
+
+	<div class="card animate__animated animate__fadeInRight mb-4">
+		<div class="card-body text-black text-center">
+			Pour toutes questions veuillez nous contacter par mail sur : <strong>maykconsulting@gmail.com</strong>
+		</div>
+	</div>
 
 	{# <div
 		class="card mb-3 animate__animated animate__fadeInLeft">

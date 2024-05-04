@@ -65,6 +65,7 @@ class __TwigTemplate_5cf89e257e9f548ad1a906737c916289 extends Template
         }
         th {
             background-color: #f2f2f2;
+            width: 30%;
         }
         h1 {
             text-align: center;
@@ -79,55 +80,105 @@ class __TwigTemplate_5cf89e257e9f548ad1a906737c916289 extends Template
             height: auto;
         }
         .total-rouge {
-            color: red;
+            color: #b61818;
         }
     </style>
      <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">
 </head>
 <body>
     <div class=\"container\">
-        <div class=\"row\">
-        </div>
-        <h1>Devis - Garant financier pour : <div class=\"text-danger\">";
-        // line 46
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 46, $this->source); })()), "user", [], "any", false, false, false, 46), "name", [], "any", false, false, false, 46), "html", null, true);
-        echo "</div> </h1><br>
-       <br> <br> 
+<br><br>
+
         <table class=\"table\">
             <tr>
-                <th>Numéro de facture</th>
-                <td>";
-        // line 51
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 51, $this->source); })()), "user", [], "any", false, false, false, 51), "id", [], "any", false, false, false, 51), "html", null, true);
-        echo "XGF </td>
+                <th>Nom & Prénoms</th>
+                <td> <strong> ";
+        // line 50
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 50, $this->source); })()), "user", [], "any", false, false, false, 50), "name", [], "any", false, false, false, 50), "html", null, true);
+        echo " ";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 50, $this->source); })()), "user", [], "any", false, false, false, 50), "lastName", [], "any", false, false, false, 50), "html", null, true);
+        echo " </strong></td>
             </tr>
             <tr>
-                <th>Date</th>
-                <td>";
-        // line 55
-        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, (isset($context["date_facture"]) || array_key_exists("date_facture", $context) ? $context["date_facture"] : (function () { throw new RuntimeError('Variable "date_facture" does not exist.', 55, $this->source); })()), "d-m-Y"), "html", null, true);
+                <th>Pays Etude</th>
+                <td class=\"total-black\">  ";
+        // line 54
+        echo twig_escape_filter($this->env, (isset($context["pays"]) || array_key_exists("pays", $context) ? $context["pays"] : (function () { throw new RuntimeError('Variable "pays" does not exist.', 54, $this->source); })()), "html", null, true);
         echo "</td>
             </tr>
             <tr>
-                <th>Client</th>
-                <td> <strong> ";
-        // line 59
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 59, $this->source); })()), "user", [], "any", false, false, false, 59), "name", [], "any", false, false, false, 59), "html", null, true);
-        echo " ";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 59, $this->source); })()), "user", [], "any", false, false, false, 59), "lastName", [], "any", false, false, false, 59), "html", null, true);
-        echo " <strong></td>
+                <th>Ville Etude</th>
+                <td class=\"total-black\">  ";
+        // line 58
+        echo twig_escape_filter($this->env, (isset($context["ville"]) || array_key_exists("ville", $context) ? $context["ville"] : (function () { throw new RuntimeError('Variable "ville" does not exist.', 58, $this->source); })()), "html", null, true);
+        echo "</td>
+            </tr>
+
+
+
+
+
+
+        </table>
+        <br>
+        <table class=\"table\">
+            <tr>
+                <th>Service  </th>
+                <td>Garantie Financière</td>
             </tr>
             <tr>
-                <th>Total à payer :</th>
-                <td class=\"total-rouge\"> <strong> 350 000 FCFA</strong></td>
-
+                <th>Numéro de facture</th>
+                <td>";
+        // line 75
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 75, $this->source); })()), "user", [], "any", false, false, false, 75), "id", [], "any", false, false, false, 75), "html", null, true);
+        echo "XGF </td>
             </tr>
+            <tr>
+                <th>Date de la demande</th>
+                <td>";
+        // line 79
+        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, (isset($context["date_facture"]) || array_key_exists("date_facture", $context) ? $context["date_facture"] : (function () { throw new RuntimeError('Variable "date_facture" does not exist.', 79, $this->source); })()), "d/m/Y"), "html", null, true);
+        echo " à ";
+        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, (isset($context["date_facture"]) || array_key_exists("date_facture", $context) ? $context["date_facture"] : (function () { throw new RuntimeError('Variable "date_facture" does not exist.', 79, $this->source); })()), "H:m:s"), "html", null, true);
+        echo " </td>
+            </tr>
+            <tr>
+                <th class=\"total-rouge\">Total à payer </th>
+                ";
+        // line 83
+        if (((isset($context["pays"]) || array_key_exists("pays", $context) ? $context["pays"] : (function () { throw new RuntimeError('Variable "pays" does not exist.', 83, $this->source); })()) == "France")) {
+            // line 84
+            echo "                    <td class=\"total-rouge\"> <strong> 350 000 FCFA (Taxe non comprise)</strong></td>
+                ";
+        }
+        // line 86
+        echo "                ";
+        if (((isset($context["pays"]) || array_key_exists("pays", $context) ? $context["pays"] : (function () { throw new RuntimeError('Variable "pays" does not exist.', 86, $this->source); })()) == "Canada")) {
+            // line 87
+            echo "                    <td class=\"total-rouge\"> <strong> 500 000 FCFA (Taxe non comprise)</strong></td>
+                ";
+        }
+        // line 89
+        echo "
+            </tr>
+
         </table>
 <br>
- <p align=\"center\">Dépôt par <strong> Western Union , Ria , MoneyGram ...  </strong>à affectuer vers  : </p>
-
+ <p align=\"center\">Dépôt par <strong> Western Union , Ria , MoneyGram ...  </strong>à affectuer vers  : </p> <br>
+        <img align=\"center\" src=\"data:image/png;base64,";
+        // line 95
+        echo twig_escape_filter($this->env, (isset($context["image_wu"]) || array_key_exists("image_wu", $context) ? $context["image_wu"] : (function () { throw new RuntimeError('Variable "image_wu" does not exist.', 95, $this->source); })()), "html", null, true);
+        echo "\" style=\"width: 110px; height: 30px; margin-left: 90px ; align-content: center; text-align : center\">
+        <img align=\"center\" src=\"data:image/png;base64,";
+        // line 96
+        echo twig_escape_filter($this->env, (isset($context["image_ria"]) || array_key_exists("image_ria", $context) ? $context["image_ria"] : (function () { throw new RuntimeError('Variable "image_ria" does not exist.', 96, $this->source); })()), "html", null, true);
+        echo "\" style=\"width: 100px; height: 35px; margin-left: 90px ; align-content: center; align-items: center\">
+        <img align=\"center\" src=\"data:image/png;base64,";
+        // line 97
+        echo twig_escape_filter($this->env, (isset($context["image_mg"]) || array_key_exists("image_mg", $context) ? $context["image_mg"] : (function () { throw new RuntimeError('Variable "image_mg" does not exist.', 97, $this->source); })()), "html", null, true);
+        echo "\" style=\"width: 160px; height: 35px; margin-left: 90px ; align-content: center; align-items: end\">
  <br>
-
+<br>
         <table class=\"table\">
             <tr>
                 <th>Nom</th>
@@ -142,18 +193,25 @@ class __TwigTemplate_5cf89e257e9f548ad1a906737c916289 extends Template
                 <td>90 Chaussée Jules César , Eaubonne</td>
             </tr>
             <tr>
-                <th>Numéro de téléphone :</th>
+                <th>Pays de résidence </th>
+                <td>France</td>
+            </tr>
+            <tr>
+                <th>Numéro de téléphone </th>
                 <td>+33 7 49 72 64 06</td>
             </tr>
         </table>
-     
+
+
+        <br>
+        <p style=\"text-align: start; margin-top: 15px\">By Mayk Consulting le ";
+        // line 125
+        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, (isset($context["date_facture"]) || array_key_exists("date_facture", $context) ? $context["date_facture"] : (function () { throw new RuntimeError('Variable "date_facture" does not exist.', 125, $this->source); })()), "d/m/Y"), "html", null, true);
+        echo "</p>
         <img align=\"right\" src=\"data:image/png;base64,";
-        // line 91
-        echo twig_escape_filter($this->env, (isset($context["image_content"]) || array_key_exists("image_content", $context) ? $context["image_content"] : (function () { throw new RuntimeError('Variable "image_content" does not exist.', 91, $this->source); })()), "html", null, true);
-        echo "\" style=\"width: 200px; height: 200px;\">
-        
-        <p align=\"left\"><strong>By Mayk Consulting Services<strong></p> 
-       
+        // line 126
+        echo twig_escape_filter($this->env, (isset($context["image_content"]) || array_key_exists("image_content", $context) ? $context["image_content"] : (function () { throw new RuntimeError('Variable "image_content" does not exist.', 126, $this->source); })()), "html", null, true);
+        echo "\" style=\"width: 200px; height: 80px; text-align: center; align-items: center;\">
     </div>
 </body>
 </html>
@@ -187,7 +245,7 @@ class __TwigTemplate_5cf89e257e9f548ad1a906737c916289 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  152 => 91,  115 => 59,  108 => 55,  101 => 51,  93 => 46,  50 => 6,  43 => 1,);
+        return array (  213 => 126,  209 => 125,  178 => 97,  174 => 96,  170 => 95,  162 => 89,  158 => 87,  155 => 86,  151 => 84,  149 => 83,  140 => 79,  133 => 75,  113 => 58,  106 => 54,  97 => 50,  50 => 6,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -214,6 +272,7 @@ class __TwigTemplate_5cf89e257e9f548ad1a906737c916289 extends Template
         }
         th {
             background-color: #f2f2f2;
+            width: 30%;
         }
         h1 {
             text-align: center;
@@ -228,41 +287,68 @@ class __TwigTemplate_5cf89e257e9f548ad1a906737c916289 extends Template
             height: auto;
         }
         .total-rouge {
-            color: red;
+            color: #b61818;
         }
     </style>
      <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">
 </head>
 <body>
     <div class=\"container\">
-        <div class=\"row\">
-        </div>
-        <h1>Devis - Garant financier pour : <div class=\"text-danger\">{{ app.user.name }}</div> </h1><br>
-       <br> <br> 
+<br><br>
+
         <table class=\"table\">
+            <tr>
+                <th>Nom & Prénoms</th>
+                <td> <strong> {{ app.user.name }} {{ app.user.lastName }} </strong></td>
+            </tr>
+            <tr>
+                <th>Pays Etude</th>
+                <td class=\"total-black\">  {{ pays }}</td>
+            </tr>
+            <tr>
+                <th>Ville Etude</th>
+                <td class=\"total-black\">  {{ ville }}</td>
+            </tr>
+
+
+
+
+
+
+        </table>
+        <br>
+        <table class=\"table\">
+            <tr>
+                <th>Service  </th>
+                <td>Garantie Financière</td>
+            </tr>
             <tr>
                 <th>Numéro de facture</th>
                 <td>{{ app.user.id }}XGF </td>
             </tr>
             <tr>
-                <th>Date</th>
-                <td>{{ date_facture | date('d-m-Y') }}</td>
+                <th>Date de la demande</th>
+                <td>{{ date_facture | date('d/m/Y') }} à {{ date_facture | date('H:m:s') }} </td>
             </tr>
             <tr>
-                <th>Client</th>
-                <td> <strong> {{ app.user.name }} {{ app.user.lastName }} <strong></td>
-            </tr>
-            <tr>
-                <th>Total à payer :</th>
-                <td class=\"total-rouge\"> <strong> 350 000 FCFA</strong></td>
+                <th class=\"total-rouge\">Total à payer </th>
+                {% if pays == \"France\" %}
+                    <td class=\"total-rouge\"> <strong> 350 000 FCFA (Taxe non comprise)</strong></td>
+                {%  endif %}
+                {% if pays == \"Canada\" %}
+                    <td class=\"total-rouge\"> <strong> 500 000 FCFA (Taxe non comprise)</strong></td>
+                {%  endif %}
 
             </tr>
+
         </table>
 <br>
- <p align=\"center\">Dépôt par <strong> Western Union , Ria , MoneyGram ...  </strong>à affectuer vers  : </p>
-
+ <p align=\"center\">Dépôt par <strong> Western Union , Ria , MoneyGram ...  </strong>à affectuer vers  : </p> <br>
+        <img align=\"center\" src=\"data:image/png;base64,{{ image_wu }}\" style=\"width: 110px; height: 30px; margin-left: 90px ; align-content: center; text-align : center\">
+        <img align=\"center\" src=\"data:image/png;base64,{{ image_ria }}\" style=\"width: 100px; height: 35px; margin-left: 90px ; align-content: center; align-items: center\">
+        <img align=\"center\" src=\"data:image/png;base64,{{ image_mg }}\" style=\"width: 160px; height: 35px; margin-left: 90px ; align-content: center; align-items: end\">
  <br>
-
+<br>
         <table class=\"table\">
             <tr>
                 <th>Nom</th>
@@ -277,18 +363,22 @@ class __TwigTemplate_5cf89e257e9f548ad1a906737c916289 extends Template
                 <td>90 Chaussée Jules César , Eaubonne</td>
             </tr>
             <tr>
-                <th>Numéro de téléphone :</th>
+                <th>Pays de résidence </th>
+                <td>France</td>
+            </tr>
+            <tr>
+                <th>Numéro de téléphone </th>
                 <td>+33 7 49 72 64 06</td>
             </tr>
         </table>
-     
-        <img align=\"right\" src=\"data:image/png;base64,{{ image_content }}\" style=\"width: 200px; height: 200px;\">
-        
-        <p align=\"left\"><strong>By Mayk Consulting Services<strong></p> 
-       
+
+
+        <br>
+        <p style=\"text-align: start; margin-top: 15px\">By Mayk Consulting le {{ date_facture | date('d/m/Y') }}</p>
+        <img align=\"right\" src=\"data:image/png;base64,{{ image_content }}\" style=\"width: 200px; height: 80px; text-align: center; align-items: center;\">
     </div>
 </body>
 </html>
-", "facture/garant.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/facture/garant.html.twig");
+", "facture/garant.html.twig", "/Users/sevyondatracks/Documents/maykconsulting/templates/facture/garant.html.twig");
     }
 }

@@ -28,12 +28,13 @@ return [
         '/dossier/new' => [[['_route' => 'app_dossier_new', '_controller' => 'App\\Controller\\DossierController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/export' => [[['_route' => 'export_data', '_controller' => 'App\\Controller\\ExportController::exportData'], null, null, null, false, false, null]],
         '/facture/garant' => [[['_route' => 'app_facture_test', '_controller' => 'App\\Controller\\FactureController::generatePdf'], null, null, null, false, false, null]],
-        '/administration/garant' => [[['_route' => 'app_garant', '_controller' => 'App\\Controller\\GarantController::index'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        '/administration/garant/justificatif-Paiement' => [[['_route' => 'app_garant_justificatif_paiement', '_controller' => 'App\\Controller\\GarantController::recupererJustificatifPaiement'], null, ['POST' => 0], null, false, false, null]],
-        '/administration/new' => [[['_route' => 'app_garant_new', '_controller' => 'App\\Controller\\GarantController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        '/administration/garant/all' => [[['_route' => 'app_garant_management', '_controller' => 'App\\Controller\\GarantController::allGarant'], null, ['GET' => 0], null, false, false, null]],
-        '/administration/garant/envoyezMessage' => [[['_route' => 'app_garant_envoyez_mail', '_controller' => 'App\\Controller\\GarantController::envoyezMail'], null, ['POST' => 0], null, false, false, null]],
-        '/hebergement' => [[['_route' => 'app_hebergement', '_controller' => 'App\\Controller\\HebergementController::index'], null, null, null, false, false, null]],
+        '/garant' => [[['_route' => 'app_garant', '_controller' => 'App\\Controller\\GarantController::index'], null, ['GET' => 0, 'POST' => 1], null, true, false, null]],
+        '/garant/justificatif-Paiement' => [[['_route' => 'app_garant_justificatif_paiement', '_controller' => 'App\\Controller\\GarantController::recupererJustificatifPaiement'], null, ['POST' => 0], null, false, false, null]],
+        '/garant/new' => [[['_route' => 'app_garant_new', '_controller' => 'App\\Controller\\GarantController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/garant/all' => [[['_route' => 'app_garant_management', '_controller' => 'App\\Controller\\GarantController::allGarant'], null, ['GET' => 0], null, false, false, null]],
+        '/garant/envoyezMessage' => [[['_route' => 'app_garant_envoyez_mail', '_controller' => 'App\\Controller\\GarantController::envoyezMail'], null, ['POST' => 0], null, false, false, null]],
+        '/hebergement' => [[['_route' => 'app_hebergement', '_controller' => 'App\\Controller\\HebergementController::index'], null, null, null, true, false, null]],
+        '/hebergement/new' => [[['_route' => 'app_hebergement_new', '_controller' => 'App\\Controller\\HebergementController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\LoginController::index'], null, null, null, false, false, null]],
         '/administration/parcours' => [[['_route' => 'app_parcours', '_controller' => 'App\\Controller\\ParcoursController::index'], null, null, null, false, false, null]],
         '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
@@ -65,15 +66,15 @@ return [
                         .'|Message/([^/]++)(*:235)'
                     .')'
                     .'|user/update/([^/]++)(*:264)'
-                    .'|garant/(?'
-                        .'|update/([^/]++)(*:297)'
-                        .'|delete/([^/]++)(*:320)'
-                    .')'
                 .')'
                 .'|/dossier/([^/]++)(?'
-                    .'|(*:350)'
-                    .'|/edit(*:363)'
-                    .'|(*:371)'
+                    .'|(*:293)'
+                    .'|/edit(*:306)'
+                    .'|(*:314)'
+                .')'
+                .'|/garant/(?'
+                    .'|update/([^/]++)(*:349)'
+                    .'|delete/([^/]++)(*:372)'
                 .')'
             .')/?$}sDu',
     ],
@@ -88,12 +89,12 @@ return [
         211 => [[['_route' => 'app_user_delete', '_controller' => 'App\\Controller\\AdministrationController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
         235 => [[['_route' => 'app_message_delete', '_controller' => 'App\\Controller\\AdministrationController::deleteMessage'], ['id'], ['POST' => 0], null, false, true, null]],
         264 => [[['_route' => 'user_update', '_controller' => 'App\\Controller\\AdministrationController::updateUser'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
-        297 => [[['_route' => 'app_garant_update', '_controller' => 'App\\Controller\\GarantController::updateGarantDossier'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
-        320 => [[['_route' => 'app_garant_delete', '_controller' => 'App\\Controller\\GarantController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        350 => [[['_route' => 'app_dossier_show', '_controller' => 'App\\Controller\\DossierController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        363 => [[['_route' => 'app_dossier_edit', '_controller' => 'App\\Controller\\DossierController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        371 => [
-            [['_route' => 'app_dossier_delete', '_controller' => 'App\\Controller\\DossierController::delete'], ['id'], ['POST' => 0], null, false, true, null],
+        293 => [[['_route' => 'app_dossier_show', '_controller' => 'App\\Controller\\DossierController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        306 => [[['_route' => 'app_dossier_edit', '_controller' => 'App\\Controller\\DossierController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        314 => [[['_route' => 'app_dossier_delete', '_controller' => 'App\\Controller\\DossierController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        349 => [[['_route' => 'app_garant_update', '_controller' => 'App\\Controller\\GarantController::updateGarantDossier'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        372 => [
+            [['_route' => 'app_garant_delete', '_controller' => 'App\\Controller\\GarantController::delete'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

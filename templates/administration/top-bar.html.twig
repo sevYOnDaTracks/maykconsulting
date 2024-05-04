@@ -30,8 +30,8 @@
 			<li class="nav-item dropdown no-arrow mx-1">
 				<div class="nav-item dropdown no-arrow">
 					<a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
-						<span class="badge bg-success badge-counter">
-							0</span>
+						<span class="badge bg-dark badge-counter">
+							2</span>
 						<i class="fas fa-solid fa-layer-group"></i>
 					</a>
 					<div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
@@ -44,8 +44,8 @@
 									</div>
 								</div>
 								<div>
-									<span class="small text-gray-500">{{app.user.garantFinancier.dateDemande |date('l j F Y', 'Europe/Paris', 'FR') }}</span>
-									<p class="">Proccédure de garant financier</p>
+									<span class="small text-gray-500">Demandé le : {{app.user.garantFinancier.dateDemande | date('d/m/Y') }}</span>
+									<p class="">Garant Financier </p>
 								</div>
 
 							</a>
@@ -58,11 +58,34 @@
 
 							</a>
 						{% endif %}
+						{% if app.user.hebergement %}
+							<a class="dropdown-item d-flex align-items-center" href="{{path('app_hebergement')}}">
+								<div class="me-3">
+									<div class="bg-dark icon-circle">
+										<i class="fas fa-home text-white"></i>
+									</div>
+								</div>
+								<div>
+									<span class="small text-gray-500">Demandé le : {{app.user.hebergement.dateDemande | date('d/m/Y') }}</span>
+									<p class="">Hebergement </p>
+								</div>
+
+							</a>
+						{% else %}
+							<a class="dropdown-item d-flex align-items-center" href="{{path('app_hebergement')}}">
+								<div>
+									<span class="small text-gray-500"></span>
+									<p class="">Aucune proccédure en cours</p>
+								</div>
+
+							</a>
+						{% endif %}
 
 					</div>
 
 				</div>
 			</li>
+			{% if is_granted('ROLE_ADMIN') %}
 			<li class="nav-item dropdown no-arrow mx-1">
 				<div class="nav-item dropdown no-arrow">
 					<a class="dropdown-toggle nav-link" aria-expanded="false" href="/administration/publicMessage">
@@ -90,6 +113,7 @@
 				</div>
 				<div class="shadow dropdown-list dropdown-menu dropdown-menu-end" aria-labelledby="alertsDropdown"></div>
 			</li>
+			{% endif %}
 			{# <div class="d-none d-sm-block topbar-divider"></div> #}
 			<li class="nav-item dropdown no-arrow">
 				<div class="nav-item dropdown no-arrow">

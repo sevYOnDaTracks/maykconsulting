@@ -30,6 +30,16 @@
 
 	{% endif %}
 
+	{% if app.flashes('failed-add-justificatif') is not empty %}
+		<div class="alert alert-danger">
+			{{ app.flashes('failed-add-justificatif')|first }}
+			<div align="center">
+				Aucun justificatif de paiement reçu !
+			</div>
+		</div>
+
+	{% endif %}
+
 	{% if app.flashes('error-creation-demande') is not empty %}
 		<div class="alert alert-danger">
 			{{ app.flashes('error-creation-demande')|first }}
@@ -297,7 +307,7 @@
 												<td>
 													{% if not app.user.passport %}
 														<p class="text-danger">
-															<strong>Vous n'avez joint aucun passeport. Les pièces jointes sont obligatoires pour le traitement de votre dossier.</strong>
+															<strong>Vous devez joindre le justificatif de paiement pour le traitement de votre dossier ici !.</strong>
 														</p>
 														<p>Rendez-vous dans le menu
 															<a href="{{ path('app_user_profil') }}" target="_blank">Mon profil</a>
@@ -381,9 +391,9 @@
 							<input class="form-control" type="file" name="justificatif">
 							<br>
 							{% if  not  app.user.getGarantFinancier().getJustificatifPaiement() %}		
-							<p class=" alert alert-danger text-center">Vous n'avez joint aucun justificatif de paiement pour l'instant . </p>	
+							<p class=" alert alert-danger text-center">Vous devez joindre le justificatif de paiement ici ! (WU , Ria ...)  ou par mail : <u>maykconsulting@gmail.com</u> </p>
 							{% else %}
-<p class=" alert alert-success text-center">Justificatif reçu . </p>	
+<p class=" alert alert-success text-center">Nous avons reçu votre justificatif de paiement . </p>
 							{% endif %}
 							<button type="submit" class="btn btn-dark" style="width:100%">
 								<i class="fas fa-upload"></i>

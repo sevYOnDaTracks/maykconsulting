@@ -85,6 +85,20 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
 \t";
         }
         // line 16
+        echo "\t";
+        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 16, $this->source); })()), "user", [], "any", false, false, false, 16), "garantFinancier", [], "any", false, false, false, 16) && (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 16, $this->source); })()), "user", [], "any", false, false, false, 16), "garantFinancier", [], "any", false, false, false, 16), "statutDemande", [], "any", false, false, false, 16) == 0))) {
+            echo " <div class=\" animate__animated animate__fadeInLeft alert alert-danger text-center\">Vous avez actuellement une demande de garant financier avec le statut : <strong> EN ATTENTE DE PAIMENT </strong> <a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant");
+            echo "\" class=\"text-black\">Cliquez ici pour voir !</a> </div>  ";
+        }
+        // line 17
+        echo "\t";
+        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 17, $this->source); })()), "user", [], "any", false, false, false, 17), "hebergement", [], "any", false, false, false, 17) && (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 17, $this->source); })()), "user", [], "any", false, false, false, 17), "hebergement", [], "any", false, false, false, 17), "statutDemande", [], "any", false, false, false, 17) == 0))) {
+            echo " <div class=\" animate__animated animate__fadeInLeft alert alert-warning text-center\">Vous avez actuellement une demande d'hebergement avec le statut : <strong> EN ATTENTE DE PAIMENT </strong> <a href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_hebergement");
+            echo "\" class=\"text-black\">Cliquez ici pour voir !</a> </div>  ";
+        }
+        // line 18
         echo "\t<br>
 
 \t<div class=\"card text-center animate__animated animate__fadeInLeft mb-4\">
@@ -92,27 +106,27 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
 \t\t\tAccedez aux demandes
 \t\t</div>
 \t\t<div class=\"card-body\">
-\t\t\t<p class=\"card-text\">En choisissant l'une des options suivantes, vous accéderez au service que vous souhaitez.</p>
+\t\t\t<p class=\"card-text text-black\">Que souhaitez-vous comme prestation ?</p>
 \t\t\t";
-        // line 25
+        // line 27
         echo "\t\t\t<a href=\"";
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_hebergement");
         echo "\" class=\"btn btn-light\">Hebergement <i class=\"fas fa-home\"></i></a>
 \t\t\t<a href=\"";
-        // line 26
+        // line 28
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant");
         echo "\" class=\"btn btn-light\">Garant Financier <i class=\"fas fa-money-bill\"></i></a>
 \t\t</div>
 \t</div>
-";
-        // line 29
-        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 29, $this->source); })()), "user", [], "any", false, false, false, 29), "garantFinancier", [], "any", false, false, false, 29) && (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 29, $this->source); })()), "user", [], "any", false, false, false, 29), "garantFinancier", [], "any", false, false, false, 29), "statutDemande", [], "any", false, false, false, 29) == 0))) {
-            echo " <div class=\" animate__animated animate__fadeInLeft alert alert-danger\">Vous avez actuellement une demande de garant financier avec le statut : <strong> EN ATTENTE DE PAIMENT </strong>  </div>  ";
-        }
-        // line 30
-        echo "
+
+\t<div class=\"card animate__animated animate__fadeInRight mb-4\">
+\t\t<div class=\"card-body text-black text-center\">
+\t\t\tPour toutes questions veuillez nous contacter par mail sur : <strong>maykconsulting@gmail.com</strong>
+\t\t</div>
+\t</div>
+
 \t";
-        // line 85
+        // line 92
         echo "<br><br>
 
 </div></div>";
@@ -145,7 +159,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
      */
     public function getDebugInfo()
     {
-        return array (  116 => 85,  113 => 30,  109 => 29,  103 => 26,  98 => 25,  88 => 16,  80 => 10,  78 => 9,  72 => 6,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  130 => 92,  117 => 28,  112 => 27,  102 => 18,  95 => 17,  88 => 16,  80 => 10,  78 => 9,  72 => 6,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -165,6 +179,8 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
 \t\t\t</div>
 \t\t</div>
 \t{% endif %}
+\t{% if  app.user.garantFinancier and app.user.garantFinancier.statutDemande == 0 %} <div class=\" animate__animated animate__fadeInLeft alert alert-danger text-center\">Vous avez actuellement une demande de garant financier avec le statut : <strong> EN ATTENTE DE PAIMENT </strong> <a href=\"{{ path('app_garant') }}\" class=\"text-black\">Cliquez ici pour voir !</a> </div>  {% endif %}
+\t{% if  app.user.hebergement and app.user.hebergement.statutDemande == 0 %} <div class=\" animate__animated animate__fadeInLeft alert alert-warning text-center\">Vous avez actuellement une demande d'hebergement avec le statut : <strong> EN ATTENTE DE PAIMENT </strong> <a href=\"{{ path('app_hebergement') }}\" class=\"text-black\">Cliquez ici pour voir !</a> </div>  {% endif %}
 \t<br>
 
 \t<div class=\"card text-center animate__animated animate__fadeInLeft mb-4\">
@@ -172,13 +188,18 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
 \t\t\tAccedez aux demandes
 \t\t</div>
 \t\t<div class=\"card-body\">
-\t\t\t<p class=\"card-text\">En choisissant l'une des options suivantes, vous accéderez au service que vous souhaitez.</p>
+\t\t\t<p class=\"card-text text-black\">Que souhaitez-vous comme prestation ?</p>
 \t\t\t{# <a href=\"{{path('app_admission')}}\" class=\"btn btn-light\">Admission <i class=\"fas fa-book-open\"></i></a>#}
 \t\t\t<a href=\"{{path('app_hebergement')}}\" class=\"btn btn-light\">Hebergement <i class=\"fas fa-home\"></i></a>
 \t\t\t<a href=\"{{path('app_garant')}}\" class=\"btn btn-light\">Garant Financier <i class=\"fas fa-money-bill\"></i></a>
 \t\t</div>
 \t</div>
-{% if  app.user.garantFinancier and app.user.garantFinancier.statutDemande == 0 %} <div class=\" animate__animated animate__fadeInLeft alert alert-danger\">Vous avez actuellement une demande de garant financier avec le statut : <strong> EN ATTENTE DE PAIMENT </strong>  </div>  {% endif %}
+
+\t<div class=\"card animate__animated animate__fadeInRight mb-4\">
+\t\t<div class=\"card-body text-black text-center\">
+\t\t\tPour toutes questions veuillez nous contacter par mail sur : <strong>maykconsulting@gmail.com</strong>
+\t\t</div>
+\t</div>
 
 \t{# <div
 \t\tclass=\"card mb-3 animate__animated animate__fadeInLeft\">

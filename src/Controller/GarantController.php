@@ -24,10 +24,10 @@ use Symfony\Component\Mime\Part\DataPart;
 
 
 
-#[Route('/administration')]
+#[Route('/garant')]
 class GarantController extends AbstractController
 {
-    #[Route('/garant', name: 'app_garant' , methods: ['GET', 'POST'])]
+    #[Route('/', name: 'app_garant' , methods: ['GET', 'POST'])]
     public function index(PublicMessageRepository $publicMessageRepository ,Request $request, GarantFinancierRepository $garantFinancierRepository): Response
     {
         $user = $this->getUser();
@@ -43,7 +43,7 @@ class GarantController extends AbstractController
     }
 
 
-    #[Route('/garant/update/{id}', name: 'app_garant_update' , methods: ['GET', 'POST'])]
+    #[Route('/update/{id}', name: 'app_garant_update' , methods: ['GET', 'POST'])]
     public function updateGarantDossier(Request $request, GarantFinancierRepository $garantFinancierRepository , GarantFinancier $garantFinancier , UserRepository $userRepository , MailerInterface $mailer) : Response{
         if ($request->isMethod('POST')) {
             
@@ -115,7 +115,7 @@ class GarantController extends AbstractController
         return $nombreEntitesMessage;
     }
 
-    #[Route('/garant/justificatif-Paiement', name: 'app_garant_justificatif_paiement' , methods: ['POST'])]
+    #[Route('/justificatif-Paiement', name: 'app_garant_justificatif_paiement' , methods: ['POST'])]
     public function recupererJustificatifPaiement(Request $request , UserRepository $userRepository){
         if ($request->isMethod('POST')) {
 
@@ -140,7 +140,36 @@ class GarantController extends AbstractController
                 $user->getGarantFinancier()->setJustificatifPaiement($fileName);
                 
                 $userRepository->save($user , true);
+                $email = (new Email())
+                    ->from('noreply@maykconsulting.fr')
+                    ->to($user->getEmail()) // Utilisez l'e-mail saisi par l'utilisateur
+                    ->subject('Accusé de reception : Justificatif de paiement')
+                    ->html('<p>Votre justificatif de paiement a été reçue avec succès ! Nous vous informerons lorsque celui-ci sera validé.</p>
+<p>Si tel est le cas le statut de votre demande changera automatiquement et vous receverez ainsi une notification .</p>
+                <br>
+                Mayk - Consulting Services');
 
+                $emailForHoster = (new Email())->from('noreply@maykconsulting.fr')
+                    ->to('maykconsulting@gmail.com')
+                    ->subject('Accusé de reception : Justificatif de paiement - ' . $garant->getUser()->getName() . ' ' . $garant->getUser()->getLastName() )->attachFromPath('assets/images/logo.png')
+                    ->text('Un nouvel utilisateur viens de joindre son justificatif de paiement');
+
+                $apiKey = '64ff6202a62179784d1ffa3dd0546b97';
+                $mailtrap = new MailtrapClient(new Config($apiKey));
+                $email->getHeaders()
+                    ->add(new CategoryHeader('Garant - Management'))
+                ;
+
+                $emailForHoster->getHeaders()
+                    ->add(new CategoryHeader('Garant - Management'))
+                ;
+
+                $mailtrap->sending()->emails()->send($email); // a envoyer au client pour une confirmation
+                $mailtrap->sending()->emails()->send($emailForHoster); /// A envoyer a maykconsulting pour informer les administrateur
+
+            }else{
+                $this->addFlash('failed-add-justificatif', 'Aucun justificatif de paiement reçu !.');
+                return $this->redirectToRoute('app_garant', [], Response::HTTP_SEE_OTHER);
             }
 
         }
@@ -193,19 +222,28 @@ class GarantController extends AbstractController
     
                 $garantFinancierRepository->save($garant, true);
                 $userRepository->save($user, true);
+                $entityManager->persist($garant);
+                $entityManager->flush();
 
                 $imageContent = file_get_contents('assets/images/consulting.png');
+                $imageWu = file_get_contents('assets/images/wuLogoOffi.jpg');
+                $imageRia = file_get_contents('assets/images/ria.png');
+                $imageMg = file_get_contents('assets/images/MoneyGramLogo.png');
 
                 // Rendre le HTML de votre modèle avec Twig
                 $html = $this->renderView('facture/garant.html.twig', [
                     'numero_facture' => '123456',
                     'date_facture' => new \DateTime(),
                     'image_content' => base64_encode($imageContent),
+                    'image_wu'=>base64_encode($imageWu),
+                    'image_ria' =>base64_encode($imageRia),
+                    'image_mg' =>base64_encode($imageMg),
+                    'pays'=>$garant->getPays(),
+                    "ville"=>$garant->getVilleEtude()
                     // Autres données de facture
                 ]);
 
                 $pdfContent = $dompdfService->generatePdf($html);
-                $pdfAttachment = new DataPart($pdfContent, 'facture.pdf', 'application/pdf');
     
                 $email = (new Email())
                 ->from('noreply@maykconsulting.fr')
@@ -216,18 +254,25 @@ class GarantController extends AbstractController
                 Mayk - Consulting Services')
                 ->attach($pdfContent, 'Devis_GarantFinancier_'. $user->getName() .' _'. (new DateTime())->format('Y-m-d_H-i-s') .'.pdf', 'application/pdf');
                  
-
+                $emailForHoster = (new Email())->from('noreply@maykconsulting.fr')
+                    ->to('maykconsulting@gmail.com')
+                    ->subject('Demande Garant Financier - ' . $garant->getUser()->getName() . ' ' . $garant->getUser()->getLastName() )->attachFromPath('assets/images/logo.png')
+                    ->text('Un nouvel utilisateur viens d\'effectuer une demande pour le pays suivant : ' .  $garant->getPays() );
         
                 $apiKey = '64ff6202a62179784d1ffa3dd0546b97';
                 $mailtrap = new MailtrapClient(new Config($apiKey));
                 $email->getHeaders()
                     ->add(new CategoryHeader('Garant - Management'))
                 ;
+
+                $emailForHoster->getHeaders()
+                    ->add(new CategoryHeader('Garant - Management'))
+                ;
     
-                $mailtrap->sending()->emails()->send($email);
+                $mailtrap->sending()->emails()->send($email); // a envoyer au client avec son devis
+                $mailtrap->sending()->emails()->send($emailForHoster); /// A envoyer a maykconsulting
     
-                $entityManager->persist($garant);
-                $entityManager->flush();
+
     
                 $this->addFlash('success-add-garant', 'Votre demande a été soumise !.');
                 return $this->redirectToRoute('app_garant', [], Response::HTTP_SEE_OTHER);
@@ -245,7 +290,7 @@ class GarantController extends AbstractController
     }
     
 
-    #[Route('/garant/all', name: 'app_garant_management', methods: ['GET'])]
+    #[Route('/all', name: 'app_garant_management', methods: ['GET'])]
     public function allGarant(GarantFinancierRepository $garantRepository , PublicMessageRepository $publicMessageRepository): Response
     {
 
@@ -278,7 +323,7 @@ class GarantController extends AbstractController
     }
 
 
-    #[Route('/garant/delete/{id}', name: 'app_garant_delete', methods: ['POST'])]
+    #[Route('/delete/{id}', name: 'app_garant_delete', methods: ['POST'])]
     public function delete(Request $request, GarantFinancier $garant, GarantFinancierRepository $garantFinancierRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$garant->getId(), $request->request->get('_token'))) {
@@ -289,7 +334,7 @@ class GarantController extends AbstractController
     }
 
 
-    #[Route('/garant/envoyezMessage', name: 'app_garant_envoyez_mail', methods: ['POST'])]
+    #[Route('/envoyezMessage', name: 'app_garant_envoyez_mail', methods: ['POST'])]
     public function envoyezMail(Request $request , MailerInterface $mailer ): Response
     {
 
