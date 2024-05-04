@@ -151,7 +151,7 @@ class __TwigTemplate_c041c0cda6947164b065c73e86405aa4 extends Template
         if (( !twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 53, $this->source); })()), "user", [], "any", false, false, false, 53), "avatar", [], "any", false, false, false, 53) ||  !twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 53, $this->source); })()), "user", [], "any", false, false, false, 53), "passport", [], "any", false, false, false, 53))) {
             // line 54
             echo "\t\t\t\t\t\t\t\t<div>
-\t\t\t\t\t\t\t\t\t<p class=\" text-center alert alert-warning\">
+\t\t\t\t\t\t\t\t\t<p class=\" text-center alert alert-danger\">
 \t\t\t\t\t\t\t\t\t\t<strong>Tous les documents demandés doivent être joints à défaut nous ne pourrions traiter vos demandes  !</strong>
 \t\t\t\t\t\t\t\t\t</p>
 \t\t\t\t\t\t\t\t</div>
@@ -662,7 +662,7 @@ class __TwigTemplate_c041c0cda6947164b065c73e86405aa4 extends Template
 \t\t\t\t\t\t\t{% endif %}
 \t\t\t\t\t\t\t{% if not  app.user.avatar  or  not app.user.passport     %}
 \t\t\t\t\t\t\t\t<div>
-\t\t\t\t\t\t\t\t\t<p class=\" text-center alert alert-warning\">
+\t\t\t\t\t\t\t\t\t<p class=\" text-center alert alert-danger\">
 \t\t\t\t\t\t\t\t\t\t<strong>Tous les documents demandés doivent être joints à défaut nous ne pourrions traiter vos demandes  !</strong>
 \t\t\t\t\t\t\t\t\t</p>
 \t\t\t\t\t\t\t\t</div>

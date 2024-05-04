@@ -24,8 +24,19 @@
 		<div class="card-body">
 			<p class="card-text text-black">Que souhaitez-vous comme prestation ?</p>
 			{# <a href="{{path('app_admission')}}" class="btn btn-light">Admission <i class="fas fa-book-open"></i></a>#}
-			<a href="{{path('app_hebergement')}}" class="btn btn-light">Hebergement <i class="fas fa-home"></i></a>
-			<a href="{{path('app_garant')}}" class="btn btn-light">Garant Financier <i class="fas fa-money-bill"></i></a>
+			<a style="width: 250px" href="{{path('app_hebergement')}}" class="btn btn-light">Hebergement <i class="fas fa-building"></i></a> <br><br>
+			<a style="width: 250px" href="{{path('app_garant')}}" class="btn btn-light">Garant Financier <i class="fas fa-money-bill"></i></a>
+		</div>
+	</div>
+
+	<div class="card text-center animate__animated animate__fadeInLeft mb-4">
+		<div class="card-header bg-black text-white text-uppercase fw-bolder">
+			Gérer mon profil
+		</div>
+		<div class="card-body">
+			{% if not app.user.avatar %}	<div class="alert alert-warning">Hey nous n'avons toujours pas reçu ta photo d'identité</div> {%  endif %}
+			<p class="card-text text-black">Souhaitez-vous gérer vos informations ? C'est par ici  !</p>
+			<a style="width: 250px" href="{{path('app_user_profil')}}" class="btn btn-light"><i class="fas fa-user"></i></a> <br><br>
 		</div>
 	</div>
 

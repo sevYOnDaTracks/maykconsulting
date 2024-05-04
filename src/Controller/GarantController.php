@@ -51,6 +51,7 @@ class GarantController extends AbstractController
             $ville = $request->request->get('ville');
             $statut = $request->request->get('statutDemande');
 
+
             
 
             if ($request->files->get('garantFile')) {
@@ -68,6 +69,23 @@ class GarantController extends AbstractController
                 $fileName = md5(uniqid()) . '.' . $garantFile->guessExtension();
                 $garantFile->move($this->getParameter('garant_directory'), $fileName);
                 $garantFinancier->setGarantFile($fileName);
+            }
+
+            if ($request->request->get('justificatifPaiement')) {
+
+                // Supprimer l'ancien avatar s'il existe
+                $oldJustificatifPath = $garantFinancier->getJustificatifPaiement();
+                if ($oldJustificatifPath && file_exists($oldJustificatifPath)) {
+                    unlink($oldJustificatifPath);
+                    $garantFinancier->setGarantFile(null);
+                }
+
+                $justificatifPaiement = $request->request->get('justificatifPaiement');
+
+                // Traitement de l'avatar téléchargé
+                $fileName = md5(uniqid()) . '.' . $justificatifPaiement->guessExtension();
+                $justificatifPaiement->move($this->getParameter('justificatif_directory'), $fileName);
+                $garantFinancier->setJustificatifPaiement($fileName);
             }
 
             $oldStatutDemande = $garantFinancier->getStatutDemande();
@@ -366,9 +384,4 @@ class GarantController extends AbstractController
         $this->addFlash('success-mail-send', 'Votre mail a été envoyé avec success');
         return $this->redirectToRoute('app_garant_management');
     }
-    
-
-
-
-
 }

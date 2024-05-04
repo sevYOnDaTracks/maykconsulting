@@ -122,26 +122,37 @@
 				<table class="table my-0" id="dataTable">
 					<thead>
 						<tr>
-							<th>N°</th>
 							<th>Demandeur</th>
-							<th>Email</th>
+							<th>Pays</th>
 							<th>Téléphone</th>
 							<th>Date demande</th>
+							<th>Payé ?</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						{% for garantUser in garantsEnAttentes %}
 							<tr>
-								<td>{{ garantUser.id }}</td>
-								<td>{{ garantUser.getUser().getName() }}</td>
-								<td>{{ garantUser.getUser().getEmail() }}</td>
+								<td>
+									{% if garantUser.getUser().avatar is not empty %}
+										<img class="rounded-circle me-2" width="40" height="40" src="{{ asset('uploads/avatars/' ~ user.avatar) }}">{{ garantUser.getUser().getName() }}
+									{% else %}
+										<img class="rounded-circle me-2" width="40" height="40" src="/assets/images/logo.png">
+										{{ garantUser.getUser().getName() }}
+									{% endif %}
+								</td>
+								<td>{{ garantUser.getPays() }}</td>
 								<td>{{ garantUser.getUser().getPhone() }}</td>
-								<td>{{ garantUser.getDateDemande() | date('d-m-Y')}}
+								<td>{{ garantUser.getDateDemande() | date('d/m/Y')}}
 									à
-									{{ garantUser.getDateDemande() | date('H:i:')}}
-									GMT</td>
-
+									{{ garantUser.getDateDemande() | date('H:i')}}</td>
+								<td>
+									{% if garantUser.getJustificatifPaiement() %}
+										<span style="color: #00b779; ">Oui</span>
+									{% else %}
+										<span style="color: #bb2d3b">Non</span>
+									{% endif %}
+									</td>
 								<td>
 									<button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal{{ garantUser.id }}">
 										<i class="fas fa-edit"></i>
@@ -190,99 +201,108 @@
 										<div class="modal-dialog modal-xl modal-dialog-centered">
 											<div class="modal-content">
 												<div class="modal-header text-center">
-													<h1 class="modal-title fs-5 text-dark text-center" id="exampleModalLabel">
+													<h1 style="text-align: center" class="modal-title fs-5  text-dark text-center" id="exampleModalLabel">
 														<strong>{{garantUser.getUser().getName() }}
-															{{garantUser.getUser().getLastName() }}<strong></h1>
+															{{garantUser.getUser().getLastName() }}</strong></h1>
 															<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 														</div>
 														<div class="modal-body">
 
 															<form method="post" action="{{ path('app_garant_update', {'id': garantUser.id}) }}">
 
-																<div class="mb-3">
-																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Pays :</label>
-																	<select name="pays" class="form-select form-select mb-3">
-																		<option value="{{garantUser.getPays() }} " selected>{{garantUser.getPays() }}</option>
-																		<option value="France">France</option>
-																		<option value="Canada">Canada</option>
-																		<option value="Us">Us</option>
-																	</select>
-																</div>
+																<table class="table table-borderless">
+																	<tr>
+																		<th class="form-label fw-bold text-xs text-uppercase text-black">Pays</th>
+																		<td>
+																			<select name="pays" id="pays" class="form-select">
+																				<option value="{{ garantUser.getPays() }}" selected>{{ garantUser.getPays() }}</option>
+																				<option value="France">France</option>
+																				<option value="Canada">Canada</option>
+																				<option value="Us">Us</option>
+																			</select>
+																		</td>
+																	</tr>
+																	<tr style="padding-top: 20px;">
+																		<th class="form-label fw-bold text-xs text-uppercase text-black">Ville</th>
+																		<td>
+																			<input value="{{ garantUser.getVilleEtude() }}" name="ville" id="ville" type="text" class="form-control">
+																		</td>
+																	</tr>
+																	<tr style="padding-top: 20px;">
+																		<th class="form-label fw-bold text-xs text-uppercase text-black">État de la demande</th>
+																		<td>
+																			<select name="statutDemande" id="statutDemande" class="form-select">
+																				<option value="{{ garantUser.getStatutDemande() }}" selected>En attente de paiement</option>
+																				<option value="1">En cours de traitement</option>
+																				<option value="3">Clôturer la demande</option>
+																			</select>
+																		</td>
+																	</tr>
+																	<tr style="padding-top: 20px;">
+																		<th class="form-label fw-bold text-xs text-uppercase text-black">Garant Financier </th>
+																		<td>
+																			{% if not garantUser.getGarantFile() %}
+																				<input type="file" name="garantFile" class="form-control-sm">
+																				<span class="text-primary bg-light text-center text- fw-bold text-xs"> Ici pour affecter les documents de garant au client un seul PDF qui regroupe Tout </span>
+																			{% else %}
+																				<div class="fw-bold text-xs text-uppercase mb-2">
+																					<a href="{{ asset('uploads/garant/' ~ garantUser.getGarantFile() ) }}" class="btn btn-light btn-sm " download="{{ garantUser.getUser().getName() }}_GarantFile">
+																						Télécharger <i class="fas fa-download"></i>
+																					</a>
+																				</div>
+																			{% endif %}
+																		</td>
+																	</tr>
+																	<tr style="padding-top: 20px;">
+																		<th class="form-label fw-bold text-xs text-uppercase text-black">Passport</th>
+																		<td>
+																			{% if garantUser.getUser().getPassport() %}
+																				<div class="fw-bold text-xs ">
+																					<a href="{{ asset('uploads/passport/' ~ garantUser.getUser().getPassport() ) }}" class="btn btn-light btn-sm text-xs " download="{{ garantUser.getUser().getName() }}_Passeport">
+																						Télecharger <i class="fas fa-download"></i>
+																					</a>
+																				</div>
+																			{% else %}
+																				<p class="text-danger text-xs text-uppercase">* L'utilisateur n'a pas joint de passport</p>
+																			{% endif %}
+																		</td>
+																	</tr>
+																	<tr style="padding-top: 20px;">
+																		<th class="form-label fw-bold text-xs text-uppercase text-black">Attestation d'admission</th>
+																		<td>
+																			{% if garantUser.getPathAdmissionFile %}
+																				<div class="fw-bold text-xs ">
+																					<a href="{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}" class="btn btn-light btn-sm text-xs " download="{{ garantUser.getUser().getName() }}_Attestation_Admission">
+																						Télecharger <i class="fas fa-download"></i>
+																					</a>
+																				</div>
+																			{% else %}
+																				<p class="text-danger">* L'utilisateur n'a pas joint d'attestation d'acceptation</p>
+																			{% endif %}
+																		</td>
+																	</tr>
+																	<tr style="padding-top: 20px;">
+																		<th class="form-label fw-bold text-xs text-uppercase text-black">Justificatif de paiement </th>
+																		<td>
+																			{% if garantUser.getJustificatifPaiement %}
+																				<div class="fw-bold text-xs ">
+																					<a href="{{ asset('uploads/justificatif-de-paiement/' ~ garantUser.justificatifPaiement) }}" class="btn btn-light text-xs btn-sm" download="{{ garantUser.getUser().getName() }}_justificatifPaiement">
+																						Télécharger <i class="fas fa-download"></i>
+																					</a>
+																				</div>
+																			{% else %}
+																				<input type="file" name="justificatifPaiement" class="form-control-sm ">
+																			{% endif %}
+																		</td>
+																	</tr>
+																	<tr style="padding-top: 20px;">
+																		<th><label for="lastUpdate" class="form-label fw-bold text-xs text-uppercase text-black">Dernière modification :</label></th>
+																		<td>
+																			<span class="text-danger text-xs text-uppercase fw-bold">{{ garantUser.getLastUpdate() | date('d/m/Y') }} à {{ garantUser.getLastUpdate() | date('H:m:s') }}</span>
+																		</td>
+																	</tr>
+																</table>
 
-																<div class="mb-3">
-																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Ville :</label>
-																	<Input value="{{garantUser.getVilleEtude() }} " name="ville" type="text" class="form-control">
-																</div>
-
-																<div class="mb-3">
-																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Etat de la demande :</label>
-																	<select name="statutDemande" class="form-select form-select mb-3">
-																		<option value="{{garantUser.getStatutDemande() }} " selected>En attente de paiement</option>
-																		<option value="1">En cours de traitement</option>
-																		<option value="3">Clôturer la demande</option>
-																	</select>
-																</div>
-
-																<div class="mb-2">
-																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Documents :</label>
-																</div>
-																{%  if not  garantUser.getGarantFile() %}
-																	<div class="mb-2">
-																		<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Documents de garant Financier :</label>
-																		<input type="file" name="garantFile" class="form-control">
-																	</div>
-																{%  else %}
-																	<div class="fw-bold text-xs text-uppercase mb-2 ">
-																		Garant Financier :
-
-																		<a href="{{ asset('uploads/garant/' ~ garantUser.getGarantFile() ) }}" class="btn btn-warning btn-sm " download="{{garantUser.getUser().getName()}}_GarantFile">
-																			<i class="fas fa-download"></i>
-																		</a>
-																	</div>
-																{%  endif %}
-
-																{%  if garantUser.getUser().getPassport() %}
-
-																	<div class="fw-bold text-xs text-uppercase mb-2 ">
-																		Passport
-
-																		<a href="{{ asset('uploads/passport/' ~ garantUser.getUser().getPassport() ) }}" class="btn btn-warning btn-sm " download="{{garantUser.getUser().getName()}}_Passeport">
-																			<i class="fas fa-download"></i>
-																		</a>
-																	</div>
-																{%    else        %}
-
-																	<p class="text-danger">
-																		* L'utilisateur n'a pas joint de passport
-																	</p>
-
-																{%   endif  %}
-
-																{%  if garantUser.getPathAdmissionFile %}
-
-																	<div class="fw-bold text-xs text-uppercase mb-2">
-																		Attestation d'admission
-																		<a href="{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}" class="btn btn-warning btn-sm" download="{{garantUser.getUser().getName()}}_Attestation_Admission">
-																			<i class="fas fa-download"></i>
-																		</a>
-																	</div>
-
-
-																{%    else        %}
-
-																	<p class="text-danger">
-																		* L'utilisateur n'a pas joint d'attestation d'acceptation
-																	</p>
-
-																{%   endif  %}
-
-																<div class="mb-3">
-																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Dernière modification :
-																		<span class="text-danger">{{garantUser.getLastUpdate() | date('d-m-Y')  }}
-																			à
-																			{{garantUser.getLastUpdate() | date('H:m:s')  }}</span>
-																	</label>
-																</div>
 
 																<div class="">
 																	<textarea name="othersInformations" class="form-control" placeholder="L'utilisateur n'a rien écrit comme message .." disabled>{{ garantUser.getInformations()}}</textarea>
@@ -324,25 +344,36 @@
 				<table class="table my-0" id="dataTable">
 					<thead>
 						<tr>
-							<th>N°</th>
 							<th>Demandeur</th>
-							<th>Email</th>
+							<th>Pays</th>
 							<th>Téléphone</th>
 							<th>Date demande</th>
+							<th>Payé ?</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						{% for garantUser in garantEnCours %}
 							<tr>
-								<td>{{ garantUser.id }}</td>
-								<td>{{ garantUser.getUser().getName() }}</td>
-								<td>{{ garantUser.getUser().getEmail() }}</td>
+								<td>
+									{% if garantUser.getUser().avatar is not empty %}
+										<img class="rounded-circle me-2" width="40" height="40" src="{{ asset('uploads/avatars/' ~ user.avatar) }}">{{ garantUser.getUser().getName() }}
+									{% else %}
+										<img class="rounded-circle me-2" width="40" height="40" src="/assets/images/logo.png">
+										{{ garantUser.getUser().getName() }}
+									{% endif %}
+								</td>
+								<td>{{ garantUser.getPays() }}</td>
 								<td>{{ garantUser.getUser().getPhone() }}</td>
 								<td>{{ garantUser.getDateDemande() | date('d-m-Y')}}
 									à
-									{{ garantUser.getDateDemande() | date('H:i:')}}
-									GMT</td>
+									{{ garantUser.getDateDemande() | date('H:i')}}
+								</td>
+								<th>{% if garantUser.getJustificatifPaiement() %}
+										<span style="color: #00b779; ">Oui</span>
+									{% else %}
+										<span style="color: #bb2d3b">Non</span>
+									{% endif %}</th>
 
 								<td>
 									<button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal{{ garantUser.id }}">
@@ -401,82 +432,101 @@
 
 															<form method="post" action="{{ path('app_garant_update', {'id': garantUser.id}) }}" enctype="multipart/form-data">
 
-																<div class="mb-3">
-																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Pays :</label>
-																	<select name="pays" class="form-select form-select mb-3">
-																		<option value="{{garantUser.getPays() }} " selected>{{garantUser.getPays() }}</option>
-																		<option value="France">France</option>
-																		<option value="Canada">Canada</option>
-																		<option value="Us">Us</option>
-																	</select>
+																<div class="table-responsive">
+																	<table class="table table-borderless">
+																		<tr>
+																			<th class="form-label fw-bold text-xs text-uppercase text-black">Pays</th>
+																			<td>
+																				<select name="pays" class="form-select">
+																					<option value="{{ garantUser.getPays() }}" selected>{{ garantUser.getPays() }}</option>
+																					<option value="France">France</option>
+																					<option value="Canada">Canada</option>
+																					<option value="Us">Us</option>
+																				</select>
+																			</td>
+																		</tr>
+																		<tr style="padding-top: 20px;">
+																			<th class="form-label fw-bold text-xs text-uppercase text-black">Ville</th>
+																			<td>
+																				<input value="{{ garantUser.getVilleEtude() }}" name="ville" type="text" class="form-control">
+																			</td>
+																		</tr>
+																		<tr style="padding-top: 20px;">
+																			<th class="form-label fw-bold text-xs text-uppercase text-black">État de la demande</th>
+																			<td>
+																				<select name="statutDemande" class="form-select">
+																					<option value="{{ garantUser.getStatutDemande() }}" selected>En cours de traitement</option>
+																					<option value="0">En attente de paiement</option>
+																					<option value="2">Traitement terminé</option>
+																				</select>
+																			</td>
+																		</tr>
+																		<tr style="padding-top: 20px;">
+																			<th class="form-label fw-bold text-xs text-uppercase text-black">Garant Financier </th>
+																			<td>
+																				{% if not garantUser.getGarantFile() %}
+																					<input type="file" name="garantFile" class="form-control-sm">
+																					<span class="text-primary bg-light text-center text-xs fw-bold text-xs"> Ici pour affecter les documents de garant au client un seul PDF qui regroupe Tout </span>
+																				{% else %}
+																					<div class="fw-bold text-xs  mb-2">
+																						<a href="{{ asset('uploads/garant/' ~ garantUser.getGarantFile() ) }}" class="btn btn-light btn-sm text-xs" download="{{ garantUser.getUser().getName() }}_GarantFile">
+																							Télécharger <i class="fas fa-download"></i>
+																						</a>
+																					</div>
+																				{% endif %}
+																			</td>
+																		</tr>
+																		<tr style="padding-top: 20px;">
+																			<th class="form-label fw-bold text-xs text-uppercase text-black">Passport</th>
+																			<td>
+																				{% if garantUser.getUser().getPassport() %}
+																					<div class="fw-bold text-xs ">
+																						<a href="{{ asset('uploads/passport/' ~ garantUser.getUser().getPassport() ) }}" class="btn btn-light btn-sm text-xs " download="{{ garantUser.getUser().getName() }}_Passeport">
+																							Télécharger <i class="fas fa-download"></i>
+																						</a>
+																					</div>
+																				{% else %}
+																					<p class="text-danger text-xs text-uppercase">* L'utilisateur n'a pas joint de passport</p>
+																				{% endif %}
+																			</td>
+																		</tr>
+																		<tr style="padding-top: 20px;">
+																			<th class="form-label fw-bold text-xs text-uppercase text-black">Attestation d'admission</th>
+																			<td>
+																				{% if garantUser.getPathAdmissionFile %}
+																					<div class="fw-bold text-xs ">
+																						<a href="{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}" class="btn btn-light btn-sm text-xs " download="{{ garantUser.getUser().getName() }}_Attestation_Admission">
+																							Télécharger <i class="fas fa-download"></i>
+																						</a>
+																					</div>
+																				{% else %}
+																					<p class="text-danger">* L'utilisateur n'a pas joint d'attestation d'acceptation</p>
+																				{% endif %}
+																			</td>
+																		</tr>
+																		<tr style="padding-top: 20px;">
+																			<th class="form-label fw-bold text-xs text-uppercase text-black">Justificatif de paiement </th>
+																			<td>
+																				{% if garantUser.getJustificatifPaiement %}
+																					<div class="fw-bold text-xs ">
+																						<a href="{{ asset('uploads/justificatif-de-paiement/' ~ garantUser.justificatifPaiement) }}" class="btn btn-light text-xs btn-sm" download="{{ garantUser.getUser().getName() }}_justificatifPaiement">
+																							Télécharger <i class="fas fa-download"></i>
+																						</a>
+																					</div>
+																				{% else %}
+																					<input type="file" name="justificatifPaiement" class="form-control-sm ">
+																				{% endif %}
+																			</td>
+																		</tr>
+																		<tr style="padding-top: 20px;">
+																			<th><label for="lastUpdate" class="form-label fw-bold text-xs text-uppercase text-black">Dernière modification :</label></th>
+																			<td>
+																				<span class="text-danger text-xs text-uppercase fw-bold">{{ garantUser.getLastUpdate() | date('d/m/Y') }} à {{ garantUser.getLastUpdate() | date('H:m:s') }}</span>
+																			</td>
+																		</tr>
+																	</table>
 																</div>
 
-																<div class="mb-3">
-																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Ville :</label>
-																	<Input value="{{garantUser.getVilleEtude() }} " name="ville" type="text" class="form-control">
-																</div>
-
-																<div class="mb-3">
-																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Etat de la demande :</label>
-																	<select name="statutDemande" class="form-select form-select mb-3">
-																		<option value="{{garantUser.getStatutDemande() }} " selected>En cours de traitement</option>
-																		<option value="0">En attente de paiement</option>
-																		<option value="2">Traitement terminé</option>
-																		<option value="3">Clôturer la demande</option>
-																	</select>
-																</div>
-
-																<div class="mb-2">
-																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Documents :</label>
-																</div>
-																{%  if not  garantUser.getGarantFile() %}
-																	<div class="mb-2">
-																		<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Documents de garant Financier :</label>
-																		<input type="file" name="garantFile" class="form-control">
-																	</div>
-																{%  else %}
-																	<div class="fw-bold text-xs text-uppercase mb-2 ">
-																		Garant Financier :
-
-																		<a href="{{ asset('uploads/garant/' ~ garantUser.getGarantFile() ) }}" class="btn btn-warning btn-sm " download="{{garantUser.getUser().getName()}}_GarantFile">
-																			<i class="fas fa-download"></i>
-																		</a>
-																	</div>
-																{%  endif %}
-																{%  if garantUser.getUser().getPassport() %}
-
-																	<div class="fw-bold text-xs text-uppercase mb-2 ">
-																		Passport
-
-																		<a href="{{ asset('uploads/passport/' ~ garantUser.getUser().getPassport() ) }}" class="btn btn-warning btn-sm " download="{{garantUser.getUser().getName()}}_Passeport">
-																			<i class="fas fa-download"></i>
-																		</a>
-																	</div>
-																{%    else        %}
-
-																	<p class="text-danger">
-																		* L'utilisateur n'a pas joint de passport
-																	</p>
-
-																{%   endif  %}
-
-																{%  if garantUser.getPathAdmissionFile %}
-
-																	<div class="fw-bold text-xs text-uppercase mb-2">
-																		Attestation d'admission
-																		<a href="{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}" class="btn btn-warning btn-sm" download="{{garantUser.getUser().getName()}}_Attestation_Admission">
-																			<i class="fas fa-download"></i>
-																		</a>
-																	</div>
-
-
-																{%    else        %}
-
-																	<p class="text-danger">
-																		* L'utilisateur n'a pas joint d'attestation d'acceptation
-																	</p>
-
-																{%   endif  %}
 
 
 																<div class="">
@@ -521,25 +571,36 @@
 				<table class="table my-0" id="dataTable">
 					<thead>
 						<tr>
-							<th>N°</th>
 							<th>Demandeur</th>
-							<th>Email</th>
+							<th>Pays</th>
 							<th>Téléphone</th>
 							<th>Date demande</th>
+							<th>Payé ?</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						{% for garantUser in garantTermine %}
 							<tr>
-								<td>{{ garantUser.id }}</td>
-								<td>{{ garantUser.getUser().getName() }}</td>
-								<td>{{ garantUser.getUser().getEmail() }}</td>
+								<td>
+									{% if garantUser.getUser().avatar is not empty %}
+										<img class="rounded-circle me-2" width="40" height="40" src="{{ asset('uploads/avatars/' ~ user.avatar) }}">{{ garantUser.getUser().getName() }}
+									{% else %}
+										<img class="rounded-circle me-2" width="40" height="40" src="/assets/images/logo.png">
+										{{ garantUser.getUser().getName() }}
+									{% endif %}
+								</td>
+								<td>{{ garantUser.getPays }}</td>
 								<td>{{ garantUser.getUser().getPhone() }}</td>
 								<td>{{ garantUser.getDateDemande() | date('d-m-Y')}}
 									à
-									{{ garantUser.getDateDemande() | date('H:i:')}}
-									GMT</td>
+									{{ garantUser.getDateDemande() | date('H:i')}}
+								</td>
+								<td>{% if garantUser.getJustificatifPaiement() %}
+										<span style="color: #00b779; ">Oui</span>
+									{% else %}
+										<span style="color: #bb2d3b">Non</span>
+									{% endif %}</td>
 
 								<td>
 									<button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal{{ garantUser.id }}">
@@ -598,84 +659,102 @@
 
 															<form method="post" action="{{ path('app_garant_update', {'id': garantUser.id}) }}">
 
-																<div class="mb-3">
-																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Pays :</label>
-																	<select name="pays" class="form-select form-select mb-3">
-																		<option value="{{garantUser.getPays() }} " selected>{{garantUser.getPays() }}</option>
-																		<option value="France">France</option>
-																		<option value="Canada">Canada</option>
-																		<option value="Us">Us</option>
-																	</select>
+																<div class="table-responsive">
+																	<table class="table table-borderless">
+																		<tr>
+																			<th class="form-label fw-bold text-xs text-uppercase text-black">Pays</th>
+																			<td>
+																				<select name="pays" class="form-select">
+																					<option value="{{ garantUser.getPays() }}" selected>{{ garantUser.getPays() }}</option>
+																					<option value="France">France</option>
+																					<option value="Canada">Canada</option>
+																					<option value="Us">Us</option>
+																				</select>
+																			</td>
+																		</tr>
+																		<tr style="padding-top: 20px;">
+																			<th class="form-label fw-bold text-xs text-uppercase text-black">Ville</th>
+																			<td>
+																				<input value="{{ garantUser.getVilleEtude() }}" name="ville" type="text" class="form-control">
+																			</td>
+																		</tr>
+																		<tr style="padding-top: 20px;">
+																			<th class="form-label fw-bold text-xs text-uppercase text-black">État de la demande</th>
+																			<td>
+																				<select name="statutDemande" class="form-select">
+																					<option value="{{ garantUser.getStatutDemande() }}" selected>Traitement terminé</option>
+																					<option value="O">En attente de paiement</option>
+																					<option value="1">En cours de traitement</option>
+																					<option value="3">Clôturer la demande</option>
+																				</select>
+																			</td>
+																		</tr>
+																		<tr style="padding-top: 20px;">
+																			<th class="form-label fw-bold text-xs text-uppercase text-black">Garant Financier </th>
+																			<td>
+																				{% if not garantUser.getGarantFile() %}
+																					<input type="file" name="garantFile" class="form-control-sm">
+																					<span class="text-primary bg-light text-center text-xs fw-bold text-xs"> Ici pour affecter les documents de garant au client un seul PDF qui regroupe Tout </span>
+																				{% else %}
+																					<div class="fw-bold text-xs  mb-2">
+																						<a href="{{ asset('uploads/garant/' ~ garantUser.getGarantFile() ) }}" class="btn btn-light btn-sm text-xs" download="{{ garantUser.getUser().getName() }}_GarantFile">
+																							Télécharger <i class="fas fa-download"></i>
+																						</a>
+																					</div>
+																				{% endif %}
+																			</td>
+																		</tr>
+																		<tr style="padding-top: 20px;">
+																			<th class="form-label fw-bold text-xs text-uppercase text-black">Passport</th>
+																			<td>
+																				{% if garantUser.getUser().getPassport() %}
+																					<div class="fw-bold text-xs ">
+																						<a href="{{ asset('uploads/passport/' ~ garantUser.getUser().getPassport() ) }}" class="btn btn-light btn-sm text-xs " download="{{ garantUser.getUser().getName() }}_Passeport">
+																							Télécharger <i class="fas fa-download"></i>
+																						</a>
+																					</div>
+																				{% else %}
+																					<p class="text-danger text-xs text-uppercase">* L'utilisateur n'a pas joint de passport</p>
+																				{% endif %}
+																			</td>
+																		</tr>
+																		<tr style="padding-top: 20px;">
+																			<th class="form-label fw-bold text-xs text-uppercase text-black">Attestation d'admission</th>
+																			<td>
+																				{% if garantUser.getPathAdmissionFile %}
+																					<div class="fw-bold text-xs ">
+																						<a href="{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}" class="btn btn-light btn-sm text-xs " download="{{ garantUser.getUser().getName() }}_Attestation_Admission">
+																							Télécharger <i class="fas fa-download"></i>
+																						</a>
+																					</div>
+																				{% else %}
+																					<p class="text-danger">* L'utilisateur n'a pas joint d'attestation d'acceptation</p>
+																				{% endif %}
+																			</td>
+																		</tr>
+																		<tr style="padding-top: 20px;">
+																			<th class="form-label fw-bold text-xs text-uppercase text-black">Justificatif de paiement </th>
+																			<td>
+																				{% if garantUser.getJustificatifPaiement %}
+																					<div class="fw-bold text-xs ">
+																						<a href="{{ asset('uploads/justificatif-de-paiement/' ~ garantUser.justificatifPaiement) }}" class="btn btn-light text-xs btn-sm" download="{{ garantUser.getUser().getName() }}_justificatifPaiement">
+																							Télécharger <i class="fas fa-download"></i>
+																						</a>
+																					</div>
+																				{% else %}
+																					<input type="file" name="justificatifPaiement" class="form-control-sm ">
+																				{% endif %}
+																			</td>
+																		</tr>
+																		<tr style="padding-top: 20px;">
+																			<th><label for="lastUpdate" class="form-label fw-bold text-xs text-uppercase text-black">Dernière modification :</label></th>
+																			<td>
+																				<span class="text-danger text-xs text-uppercase fw-bold">{{ garantUser.getLastUpdate() | date('d/m/Y') }} à {{ garantUser.getLastUpdate() | date('H:m:s') }}</span>
+																			</td>
+																		</tr>
+																	</table>
 																</div>
 
-																<div class="mb-3">
-																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Ville :</label>
-																	<Input value="{{garantUser.getVilleEtude() }} " name="ville" type="text" class="form-control">
-																</div>
-
-																<div class="mb-3">
-																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Etat de la demande :</label>
-																	<select name="statutDemande" class="form-select form-select mb-3">
-																		<option value="{{garantUser.getStatutDemande() }} " selected>Traitement terminé</option>
-																		<option value="0">En attente de paiement</option>
-																		<option value="1">En cours de traitement</option>
-																		<option value="3">Clôturer la demande</option>
-																	</select>
-																</div>
-
-																<div class="mb-2">
-																	<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Documents :</label>
-																</div>
-
-																{%  if not  garantUser.getGarantFile() %}
-																	<div class="mb-2">
-																		<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Documents de garant Financier :</label>
-																		<input type="file" name="garantFile" class="form-control">
-																	</div>
-																{%  else %}
-																	<div class="fw-bold text-xs text-uppercase mb-2 ">
-																		Garant Financier :
-
-																		<a href="{{ asset('uploads/garant/' ~ garantUser.getGarantFile() ) }}" class="btn btn-warning btn-sm " download="{{garantUser.getUser().getName()}}_GarantFile">
-																			<i class="fas fa-download"></i>
-																		</a>
-																	</div>
-																{%  endif %}
-
-																{%  if garantUser.getUser().getPassport() %}
-
-																	<div class="fw-bold text-xs text-uppercase mb-2 ">
-																		Passport
-
-																		<a href="{{ asset('uploads/passport/' ~ garantUser.getUser().getPassport() ) }}" class="btn btn-warning btn-sm " download="{{garantUser.getUser().getName()}}_Passeport">
-																			<i class="fas fa-download"></i>
-																		</a>
-																	</div>
-																{%    else        %}
-
-																	<p class="text-danger">
-																		* L'utilisateur n'a pas joint de passport
-																	</p>
-
-																{%   endif  %}
-
-																{%  if garantUser.getPathAdmissionFile %}
-
-																	<div class="fw-bold text-xs text-uppercase mb-2">
-																		Attestation d'admission
-																		<a href="{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}" class="btn btn-warning btn-sm" download="{{garantUser.getUser().getName()}}_Attestation_Admission">
-																			<i class="fas fa-download"></i>
-																		</a>
-																	</div>
-
-
-																{%    else        %}
-
-																	<p class="text-danger">
-																		* L'utilisateur n'a pas joint d'attestation d'acceptation
-																	</p>
-
-																{%   endif  %}
 
 
 																<div class="">
@@ -718,11 +797,11 @@
 				<table class="table my-0" id="dataTable">
 					<thead>
 						<tr>
-							<th>N°</th>
 							<th>Demandeur</th>
-							<th>Email</th>
+							<th>Pays</th>
 							<th>Téléphone</th>
 							<th>Date demande</th>
+							<th>Payé ?</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -730,15 +809,25 @@
 						{% if garantsCloturer|length > 0 %}
 							{% for garantUser in garantsCloturer %}
 								<tr>
-									<td>{{ garantUser.id }}</td>
-									<td>{{ garantUser.getUser().getName() }}</td>
-									<td>{{ garantUser.getUser().getEmail() }}</td>
+									<td>
+										{% if garantUser.getUser().avatar is not empty %}
+											<img class="rounded-circle me-2" width="40" height="40" src="{{ asset('uploads/avatars/' ~ user.avatar) }}">{{ garantUser.getUser().getName() }}
+										{% else %}
+											<img class="rounded-circle me-2" width="40" height="40" src="/assets/images/logo.png">
+											{{ garantUser.getUser().getName() }}
+										{% endif %}
+									</td>
+									<td>{{ garantUser.getPays() }}</td>
 									<td>{{ garantUser.getUser().getPhone() }}</td>
 									<td>{{ garantUser.getDateDemande() | date('d-m-Y')}}
 										à
-										{{ garantUser.getDateDemande() | date('H:i:')}}
-										GMT</td>
-
+										{{ garantUser.getDateDemande() | date('H:i')}}
+									</td>
+<td>{% if garantUser.getJustificatifPaiement() %}
+		<span style="color: #00b779; ">Oui</span>
+	{% else %}
+		<span style="color: #bb2d3b">Non</span>
+	{% endif %}</td>
 									<td>
 										<button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal{{ garantUser.id }}">
 											<i class="fas fa-edit"></i>
@@ -796,68 +885,104 @@
 
 																<form method="post" action="{{ path('app_garant_update', {'id': garantUser.id}) }}">
 
-																	<div class="mb-3">
-																		<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Pays :</label>
-																		<select name="pays" class="form-select form-select mb-3">
-																			<option value="{{garantUser.getPays() }} " selected>{{garantUser.getPays() }}</option>
-																			<option value="France">France</option>
-																			<option value="Canada">Canada</option>
-																			<option value="Us">Us</option>
-																		</select>
+																	<div class="table-responsive">
+																		<table class="table table-borderless">
+																			<tr>
+																				<th class="form-label fw-bold text-xs text-uppercase text-black">Pays</th>
+																				<td>
+																					<select name="pays" class="form-select">
+																						<option value="{{ garantUser.getPays() }}" selected>{{ garantUser.getPays() }}</option>
+																						<option value="France">France</option>
+																						<option value="Canada">Canada</option>
+																						<option value="Us">Us</option>
+																					</select>
+																				</td>
+																			</tr>
+																			<tr style="padding-top: 20px;">
+																				<th class="form-label fw-bold text-xs text-uppercase text-black">Ville</th>
+																				<td>
+																					<input value="{{ garantUser.getVilleEtude() }}" name="ville" type="text" class="form-control">
+																				</td>
+																			</tr>
+																			<tr style="padding-top: 20px;">
+																				<th class="form-label fw-bold text-xs text-uppercase text-black">État de la demande</th>
+																				<td>
+																					<select name="statutDemande" class="form-select">
+																						<option value="{{ garantUser.getStatutDemande() }}" selected>Demande clôturée</option>
+																						<option value="0">En attente de paiement</option>
+																						<option value="1">En cours de traitement</option>
+																						<option value="2">Traitement terminé</option>
+
+
+																					</select>
+																				</td>
+																			</tr>
+																			<tr style="padding-top: 20px;">
+																				<th class="form-label fw-bold text-xs text-uppercase text-black">Garant Financier </th>
+																				<td>
+																					{% if not garantUser.getGarantFile() %}
+																						<input type="file" name="garantFile" class="form-control-sm">
+																						<span class="text-primary bg-light text-center text- fw-bold text-xs"> Ici pour affecter les documents de garant au client un seul PDF qui regroupe Tout </span>
+																					{% else %}
+																						<div class="fw-bold text-xs mb-2">
+																							<a href="{{ asset('uploads/garant/' ~ garantUser.getGarantFile() ) }}" class="btn btn-light text-xs btn-sm " download="{{ garantUser.getUser().getName() }}_GarantFile">
+																								Télécharger <i class="fas fa-download"></i>
+																							</a>
+																						</div>
+																					{% endif %}
+																				</td>
+																			</tr>
+																			<tr style="padding-top: 20px;">
+																				<th class="form-label fw-bold text-xs text-uppercase text-black">Passport</th>
+																				<td>
+																					{% if garantUser.getUser().getPassport() %}
+																						<div class="fw-bold text-xs ">
+																							<a href="{{ asset('uploads/passport/' ~ garantUser.getUser().getPassport() ) }}" class="btn btn-light btn-sm text-xs " download="{{ garantUser.getUser().getName() }}_Passeport">
+																								Télécharger <i class="fas fa-download"></i>
+																							</a>
+																						</div>
+																					{% else %}
+																						<p class="text-danger text-xs text-uppercase">* L'utilisateur n'a pas joint de passport</p>
+																					{% endif %}
+																				</td>
+																			</tr>
+																			<tr style="padding-top: 20px;">
+																				<th class="form-label fw-bold text-xs text-uppercase text-black">Attestation d'admission</th>
+																				<td>
+																					{% if garantUser.getPathAdmissionFile %}
+																						<div class="fw-bold text-xs ">
+																							<a href="{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}" class="btn btn-light btn-sm text-xs " download="{{ garantUser.getUser().getName() }}_Attestation_Admission">
+																								Télécharger <i class="fas fa-download"></i>
+																							</a>
+																						</div>
+																					{% else %}
+																						<p class="text-danger">* L'utilisateur n'a pas joint d'attestation d'acceptation</p>
+																					{% endif %}
+																				</td>
+																			</tr>
+																			<tr style="padding-top: 20px;">
+																				<th class="form-label fw-bold text-xs text-uppercase text-black">Justificatif de paiement </th>
+																				<td>
+																					{% if garantUser.getJustificatifPaiement %}
+																						<div class="fw-bold text-xs ">
+																							<a href="{{ asset('uploads/justificatif-de-paiement/' ~ garantUser.justificatifPaiement) }}" class="btn btn-light text-xs btn-sm" download="{{ garantUser.getUser().getName() }}_justificatifPaiement">
+																								Télécharger <i class="fas fa-download"></i>
+																							</a>
+																						</div>
+																					{% else %}
+																						<input type="file" name="justificatifPaiement" class="form-control-sm ">
+																					{% endif %}
+																				</td>
+																			</tr>
+																			<tr style="padding-top: 20px;">
+																				<th><label for="lastUpdate" class="form-label fw-bold text-xs text-uppercase text-black">Dernière modification :</label></th>
+																				<td>
+																					<span class="text-danger text-xs text-uppercase fw-bold">{{ garantUser.getLastUpdate() | date('d/m/Y') }} à {{ garantUser.getLastUpdate() | date('H:m:s') }}</span>
+																				</td>
+																			</tr>
+																		</table>
 																	</div>
 
-																	<div class="mb-3">
-																		<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Ville :</label>
-																		<Input value="{{garantUser.getVilleEtude() }} " name="ville" type="text" class="form-control">
-																	</div>
-
-																	<div class="mb-3">
-																		<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Etat de la demande :</label>
-																		<select name="statutDemande" class="form-select form-select mb-3">
-																			<option value="{{garantUser.getStatutDemande() }} " selected>Demande clôturer</option>
-																			<option value="0">En attente de paiement</option>
-																			<option value="1">En cours de traitement</option>
-																		</select>
-																	</div>
-
-																	<div class="mb-2">
-																		<label for="recipient-name" class="col-form-label fw-bold text-xs text-uppercase">Documents :</label>
-																	</div>
-
-																	{%  if garantUser.getUser().getPassport() %}
-
-																		<div class="fw-bold text-xs text-uppercase mb-2 ">
-																			Passport
-
-																			<a href="{{ asset('uploads/passport/' ~ garantUser.getUser().getPassport() ) }}" class="btn btn-warning btn-sm " download="{{garantUser.getUser().getName()}}_Passeport">
-																				<i class="fas fa-download"></i>
-																			</a>
-																		</div>
-																	{%    else        %}
-
-																		<p class="text-danger">
-																			* L'utilisateur n'a pas joint de passport
-																		</p>
-
-																	{%   endif  %}
-
-																	{%  if garantUser.getPathAdmissionFile %}
-
-																		<div class="fw-bold text-xs text-uppercase mb-2">
-																			Attestation d'admission
-																			<a href="{{ asset('uploads/attestation/' ~ garantUser.pathAdmissionFile) }}" class="btn btn-warning btn-sm" download="{{garantUser.getUser().getName()}}_Attestation_Admission">
-																				<i class="fas fa-download"></i>
-																			</a>
-																		</div>
-
-
-																	{%    else        %}
-
-																		<p class="text-danger">
-																			* L'utilisateur n'a pas joint d'attestation d'acceptation
-																		</p>
-
-																	{%   endif  %}
 
 
 																	<div class="">

@@ -109,13 +109,32 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
 \t\t\t<p class=\"card-text text-black\">Que souhaitez-vous comme prestation ?</p>
 \t\t\t";
         // line 27
-        echo "\t\t\t<a href=\"";
+        echo "\t\t\t<a style=\"width: 250px\" href=\"";
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_hebergement");
-        echo "\" class=\"btn btn-light\">Hebergement <i class=\"fas fa-home\"></i></a>
-\t\t\t<a href=\"";
+        echo "\" class=\"btn btn-light\">Hebergement <i class=\"fas fa-building\"></i></a> <br><br>
+\t\t\t<a style=\"width: 250px\" href=\"";
         // line 28
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant");
         echo "\" class=\"btn btn-light\">Garant Financier <i class=\"fas fa-money-bill\"></i></a>
+\t\t</div>
+\t</div>
+
+\t<div class=\"card text-center animate__animated animate__fadeInLeft mb-4\">
+\t\t<div class=\"card-header bg-black text-white text-uppercase fw-bolder\">
+\t\t\tGérer mon profil
+\t\t</div>
+\t\t<div class=\"card-body\">
+\t\t\t";
+        // line 37
+        if ( !twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 37, $this->source); })()), "user", [], "any", false, false, false, 37), "avatar", [], "any", false, false, false, 37)) {
+            echo "\t<div class=\"alert alert-warning\">Hey nous n'avons toujours pas reçu ta photo d'identité</div> ";
+        }
+        // line 38
+        echo "\t\t\t<p class=\"card-text text-black\">Souhaitez-vous gérer vos informations ? C'est par ici  !</p>
+\t\t\t<a style=\"width: 250px\" href=\"";
+        // line 39
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_profil");
+        echo "\" class=\"btn btn-light\"><i class=\"fas fa-user\"></i></a> <br><br>
 \t\t</div>
 \t</div>
 
@@ -126,7 +145,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
 \t</div>
 
 \t";
-        // line 92
+        // line 103
         echo "<br><br>
 
 </div></div>";
@@ -159,7 +178,7 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
      */
     public function getDebugInfo()
     {
-        return array (  130 => 92,  117 => 28,  112 => 27,  102 => 18,  95 => 17,  88 => 16,  80 => 10,  78 => 9,  72 => 6,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  149 => 103,  136 => 39,  133 => 38,  129 => 37,  117 => 28,  112 => 27,  102 => 18,  95 => 17,  88 => 16,  80 => 10,  78 => 9,  72 => 6,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -190,8 +209,19 @@ class __TwigTemplate_23ba80c566ba32cf821ef96f7c6849ba extends Template
 \t\t<div class=\"card-body\">
 \t\t\t<p class=\"card-text text-black\">Que souhaitez-vous comme prestation ?</p>
 \t\t\t{# <a href=\"{{path('app_admission')}}\" class=\"btn btn-light\">Admission <i class=\"fas fa-book-open\"></i></a>#}
-\t\t\t<a href=\"{{path('app_hebergement')}}\" class=\"btn btn-light\">Hebergement <i class=\"fas fa-home\"></i></a>
-\t\t\t<a href=\"{{path('app_garant')}}\" class=\"btn btn-light\">Garant Financier <i class=\"fas fa-money-bill\"></i></a>
+\t\t\t<a style=\"width: 250px\" href=\"{{path('app_hebergement')}}\" class=\"btn btn-light\">Hebergement <i class=\"fas fa-building\"></i></a> <br><br>
+\t\t\t<a style=\"width: 250px\" href=\"{{path('app_garant')}}\" class=\"btn btn-light\">Garant Financier <i class=\"fas fa-money-bill\"></i></a>
+\t\t</div>
+\t</div>
+
+\t<div class=\"card text-center animate__animated animate__fadeInLeft mb-4\">
+\t\t<div class=\"card-header bg-black text-white text-uppercase fw-bolder\">
+\t\t\tGérer mon profil
+\t\t</div>
+\t\t<div class=\"card-body\">
+\t\t\t{% if not app.user.avatar %}\t<div class=\"alert alert-warning\">Hey nous n'avons toujours pas reçu ta photo d'identité</div> {%  endif %}
+\t\t\t<p class=\"card-text text-black\">Souhaitez-vous gérer vos informations ? C'est par ici  !</p>
+\t\t\t<a style=\"width: 250px\" href=\"{{path('app_user_profil')}}\" class=\"btn btn-light\"><i class=\"fas fa-user\"></i></a> <br><br>
 \t\t</div>
 \t</div>
 

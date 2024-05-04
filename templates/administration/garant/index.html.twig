@@ -7,7 +7,7 @@
 {% block body %}
 	<h1 align="center" class="text-uppercase text-xl text-uppercase  fw-bold animate__animated animate__fadeInLeft">
 		Garant financier
-		<i class="fas fa-money-bill"></i>
+		<i class="fas fa-money-check"></i>
 	</h1>
 
 	{% if app.flashes('success-add-garant') is not empty %}
@@ -100,8 +100,6 @@
 									<option selected>Choisissez le pays !</option>
 									<option value="France">France</option>
 									<option value="Canada">Canada</option>
-									<option value="Maroc">Maroc</option>
-									<option value="USA">USA</option>
 								</select>
 							</div>
 
@@ -175,7 +173,7 @@
 					<p>
 						Veuillez effectuer le paiement afin que nous puissions traité votre demande .</p>
 
-					<a href="{{ path('app_facture_test')}}" class="btn btn-danger ">
+					<a style="text-align: center" href="{{ path('app_facture_test')}}" class="btn btn-dark ">
 						<i class="fas fa-download"></i>
 						Télecharger le devis</a>
 

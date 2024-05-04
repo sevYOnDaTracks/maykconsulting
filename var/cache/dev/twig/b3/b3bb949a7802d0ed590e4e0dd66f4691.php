@@ -89,7 +89,7 @@ class __TwigTemplate_16ac61cad8210422b56aa63f3ac218ad extends Template
             echo "\">
 \t\t\t\t\t\t\t\t<div>
 \t\t\t\t\t\t\t\t\t<span class=\"small text-gray-500\"></span>
-\t\t\t\t\t\t\t\t\t<p class=\"\">Aucune proccédure en cours</p>
+\t\t\t\t\t\t\t\t\t<strong class=\"\">Garant Financier : Aucune proccédure </strong>
 \t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t</a>
@@ -124,7 +124,7 @@ class __TwigTemplate_16ac61cad8210422b56aa63f3ac218ad extends Template
             echo "\">
 \t\t\t\t\t\t\t\t<div>
 \t\t\t\t\t\t\t\t\t<span class=\"small text-gray-500\"></span>
-\t\t\t\t\t\t\t\t\t<p class=\"\">Aucune proccédure en cours</p>
+\t\t\t\t\t\t\t\t\t<strong class=\"\">Hébergement : Aucune proccédure </strong>
 \t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t</a>
@@ -289,7 +289,7 @@ class __TwigTemplate_16ac61cad8210422b56aa63f3ac218ad extends Template
 \t\t\t\t\t\t\t<a class=\"dropdown-item d-flex align-items-center\" href=\"{{path('app_garant')}}\">
 \t\t\t\t\t\t\t\t<div>
 \t\t\t\t\t\t\t\t\t<span class=\"small text-gray-500\"></span>
-\t\t\t\t\t\t\t\t\t<p class=\"\">Aucune proccédure en cours</p>
+\t\t\t\t\t\t\t\t\t<strong class=\"\">Garant Financier : Aucune proccédure </strong>
 \t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t</a>
@@ -311,7 +311,7 @@ class __TwigTemplate_16ac61cad8210422b56aa63f3ac218ad extends Template
 \t\t\t\t\t\t\t<a class=\"dropdown-item d-flex align-items-center\" href=\"{{path('app_hebergement')}}\">
 \t\t\t\t\t\t\t\t<div>
 \t\t\t\t\t\t\t\t\t<span class=\"small text-gray-500\"></span>
-\t\t\t\t\t\t\t\t\t<p class=\"\">Aucune proccédure en cours</p>
+\t\t\t\t\t\t\t\t\t<strong class=\"\">Hébergement : Aucune proccédure </strong>
 \t\t\t\t\t\t\t\t</div>
 
 \t\t\t\t\t\t\t</a>

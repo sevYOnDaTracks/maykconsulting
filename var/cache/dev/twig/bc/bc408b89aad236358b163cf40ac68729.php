@@ -90,38 +90,30 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 \t\t\t\t\t\t\t\t<span>Mon profil</span>
 \t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t</li>
-\t\t\t\t\t\t<li class=\"nav-item\">
-\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"/administration/parcours\">
-\t\t\t\t\t\t\t\t<i class=\"fas fa-bookmark\"></i>
-\t\t\t\t\t\t\t\t<span>Mon parcours</span>
+\t\t\t\t\t\t";
+        // line 56
+        echo "\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"";
+        // line 57
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_hebergement");
+        echo "\">
+\t\t\t\t\t\t\t\t<i class=\"fas fa-building\"></i>
+\t\t\t\t\t\t\t\t<span>Hébergement</span>
 \t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t</li>
-\t\t\t\t\t\t<li class=\"nav-item dropdown\">
-\t\t\t\t\t\t\t<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown2\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
-\t\t\t\t\t\t\t\t<i class=\"fas fa-book\"></i>
-\t\t\t\t\t\t\t\t<span>Mes demandes</span>
-\t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t<ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown2\">
-";
-        // line 65
-        echo "                                <li>
-\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
-        // line 66
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_hebergement");
-        echo "\">Hébergement</a>
-\t\t\t\t\t\t\t\t</li>
-\t\t\t\t\t\t\t\t<li>
-\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
-        // line 69
+\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"";
+        // line 63
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant");
-        echo "\">Garant Financier</a>
-\t\t\t\t\t\t\t\t</li>
-\t\t\t\t\t\t\t</ul>
+        echo "\">
+\t\t\t\t\t\t\t\t<i class=\"fas fa-money-check\"></i>
+\t\t\t\t\t\t\t\t<span>Garant Financier</span>
+\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t</li>
 \t\t\t\t\t\t";
-        // line 73
+        // line 68
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
-            // line 74
+            // line 69
             echo "\t\t\t\t\t\t\t<li class=\"nav-item\">
 \t\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"/administration/user_list\">
 \t\t\t\t\t\t\t\t\t<i class=\"fas fa-user-friends\"></i>
@@ -133,17 +125,17 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 \t\t\t\t\t\t\t\t\t<i class=\"fas fa-envelope\"></i>
 \t\t\t\t\t\t\t\t\t<span>Messagerie publique
 \t\t\t\t\t\t\t\t\t\t";
-            // line 84
-            if ((isset($context["nombreEntitesMessage"]) || array_key_exists("nombreEntitesMessage", $context) ? $context["nombreEntitesMessage"] : (function () { throw new RuntimeError('Variable "nombreEntitesMessage" does not exist.', 84, $this->source); })())) {
-                // line 85
+            // line 79
+            if ((isset($context["nombreEntitesMessage"]) || array_key_exists("nombreEntitesMessage", $context) ? $context["nombreEntitesMessage"] : (function () { throw new RuntimeError('Variable "nombreEntitesMessage" does not exist.', 79, $this->source); })())) {
+                // line 80
                 echo "\t\t\t\t\t\t\t\t\t\t\t<span class=\"badge bg-danger\">
 \t\t\t\t\t\t\t\t\t\t\t\t";
-                // line 86
-                echo twig_escape_filter($this->env, (isset($context["nombreEntitesMessage"]) || array_key_exists("nombreEntitesMessage", $context) ? $context["nombreEntitesMessage"] : (function () { throw new RuntimeError('Variable "nombreEntitesMessage" does not exist.', 86, $this->source); })()), "html", null, true);
+                // line 81
+                echo twig_escape_filter($this->env, (isset($context["nombreEntitesMessage"]) || array_key_exists("nombreEntitesMessage", $context) ? $context["nombreEntitesMessage"] : (function () { throw new RuntimeError('Variable "nombreEntitesMessage" does not exist.', 81, $this->source); })()), "html", null, true);
                 echo "</span>
 \t\t\t\t\t\t\t\t\t\t";
             }
-            // line 88
+            // line 83
             echo "\t\t\t\t\t\t\t\t\t</span>
 \t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t</li>
@@ -154,15 +146,14 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 \t\t\t\t\t\t\t\t\t<span>Administration</span>
 \t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t<ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown1\">
-\t\t\t\t\t\t\t\t\t<li>
-\t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"/administration\">Admission</a>
-\t\t\t\t\t\t\t\t\t</li>
-\t\t\t\t\t\t\t\t\t<li>
+";
+            // line 96
+            echo "\t\t\t\t\t\t\t\t\t<li>
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"/administration\">Hébergement</a>
 \t\t\t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t\t\t\t<li>
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
-            // line 105
+            // line 100
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_garant_management");
             echo "\">Garant Financier</a>
 \t\t\t\t\t\t\t\t\t</li>
@@ -170,7 +161,7 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 \t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t";
         }
-        // line 110
+        // line 105
         echo "\t\t\t\t\t</ul>
 \t\t\t\t\t<div class=\"text-center d-none d-md-inline\">
 \t\t\t\t\t\t<button class=\"btn rounded-circle border-0\" id=\"sidebarToggle\" type=\"button\"></button>
@@ -180,15 +171,15 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 \t\t\t<div class=\"d-flex flex-column\" id=\"content-wrapper\">
 \t\t\t\t<div id=\"content\">
 \t\t\t\t\t";
-        // line 118
-        $this->loadTemplate("administration/top-bar.html.twig", "administration/base.html.twig", 118)->display($context);
-        // line 119
+        // line 113
+        $this->loadTemplate("administration/top-bar.html.twig", "administration/base.html.twig", 113)->display($context);
+        // line 114
         echo "\t\t\t\t\t<div class=\"container-fluid\">
 \t\t\t\t\t\t<br>
 \t\t\t\t\t\t";
-        // line 121
+        // line 116
         $this->displayBlock('body', $context, $blocks);
-        // line 122
+        // line 117
         echo "\t\t\t\t\t\t<footer class=\"bg-white sticky-footer\">
 \t\t\t\t\t\t\t<div class=\"container my-auto\">
 \t\t\t\t\t\t\t\t<div class=\"text-center my-auto copyright\">
@@ -204,9 +195,9 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 \t\t\t</a>
 \t\t</div>
 \t\t";
-        // line 136
+        // line 131
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 141
+        // line 136
         echo "\t</body>
 </html>
 ";
@@ -276,7 +267,7 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 
     }
 
-    // line 121
+    // line 116
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -294,7 +285,7 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 
     }
 
-    // line 136
+    // line 131
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -304,16 +295,16 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 137
+        // line 132
         echo "\t\t\t<script src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/admin/assets/js/theme1.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 138
+        // line 133
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/admin/assets/bootstrap/js/bootstrap1.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 139
+        // line 134
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/admin/assets/js/bs-init.js"), "html", null, true);
         echo "\"></script>
 \t\t";
@@ -346,7 +337,7 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  317 => 139,  313 => 138,  308 => 137,  298 => 136,  280 => 121,  262 => 15,  256 => 13,  246 => 12,  234 => 8,  222 => 7,  210 => 141,  208 => 136,  192 => 122,  190 => 121,  186 => 119,  184 => 118,  174 => 110,  166 => 105,  147 => 88,  142 => 86,  139 => 85,  137 => 84,  125 => 74,  123 => 73,  116 => 69,  110 => 66,  107 => 65,  66 => 23,  64 => 12,  60 => 11,  57 => 10,  55 => 7,  47 => 1,);
+        return array (  308 => 134,  304 => 133,  299 => 132,  289 => 131,  271 => 116,  253 => 15,  247 => 13,  237 => 12,  225 => 8,  213 => 7,  201 => 136,  199 => 131,  183 => 117,  181 => 116,  177 => 114,  175 => 113,  165 => 105,  157 => 100,  151 => 96,  139 => 83,  134 => 81,  131 => 80,  129 => 79,  117 => 69,  115 => 68,  107 => 63,  98 => 57,  95 => 56,  66 => 23,  64 => 12,  60 => 11,  57 => 10,  55 => 7,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -400,28 +391,23 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 \t\t\t\t\t\t\t\t<span>Mon profil</span>
 \t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t</li>
-\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t{#\t<li class=\"nav-item\">
 \t\t\t\t\t\t\t<a class=\"nav-link\" href=\"/administration/parcours\">
 \t\t\t\t\t\t\t\t<i class=\"fas fa-bookmark\"></i>
 \t\t\t\t\t\t\t\t<span>Mon parcours</span>
 \t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t</li>
-\t\t\t\t\t\t<li class=\"nav-item dropdown\">
-\t\t\t\t\t\t\t<a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown2\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">
-\t\t\t\t\t\t\t\t<i class=\"fas fa-book\"></i>
-\t\t\t\t\t\t\t\t<span>Mes demandes</span>
+\t\t\t\t\t\t</li> #}
+\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ path('app_hebergement') }}\">
+\t\t\t\t\t\t\t\t<i class=\"fas fa-building\"></i>
+\t\t\t\t\t\t\t\t<span>Hébergement</span>
 \t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t<ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown2\">
-{#\t<li>
-\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{path('app_admission')}}\">Admissions</a>
-\t\t\t\t\t\t\t\t</li>#}
-                                <li>
-\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ path('app_hebergement') }}\">Hébergement</a>
-\t\t\t\t\t\t\t\t</li>
-\t\t\t\t\t\t\t\t<li>
-\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ path('app_garant') }}\">Garant Financier</a>
-\t\t\t\t\t\t\t\t</li>
-\t\t\t\t\t\t\t</ul>
+\t\t\t\t\t\t</li>
+\t\t\t\t\t\t<li class=\"nav-item\">
+\t\t\t\t\t\t\t<a class=\"nav-link\" href=\"{{ path('app_garant') }}\">
+\t\t\t\t\t\t\t\t<i class=\"fas fa-money-check\"></i>
+\t\t\t\t\t\t\t\t<span>Garant Financier</span>
+\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t</li>
 \t\t\t\t\t\t{% if is_granted('ROLE_ADMIN') %}
 \t\t\t\t\t\t\t<li class=\"nav-item\">
@@ -448,9 +434,9 @@ class __TwigTemplate_88e1d480cb06e6ccbd3dd36c3ddefda5 extends Template
 \t\t\t\t\t\t\t\t\t<span>Administration</span>
 \t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t<ul class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown1\">
-\t\t\t\t\t\t\t\t\t<li>
+{#\t<li>
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"/administration\">Admission</a>
-\t\t\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t\t\t</li> #}
 \t\t\t\t\t\t\t\t\t<li>
 \t\t\t\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"/administration\">Hébergement</a>
 \t\t\t\t\t\t\t\t\t</li>

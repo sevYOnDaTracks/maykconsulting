@@ -47,28 +47,23 @@
 								<span>Mon profil</span>
 							</a>
 						</li>
-						<li class="nav-item">
+						{#	<li class="nav-item">
 							<a class="nav-link" href="/administration/parcours">
 								<i class="fas fa-bookmark"></i>
 								<span>Mon parcours</span>
 							</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								<i class="fas fa-book"></i>
-								<span>Mes demandes</span>
+						</li> #}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_hebergement') }}">
+								<i class="fas fa-building"></i>
+								<span>Hébergement</span>
 							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-{#	<li>
-									<a class="dropdown-item" href="{{path('app_admission')}}">Admissions</a>
-								</li>#}
-                                <li>
-									<a class="dropdown-item" href="{{ path('app_hebergement') }}">Hébergement</a>
-								</li>
-								<li>
-									<a class="dropdown-item" href="{{ path('app_garant') }}">Garant Financier</a>
-								</li>
-							</ul>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_garant') }}">
+								<i class="fas fa-money-check"></i>
+								<span>Garant Financier</span>
+							</a>
 						</li>
 						{% if is_granted('ROLE_ADMIN') %}
 							<li class="nav-item">
@@ -95,9 +90,9 @@
 									<span>Administration</span>
 								</a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-									<li>
+{#	<li>
 										<a class="dropdown-item" href="/administration">Admission</a>
-									</li>
+									</li> #}
 									<li>
 										<a class="dropdown-item" href="/administration">Hébergement</a>
 									</li>
