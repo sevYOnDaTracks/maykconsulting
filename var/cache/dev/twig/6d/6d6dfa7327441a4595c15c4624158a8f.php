@@ -292,6 +292,6 @@ class __TwigTemplate_82f4e9db8a814f0620878022ae0b6c73 extends Template
         });
     </script>
 {% endblock %}
-", "@WebProfiler/Profiler/open.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/open.html.twig");
+", "@WebProfiler/Profiler/open.html.twig", "/Users/sevyondatracks/Documents/maykconsulting/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/open.html.twig");
     }
 }

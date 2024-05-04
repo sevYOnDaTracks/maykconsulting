@@ -1450,6 +1450,6 @@ class __TwigTemplate_826663d374fcbac9cf785860e1c42d68 extends Template
         {%- endif -%}
     {% endmacro %}
 {% endblock %}
-", "@WebProfiler/Collector/mailer.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/vendor/symfony/web-profiler-bundle/Resources/views/Collector/mailer.html.twig");
+", "@WebProfiler/Collector/mailer.html.twig", "/Users/sevyondatracks/Documents/maykconsulting/vendor/symfony/web-profiler-bundle/Resources/views/Collector/mailer.html.twig");
     }
 }

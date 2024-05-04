@@ -250,6 +250,6 @@ class __TwigTemplate_b88c5b7251c4fabc567bde880fafd199 extends Template
     </div>
   </div>
 </div>
-{% endblock %}", "welcome/pricing.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/welcome/pricing.html.twig");
+{% endblock %}", "welcome/pricing.html.twig", "/Users/sevyondatracks/Documents/maykconsulting/templates/welcome/pricing.html.twig");
     }
 }

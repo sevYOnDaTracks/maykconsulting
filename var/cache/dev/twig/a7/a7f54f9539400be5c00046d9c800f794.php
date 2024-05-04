@@ -79,6 +79,6 @@ class __TwigTemplate_916af701c80df0e7e95d0f7268d4c926 extends Template
     <line x1=\"7\" y1=\"7\" x2=\"7\" y2=\"17\"></line>
     <line x1=\"4\" y1=\"8\" x2=\"4\" y2=\"16\"></line>
 </svg>
-", "@DoctrineMigrations/Collector/icon-v3.svg", "/Users/sevyondatracks/Desktop/maykconsulting/vendor/doctrine/doctrine-migrations-bundle/Resources/views/Collector/icon-v3.svg");
+", "@DoctrineMigrations/Collector/icon-v3.svg", "/Users/sevyondatracks/Documents/maykconsulting/vendor/doctrine/doctrine-migrations-bundle/Resources/views/Collector/icon-v3.svg");
     }
 }

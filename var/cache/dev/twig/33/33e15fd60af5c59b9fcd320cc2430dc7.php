@@ -225,6 +225,6 @@ class __TwigTemplate_5c685e88c9449b578849035b8cdf283b extends Template
     word-wrap: break-word;
     word-break: break-all;
 }
-", "@WebProfiler/Profiler/open.css.twig", "/Users/sevyondatracks/Desktop/maykconsulting/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/open.css.twig");
+", "@WebProfiler/Profiler/open.css.twig", "/Users/sevyondatracks/Documents/maykconsulting/vendor/symfony/web-profiler-bundle/Resources/views/Profiler/open.css.twig");
     }
 }

@@ -272,6 +272,6 @@ class __TwigTemplate_b03ab34f9837ea4371730078a754d139 extends Template
         </div>
     </div>
 {% endblock %}
-", "welcome/index.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/templates/welcome/index.html.twig");
+", "welcome/index.html.twig", "/Users/sevyondatracks/Documents/maykconsulting/templates/welcome/index.html.twig");
     }
 }

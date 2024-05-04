@@ -452,6 +452,6 @@ class __TwigTemplate_349847557740a9776ac389402c26bdc2 extends Template
         </div>
     {% endfor %}
 {% endblock %}
-", "@Debug/Profiler/dump.html.twig", "/Users/sevyondatracks/Desktop/maykconsulting/vendor/symfony/debug-bundle/Resources/views/Profiler/dump.html.twig");
+", "@Debug/Profiler/dump.html.twig", "/Users/sevyondatracks/Documents/maykconsulting/vendor/symfony/debug-bundle/Resources/views/Profiler/dump.html.twig");
     }
 }
