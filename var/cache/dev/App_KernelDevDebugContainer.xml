@@ -4847,7 +4847,7 @@
     </service>
     <service id="doctrine.dbal.logging_middleware" class="Doctrine\DBAL\Logging\Middleware" abstract="true">
       <tag name="monolog.logger" channel="doctrine"/>
-      <tag name="doctrine.middleware" connection="default"/>
+      <tag name="doctrine.middleware" connection="default" priority="10"/>
       <argument type="service" id="monolog.logger.doctrine"/>
     </service>
     <service id="doctrine.debug_data_holder" class="Doctrine\Bundle\DoctrineBundle\Middleware\BacktraceDebugDataHolder">
@@ -4855,7 +4855,7 @@
       <argument type="collection"/>
     </service>
     <service id="doctrine.dbal.debug_middleware" class="Doctrine\Bundle\DoctrineBundle\Middleware\DebugMiddleware" abstract="true">
-      <tag name="doctrine.middleware" connection="default"/>
+      <tag name="doctrine.middleware" connection="default" priority="10"/>
       <argument type="service" id="doctrine.debug_data_holder"/>
       <argument type="service" id="debug.stopwatch" on-invalid="null"/>
     </service>
@@ -4886,7 +4886,7 @@
       <tag name="doctrine.event_listener" event="onSchemaCreateTable"/>
       <argument type="tagged_iterator" tag="messenger.receiver"/>
     </service>
-    <service id=".1_ServiceLocator~zfNu3V." class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".1_ServiceLocator~uvu3nhc" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <argument type="collection"/>
     </service>
     <service id="doctrine.orm.proxy_cache_warmer" class="Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer">
@@ -5636,11 +5636,11 @@
       <argument type="collection"/>
       <argument>/Users/sevyondatracks/Documents/maykconsulting</argument>
       <call method="addPath">
-        <argument>/Users/sevyondatracks/Documents/maykconsulting/vendor/doctrine/doctrine-bundle/Resources/views</argument>
+        <argument>/Users/sevyondatracks/Documents/maykconsulting/vendor/doctrine/doctrine-bundle/templates</argument>
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/sevyondatracks/Documents/maykconsulting/vendor/doctrine/doctrine-bundle/Resources/views</argument>
+        <argument>/Users/sevyondatracks/Documents/maykconsulting/vendor/doctrine/doctrine-bundle/templates</argument>
         <argument>!Doctrine</argument>
       </call>
       <call method="addPath">

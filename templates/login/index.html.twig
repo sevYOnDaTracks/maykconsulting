@@ -11,7 +11,7 @@
 				<div class="col-md-6 col-xl-4">
 					{% if error %}
 						<div class="alert alert-danger" align="center">
-							<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+							<div>Mot de passe et / ou identifiant incorrect !</div>
 						</div>
 					{% endif %}
 					{% if app.flashes('success') is not empty %}

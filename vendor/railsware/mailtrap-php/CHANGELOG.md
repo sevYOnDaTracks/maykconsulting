@@ -1,3 +1,23 @@
+## [1.9.0] - 2024-05-06
+
+- Support templates in testing
+- Refactoring of examples
+  - sandbox -> [testing](examples/testing)
+  - bulkSending -> [sending](examples/sending)
+
+## [1.8.1] - 2024-04-25
+
+- Use real value for template headers (should not be encoded as it is not a real header) 
+
+## [1.8.0] - 2024-04-19
+
+- Support new functionality [Bulk Stream](https://help.mailtrap.io/article/113-sending-streams)
+
+## [1.7.4] - 2024-03-20
+
+- Add PHP 8.3 support (GitHub Actions)
+- Support new Symfony packages v7 (mime, http-client, etc)
+
 ## [1.7.3] - 2024-01-30
 
 - Use Psr18ClientDiscovery instead of deprecated HttpClientDiscovery

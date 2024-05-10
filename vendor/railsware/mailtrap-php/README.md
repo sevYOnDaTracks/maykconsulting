@@ -111,8 +111,8 @@ try {
 
 You can find more examples [here](examples).
 * [General examples](examples/general)
+* [Testing examples](examples/testing)
 * [Sending examples](examples/sending)
-* [Sandbox examples](examples/sandbox)
 
 
 ## Framework integration

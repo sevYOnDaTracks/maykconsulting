@@ -22,8 +22,6 @@ use Mailtrap\EmailHeader\CategoryHeader;
 use App\Services\DompdfService;
 use Symfony\Component\Mime\Part\DataPart;
 
-
-
 #[Route('/garant')]
 class GarantController extends AbstractController
 {
