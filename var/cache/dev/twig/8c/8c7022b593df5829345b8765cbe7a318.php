@@ -179,18 +179,29 @@ class __TwigTemplate_09d7734976afb1f0d0b8a4be2e9c39ef extends Template
         yield Twig\Extension\EscaperExtension::escape($this->env, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 122, $this->source); })()), "user", [], "any", false, false, false, 122), "lastName", [], "any", false, false, false, 122), "html", null, true);
         yield "
 \t\t\t\t\t\t\t<i class=\"fas fa-chevron-down fa-sm fa-fw me-2 text-gray-700 \"></i>
-\t\t\t\t\t\t</span><img class=\"border rounded-circle img-profile\" src=\"";
+\t\t\t\t\t\t</span>                            ";
         // line 124
-        yield Twig\Extension\EscaperExtension::escape($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/images/logo.png"), "html", null, true);
-        yield "\"></a>
+        if ( !Twig\Extension\CoreExtension::testEmpty(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 124, $this->source); })()), "user", [], "any", false, false, false, 124), "avatar", [], "any", false, false, false, 124))) {
+            // line 125
+            yield "\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"";
+            yield Twig\Extension\EscaperExtension::escape($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/avatars/" . CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 125, $this->source); })()), "user", [], "any", false, false, false, 125), "avatar", [], "any", false, false, false, 125))), "html", null, true);
+            yield "\">
+\t\t\t\t\t\t";
+        } else {
+            // line 127
+            yield "\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"/assets/images/logo.png\">
+\t\t\t\t\t\t";
+        }
+        // line 128
+        yield "</a>
 \t\t\t\t\t<div class=\"dropdown-menu shadow dropdown-menu-end animated--grow-in\">
 \t\t\t\t\t\t<a class=\"dropdown-item\" href=\"";
-        // line 126
+        // line 130
         yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_profil");
         yield "\">
 \t\t\t\t\t\t\t<i class=\"fas fa-user fa-sm fa-fw me-2 text-gray-400\"></i>&nbsp;Profil</a>
 \t\t\t\t\t\t";
-        // line 130
+        // line 134
         yield "\t\t\t\t\t\t<div class=\"dropdown-divider\"></div>
 \t\t\t\t\t\t<a class=\"dropdown-item\" href=\"/logout\">
 \t\t\t\t\t\t\t<i class=\"fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400\"></i>&nbsp;Se deconnecter</a>
@@ -231,7 +242,7 @@ class __TwigTemplate_09d7734976afb1f0d0b8a4be2e9c39ef extends Template
      */
     public function getDebugInfo()
     {
-        return array (  194 => 130,  189 => 126,  184 => 124,  179 => 122,  175 => 121,  170 => 118,  168 => 117,  162 => 113,  157 => 95,  151 => 93,  149 => 92,  144 => 89,  142 => 88,  135 => 83,  123 => 75,  114 => 69,  103 => 62,  100 => 61,  88 => 53,  79 => 47,  68 => 40,  66 => 39,  55 => 30,  51 => 12,  44 => 1,);
+        return array (  205 => 134,  200 => 130,  196 => 128,  192 => 127,  186 => 125,  184 => 124,  179 => 122,  175 => 121,  170 => 118,  168 => 117,  162 => 113,  157 => 95,  151 => 93,  149 => 92,  144 => 89,  142 => 88,  135 => 83,  123 => 75,  114 => 69,  103 => 62,  100 => 61,  88 => 53,  79 => 47,  68 => 40,  66 => 39,  55 => 30,  51 => 12,  44 => 1,);
     }
 
     public function getSourceContext()
@@ -359,7 +370,11 @@ class __TwigTemplate_09d7734976afb1f0d0b8a4be2e9c39ef extends Template
 \t\t\t\t\t\t<span class=\"d-none d-lg-inline me-2 text-dark small\">{{ app.user.name }}
 \t\t\t\t\t\t\t{{ app.user.lastName }}
 \t\t\t\t\t\t\t<i class=\"fas fa-chevron-down fa-sm fa-fw me-2 text-gray-700 \"></i>
-\t\t\t\t\t\t</span><img class=\"border rounded-circle img-profile\" src=\"{{ asset('assets/images/logo.png') }}\"></a>
+\t\t\t\t\t\t</span>                            {% if app.user.avatar is not empty %}
+\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"{{ asset('uploads/avatars/' ~ app.user.avatar) }}\">
+\t\t\t\t\t\t{% else %}
+\t\t\t\t\t\t\t<img class=\"rounded-circle me-2\" width=\"40\" height=\"40\" src=\"/assets/images/logo.png\">
+\t\t\t\t\t\t{% endif %}</a>
 \t\t\t\t\t<div class=\"dropdown-menu shadow dropdown-menu-end animated--grow-in\">
 \t\t\t\t\t\t<a class=\"dropdown-item\" href=\"{{ path('app_user_profil') }}\">
 \t\t\t\t\t\t\t<i class=\"fas fa-user fa-sm fa-fw me-2 text-gray-400\"></i>&nbsp;Profil</a>
